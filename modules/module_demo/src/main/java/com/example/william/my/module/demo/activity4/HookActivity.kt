@@ -1,0 +1,26 @@
+package com.example.william.my.module.demo.activity4
+
+import com.alibaba.android.arouter.facade.annotation.Route
+import com.example.william.my.basic.basic_module.activity.BasicResponseActivity
+import com.example.william.my.basic.basic_module.router.path.ARouterPath
+import com.example.william.my.module.demo.hook.HookManager
+
+@Route(path = ARouterPath.Demo.Hook)
+class HookActivity : BasicResponseActivity() {
+
+    override fun initView() {
+        super.initView()
+
+        setTag()
+    }
+
+    private fun setTag() {
+        HookManager.setViewTag(mBinding.basicsResponse, "name", "hook")
+    }
+
+    override fun initOnClick() {
+        super.initOnClick()
+
+        HookManager.hookOnClick(this, mBinding.basicsResponse)
+    }
+}

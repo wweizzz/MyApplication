@@ -1,0 +1,241 @@
+[versions]
+desugar = "2.0.3"
+kotlinx = "1.7.2"
+googleGson = "2.10.1"
+googleGuava = "31.1-android"
+googleMaterial = "1.9.0"
+googleFlexbox = "3.0.0"
+# ##################################################################################################
+androidxAppCompat = "1.6.1"
+androidxConstraintLayout = "2.1.4"
+androidxRecyclerView = "1.3.0"
+androidxViewPager2 = "1.0.0"
+androidxCore = "1.9.0"
+androidxActivity = "1.7.0"
+androidxFragment = "1.5.6"
+androidxLifecycle = "2.6.1"
+androidxPaging = "3.1.1"
+androidxDataStore = "1.0.0"
+androidxWork = "2.8.1"
+androidxRoom = "2.5.2"
+androidxNavigation = "2.5.3"
+# ##################################################################################################
+mmkv = "1.2.14"
+utils = "1.31.1"
+arouter = "1.5.2"
+eventbus = "3.3.1"
+greendao = "3.3.0"
+rxjava = "3.1.5"
+rxandroid = "3.0.2"
+autodispose = "2.1.1"
+rxlifecycle = "4.0.2"
+# ##################################################################################################
+immersionbar = "3.2.2"
+brvah = "4.0.0-beta10"
+smartrefresh = "2.0.6"
+mavericks = "3.0.6"
+# ##################################################################################################
+coil = "2.4.0"
+glide = "4.15.1"
+volley = "1.2.1"
+okhttp = "4.11.0"
+retrofit = "2.9.0"
+netty = "4.1.65.Final"
+nanohttpd = "2.3.1"
+websocket = "1.5.3"
+# ##################################################################################################
+background = "1.6.5"
+lottie = "5.2.0"
+svga = "2.6.1"
+loadsir = "1.3.8"
+# ##################################################################################################
+badgeview = "1.1.3"
+banner = "2.2.2"
+citypicker = "2.0.3"
+countdownview = "2.1.6"
+easyfloat = "2.0.4"
+tablayout = "2.2.0"
+photoview = "2.3.0"
+pickerview = "4.1.9"
+popwindow = "2.1.1"
+shadowlayout = "3.3.2"
+swipelayout = "1.2.0"
+# ##################################################################################################
+junit = "4.13.2"
+androidxTestExt = "1.1.5"
+androidxTestEspresso = "3.5.1"
+# ##################################################################################################
+# https://developer.android.google.cn/studio/releases/gradle-plugin
+gradlePluginAndroid = "7.4.2"
+gradlePluginKotlin = "1.8.10"
+gradlePluginProtobuf = "0.9.4"
+gradlePluginGreenDao = "3.3.1"
+gradlePluginObjectBox = "3.7.0"
+# ##################################################################################################
+[libraries]
+#
+android-desugarJdkLibs = { group = "com.android.tools", name = "desugar_jdk_libs", version.ref = "desugar" }
+# ##################################################################################################
+# https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-coroutines-android
+kotlinx-coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinx" }
+# ##################################################################################################
+# https://github.com/google/gson
+google-gson = { group = "com.google.code.gson", name = "gson", version.ref = "googleGson" }
+# https://github.com/google/guava
+google-guava = { group = "com.google.guava", name = "guava", version.ref = "googleGuava" }
+#
+google-material = { group = "com.google.android.material", name = "material", version.ref = "googleMaterial" }
+# https://github.com/google/flexbox-layout
+google-flexBox = { group = "com.google.android.flexbox", name = "flexbox", version.ref = "googleFlexbox" }
+# ##################################################################################################
+androidx-appCompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidxAppCompat" }
+androidx-constraintLayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "androidxConstraintLayout" }
+androidx-recyclerView = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "androidxRecyclerView" }
+androidx-viewpager2 = { group = "androidx.viewpager2", name = "viewpager2", version.ref = "androidxViewPager2" }
+# ##################################################################################################
+# https://developer.android.google.cn/kotlin/ktx
+# https://developer.android.google.cn/jetpack/androidx/releases/core
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidxCore" }
+# https://developer.android.google.cn/jetpack/androidx/releases/activity
+androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "androidxActivity" }
+# https://developer.android.google.cn/jetpack/androidx/releases/fragment
+androidx-fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "androidxFragment" }
+# https://developer.android.google.cn/jetpack/androidx/releases/lifecycle
+# ViewModel
+androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "androidxLifecycle" }
+# LiveData
+androidx-lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "androidxLifecycle" }
+# Lifecycles only (without ViewModel or LiveData)
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "androidxLifecycle" }
+# optional - helpers for implementing LifecycleOwner in a Service
+androidx-lifecycle-service = { group = "androidx.lifecycle", name = "lifecycle-service", version.ref = "androidxLifecycle" }
+# optional - ProcessLifecycleOwner provides a lifecycle for the whole application process
+androidx-lifecycle-process = { group = "androidx.lifecycle", name = "lifecycle-process", version.ref = "androidxLifecycle" }
+# https://android-dot-google-developers.gonglchuangl.net/topic/libraries/architecture/paging/v3-overview
+androidx-paging-runtime = { group = "androidx.paging", name = "paging-runtime", version.ref = "androidxPaging" }
+androidx-paging-rxjava3 = { group = "androidx.paging", name = "paging-rxjava3", version.ref = "androidxPaging" }
+# https://developer.android.google.cn/jetpack/androidx/releases/datastore
+# Preferences DataStore
+androidx-datastore-preferences-runtime = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "androidxDataStore" }
+androidx-datastore-preferences-rxjava3 = { group = "androidx.datastore", name = "datastore-preferences-rxjava3", version.ref = "androidxDataStore" }
+# Proto DataStore
+androidx-datastore-runtime = { group = "androidx.datastore", name = "datastore", version.ref = "androidxDataStore" }
+androidx-datastore-rxjava3 = { group = "androidx.datastore", name = "datastore-rxjava3", version.ref = "androidxDataStore" }
+# https://developer.android.google.cn/jetpack/androidx/releases/work
+androidx-work-ktx = { group = "androidx.work", name = "work-runtime-ktx", version.ref = "androidxWork" }
+# https://developer.android.google.cn/jetpack/androidx/releases/room
+androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "androidxRoom" }
+androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "androidxRoom" }
+androidx-room-rxjava3 = { group = "androidx.room", name = "room-rxjava3", version.ref = "androidxRoom" }
+androidx-room-paging = { group = "androidx.room", name = "room-paging", version.ref = "androidxRoom" }
+androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "androidxRoom" }
+# https://developer.android.google.cn/jetpack/androidx/releases/navigation
+androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "androidxNavigation" }
+androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "androidxNavigation" }
+# ##################################################################################################
+# https://github.com/Tencent/MMKV
+mmkv = { group = "com.tencent", name = "mmkv-static", version.ref = "mmkv" }
+# https://github.com/Blankj/AndroidUtilCode
+utils = { group = "com.blankj", name = "utilcodex", version.ref = "utils" }
+# https://github.com/alibaba/ARouter
+arouter = { group = "com.alibaba", name = "arouter-api", version.ref = "arouter" }
+arouter-compiler = { group = "com.alibaba", name = "arouter-compiler", version.ref = "arouter" }
+# https://github.com/greenrobot/EventBus
+eventbus = { group = "org.greenrobot", name = "eventbus", version.ref = "eventbus" }
+eventbus-processor = { group = "org.greenrobot", name = "eventbus-annotation-processor", version.ref = "eventbus" }
+# https://github.com/greenrobot/greenDAO
+greendao = { group = "org.greenrobot", name = "greendao", version.ref = "greendao" }
+# https://github.com/ReactiveX/RxJava
+rxjava3 = { group = "io.reactivex.rxjava3", name = "rxjava", version.ref = "rxjava" }
+# https://github.com/ReactiveX/RxAndroid
+rxandroid = { group = "io.reactivex.rxjava3", name = "rxandroid", version.ref = "rxandroid" }
+# https://github.com/uber/AutoDispose
+autodispose = { group = "com.uber.autodispose2", name = "autodispose-androidx-lifecycle", version.ref = "autodispose" }
+# https://github.com/trello/RxLifecycle
+rxlifecycle = { group = "com.trello.rxlifecycle4", name = "rxlifecycle-android-lifecycle", version.ref = "rxlifecycle" }
+# ##################################################################################################
+# https://github.com/gyf-dev/ImmersionBar
+immersionbar = { group = "com.geyifeng.immersionbar", name = "immersionbar", version.ref = "immersionbar" }
+immersionbar-ktx = { group = "com.geyifeng.immersionbar", name = "immersionbar-ktx", version.ref = "immersionbar" }
+# https://github.com/CymChad/BaseRecyclerViewAdapterHelper
+brvah = { group = "io.github.cymchad", name = "BaseRecyclerViewAdapterHelper", version.ref = "brvah" }
+# https://github.com/scwang90/SmartRefreshLayout
+smartrefresh-layout = { group = "io.github.scwang90", name = "refresh-layout-kernel", version.ref = "smartrefresh" }
+smartrefresh-header = { group = "io.github.scwang90", name = "refresh-header-classics", version.ref = "smartrefresh" }
+smartrefresh-footer = { group = "io.github.scwang90", name = "refresh-footer-classics", version.ref = "smartrefresh" }
+# https://github.com/airbnb/mavericks
+mavericks = { group = "com.airbnb.android", name = "mavericks", version.ref = "mavericks" }
+# ##################################################################################################
+# https://github.com/coil-kt/coil
+coil = { group = "io.coil-kt", name = "coil", version.ref = "coil" }
+coil-gif = { group = "io.coil-kt", name = "coil-gif", version.ref = "coil" }
+coil-svg = { group = "io.coil-kt", name = "coil-svg", version.ref = "coil" }
+coil-video = { group = "io.coil-kt", name = "coil-video", version.ref = "coil" }
+# https://github.com/bumptech/glide
+glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
+glide-compiler = { group = "com.github.bumptech.glide", name = "compiler", version.ref = "glide" }
+# https://github.com/google/volley
+volley = { group = "com.android.volley", name = "volley", version.ref = "volley" }
+# https://github.com/square/okhttp
+okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
+okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
+# https://github.com/square/retrofit
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+retrofit-converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
+retrofit-converter-scalars = { group = "com.squareup.retrofit2", name = "converter-scalars", version.ref = "retrofit" }
+retrofit-adapter-rxjava3 = { group = "com.squareup.retrofit2", name = "adapter-rxjava3", version.ref = "retrofit" }
+# https://github.com/netty/netty
+netty = { group = "io.netty", name = "netty-all", version.ref = "netty" }
+# https://github.com/NanoHttpd/nanohttpd
+nanohttpd = { group = "org.nanohttpd", name = "nanohttpd", version.ref = "nanohttpd" }
+# https://github.com/TooTallNate/Java-WebSocket
+websocket = { group = "org.java-websocket", name = "Java-WebSocket", version.ref = "websocket" }
+# ##################################################################################################
+# https://github.com/JavaNoober/BackgroundLibrary
+background = { group = "com.noober.background", name = "core", version.ref = "background" }
+# https://github.com/airbnb/lottie-android
+lottie = { group = "com.airbnb.android", name = "lottie", version.ref = "lottie" }
+# https://github.com/svga/SVGAPlayer-Android
+svgaPlayer = { group = "com.github.yyued", name = "SVGAPlayer-Android", version.ref = "svga" }
+# https://github.com/KingJA/LoadSir
+loadsir = { group = "com.kingja.loadsir", name = "loadsir", version.ref = "loadsir" }
+# ##################################################################################################
+# https://github.com/qstumn/BadgeView
+badgeview = { group = "q.rorbin", name = "badgeview", version.ref = "badgeview" }
+# https://github.com/youth5201314/banner
+banner = { group = "io.github.youth5201314", name = "banner", version.ref = "banner" }
+# https://github.com/zaaach/CityPicker
+citypicker = { group = "com.zaaach", name = "citypicker", version.ref = "citypicker" }
+# https://github.com/iwgang/CountdownView
+countdownview = { group = "com.github.iwgang", name = "countdownview", version.ref = "countdownview" }
+# https://github.com/princekin-f/EasyFloat
+easyfloat = { group = "com.github.princekin-f", name = "EasyFloat", version.ref = "easyfloat" }
+# https://github.com/H07000223/FlycoTabLayout
+tablayout = { group = "com.flyco.tablayout", name = "FlycoTabLayout_Lib", version.ref = "tablayout" }
+# https://github.com/chrisbanes/PhotoView
+photoview = { group = "com.github.chrisbanes", name = "PhotoView", version.ref = "photoview" }
+# https://github.com/Bigkoo/Android-PickerView
+pickerview = { group = "com.contrarywind", name = "Android-PickerView", version.ref = "pickerview" }
+# https://github.com/pinguo-zhouwei/CustomPopwindow
+popwindow = { group = "com.github.pinguo-zhouwei", name = "CustomPopwindow", version.ref = "popwindow" }
+# https://github.com/lihangleo2/ShadowLayout
+shadowlayout = { group = "com.github.lihangleo2", name = "ShadowLayout", version.ref = "shadowlayout" }
+# https://github.com/daimajia/AndroidSwipeLayout
+swipelayout = { group = "com.daimajia.swipelayout", name = "library", version.ref = "swipelayout" }
+# ##################################################################################################
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-test-ext = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "androidxTestExt" }
+androidx-test-espresso = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidxTestEspresso" }
+# ##################################################################################################
+# Dependencies of the included build-logic
+gradlePlugin-android = { group = "com.android.tools.build", name = "gradle", version.ref = "gradlePluginAndroid" }
+gradlePlugin-kotlin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "gradlePluginKotlin" }
+gradlePlugin-protobuf = { group = "com.google.protobuf", name = "protobuf-gradle-plugin", version.ref = "gradlePluginProtobuf" }
+gradlePlugin-greendao = { group = "org.greenrobot", name = "greendao-gradle-plugin", version.ref = "gradlePluginGreenDao" }
+gradlePlugin-objectbox = { group = "io.objectbox", name = "objectbox-gradle-plugin", version.ref = "gradlePluginObjectBox" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "gradlePluginAndroid" }
+android-library = { id = "com.android.library", version.ref = "gradlePluginAndroid" }
+android-test = { id = "com.android.test", version.ref = "gradlePluginAndroid" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "gradlePluginKotlin" }

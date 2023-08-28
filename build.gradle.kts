@@ -1,0 +1,26 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    dependencies {
+        //classpath 'com.android.tools.build:gradle:x.x.x'
+        //classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:x.x.x"
+        classpath(libs.gradlePlugin.protobuf)
+        classpath(libs.gradlePlugin.greendao)
+        classpath(libs.gradlePlugin.objectbox)
+    }
+}
+
+// only buildscript {}, pluginManagement {} and other plugins {} script blocks are allowed before plugins {} blocks, no other statements are allowed.
+//plugins {
+//    id("com.android.application") version "8.1.0" apply false
+//    id("com.android.library") version "8.1.0" apply false
+//    id("org.jetbrains.kotlin.android") version "1.8.0" apply false
+//}
+
+@Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
+plugins {
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.android.library) apply false
+    alias(libs.plugins.kotlin.android) apply false
+    //alias(libs.plugins.google.ksp) apply false
+}
+true // Needed to make the Suppress annotation work for the plugins block

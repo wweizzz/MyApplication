@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application>
+        <activity android:name=".SampleActivity" />
+
+        <activity android:name=".activity.jetpack.RoomActivity" />
+
+        <activity android:name=".activity.kotlin.CoroutinesActivity" />
+        <activity android:name=".activity.kotlin.FLowActivity" />
+        <activity android:name=".activity.kotlin.ActivityResultActivity" />
+        <activity android:name=".activity.kotlin.ActivityResultActivity2" />
+
+        <activity android:name=".activity.topic.PagingActivity" />
+        <activity android:name=".activity.topic.DataStoreActivity" />
+        <activity android:name=".activity.topic.ViewModelActivity" />
+        <activity android:name=".activity.topic.WorkManagerActivity" />
+    </application>
+</manifest>

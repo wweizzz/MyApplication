@@ -1,0 +1,14 @@
+package com.example.william.my.module.sample.utils
+
+import android.os.Looper
+import com.example.william.my.library.utils.Utils
+
+class ThreadUtils {
+
+    companion object {
+        fun isMainThread(name: String) {
+            val isMainThread = Looper.myLooper() == Looper.getMainLooper()
+            Utils.e("TAG", "$name isMainThread : $isMainThread")
+        }
+    }
+}

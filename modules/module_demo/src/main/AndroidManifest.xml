@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application>
+        <activity android:name=".DemoActivity" />
+        <activity android:name=".activity.AppBarActivity" />
+        <activity android:name=".activity.DialogActivity" />
+        <activity android:name=".activity.FlexBoxActivity" />
+        <activity android:name=".activity.FragmentActivity1" />
+        <activity android:name=".activity.FragmentActivity2" />
+        <activity android:name=".activity.FragmentTabHostActivity" />
+        <activity android:name=".activity.ViewFlipperActivity" />
+        <activity android:name=".activity.ViewPagerActivity" />
+        <activity android:name=".activity.ViewPagerActivity2" />
+        <activity android:name=".activity.WebViewActivity" />
+
+        <activity android:name=".activity2.FragmentViewPagerActivity" />
+        <activity android:name=".activity2.RecyclerViewNestedActivity" />
+
+        <activity android:name=".activity3.AsyncTaskActivity" />
+        <activity android:name=".activity3.BroadcastActivity" />
+        <activity android:name=".activity3.HandlerThreadActivity" />
+        <activity android:name=".activity3.JobSchedulerActivity" />
+        <activity android:name=".activity3.MessengerActivity" />
+        <activity android:name=".activity3.NotificationActivity" />
+        <activity android:name=".activity3.PermissionActivity" />
+        <activity android:name=".activity3.ServiceActivity" />
+
+        <activity android:name=".activity4.AnimatorActivity" />
+        <activity android:name=".activity4.CropActivity" />
+        <activity android:name=".activity4.FloatWindowActivity" />
+        <activity android:name=".activity4.HookActivity" />
+        <activity android:name=".activity4.TransitionFirstActivity" />
+        <activity android:name=".activity4.TransitionSecondActivity" />
+        <activity android:name=".activity4.TurntableActivity" />
+        <activity android:name=".activity4.TypefaceActivity" />
+
+        <activity android:name=".activity5.AlertDialogActivity" />
+        <activity android:name=".activity5.BlurViewActivity" />
+        <activity android:name=".activity5.InfiniteImageActivity" />
+        <activity android:name=".activity5.MarqueeViewActivity" />
+        <activity android:name=".activity5.Sensor3DActivity" />
+        <activity android:name=".activity5.SpinnerActivity" />
+        <activity android:name=".activity5.TitleBarActivity" />
+        <activity android:name=".activity5.VerifyCodeActivity" />
+
+        <service android:name=".service.MyAIDLService" />
+        <service android:name=".service.MyForegroundService" />
+        <service android:name=".service.MyMessageService" />
+        <service
+            android:name=".service.MyJobSchedulerService"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+    </application>
+</manifest>

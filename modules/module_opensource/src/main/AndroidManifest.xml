@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application>
+        <activity android:name=".OpensourceActivity" />
+        <activity android:name=".activity.BadgeViewActivity" />
+        <activity android:name=".activity.BannerActivity" />
+        <activity android:name=".activity.CityPickerActivity" />
+        <activity android:name=".activity.CountdownActivity" />
+        <activity android:name=".activity.EasyFloatActivity" />
+        <activity android:name=".activity.FlycoTabLayoutActivity" />
+        <activity android:name=".activity.LottieActivity" />
+        <activity android:name=".activity.PhotoViewActivity" />
+        <activity android:name=".activity.PickerViewActivity" />
+        <activity android:name=".activity.PopWindowActivity" />
+        <activity android:name=".activity.ShadowLayoutActivity" />
+        <activity android:name=".activity.SvgaPlayerActivity" />
+        <activity android:name=".activity.SwipeLayoutActivity" />
+
+        <activity android:name=".activity2.MMKVActivity" />
+        <activity android:name=".activity2.GreenDaoActivity" />
+        <activity android:name=".activity2.ObjectBoxActivity" />
+    </application>
+
+</manifest>

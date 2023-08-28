@@ -1,0 +1,58 @@
+/*
+ * Copyright 2022 The Android Open Source Project
+ *
+ *   Licensed under the Apache License, Version 2.0 (the "License");
+ *   you may not use this file except in compliance with the License.
+ *   You may obtain a copy of the License at
+ *
+ *       https://www.apache.org/licenses/LICENSE-2.0
+ *
+ *   Unless required by applicable law or agreed to in writing, software
+ *   distributed under the License is distributed on an "AS IS" BASIS,
+ *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *   See the License for the specific language governing permissions and
+ *   limitations under the License.
+ */
+
+import com.android.build.api.variant.LibraryAndroidComponentsExtension
+import com.android.build.gradle.LibraryExtension
+import com.google.samples.apps.nowinandroid.configureDependenciesAndroid
+import com.google.samples.apps.nowinandroid.configureKotlinAndroid
+import com.google.samples.apps.nowinandroid.configureLibraryAndroid
+import com.google.samples.apps.nowinandroid.configurePrintApksTask
+import com.google.samples.apps.nowinandroid.disableUnnecessaryAndroidTests
+import com.google.samples.apps.nowinandroid.libs
+import org.gradle.api.Plugin
+import org.gradle.api.Project
+import org.gradle.kotlin.dsl.configure
+
+class AndroidLibraryConventionPlugin : Plugin<Project> {
+    override fun apply(target: Project) {
+        with(target) {
+            with(pluginManager) {
+                apply("com.android.library")
+                apply("kotlin-android")
+                apply("kotlin-parcelize")
+                apply("nowinandroid.android.arouter")
+                apply("nowinandroid.android.eventbus")
+            }
+            extensions.configure<LibraryExtension> {
+                defaultConfig.targetSdk = 34
+                configureKotlinAndroid(this)
+                configureLibraryAndroid(this)
+            }
+            extensions.configure<LibraryAndroidComponentsExtension> {
+                configurePrintApksTask(this)
+                disableUnnecessaryAndroidTests(target)
+            }
+            configurations.configureEach {
+                resolutionStrategy {
+                    force(libs.findLibrary("junit").get())
+                    // Temporary workaround for https://issuetracker.google.com/174733673
+                    force("org.objenesis:objenesis:2.6")
+                }
+            }
+            configureDependenciesAndroid()
+        }
+    }
+}

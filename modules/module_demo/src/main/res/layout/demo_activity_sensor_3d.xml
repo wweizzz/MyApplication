@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.Sensor3DActivity">
+
+    <com.example.william.my.core.widget.sensor3d.Sensor3DView
+        android:id="@+id/sensor3D"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:backgroundAccelerateRatio="-2.0"
+        app:backgrounddrawable="@drawable/demo_sensor_background"
+        app:foregroundAccelerateRatio="4.0"
+        app:foregrounddrawable="@drawable/demo_sensor_foreground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:midAccelerateRatio="1.0"
+        app:middrawable="@drawable/demo_sensor_mid" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
