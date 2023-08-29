@@ -137,8 +137,8 @@ object ARouterPath {
 
         const val Coroutines = "/module_sample/Coroutines"
         const val Flow = "/module_sample/Flow"
-        const val ActivityResultContract = "/module_sample/ActivityResultContract"
 
+        const val ActivityResultContract = "/module_sample/ActivityResultContract"
     }
 
     object Arch {

@@ -1,4 +1,4 @@
-package com.example.william.my.module.sample.activity.kotlin
+package com.example.william.my.module.sample.activity.androidx
 
 import android.app.Activity
 import android.content.Intent
