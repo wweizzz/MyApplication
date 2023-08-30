@@ -139,6 +139,7 @@ object ARouterPath {
         const val Flow = "/module_sample/Flow"
 
         const val ActivityResultContract = "/module_sample/ActivityResultContract"
+        const val OnBackPressedDispatcher = "/module_sample/OnBackPressedDispatcher"
     }
 
     object Arch {

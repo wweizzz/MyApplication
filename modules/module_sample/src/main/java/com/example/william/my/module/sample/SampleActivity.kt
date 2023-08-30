@@ -23,6 +23,12 @@ class SampleActivity : RouterRecyclerActivity() {
                 ARouterPath.Sample.ActivityResultContract
             )
         )
+        routerItems.add(
+            RouterItem(
+                "OnBackPressedDispatcher",
+                ARouterPath.Sample.OnBackPressedDispatcher
+            )
+        )
         return routerItems
     }
 }

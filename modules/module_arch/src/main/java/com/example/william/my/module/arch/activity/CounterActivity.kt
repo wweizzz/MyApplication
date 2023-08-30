@@ -14,6 +14,6 @@ import com.example.william.my.module.arch.mavericks.counter.CounterFragment
 class CounterActivity : BaseFragmentActivity() {
 
     override fun setFragment(): Fragment {
-        return CounterFragment()
+        return CounterFragment(lifecycle)
     }
 }

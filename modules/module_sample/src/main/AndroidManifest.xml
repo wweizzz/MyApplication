@@ -8,12 +8,14 @@
 
         <activity android:name=".activity.kotlin.CoroutinesActivity" />
         <activity android:name=".activity.kotlin.FLowActivity" />
-        <activity android:name=".activity.androidx.ActivityResultActivity" />
-        <activity android:name=".activity.androidx.ActivityResultActivity2" />
 
         <activity android:name=".activity.topic.PagingActivity" />
         <activity android:name=".activity.topic.DataStoreActivity" />
         <activity android:name=".activity.topic.ViewModelActivity" />
         <activity android:name=".activity.topic.WorkManagerActivity" />
+
+        <activity android:name=".activity.androidx.ActivityResultActivity" />
+        <activity android:name=".activity.androidx.ActivityResultActivity2" />
+        <activity android:name=".activity.androidx.OnBackPressedActivity" />
     </application>
 </manifest>
