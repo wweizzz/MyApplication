@@ -15,13 +15,16 @@ import com.example.william.my.library.utils.Utils
  * Application.onCreate(super before) -> Application.onCreate(super after)
  */
 class InitProvider : ContentProvider() {
+
+    private val tag = "InitProvider"
+
     override fun attachInfo(context: Context, info: ProviderInfo) {
         super.attachInfo(context, info)
     }
 
     override fun onCreate(): Boolean {
         // 这里可以初始化你需要的代码
-        Utils.e("InitProvider")
+        Utils.d(tag, "init")
         return true
     }
 

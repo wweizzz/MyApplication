@@ -18,7 +18,7 @@ class NettyServerHandler : SimpleChannelInboundHandler<String>() {
     override fun handlerAdded(ctx: ChannelHandlerContext) {
         super.handlerAdded(ctx)
         val channel = ctx.channel()
-        Utils.d(channel.remoteAddress().toString() + " 加入")
+        Utils.d(TAG, channel.remoteAddress().toString() + " 加入")
     }
 
     /**
@@ -26,20 +26,20 @@ class NettyServerHandler : SimpleChannelInboundHandler<String>() {
      */
     override fun channelActive(ctx: ChannelHandlerContext) {
         val channel = ctx.channel()
-        Utils.d(channel.remoteAddress().toString() + " 在线")
+        Utils.d(TAG, channel.remoteAddress().toString() + " 在线")
         channels.add(channel)
     }
 
     override fun channelInactive(ctx: ChannelHandlerContext) {
         super.channelInactive(ctx)
         val channel = ctx.channel()
-        Utils.d(channel.remoteAddress().toString() + " 离线")
+        Utils.d(TAG, channel.remoteAddress().toString() + " 离线")
     }
 
     override fun handlerRemoved(ctx: ChannelHandlerContext) {
         super.handlerRemoved(ctx)
         val channel = ctx.channel()
-        Utils.d(channel.remoteAddress().toString() + " 离开")
+        Utils.d(TAG, channel.remoteAddress().toString() + " 离开")
 
         // A closed Channel is automatically removed from ChannelGroup,
         // so there is no need to do "channels.remove(ctx.channel());"
@@ -50,7 +50,7 @@ class NettyServerHandler : SimpleChannelInboundHandler<String>() {
     override fun exceptionCaught(ctx: ChannelHandlerContext, cause: Throwable) {
         //super.exceptionCaught(ctx, cause);
         val channel = ctx.channel()
-        Utils.d(channel.remoteAddress().toString() + " 异常")
+        Utils.d(TAG, channel.remoteAddress().toString() + " 异常")
 
         // Close the connection when an exception is raised.
         cause.printStackTrace()
@@ -69,6 +69,10 @@ class NettyServerHandler : SimpleChannelInboundHandler<String>() {
                 channel.writeAndFlush("[localhost]:  $msg\n")
             }
         }
-        Utils.d("Msg : $msg")
+        Utils.d(TAG, inComing.remoteAddress().toString() + " Msg : $msg")
+    }
+
+    companion object {
+        private val TAG = NettyServerHandler::class.java.simpleName
     }
 }

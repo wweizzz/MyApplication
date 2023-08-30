@@ -3,10 +3,12 @@ package com.example.william.my.module.demo.hook
 import android.annotation.SuppressLint
 import android.content.Context
 import android.view.View
-import com.example.william.my.library.utils.Utils.e
+import com.example.william.my.library.utils.Utils
 import java.lang.reflect.Proxy
 
 object HookManager {
+
+    private val TAG = this.javaClass.simpleName
 
     fun setViewTag(view: View, key: String, value: String) {
         val map: MutableMap<String, String> = HashMap()
@@ -60,7 +62,7 @@ object HookManager {
                 View.OnClickListener::class.java
             )
         ) { proxy, method, args ->
-            e("TAG", "点击事件被hook到了") //加入自己的逻辑
+            Utils.d(TAG, "点击事件被hook到了") //加入自己的逻辑
             method.invoke(clickListener, *args) //执行被代理的对象的逻辑
         }
     }
@@ -69,8 +71,8 @@ object HookManager {
         (private val mOriginalListener: View.OnClickListener?) : View.OnClickListener {
         override fun onClick(v: View) {
             mOriginalListener?.onClick(v)
-            e("TAG", "点击事件被hook到了!")
-            e("TAG", "hooked" + " : " + v.getTag(v.id).toString())
+            Utils.d(TAG, "点击事件被hook到了!")
+            Utils.d(TAG, "hooked" + " : " + v.getTag(v.id).toString())
         }
     }
 }

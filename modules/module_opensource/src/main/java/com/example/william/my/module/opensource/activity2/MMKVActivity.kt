@@ -23,7 +23,7 @@ class MMKVActivity : BasicResponseActivity() {
     private fun initMMKV() {
         // 配置 MMKV 根目录
         val rootDir: String = MMKV.initialize(this)
-        Utils.e("mmkv root: $rootDir")
+        Utils.d(tag, "mmkv root: $rootDir")
 
         // MMKV 全局实例
         val kv: MMKV = MMKV.defaultMMKV()

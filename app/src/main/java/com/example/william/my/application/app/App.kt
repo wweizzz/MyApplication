@@ -44,7 +44,7 @@ class App : BaseApp() {
     private fun initCrash() {
         CrashUtils.init(FileSDCardUtil.getCacheDirPath(), object : CrashUtils.OnCrashListener {
             override fun onCrash(crashInfo: CrashUtils.CrashInfo) {
-                Utils.e("CrashUtils:" + crashInfo.throwable.message)
+                Utils.e("CrashUtils", crashInfo.throwable.message.toString())
             }
         })
     }

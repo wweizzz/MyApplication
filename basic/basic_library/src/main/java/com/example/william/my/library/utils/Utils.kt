@@ -20,29 +20,6 @@ object Utils {
     //规定每段显示的长度
     private const val MAX_LENGTH = 4000
 
-    fun i(msg: String) {
-        i(TAG, msg)
-    }
-
-    fun i(tag: String?, msg: String) {
-        var temp: String
-        var index = 0
-        while (index < msg.length) {
-            // java的字符不允许指定超过总的长度end
-            temp = if (msg.length <= index + MAX_LENGTH) {
-                msg.substring(index)
-            } else {
-                msg.substring(index, index + MAX_LENGTH)
-            }
-            index += MAX_LENGTH
-            Log.i(tag, temp.trim { it <= ' ' })
-        }
-    }
-
-    fun d(msg: String) {
-        d(TAG, msg)
-    }
-
     fun d(tag: String?, msg: String) {
         var temp: String
         var index = 0
@@ -56,10 +33,6 @@ object Utils {
             index += MAX_LENGTH
             Log.d(tag, temp.trim { it <= ' ' })
         }
-    }
-
-    fun e(msg: String) {
-        e(TAG, msg)
     }
 
     fun e(tag: String, msg: String) {

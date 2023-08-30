@@ -37,7 +37,7 @@ class MyInlineActivity : BasicResponseActivity() {
             data.value = "let"
             "let"
         }
-        Utils.e(tag, "let $let")
+        Utils.d(tag, "let $let")
 
         /**
          * run 函数
@@ -47,7 +47,7 @@ class MyInlineActivity : BasicResponseActivity() {
             mData.value = "run"
             "run"
         }
-        Utils.e(tag, "run $run")
+        Utils.d(tag, "run $run")
 
         /**
          * also 函数
@@ -56,7 +56,7 @@ class MyInlineActivity : BasicResponseActivity() {
         val alsoData: MyData = mData.also { data ->
             data.value = "also"
         }
-        Utils.e(tag, alsoData.string())
+        Utils.d(tag, alsoData.string())
 
         /**
          * apply 函数
@@ -65,7 +65,7 @@ class MyInlineActivity : BasicResponseActivity() {
         val applyData: MyData = mData.apply {
             value = "apply"
         }
-        Utils.e(tag, applyData.string())
+        Utils.d(tag, applyData.string())
     }
 
     //==============================================================================================
@@ -107,16 +107,16 @@ class MyInlineActivity : BasicResponseActivity() {
         val alsoData: MyData = mData.mAlso { data ->
             data.value = "also"
         }
-        Utils.e(tag, alsoData.string())
+        Utils.d(tag, alsoData.string())
 
         val applyData: MyData = mData.mApply {
             value = "apply"
         }
-        Utils.e(tag, applyData.string())
+        Utils.d(tag, applyData.string())
 
         val standardData: MyData = mData.mStandard {
             mData.string()
         }
-        Utils.e(tag, standardData.string())
+        Utils.d(tag, standardData.string())
     }
 }

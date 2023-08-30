@@ -1,6 +1,7 @@
 package com.example.william.my.module.network.netty.server
 
 import com.example.william.my.library.utils.Utils
+import com.example.william.my.module.network.socket.SocketServer
 import io.netty.bootstrap.ServerBootstrap
 import io.netty.channel.Channel
 import io.netty.channel.ChannelOption
@@ -39,7 +40,7 @@ class NettyServer {
             channel?.closeFuture()?.sync()
         } catch (e: Exception) {
             e.printStackTrace()
-            Utils.e(e.message.toString())
+            Utils.e(TAG, "Netty Exception:$e")
         } finally {
             workerGroup.shutdownGracefully()
             bossGroup.shutdownGracefully()
@@ -54,6 +55,8 @@ class NettyServer {
     }
 
     companion object {
+
+        private val TAG = NettyServer::class.java.simpleName
 
         const val DEFAULT_SERVER_HOST = "192.168.0.110"
 

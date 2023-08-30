@@ -8,19 +8,22 @@ import com.example.william.my.library.utils.Utils
  * 登录拦截器
  */
 class LoginNavigationImpl : NavigationCallback {
+
+    private val TAG = "LoginNavigation"
+
     override fun onFound(postcard: Postcard) {
-        Utils.d("找到了:" + postcard.path)
+        Utils.d(TAG, "找到了:" + postcard.path)
     }
 
     override fun onLost(postcard: Postcard) {
-        Utils.d("找不到了:" + postcard.path)
+        Utils.d(TAG, "找不到了:" + postcard.path)
     }
 
     override fun onArrival(postcard: Postcard) {
-        Utils.d("跳转完了:" + postcard.path)
+        Utils.d(TAG, "跳转完了:" + postcard.path)
     }
 
     override fun onInterrupt(postcard: Postcard) {
-        Utils.d("被拦截了:" + postcard.path)
+        Utils.d(TAG, "被拦截了:" + postcard.path)
     }
 }

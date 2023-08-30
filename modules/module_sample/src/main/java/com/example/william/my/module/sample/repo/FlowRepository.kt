@@ -49,7 +49,7 @@ class FlowRepository(private val defaultDispatcher: CoroutineDispatcher) {
                 // 下游的 flow 不受影响
                 // the downstream flow ↓ is not affected
                 .catch { exception -> // Executes in the consumer's context
-                    Utils.e("TAG", "exception : " + exception.message.toString())
+                    Utils.e(TAG, "exception : " + exception.message.toString())
                 }
         return flow
     }
@@ -68,6 +68,10 @@ class FlowRepository(private val defaultDispatcher: CoroutineDispatcher) {
         }
             // Executes on the IO dispatcher
             .flowOn(defaultDispatcher)
+    }
+
+    companion object {
+        private val TAG = FlowRepository::class.java.simpleName
     }
 
 }
