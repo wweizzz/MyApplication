@@ -26,10 +26,17 @@ dependencies:
 
   # = = = = = = = = = = = = = = = = = = = =
   # https://github.com/alibaba/flutter_boost
+  # https://pub-web.flutter-io.cn/packages/flutter_boost/
   flutter_boost:
     git:
       url: 'https://github.com/alibaba/flutter_boost.git'
       ref: '4.4.0'
+  # https://github.com/Bungeefan/logger
+  # https://pub-web.flutter-io.cn/packages/logger
+  logger: ^2.0.1
+  # https://github.com/ponnamkarthik/FlutterToast/
+  # https://pub-web.flutter-io.cn/packages/fluttertoast
+  fluttertoast: ^8.2.2
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -48,6 +55,7 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  assets: [ images/ ]
 
   # To add Flutter specific assets to your application, add an assets section,
   # like this:

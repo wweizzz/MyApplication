@@ -1,14 +1,21 @@
-import 'package:basic_flutter/page/my_home.dart';
+import 'package:basic_flutter/boost/AppLifecycleObserver.dart';
+import 'package:basic_flutter/boost/BoostBinding.dart';
+import 'package:basic_flutter/common/log.dart';
+import 'package:basic_flutter/layout/my_align.dart';
+import 'package:basic_flutter/layout/my_constraints.dart';
+import 'package:basic_flutter/layout/my_flex.dart';
+import 'package:basic_flutter/layout/my_layout_builder.dart';
+import 'package:basic_flutter/layout/my_row_column.dart';
+import 'package:basic_flutter/layout/my_stack.dart';
+import 'package:basic_flutter/layout/my_wrap_flow.dart';
+import 'package:basic_flutter/page/my_counter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boost/flutter_boost.dart';
 
-import 'boost/AppLifecycleObserver.dart';
-import 'boost/BoostBinding.dart';
-
 void main() {
   ///添加全局生命周期监听类
-  addGlobalObserver();
+  ///addGlobalObserver();
 
   ///这里的CustomFlutterBinding调用务必不可缺少，用于控制Boost状态的resume和pause
   CustomFlutterBinding();
@@ -28,14 +35,64 @@ class _MyAppState extends State<MyApp> {
   /// MaterialPageRoute 根据不同的平台显示不同的效果，Android为从下到上，iOS为从左到右。
   /// CupertinoPageRoute 不分平台，都是从左到右。
   Map<String, FlutterBoostRouteFactory> routerMap = {
-    'mainPage': (RouteSettings settings, String? uniqueId) {
-      return CupertinoPageRoute(
+    'MyCounter': (RouteSettings settings, String? uniqueId) {
+      return MaterialPageRoute(
           settings: settings,
           builder: (_) {
             Map<String, dynamic> map =
                 settings.arguments as Map<String, dynamic>;
             String? data = map['data'] as String?;
-            return const MyHome();
+            log("data : $data");
+            return const MyCounter();
+          });
+    },
+    'MyConstraints': (RouteSettings settings, String? uniqueId) {
+      return CupertinoPageRoute(
+          settings: settings,
+          builder: (_) {
+            return const MyConstraints();
+          });
+    },
+    'MyRowColumn': (RouteSettings settings, String? uniqueId) {
+      return CupertinoPageRoute(
+          settings: settings,
+          builder: (_) {
+            return const MyRowColumn();
+          });
+    },
+    'MyFlex': (RouteSettings settings, String? uniqueId) {
+      return CupertinoPageRoute(
+          settings: settings,
+          builder: (_) {
+            return const MyFlex();
+          });
+    },
+    'MyWrapFlow': (RouteSettings settings, String? uniqueId) {
+      return CupertinoPageRoute(
+          settings: settings,
+          builder: (_) {
+            return const MyWrapFlow();
+          });
+    },
+    'MyStack': (RouteSettings settings, String? uniqueId) {
+      return CupertinoPageRoute(
+          settings: settings,
+          builder: (_) {
+            return const MyStack();
+          });
+    },
+    'MyAlign': (RouteSettings settings, String? uniqueId) {
+      return CupertinoPageRoute(
+          settings: settings,
+          builder: (_) {
+            return const MyAlign();
+          });
+    },
+    'MyLayoutBuilder': (RouteSettings settings, String? uniqueId) {
+      return CupertinoPageRoute(
+          settings: settings,
+          builder: (_) {
+            return const MyLayoutBuilder();
           });
     },
   };

@@ -1,24 +1,31 @@
 package com.example.william.my.module.flutter.activity
 
-import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.example.william.my.basic.basic_module.activity.BasicRecyclerActivity
 import com.example.william.my.basic.basic_module.router.path.ARouterPath
-import com.example.william.my.library.activity.BaseActivity
 import com.idlefish.flutterboost.FlutterBoost
 import com.idlefish.flutterboost.FlutterBoostRouteOptions
 import io.flutter.embedding.android.FlutterActivity
 
-
 @Route(path = ARouterPath.Flutter.Main)
-class FlutterMainActivity : BaseActivity() {
+class FlutterMainActivity : BasicRecyclerActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun buildList(): ArrayList<String> {
+        return arrayListOf(
+            "MyCounter",
+            "MyConstraints",
+            "MyRowColumn",
+            "MyFlex",
+            "MyWrapFlow",
+            "MyStack",
+            "MyAlign",
+            "MyLayoutBuilder",
+        )
+    }
 
-        openActivity()
-        //startWithDefaultIntent()
-
-        finish()
+    override fun onRecyclerClick(position: Int, string: String) {
+        super.onRecyclerClick(position, string)
+        open(string)
     }
 
     private fun startWithDefaultIntent() {
@@ -45,9 +52,9 @@ class FlutterMainActivity : BaseActivity() {
         )
     }
 
-    private fun openActivity() {
+    private fun open(pageName: String) {
         val options = FlutterBoostRouteOptions.Builder()
-            .pageName("mainPage")
+            .pageName(pageName)
             .arguments(HashMap())
             .requestCode(1000)
             .build()

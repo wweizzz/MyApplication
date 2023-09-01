@@ -40,6 +40,7 @@
 ## modules_flutter
 
 * FlutterBoost 框架
+* 布局类组件
 
 ## modules_network
 

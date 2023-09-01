@@ -1,3 +1,4 @@
+import 'package:basic_flutter/common/log.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_boost/flutter_boost.dart';
 
@@ -14,25 +15,25 @@ class _PageLifecycleObserverState extends State<PageLifecycleObserver>
   @override
   void onBackground() {
     super.onBackground();
-    print("LifecycleTestPage - onBackground");
+    log("LifecycleTestPage - onBackground");
   }
 
   @override
   void onForeground() {
     super.onForeground();
-    print("LifecycleTestPage - onForeground");
+    log("LifecycleTestPage - onForeground");
   }
 
   @override
   void onPageHide() {
     super.onPageHide();
-    print("LifecycleTestPage - onPageHide");
+    log("LifecycleTestPage - onPageHide");
   }
 
   @override
   void onPageShow() {
     super.onPageShow();
-    print("LifecycleTestPage - onPageShow");
+    log("LifecycleTestPage - onPageShow");
   }
 
   @override
