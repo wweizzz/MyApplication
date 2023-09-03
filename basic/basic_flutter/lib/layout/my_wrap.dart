@@ -32,16 +32,4 @@ class WrapRoute extends StatelessWidget {
       Image.asset('images/pic6.jpg', width: 100, height: 100),
     ]);
   }
-
-  List<Widget> buildChildren() {
-    return generateWordPairs()
-        .take(12)
-        .map((e) => Chip(
-              avatar: CircleAvatar(
-                  backgroundColor: Colors.blue,
-                  child: Text(e.asPascalCase.substring(0, 1))),
-              label: Text(e.asPascalCase),
-            ))
-        .toList();
-  }
 }

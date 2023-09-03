@@ -11,6 +11,11 @@ import 'package:basic_flutter/layout/my_row.dart';
 import 'package:basic_flutter/layout/my_stack.dart';
 import 'package:basic_flutter/layout/my_wrap.dart';
 import 'package:basic_flutter/page/my_counter.dart';
+import 'package:basic_flutter/scroll/my_gride_view.dart';
+import 'package:basic_flutter/scroll/my_list_view.dart';
+import 'package:basic_flutter/scroll/my_page_view.dart';
+import 'package:basic_flutter/scroll/my_scroll_view.dart';
+import 'package:basic_flutter/scroll/my_tab_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boost/flutter_boost.dart';
@@ -116,6 +121,41 @@ class _MyAppState extends State<MyApp> {
           settings: settings,
           builder: (_) {
             return const MyLayoutBuilder();
+          });
+    },
+    'MyScrollView': (RouteSettings settings, String? uniqueId) {
+      return CupertinoPageRoute(
+          settings: settings,
+          builder: (_) {
+            return const MyScrollView();
+          });
+    },
+    'MyListView': (RouteSettings settings, String? uniqueId) {
+      return CupertinoPageRoute(
+          settings: settings,
+          builder: (_) {
+            return const MyListView();
+          });
+    },
+    'MyGridView': (RouteSettings settings, String? uniqueId) {
+      return CupertinoPageRoute(
+          settings: settings,
+          builder: (_) {
+            return const MyGridView();
+          });
+    },
+    'MyPageView': (RouteSettings settings, String? uniqueId) {
+      return CupertinoPageRoute(
+          settings: settings,
+          builder: (_) {
+            return const MyPageView();
+          });
+    },
+    'MyTabView': (RouteSettings settings, String? uniqueId) {
+      return CupertinoPageRoute(
+          settings: settings,
+          builder: (_) {
+            return const MyTabView();
           });
     },
   };

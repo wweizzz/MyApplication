@@ -23,6 +23,11 @@ class FlutterMainActivity : BasicRecyclerActivity() {
             "MyAlign",
             "MyCenter",
             "MyLayoutBuilder",
+            "MyScrollView",
+            "MyListView",
+            "MyGridView",
+            "MyPageView",
+            "MyTabView",
         )
     }
 
