@@ -14,11 +14,14 @@ class FlutterMainActivity : BasicRecyclerActivity() {
         return arrayListOf(
             "MyCounter",
             "MyConstraints",
-            "MyRowColumn",
+            "MyRow",
+            "MyColumn",
             "MyFlex",
-            "MyWrapFlow",
+            "MyWrap",
+            "MyFlow",
             "MyStack",
             "MyAlign",
+            "MyCenter",
             "MyLayoutBuilder",
         )
     }

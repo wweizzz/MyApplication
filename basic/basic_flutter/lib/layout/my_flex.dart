@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// 弹性布局
 class MyFlex extends StatelessWidget {
   const MyFlex({super.key});
 
@@ -12,61 +11,97 @@ class MyFlex extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Flutter layout demo'),
         ),
-        body: Center(child: buildExpandedImages()),
+        body: const Center(child: FlexRoute()),
       ),
     );
   }
+}
 
-  Widget buildExpandedImages() => Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Expanded(
-            child: Image.asset('images/pic1.jpg'),
-          ),
-          Expanded(
-            child: Image.asset('images/pic2.jpg'),
-          ),
-          Expanded(
-            child: Image.asset('images/pic3.jpg'),
-          ),
-        ],
-      );
+class FlexRoute extends StatelessWidget {
+  const FlexRoute({super.key});
 
-  Widget buildExpandedImagesWithFlex() => Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
+  @override
+  Widget build(BuildContext context) {
+    return const Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Expanded(
-            child: Image.asset('images/pic1.jpg'),
-          ),
-          Expanded(
-            flex: 2,
-            child: Image.asset('images/pic2.jpg'),
-          ),
-          Expanded(
-            child: Image.asset('images/pic3.jpg'),
-          ),
-        ],
-      );
+          FlexRoute1(),
+          FlexRoute2(),
+          FlexRoute3(),
+        ]);
+  }
+}
 
-  Widget buildExpandedImagesWithSpacer() => Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Expanded(
-            child: Image.asset('images/pic1.jpg'),
-          ),
-          const Spacer(
-            flex: 1,
-          ),
-          Expanded(
-            flex: 2,
-            child: Image.asset('images/pic2.jpg'),
-          ),
-          const Spacer(
-            flex: 1,
-          ),
-          Expanded(
-            child: Image.asset('images/pic3.jpg'),
-          ),
-        ],
-      );
+class FlexRoute1 extends StatelessWidget {
+  const FlexRoute1({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Expanded(
+          child: Image.asset('images/pic1.jpg'),
+        ),
+        Expanded(
+          child: Image.asset('images/pic2.jpg'),
+        ),
+        Expanded(
+          child: Image.asset('images/pic3.jpg'),
+        ),
+      ],
+    );
+  }
+}
+
+class FlexRoute2 extends StatelessWidget {
+  const FlexRoute2({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Expanded(
+          child: Image.asset('images/pic1.jpg'),
+        ),
+        Expanded(
+          flex: 2,
+          child: Image.asset('images/pic2.jpg'),
+        ),
+        Expanded(
+          child: Image.asset('images/pic3.jpg'),
+        ),
+      ],
+    );
+  }
+}
+
+class FlexRoute3 extends StatelessWidget {
+  const FlexRoute3({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Expanded(
+          child: Image.asset('images/pic1.jpg'),
+        ),
+        const Spacer(
+          flex: 1,
+        ),
+        Expanded(
+          flex: 2,
+          child: Image.asset('images/pic2.jpg'),
+        ),
+        const Spacer(
+          flex: 1,
+        ),
+        Expanded(
+          child: Image.asset('images/pic3.jpg'),
+        ),
+      ],
+    );
+  }
 }

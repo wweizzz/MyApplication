@@ -1,3 +1,4 @@
+import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 
 class MyLayoutBuilder extends StatelessWidget {
@@ -22,14 +23,25 @@ class LayoutBuilderRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var children = List.filled(12, const Text("A"));
-    // Column在本示例中在水平方向的最大宽度为屏幕的宽度
     return Column(
       children: [
         // 限制宽度为190，小于 200
-        SizedBox(width: 290, child: ResponsiveColumn(children: children)),
+        SizedBox(
+            width: 290, child: ResponsiveColumn(children: buildChildren())),
       ],
     );
+  }
+
+  List<Widget> buildChildren() {
+    return generateWordPairs()
+        .take(12)
+        .map((e) => Padding(
+            padding: const EdgeInsets.all(10),
+            child: Text(
+              e.asPascalCase,
+              textScaleFactor: 1.2,
+            )))
+        .toList();
   }
 }
 
@@ -47,7 +59,7 @@ class ResponsiveColumn extends StatelessWidget {
           // 最大宽度小于200，显示单列
           return Column(mainAxisSize: MainAxisSize.min, children: children);
         } else {
-          // 大于200，显示双列
+          // 最大宽度大于200，显示双列
           var c = <Widget>[];
           for (var i = 0; i < children.length; i += 2) {
             if (i + 1 < children.length) {

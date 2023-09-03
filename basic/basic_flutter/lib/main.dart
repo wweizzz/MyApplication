@@ -1,13 +1,15 @@
-import 'package:basic_flutter/boost/AppLifecycleObserver.dart';
 import 'package:basic_flutter/boost/BoostBinding.dart';
 import 'package:basic_flutter/common/log.dart';
 import 'package:basic_flutter/layout/my_align.dart';
+import 'package:basic_flutter/layout/my_center.dart';
+import 'package:basic_flutter/layout/my_column.dart';
 import 'package:basic_flutter/layout/my_constraints.dart';
 import 'package:basic_flutter/layout/my_flex.dart';
+import 'package:basic_flutter/layout/my_flow.dart';
 import 'package:basic_flutter/layout/my_layout_builder.dart';
-import 'package:basic_flutter/layout/my_row_column.dart';
+import 'package:basic_flutter/layout/my_row.dart';
 import 'package:basic_flutter/layout/my_stack.dart';
-import 'package:basic_flutter/layout/my_wrap_flow.dart';
+import 'package:basic_flutter/layout/my_wrap.dart';
 import 'package:basic_flutter/page/my_counter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -53,11 +55,18 @@ class _MyAppState extends State<MyApp> {
             return const MyConstraints();
           });
     },
-    'MyRowColumn': (RouteSettings settings, String? uniqueId) {
+    'MyRow': (RouteSettings settings, String? uniqueId) {
       return CupertinoPageRoute(
           settings: settings,
           builder: (_) {
-            return const MyRowColumn();
+            return const MyRow();
+          });
+    },
+    'MyColumn': (RouteSettings settings, String? uniqueId) {
+      return CupertinoPageRoute(
+          settings: settings,
+          builder: (_) {
+            return const MyColumn();
           });
     },
     'MyFlex': (RouteSettings settings, String? uniqueId) {
@@ -67,11 +76,18 @@ class _MyAppState extends State<MyApp> {
             return const MyFlex();
           });
     },
-    'MyWrapFlow': (RouteSettings settings, String? uniqueId) {
+    'MyWrap': (RouteSettings settings, String? uniqueId) {
       return CupertinoPageRoute(
           settings: settings,
           builder: (_) {
-            return const MyWrapFlow();
+            return const MyWrap();
+          });
+    },
+    'MyFlow': (RouteSettings settings, String? uniqueId) {
+      return CupertinoPageRoute(
+          settings: settings,
+          builder: (_) {
+            return const MyFlow();
           });
     },
     'MyStack': (RouteSettings settings, String? uniqueId) {
@@ -86,6 +102,13 @@ class _MyAppState extends State<MyApp> {
           settings: settings,
           builder: (_) {
             return const MyAlign();
+          });
+    },
+    'MyCenter': (RouteSettings settings, String? uniqueId) {
+      return CupertinoPageRoute(
+          settings: settings,
+          builder: (_) {
+            return const MyCenter();
           });
     },
     'MyLayoutBuilder': (RouteSettings settings, String? uniqueId) {

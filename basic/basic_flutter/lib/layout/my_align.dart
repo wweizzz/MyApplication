@@ -11,80 +11,96 @@ class MyAlign extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Flutter layout demo'),
         ),
-        body: Center(child: buildAlign1()),
+        body: Center(child: AlignRoute()),
       ),
     );
   }
+}
 
-  Widget buildAlign1() => Container(
-        height: 160.0,
-        width: 160.0,
-        color: Colors.blue,
-        child: const Align(
-          alignment: Alignment.topLeft,
-          child: FlutterLogo(
-            size: 80,
-          ),
-        ),
-      );
+class AlignRoute extends StatelessWidget {
+  const AlignRoute({super.key});
 
-  Widget buildAlign2() => const DecoratedBox(
-        decoration: BoxDecoration(color: Colors.blue),
-        child: Align(
-          widthFactor: 2,
-          heightFactor: 2,
-          alignment: Alignment.topLeft,
-          child: FlutterLogo(
-            size: 80,
-          ),
-        ),
-      );
+  @override
+  Widget build(BuildContext context) {
+    return const Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [AlignRoute1(), AlignRoute2()]),
+          Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [AlignRoute3(), AlignRoute4()]),
+        ]);
+  }
+}
 
-  /// Alignment 以矩形的中心点作为坐标原点
-  Widget buildAlign3() => const DecoratedBox(
-        decoration: BoxDecoration(color: Colors.blue),
-        child: Align(
-          widthFactor: 2,
-          heightFactor: 2,
-          alignment: Alignment(-1, -1),
-          child: FlutterLogo(
-            size: 80,
-          ),
-        ),
-      );
+class AlignRoute1 extends StatelessWidget {
+  const AlignRoute1({super.key});
 
-  /// FractionalOffset 以左侧顶点作为坐标原点
-  Widget buildAlign4() => const DecoratedBox(
-        decoration: BoxDecoration(color: Colors.blue),
-        child: Align(
-          widthFactor: 2,
-          heightFactor: 2,
-          alignment: FractionalOffset(0, 0),
-          child: FlutterLogo(
-            size: 80,
-          ),
-        ),
-      );
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 200.0,
+      width: 200.0,
+      color: Colors.blue,
+      child: Align(
+        alignment: Alignment.topLeft,
+        child: Image.asset('images/pic1.jpg', width: 100, height: 100),
+      ),
+    );
+  }
+}
 
-  /// Center 继承自 Align
-  Widget buildCenter() => const DecoratedBox(
-        decoration: BoxDecoration(color: Colors.blue),
-        child: Center(
-          widthFactor: 2,
-          heightFactor: 2,
-          child: FlutterLogo(
-            size: 80,
-          ),
-        ),
-      );
+class AlignRoute2 extends StatelessWidget {
+  const AlignRoute2({super.key});
 
-  /// 当widthFactor或heightFactor为null时组件的宽高将会占用尽可能多的空间
-  Widget buildCenter2() => const DecoratedBox(
-        decoration: BoxDecoration(color: Colors.blue),
-        child: Center(
-          child: FlutterLogo(
-            size: 80,
-          ),
-        ),
-      );
+  @override
+  Widget build(BuildContext context) {
+    return DecoratedBox(
+      decoration: const BoxDecoration(color: Colors.blue),
+      child: Align(
+        widthFactor: 2,
+        heightFactor: 2,
+        alignment: Alignment.topLeft,
+        child: Image.asset('images/pic2.jpg', width: 100, height: 100),
+      ),
+    );
+  }
+}
+
+/// Alignment 以矩形的中心点作为坐标原点
+class AlignRoute3 extends StatelessWidget {
+  const AlignRoute3({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return DecoratedBox(
+      decoration: const BoxDecoration(color: Colors.blue),
+      child: Align(
+        widthFactor: 2,
+        heightFactor: 2,
+        alignment: const Alignment(0, 0),
+        child: Image.asset('images/pic3.jpg', width: 100, height: 100),
+      ),
+    );
+  }
+}
+
+/// FractionalOffset 以左侧顶点作为坐标原点
+class AlignRoute4 extends StatelessWidget {
+  const AlignRoute4({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return DecoratedBox(
+      decoration: const BoxDecoration(color: Colors.blue),
+      child: Align(
+        widthFactor: 2,
+        heightFactor: 2,
+        alignment: const FractionalOffset(0, 0),
+        child: Image.asset('images/pic4.jpg', width: 100, height: 100),
+      ),
+    );
+  }
 }
