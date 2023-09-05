@@ -11,8 +11,11 @@ import 'package:basic_flutter/layout/my_row.dart';
 import 'package:basic_flutter/layout/my_stack.dart';
 import 'package:basic_flutter/layout/my_wrap.dart';
 import 'package:basic_flutter/page/my_counter.dart';
+import 'package:basic_flutter/scroll/my_animated_list.dart';
+import 'package:basic_flutter/scroll/my_custom_scroll_view.dart';
 import 'package:basic_flutter/scroll/my_gride_view.dart';
 import 'package:basic_flutter/scroll/my_list_view.dart';
+import 'package:basic_flutter/scroll/my_nested_scroll_view.dart';
 import 'package:basic_flutter/scroll/my_page_view.dart';
 import 'package:basic_flutter/scroll/my_scroll_view.dart';
 import 'package:basic_flutter/scroll/my_tab_bar.dart';
@@ -144,6 +147,13 @@ class _MyAppState extends State<MyApp> {
             return const MyGridView();
           });
     },
+    'MyAnimatedList': (RouteSettings settings, String? uniqueId) {
+      return CupertinoPageRoute(
+          settings: settings,
+          builder: (_) {
+            return const MyAnimatedList();
+          });
+    },
     'MyPageView': (RouteSettings settings, String? uniqueId) {
       return CupertinoPageRoute(
           settings: settings,
@@ -156,6 +166,20 @@ class _MyAppState extends State<MyApp> {
           settings: settings,
           builder: (_) {
             return const MyTabView();
+          });
+    },
+    'MyCustomScrollView': (RouteSettings settings, String? uniqueId) {
+      return CupertinoPageRoute(
+          settings: settings,
+          builder: (_) {
+            return const MyCustomScrollView();
+          });
+    },
+    'MyNestedScrollView': (RouteSettings settings, String? uniqueId) {
+      return CupertinoPageRoute(
+          settings: settings,
+          builder: (_) {
+            return const MyNestedScrollView();
           });
     },
   };

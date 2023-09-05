@@ -26,8 +26,11 @@ class FlutterMainActivity : BasicRecyclerActivity() {
             "MyScrollView",
             "MyListView",
             "MyGridView",
+            "MyAnimatedList",
             "MyPageView",
             "MyTabView",
+            "MyCustomScrollView",
+            "MyNestedScrollView",
         )
     }
 
