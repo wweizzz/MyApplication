@@ -12,7 +12,11 @@ import 'package:basic_flutter/layout/my_stack.dart';
 import 'package:basic_flutter/layout/my_wrap.dart';
 import 'package:basic_flutter/other/my_anim.dart';
 import 'package:basic_flutter/other/my_dialog.dart';
+import 'package:basic_flutter/other/my_future_builder.dart';
 import 'package:basic_flutter/other/my_inherited_widget.dart';
+import 'package:basic_flutter/other/my_provider.dart';
+import 'package:basic_flutter/other/my_stream_builder.dart';
+import 'package:basic_flutter/other/my_value_listenable_builder.dart';
 import 'package:basic_flutter/other/my_will_pop.dart';
 import 'package:basic_flutter/page/my_counter.dart';
 import 'package:basic_flutter/scroll/my_animated_list.dart';
@@ -26,6 +30,7 @@ import 'package:basic_flutter/scroll/my_tab_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boost/flutter_boost.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   ///添加全局生命周期监听类
@@ -34,7 +39,17 @@ void main() {
   ///这里的CustomFlutterBinding调用务必不可缺少，用于控制Boost状态的resume和pause
   CustomFlutterBinding();
 
-  runApp(const MyApp());
+  //runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+    //在生成器中初始化模型。
+    //这样，提供者就可以拥有Counter的生命周期，
+    //确保在不再需要时调用“dispose”。
+    // Initialize the model in the builder.
+    // That way, Provider can own Counter's lifecycle,
+    // making sure to call `dispose` when not needed anymore.
+    create: (context) => Counter(),
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatefulWidget {
@@ -212,6 +227,34 @@ class _MyAppState extends State<MyApp> {
           settings: settings,
           builder: (_) {
             return const MyDialog();
+          });
+    },
+    'MyProvider': (RouteSettings settings, String? uniqueId) {
+      return CupertinoPageRoute(
+          settings: settings,
+          builder: (_) {
+            return const MyProvider();
+          });
+    },
+    'MyValueListenableBuilder': (RouteSettings settings, String? uniqueId) {
+      return CupertinoPageRoute(
+          settings: settings,
+          builder: (_) {
+            return const MyValueListenableBuilder();
+          });
+    },
+    'MyFutureBuilder': (RouteSettings settings, String? uniqueId) {
+      return CupertinoPageRoute(
+          settings: settings,
+          builder: (_) {
+            return const MyFutureBuilder();
+          });
+    },
+    'MyStreamBuilder': (RouteSettings settings, String? uniqueId) {
+      return CupertinoPageRoute(
+          settings: settings,
+          builder: (_) {
+            return const MyStreamBuilder();
           });
     },
   };

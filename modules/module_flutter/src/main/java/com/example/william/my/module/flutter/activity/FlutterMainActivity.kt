@@ -35,6 +35,10 @@ class FlutterMainActivity : BasicRecyclerActivity() {
             "MyWillPopScope",
             "MyInheritedWidget",
             "MyDialog",
+            "MyProvider",
+            "MyValueListenableBuilder",
+            "MyFutureBuilder",
+            "MyStreamBuilder",
         )
     }
 

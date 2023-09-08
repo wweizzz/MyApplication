@@ -31,6 +31,9 @@ dependencies:
     git:
       url: 'https://github.com/alibaba/flutter_boost.git'
       ref: '4.4.0'
+  # https://github.com/rrousselGit/provider
+  # https://pub.dev/packages/provider
+  provider: ^6.0.5
   # https://github.com/Bungeefan/logger
   # https://pub-web.flutter-io.cn/packages/logger
   logger: ^2.0.1
