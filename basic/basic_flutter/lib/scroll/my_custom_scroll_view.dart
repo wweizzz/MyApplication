@@ -6,15 +6,18 @@ class MyCustomScrollView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-        title: 'Flutter layout demo',
-        // home: Scaffold(
-        //   appBar: AppBar(
-        //     title: const Text('Flutter layout demo'),
-        //   ),
-        //   body: const Center(child: CustomScrollViewRoute()),
-        // ),
-        home: CustomScrollViewRoute());
+    // return MaterialApp(
+    //   title: 'Flutter layout demo',
+    //   home: Scaffold(
+    //     appBar: AppBar(
+    //       title: const Text('Flutter layout demo'),
+    //     ),
+    //     body: const Center(child: CustomScrollViewRoute()),
+    //   ),
+    // );
+    return const Scaffold(
+      body: Center(child: CustomScrollViewRoute()),
+    );
   }
 }
 

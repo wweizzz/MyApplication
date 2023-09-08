@@ -31,6 +31,10 @@ class FlutterMainActivity : BasicRecyclerActivity() {
             "MyTabView",
             "MyCustomScrollView",
             "MyNestedScrollView",
+            "MyAnim",
+            "MyWillPopScope",
+            "MyInheritedWidget",
+            "MyDialog",
         )
     }
 
