@@ -1,5 +1,11 @@
+import 'package:basic_flutter/animation/my_animation.dart';
+import 'package:basic_flutter/asyn/my_future_builder.dart';
+import 'package:basic_flutter/asyn/my_stream_builder.dart';
 import 'package:basic_flutter/boost/BoostBinding.dart';
+import 'package:basic_flutter/change_notifier/my_provider.dart';
 import 'package:basic_flutter/common/log.dart';
+import 'package:basic_flutter/http/my_http.dart';
+import 'package:basic_flutter/inherited_widget/my_inherited_widget.dart';
 import 'package:basic_flutter/layout/my_align.dart';
 import 'package:basic_flutter/layout/my_center.dart';
 import 'package:basic_flutter/layout/my_column.dart';
@@ -10,13 +16,7 @@ import 'package:basic_flutter/layout/my_layout_builder.dart';
 import 'package:basic_flutter/layout/my_row.dart';
 import 'package:basic_flutter/layout/my_stack.dart';
 import 'package:basic_flutter/layout/my_wrap.dart';
-import 'package:basic_flutter/other/my_anim.dart';
 import 'package:basic_flutter/other/my_dialog.dart';
-import 'package:basic_flutter/other/my_future_builder.dart';
-import 'package:basic_flutter/other/my_inherited_widget.dart';
-import 'package:basic_flutter/other/my_provider.dart';
-import 'package:basic_flutter/other/my_stream_builder.dart';
-import 'package:basic_flutter/other/my_value_listenable_builder.dart';
 import 'package:basic_flutter/other/my_will_pop.dart';
 import 'package:basic_flutter/page/my_counter.dart';
 import 'package:basic_flutter/scroll/my_animated_list.dart';
@@ -27,10 +27,14 @@ import 'package:basic_flutter/scroll/my_nested_scroll_view.dart';
 import 'package:basic_flutter/scroll/my_page_view.dart';
 import 'package:basic_flutter/scroll/my_scroll_view.dart';
 import 'package:basic_flutter/scroll/my_tab_bar.dart';
+import 'package:basic_flutter/shared_preferences/my_shared_preferences.dart';
+import 'package:basic_flutter/value_notifier/my_value_listenable_builder.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boost/flutter_boost.dart';
 import 'package:provider/provider.dart';
+
+import 'paint/my_custom_paint.dart';
 
 void main() {
   ///添加全局生命周期监听类
@@ -205,7 +209,7 @@ class _MyAppState extends State<MyApp> {
       return CupertinoPageRoute(
           settings: settings,
           builder: (_) {
-            return const MyAnim();
+            return const MyAnimation();
           });
     },
     'MyWillPopScope': (RouteSettings settings, String? uniqueId) {
@@ -255,6 +259,27 @@ class _MyAppState extends State<MyApp> {
           settings: settings,
           builder: (_) {
             return const MyStreamBuilder();
+          });
+    },
+    'MyCustomPaint': (RouteSettings settings, String? uniqueId) {
+      return CupertinoPageRoute(
+          settings: settings,
+          builder: (_) {
+            return const MyCustomPaint();
+          });
+    },
+    'MySharedPreferences': (RouteSettings settings, String? uniqueId) {
+      return CupertinoPageRoute(
+          settings: settings,
+          builder: (_) {
+            return const MySharedPreferences();
+          });
+    },
+    'MyHttp': (RouteSettings settings, String? uniqueId) {
+      return CupertinoPageRoute(
+          settings: settings,
+          builder: (_) {
+            return const MyHttp();
           });
     },
   };

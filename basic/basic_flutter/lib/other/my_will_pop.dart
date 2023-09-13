@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-///WillPopScope
+///WillPopScope 导航返回拦截
 ///每个 WillPopScope 仅对当前组件生效，不可在 MaterialApp 上使用。
 class MyWillPopScope extends StatelessWidget {
   const MyWillPopScope({super.key});

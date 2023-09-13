@@ -39,6 +39,9 @@ class FlutterMainActivity : BasicRecyclerActivity() {
             "MyValueListenableBuilder",
             "MyFutureBuilder",
             "MyStreamBuilder",
+            "MyCustomPaint",
+            "MySharedPreferences",
+            "MyHttp",
         )
     }
 

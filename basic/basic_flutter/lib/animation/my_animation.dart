@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-class MyAnim extends StatelessWidget {
-  const MyAnim({super.key});
+///Animation
+class MyAnimation extends StatelessWidget {
+  const MyAnimation({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,20 +12,20 @@ class MyAnim extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Flutter Anim demo'),
         ),
-        body: const Center(child: MyAnimRoute()),
+        body: const Center(child: AnimationRoute()),
       ),
     );
   }
 }
 
-class MyAnimRoute extends StatefulWidget {
-  const MyAnimRoute({super.key});
+class AnimationRoute extends StatefulWidget {
+  const AnimationRoute({super.key});
 
   @override
-  State<MyAnimRoute> createState() => _MyFadeTest();
+  State<AnimationRoute> createState() => _MyFadeTest();
 }
 
-class _MyFadeTest extends State<MyAnimRoute> with TickerProviderStateMixin {
+class _MyFadeTest extends State<AnimationRoute> with TickerProviderStateMixin {
   late AnimationController controller;
   late CurvedAnimation curve;
 
