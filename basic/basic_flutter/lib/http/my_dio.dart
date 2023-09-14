@@ -2,30 +2,31 @@ import 'package:basic_flutter/common/urls.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
-class MyHttp extends StatelessWidget {
-  const MyHttp({super.key});
+class MyDio extends StatelessWidget {
+  const MyDio({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Flutter Dio demo',
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Dio Example'),
+          title: const Text('Flutter Dio Example'),
         ),
-        body: const MyHttpPage(),
+        body: const DioRoute(),
       ),
     );
   }
 }
 
-class MyHttpPage extends StatefulWidget {
-  const MyHttpPage({super.key});
+class DioRoute extends StatefulWidget {
+  const DioRoute({super.key});
 
   @override
-  State<MyHttpPage> createState() => _MyHttpPageState();
+  State<DioRoute> createState() => _DioRouteState();
 }
 
-class _MyHttpPageState extends State<MyHttpPage> {
+class _DioRouteState extends State<DioRoute> {
   String info = "";
 
   void _loginByDio() async {

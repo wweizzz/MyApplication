@@ -1,0 +1,115 @@
+import 'dart:async';
+import 'dart:convert';
+import 'dart:isolate';
+
+import 'package:flutter/material.dart';
+import 'package:http/http.dart';
+
+///Isolate
+class MyIsolate extends StatelessWidget {
+  const MyIsolate({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Isolate demo',
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Flutter Isolate demo'),
+        ),
+        body: const Center(child: IsolatePage()),
+      ),
+    );
+  }
+}
+
+class IsolatePage extends StatefulWidget {
+  const IsolatePage({super.key});
+
+  @override
+  State<IsolatePage> createState() => _IsolatePageState();
+}
+
+class _IsolatePageState extends State<IsolatePage> {
+  List widgets = [];
+
+  @override
+  void initState() {
+    super.initState();
+    loadData();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: getBody(),
+    );
+  }
+
+  Widget getBody() {
+    bool showLoadingDialog = widgets.isEmpty;
+    if (showLoadingDialog) {
+      return getProgressDialog();
+    } else {
+      return getListView();
+    }
+  }
+
+  Widget getProgressDialog() {
+    return const Center(child: CircularProgressIndicator());
+  }
+
+  ListView getListView() {
+    return ListView.builder(
+      itemCount: widgets.length,
+      itemBuilder: (context, position) {
+        return Padding(
+          padding: const EdgeInsets.all(10),
+          child: Text("Row ${widgets[position]["title"]}"),
+        );
+      },
+    );
+  }
+
+  Future<void> loadData() async {
+    ReceivePort port = ReceivePort();
+    await Isolate.spawn(dataLoader, port.sendPort);
+    //await Isolate.spawn((sendPort) {}, receivePort.sendPort);
+
+    SendPort sendPort = await port.first;
+    List msg = await sendReceive(
+      sendPort,
+      'https://jsonplaceholder.typicode.com/posts',
+    );
+
+    setState(() {
+      widgets = msg;
+    });
+  }
+
+  // The entry point for the isolate.
+  static Future<void> dataLoader(SendPort sendPort) async {
+    // Open the ReceivePort for incoming messages.
+    ReceivePort port = ReceivePort();
+
+    // Notify any other isolates what port this isolate listens to.
+    sendPort.send(port.sendPort);
+
+    await for (var msg in port) {
+      String data = msg[0];
+      SendPort replyTo = msg[1];
+
+      String dataURL = data;
+      Response response = await get(Uri.parse(dataURL));
+      // Lots of JSON to parse
+      replyTo.send(jsonDecode(response.body));
+    }
+  }
+
+  Future sendReceive(SendPort sendPort, msg) {
+    ReceivePort port = ReceivePort();
+    sendPort.send([msg, port.sendPort]);
+    var response = port.first;
+    return response;
+  }
+}

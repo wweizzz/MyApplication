@@ -1,10 +1,11 @@
 import 'package:basic_flutter/animation/my_animation.dart';
 import 'package:basic_flutter/asyn/my_future_builder.dart';
+import 'package:basic_flutter/http/my_isolate.dart';
 import 'package:basic_flutter/asyn/my_stream_builder.dart';
 import 'package:basic_flutter/boost/BoostBinding.dart';
 import 'package:basic_flutter/change_notifier/my_provider.dart';
 import 'package:basic_flutter/common/log.dart';
-import 'package:basic_flutter/http/my_http.dart';
+import 'package:basic_flutter/http/my_dio.dart';
 import 'package:basic_flutter/inherited_widget/my_inherited_widget.dart';
 import 'package:basic_flutter/layout/my_align.dart';
 import 'package:basic_flutter/layout/my_center.dart';
@@ -17,6 +18,7 @@ import 'package:basic_flutter/layout/my_row.dart';
 import 'package:basic_flutter/layout/my_stack.dart';
 import 'package:basic_flutter/layout/my_wrap.dart';
 import 'package:basic_flutter/other/my_dialog.dart';
+import 'package:basic_flutter/other/my_gesture_detector.dart';
 import 'package:basic_flutter/other/my_will_pop.dart';
 import 'package:basic_flutter/page/my_counter.dart';
 import 'package:basic_flutter/scroll/my_animated_list.dart';
@@ -212,6 +214,13 @@ class _MyAppState extends State<MyApp> {
             return const MyAnimation();
           });
     },
+    'MyGestureDetector': (RouteSettings settings, String? uniqueId) {
+      return CupertinoPageRoute(
+          settings: settings,
+          builder: (_) {
+            return const MyGestureDetector();
+          });
+    },
     'MyWillPopScope': (RouteSettings settings, String? uniqueId) {
       return CupertinoPageRoute(
           settings: settings,
@@ -279,7 +288,14 @@ class _MyAppState extends State<MyApp> {
       return CupertinoPageRoute(
           settings: settings,
           builder: (_) {
-            return const MyHttp();
+            return const MyDio();
+          });
+    },
+    'MyIsolate': (RouteSettings settings, String? uniqueId) {
+      return CupertinoPageRoute(
+          settings: settings,
+          builder: (_) {
+            return const MyIsolate();
           });
     },
   };

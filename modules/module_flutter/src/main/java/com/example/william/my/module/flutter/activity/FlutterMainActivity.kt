@@ -32,6 +32,7 @@ class FlutterMainActivity : BasicRecyclerActivity() {
             "MyCustomScrollView",
             "MyNestedScrollView",
             "MyAnim",
+            "MyGestureDetector",
             "MyWillPopScope",
             "MyInheritedWidget",
             "MyDialog",
@@ -42,6 +43,7 @@ class FlutterMainActivity : BasicRecyclerActivity() {
             "MyCustomPaint",
             "MySharedPreferences",
             "MyHttp",
+            "MyIsolate",
         )
     }
 
