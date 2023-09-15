@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:isolate';
 
+import 'package:basic_flutter/common/urls.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 
@@ -72,44 +73,40 @@ class _IsolatePageState extends State<IsolatePage> {
   }
 
   Future<void> loadData() async {
-    ReceivePort port = ReceivePort();
-    await Isolate.spawn(dataLoader, port.sendPort);
+    ReceivePort receivePort = ReceivePort();
+    await Isolate.spawn(dataLoader, receivePort.sendPort);
     //await Isolate.spawn((sendPort) {}, receivePort.sendPort);
 
-    SendPort sendPort = await port.first;
-    List msg = await sendReceive(
-      sendPort,
-      'https://jsonplaceholder.typicode.com/posts',
-    );
+    SendPort sendPort = await receivePort.first;
+
+    ReceivePort port = ReceivePort();
+    sendPort.send([port.sendPort, Urls().posts]);
+
+    List msg = await port.first;
 
     setState(() {
       widgets = msg;
     });
   }
 
+  // 隔离的入口点。
   // The entry point for the isolate.
   static Future<void> dataLoader(SendPort sendPort) async {
+    // 打开接收端口以接收传入消息。
     // Open the ReceivePort for incoming messages.
     ReceivePort port = ReceivePort();
 
+    // 通知任何其他隔离此隔离侦听的端口。
     // Notify any other isolates what port this isolate listens to.
     sendPort.send(port.sendPort);
 
     await for (var msg in port) {
-      String data = msg[0];
-      SendPort replyTo = msg[1];
+      SendPort replyTo = msg[0];
+      String dataURL = msg[1];
 
-      String dataURL = data;
       Response response = await get(Uri.parse(dataURL));
       // Lots of JSON to parse
       replyTo.send(jsonDecode(response.body));
     }
-  }
-
-  Future sendReceive(SendPort sendPort, msg) {
-    ReceivePort port = ReceivePort();
-    sendPort.send([msg, port.sendPort]);
-    var response = port.first;
-    return response;
   }
 }
