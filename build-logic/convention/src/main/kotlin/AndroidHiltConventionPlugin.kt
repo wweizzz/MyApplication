@@ -21,20 +21,20 @@ import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
 import org.jetbrains.kotlin.gradle.plugin.KaptExtension
 
-class AndroidARouterConventionPlugin : Plugin<Project> {
+class AndroidHiltConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             with(pluginManager) {
                 apply("kotlin-kapt")
+                apply("dagger.hilt.android.plugin")
             }
             extensions.configure<KaptExtension> {
-                arguments {
-                    arg("AROUTER_MODULE_NAME", project.name)
-                }
+                // Allow references to generated code
+                correctErrorTypes = true
             }
             dependencies {
-                add("implementation", libs.findLibrary("arouter").get())
-                add("kapt", libs.findLibrary("arouter.compiler").get())
+                "implementation"(libs.findLibrary("hilt.android").get())
+                "kapt"(libs.findLibrary("hilt.compiler").get())
             }
         }
     }

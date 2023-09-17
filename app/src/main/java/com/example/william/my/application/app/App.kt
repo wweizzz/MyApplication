@@ -16,10 +16,12 @@ import com.example.william.my.module.network.app.NetworkApp
 import com.example.william.my.module.opensource.app.OpensourceApp
 import com.example.william.my.module.sample.app.SampleApp
 import com.example.william.my.modules.module_libraries.MyLibrariesEventBusIndex
+import dagger.hilt.android.HiltAndroidApp
 
 /**
  * gradlew :app:dependencies 查询app依赖
  */
+@HiltAndroidApp
 class App : BaseApp() {
     override fun onCreate() {
         super.onCreate()

@@ -13,6 +13,7 @@
         <activity android:name=".activity.topic.DataStoreActivity" />
         <activity android:name=".activity.topic.ViewModelActivity" />
         <activity android:name=".activity.topic.WorkManagerActivity" />
+        <activity android:name=".activity.topic.HiltActivity" />
 
         <activity android:name=".activity.androidx.ActivityResultActivity" />
         <activity android:name=".activity.androidx.ActivityResultActivity2" />

@@ -1,6 +1,7 @@
 plugins {
     id("nowinandroid.android.library")
     id("nowinandroid.android.basic")
+    id("nowinandroid.android.hilt")
     id("com.google.protobuf")
     //id("nowinandroid.android.room")
     //id("nowinandroid.android.protobuf")

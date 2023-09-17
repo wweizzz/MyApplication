@@ -134,6 +134,7 @@ object ARouterPath {
         const val Paging = "/module_sample/Paging"
         const val DataStore = "/module_sample/DataStore"
         const val WorkManager = "/module_sample/WorkManager"
+        const val Hilt = "/module_sample/Hilt"
 
         const val Coroutines = "/module_sample/Coroutines"
         const val Flow = "/module_sample/Flow"

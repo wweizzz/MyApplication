@@ -76,6 +76,10 @@ gradlePlugin {
             id = "nowinandroid.android.protobuf"
             implementationClass = "AndroidProtobufConventionPlugin"
         }
+        register("androidHilt") {
+            id = "nowinandroid.android.hilt"
+            implementationClass = "AndroidHiltConventionPlugin"
+        }
         register("androidBasic") {
             id = "nowinandroid.android.basic"
             implementationClass = "AndroidBasicConventionPlugin"

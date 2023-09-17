@@ -31,6 +31,7 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                 apply("com.android.application")
                 apply("kotlin-android")
                 apply("kotlin-parcelize")
+                apply("nowinandroid.android.hilt")
                 apply("nowinandroid.android.arouter")
                 apply("nowinandroid.android.eventbus")
             }

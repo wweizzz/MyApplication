@@ -1,5 +1,6 @@
 plugins {
     id("nowinandroid.android.application")
+    id("nowinandroid.android.hilt")
     id("nowinandroid.android.basic")
     id("nowinandroid.android.feature")
 }

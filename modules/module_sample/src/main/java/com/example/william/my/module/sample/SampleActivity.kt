@@ -14,6 +14,7 @@ class SampleActivity : RouterRecyclerActivity() {
         routerItems.add(RouterItem("Paging", ARouterPath.Sample.Paging))
         routerItems.add(RouterItem("DataStore", ARouterPath.Sample.DataStore))
         routerItems.add(RouterItem("WorkManager", ARouterPath.Sample.WorkManager))
+        routerItems.add(RouterItem("Hilt", ARouterPath.Sample.Hilt))
         routerItems.add(RouterItem("Room", ARouterPath.Sample.Room))
         routerItems.add(RouterItem("Coroutines", ARouterPath.Sample.Coroutines))
         routerItems.add(RouterItem("Flow", ARouterPath.Sample.Flow))

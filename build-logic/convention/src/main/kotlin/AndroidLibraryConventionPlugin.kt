@@ -33,6 +33,7 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
                 apply("com.android.library")
                 apply("kotlin-android")
                 apply("kotlin-parcelize")
+                apply("nowinandroid.android.hilt")
                 apply("nowinandroid.android.arouter")
                 apply("nowinandroid.android.eventbus")
             }
