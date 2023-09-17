@@ -1,6 +1,5 @@
 package com.example.william.my.module.sample.hitl.qualifier
 
-import com.example.william.my.library.utils.Utils
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -25,19 +24,19 @@ object NetworkModule {
 
     @AuthInterceptorOkHttpClient
     @Provides
-    fun provideAuthInterceptorOkHttpClient(): Unit {
-        Utils.e("Hilt", "provideAuthInterceptorOkHttpClient")
+    fun provideAuthInterceptorOkHttpClient(): String {
+        return "provideAuthInterceptorOkHttpClient"
     }
 
     @OtherInterceptorOkHttpClient
     @Provides
-    fun provideOtherInterceptorOkHttpClient() {
-        Utils.e("Hilt", "provideOtherInterceptorOkHttpClient")
+    fun provideOtherInterceptorOkHttpClient(): String {
+        return "provideOtherInterceptorOkHttpClient"
     }
 }
 
 // As a dependency of a constructor-injected class.
 class ExampleServiceImpl @Inject constructor(
-    @AuthInterceptorOkHttpClient private val okHttpClient1: Unit,
-    @OtherInterceptorOkHttpClient private val okHttpClient2: Unit
+    @AuthInterceptorOkHttpClient private val okHttpClient1: String,
+    @OtherInterceptorOkHttpClient private val okHttpClient2: String
 )
