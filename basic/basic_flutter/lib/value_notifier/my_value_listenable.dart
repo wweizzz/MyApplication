@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 ///ValueListenableBuilder
-class MyValueListenableBuilder extends StatelessWidget {
-  const MyValueListenableBuilder({super.key});
+class MyValueListenable extends StatelessWidget {
+  const MyValueListenable({super.key});
 
   @override
   Widget build(BuildContext context) {

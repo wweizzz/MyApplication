@@ -22,10 +22,10 @@ class AnimationRoute extends StatefulWidget {
   const AnimationRoute({super.key});
 
   @override
-  State<AnimationRoute> createState() => _MyFadeTest();
+  State<AnimationRoute> createState() => _MyFadeState();
 }
 
-class _MyFadeTest extends State<AnimationRoute> with TickerProviderStateMixin {
+class _MyFadeState extends State<AnimationRoute> with TickerProviderStateMixin {
   late AnimationController controller;
   late CurvedAnimation curve;
 

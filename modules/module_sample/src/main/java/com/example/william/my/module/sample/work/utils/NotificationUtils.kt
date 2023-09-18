@@ -16,7 +16,7 @@
 
 @file:JvmName("NotificationUtils")
 
-package com.example.william.my.module.sample.work
+package com.example.william.my.module.sample.work.utils
 
 import android.annotation.TargetApi
 import android.app.Notification

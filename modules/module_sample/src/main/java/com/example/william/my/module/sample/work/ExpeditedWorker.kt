@@ -5,6 +5,7 @@ import androidx.work.CoroutineWorker
 import androidx.work.ForegroundInfo
 import androidx.work.WorkerParameters
 import com.example.william.my.module.sample.R
+import com.example.william.my.module.sample.work.utils.createNotification
 
 class ExpeditedWorker(appContext: Context, workerParams: WorkerParameters) :
     CoroutineWorker(appContext, workerParams) {
