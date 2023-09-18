@@ -45,9 +45,10 @@ dependencies {
 
 
     implementation(libs.mmkv)
+    implementation(libs.permission)
     implementation(libs.loadsir)
     implementation(libs.greendao)
-    implementation("io.objectbox:objectbox-kotlin:3.7.0")
+    implementation(libs.objectbox)
 }
 
 // https://github.com/greenrobot/greenDAO/issues/1110

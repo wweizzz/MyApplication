@@ -20,6 +20,7 @@
         <activity android:name=".activity2.MMKVActivity" />
         <activity android:name=".activity2.GreenDaoActivity" />
         <activity android:name=".activity2.ObjectBoxActivity" />
+        <activity android:name=".activity2.PermissionXActivity" />
     </application>
 
 </manifest>

@@ -121,6 +121,7 @@ object ARouterPath {
         const val SwipeLayout = "/module_opensource/SwipeLayout"
 
         const val MMKV = "/module_opensource/MMKV"
+        const val PermissionX = "/module_opensource/PermissionX"
         const val GreenDao = "/module_opensource/GreenDao"
         const val ObjectBox = "/module_opensource/ObjectBox"
     }

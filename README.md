@@ -59,9 +59,11 @@
   * NestedScrollView
 * 系统组件
   * Dialog
+  * Toast
+  * Notification
   * WillPopScope 导航返回拦截
   * InheritedWidget 数据共享
-  * ValueListenableBuilder 数据源监听
+  * ValueListenable 数据源监听
   * FutureBuilder 接收异步事件数据
   * StreamBuilder 接收异步事件数据
 
@@ -87,7 +89,6 @@
 
 * Lottie
 * SVGAPlayer
-* MMKV
 * Greendao 数据库
 * ObjectBox 数据库
 
@@ -97,6 +98,7 @@
 * Paging
 * DataStore
 * WorkManager
+* Hilt
 * Android 上的 Kotlin 协程
 * Android 上的 Kotlin 数据流
 

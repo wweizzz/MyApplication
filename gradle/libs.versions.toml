@@ -23,9 +23,11 @@ androidxHilt = "2.44"
 # ##################################################################################################
 mmkv = "1.2.14"
 utils = "1.31.1"
+permission = "1.7.1"
 arouter = "1.5.2"
 eventbus = "3.3.1"
 greendao = "3.3.0"
+objectbox = "3.7.0"
 rxjava = "3.1.5"
 rxandroid = "3.0.2"
 autodispose = "2.1.1"
@@ -142,6 +144,8 @@ hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", v
 mmkv = { group = "com.tencent", name = "mmkv-static", version.ref = "mmkv" }
 # https://github.com/Blankj/AndroidUtilCode
 utils = { group = "com.blankj", name = "utilcodex", version.ref = "utils" }
+# https://github.com/guolindev/PermissionX
+permission = { group = "com.guolindev.permissionx", name = "permissionx", version.ref = "permission" }
 # https://github.com/alibaba/ARouter
 arouter = { group = "com.alibaba", name = "arouter-api", version.ref = "arouter" }
 arouter-compiler = { group = "com.alibaba", name = "arouter-compiler", version.ref = "arouter" }
@@ -150,6 +154,8 @@ eventbus = { group = "org.greenrobot", name = "eventbus", version.ref = "eventbu
 eventbus-processor = { group = "org.greenrobot", name = "eventbus-annotation-processor", version.ref = "eventbus" }
 # https://github.com/greenrobot/greenDAO
 greendao = { group = "org.greenrobot", name = "greendao", version.ref = "greendao" }
+# https://github.com/objectbox/objectbox-java
+objectbox = { group = "io.objectbox", name = "objectbox-kotlin", version.ref = "objectbox" }
 # https://github.com/ReactiveX/RxJava
 rxjava3 = { group = "io.reactivex.rxjava3", name = "rxjava", version.ref = "rxjava" }
 # https://github.com/ReactiveX/RxAndroid
