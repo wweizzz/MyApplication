@@ -34,6 +34,8 @@ dependencies:
   # https://github.com/rrousselGit/provider
   # https://pub.dev/packages/provider
   provider: ^6.0.5
+  # https://pub.dev/packages/get
+  get: ^4.6.6
   # https://github.com/Bungeefan/logger
   # https://pub-web.flutter-io.cn/packages/logger
   logger: ^2.0.1
