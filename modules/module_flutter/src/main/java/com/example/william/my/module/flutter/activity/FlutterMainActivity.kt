@@ -47,6 +47,7 @@ class FlutterMainActivity : BasicRecyclerActivity() {
             "MyHttp",
             "MyIsolate",
             "MyGetX",
+            "MyGetX2",
         )
     }
 

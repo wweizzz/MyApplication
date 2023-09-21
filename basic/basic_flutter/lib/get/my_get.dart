@@ -14,8 +14,10 @@ class MyGetX extends StatelessWidget {
   }
 }
 
+// 状态管理器
 class Controller extends GetxController {
-  var count = 0.obs; // 可观察
+  // 响应式变量
+  var count = 0.obs;
 
   void increment() {
     count++;
