@@ -5,6 +5,7 @@ import 'package:basic_flutter/boost/BoostBinding.dart';
 import 'package:basic_flutter/change_notifier/my_provider.dart';
 import 'package:basic_flutter/common/log.dart';
 import 'package:basic_flutter/get/my_get.dart';
+import 'package:basic_flutter/get/my_get_view.dart';
 import 'package:basic_flutter/http/my_dio.dart';
 import 'package:basic_flutter/http/my_isolate.dart';
 import 'package:basic_flutter/inherited_widget/my_inherited_widget.dart';
@@ -320,6 +321,13 @@ class _MyAppState extends State<MyApp> {
           settings: settings,
           builder: (_) {
             return const MyGetX();
+          });
+    },
+    'MyGetX2': (RouteSettings settings, String? uniqueId) {
+      return CupertinoPageRoute(
+          settings: settings,
+          builder: (_) {
+            return const MyGetX2();
           });
     },
   };
