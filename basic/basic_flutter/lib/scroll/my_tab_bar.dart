@@ -8,19 +8,16 @@ class MyTabView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-        title: 'Flutter layout demo',
-        // home: Scaffold(
-        //   appBar: AppBar(
-        //     title: const Text('Flutter layout demo'),
-        //   ),
-        //   body: const Center(child: TabViewRoute()),
-        // ),
-        home: TabViewRoute());
+      title: 'Flutter TabView demo',
+      home: TabViewRoute(title: 'Flutter TabView demo'),
+    );
   }
 }
 
 class TabViewRoute extends StatelessWidget {
-  const TabViewRoute({super.key});
+  const TabViewRoute({super.key, required this.title});
+
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +26,7 @@ class TabViewRoute extends StatelessWidget {
       length: tabs.length,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Flutter layout demo'),
+          title: Text(title),
           bottom: TabBar(
             tabs: tabs.map((e) => Tab(text: e)).toList(),
           ),

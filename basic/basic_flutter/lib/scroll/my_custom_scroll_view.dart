@@ -6,23 +6,17 @@ class MyCustomScrollView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return MaterialApp(
-    //   title: 'Flutter layout demo',
-    //   home: Scaffold(
-    //     appBar: AppBar(
-    //       title: const Text('Flutter layout demo'),
-    //     ),
-    //     body: const Center(child: CustomScrollViewRoute()),
-    //   ),
-    // );
-    return const Scaffold(
-      body: Center(child: CustomScrollViewRoute()),
+    return const MaterialApp(
+      title: 'Flutter CustomScrollView demo',
+      home: CustomScrollViewRoute(title: 'Flutter CustomScrollView demo'),
     );
   }
 }
 
 class CustomScrollViewRoute extends StatelessWidget {
-  const CustomScrollViewRoute({super.key});
+  const CustomScrollViewRoute({super.key, required this.title});
+
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +27,7 @@ class CustomScrollViewRoute extends StatelessWidget {
             pinned: true,
             expandedHeight: 200.0,
             flexibleSpace: FlexibleSpaceBar(
-              title: const Text('Flutter layout demo'),
+              title: Text(title),
               background: Image.asset(
                 'images/pic1.jpg',
                 fit: BoxFit.cover,

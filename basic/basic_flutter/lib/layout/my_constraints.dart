@@ -6,10 +6,10 @@ class MyConstraints extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter layout demo',
+      title: 'Flutter BoxConstraints demo',
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Flutter layout demo'),
+          title: const Text('Flutter BoxConstraints demo'),
         ),
         body: const Center(child: ConstrainedBoxRoute()),
       ),

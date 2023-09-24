@@ -20,20 +20,17 @@ class MyProvider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Flutter Provider demo',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Flutter Provider demo'),
-        ),
-        body: const Center(child: ProviderPage()),
-      ),
+      home: ProviderPage(title: 'Flutter Provider demo'),
     );
   }
 }
 
 class ProviderPage extends StatelessWidget {
-  const ProviderPage({super.key});
+  const ProviderPage({super.key, required this.title});
+
+  final String title;
 
   void _incrementCounter(BuildContext context) {
     var counter = context.read<Counter>();
@@ -43,6 +40,9 @@ class ProviderPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(title),
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

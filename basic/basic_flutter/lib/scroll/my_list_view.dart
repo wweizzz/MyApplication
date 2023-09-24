@@ -7,15 +7,30 @@ class MyListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter layout demo',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Flutter layout demo'),
-        ),
-        body: const Center(child: InfiniteListView()),
-      ),
+    return const MaterialApp(
+      title: 'Flutter ListView demo',
+      home: ListViewRoute(title: 'Flutter ListView demo'),
     );
+  }
+}
+
+class ListViewRoute extends StatelessWidget {
+  const ListViewRoute({super.key, required this.title});
+
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(title),
+      ),
+      body: getBody(),
+    );
+  }
+
+  Widget getBody() {
+    return const InfiniteListView();
   }
 }
 
@@ -54,7 +69,7 @@ class ListViewRoute2 extends StatelessWidget {
     return ListView.builder(
       itemCount: 100,
       itemExtent: 50.0, // 列表项高度
-      //prototypeItem: const Text(""), // 列表项原型
+      prototypeItem: const Text(""), // 列表项原型
       //列表项构造器
       itemBuilder: (BuildContext context, int index) {
         return ListTile(title: Text("$index"));
@@ -65,28 +80,6 @@ class ListViewRoute2 extends StatelessWidget {
 
 /// ListView.separated
 /// 比 ListView.builder 多了一个 separatorBuilder 参数
-class ListViewRoute3 extends StatelessWidget {
-  const ListViewRoute3({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    //下划线widget预定义以供复用。
-    Widget divider1 = const Divider(color: Colors.blue);
-    Widget divider2 = const Divider(color: Colors.red);
-    return ListView.separated(
-      itemCount: 100,
-      //列表项构造器
-      itemBuilder: (BuildContext context, int index) {
-        return ListTile(title: Text("$index"));
-      },
-      //分割器构造器
-      separatorBuilder: (BuildContext context, int index) {
-        return index % 2 == 0 ? divider1 : divider2;
-      },
-    );
-  }
-}
-
 class InfiniteListView extends StatefulWidget {
   const InfiniteListView({super.key});
 
@@ -106,9 +99,14 @@ class _InfiniteListViewState extends State<InfiniteListView> {
 
   @override
   Widget build(BuildContext context) {
+    //下划线widget预定义以供复用。
+    Widget divider1 = const Divider(color: Colors.blue);
+    Widget divider2 = const Divider(color: Colors.red);
     return ListView.separated(
       itemCount: _words.length,
+      //列表项构造器
       itemBuilder: (context, index) {
+        //显示loading
         if (_words[index] == loadingTag) {
           //不足100条，继续获取数据
           if (_words.length - 1 < 100) {
@@ -129,17 +127,17 @@ class _InfiniteListViewState extends State<InfiniteListView> {
             return Container(
               alignment: Alignment.center,
               padding: const EdgeInsets.all(10.0),
-              child: const Text(
-                "没有更多了",
-                style: TextStyle(color: Colors.grey),
-              ),
+              child: const Text("没有更多了"),
             );
           }
         }
         //显示单词列表项
         return ListTile(title: Text(_words[index]));
       },
-      separatorBuilder: (context, index) => const Divider(height: .0),
+      //分割器构造器
+      separatorBuilder: (BuildContext context, int index) {
+        return index % 2 == 0 ? divider1 : divider2;
+      },
     );
   }
 
@@ -149,7 +147,6 @@ class _InfiniteListViewState extends State<InfiniteListView> {
         //重新构建列表
         _words.insertAll(
           _words.length - 1,
-          //每次生成20个单词
           generateWordPairs().take(20).map((e) => e.asPascalCase).toList(),
         );
       });

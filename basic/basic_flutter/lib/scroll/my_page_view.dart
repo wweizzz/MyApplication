@@ -1,26 +1,24 @@
-import 'package:basic_flutter/common/log.dart';
 import 'package:basic_flutter/common/keep_alive.dart';
+import 'package:basic_flutter/common/log.dart';
 import 'package:flutter/material.dart';
 
+///PageView
 class MyPageView extends StatelessWidget {
   const MyPageView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter layout demo',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Flutter layout demo'),
-        ),
-        body: const Center(child: PageViewRoute()),
-      ),
+    return const MaterialApp(
+      title: 'Flutter PageView demo',
+      home: PageViewRoute(title: 'Flutter PageView demo'),
     );
   }
 }
 
 class PageViewRoute extends StatelessWidget {
-  const PageViewRoute({super.key});
+  const PageViewRoute({super.key, required this.title});
+
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +29,14 @@ class PageViewRoute extends StatelessWidget {
       children.add(KeepAliveWrapper(child: Page(text: '$i')));
     }
 
-    return PageView(
-      // scrollDirection: Axis.vertical, // 滑动方向为垂直方向
-      children: children,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(title),
+      ),
+      body: PageView(
+        // scrollDirection: Axis.vertical, // 滑动方向为垂直方向
+        children: children,
+      ),
     );
   }
 }

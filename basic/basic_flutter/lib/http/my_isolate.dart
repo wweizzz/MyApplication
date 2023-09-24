@@ -12,20 +12,17 @@ class MyIsolate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Flutter Isolate demo',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Flutter Isolate demo'),
-        ),
-        body: const Center(child: IsolatePage()),
-      ),
+      home: IsolatePage(title: 'Flutter Isolate demo'),
     );
   }
 }
 
 class IsolatePage extends StatefulWidget {
-  const IsolatePage({super.key});
+  const IsolatePage({super.key, required this.title});
+
+  final String title;
 
   @override
   State<IsolatePage> createState() => _IsolatePageState();
@@ -43,6 +40,9 @@ class _IsolatePageState extends State<IsolatePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
       body: getBody(),
     );
   }

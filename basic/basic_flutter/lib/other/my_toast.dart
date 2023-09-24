@@ -6,20 +6,17 @@ class MyToast extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Flutter Toast demo',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Flutter Toast Example'),
-        ),
-        body: const ToastRoute(),
-      ),
+      home: ToastRoute(title: 'Flutter Toast Example'),
     );
   }
 }
 
 class ToastRoute extends StatelessWidget {
-  const ToastRoute({super.key});
+  const ToastRoute({super.key, required this.title});
+
+  final String title;
 
   _showToast() {
     showToast("show Toast");
@@ -28,6 +25,9 @@ class ToastRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(title),
+      ),
       body: const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

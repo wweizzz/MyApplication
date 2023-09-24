@@ -6,10 +6,10 @@ class MyFlex extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter layout demo',
+      title: 'Flutter Flex demo',
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Flutter layout demo'),
+          title: const Text('Flutter Flex demo'),
         ),
         body: const Center(child: FlexRoute()),
       ),

@@ -7,20 +7,17 @@ class MySharedPreferences extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Flutter Shared Preferences demo',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Flutter Shared Preferences demo'),
-        ),
-        body: const Center(child: SharedPreferencesRoute()),
-      ),
+      home: SharedPreferencesRoute(title: 'Flutter Shared Preferences demo'),
     );
   }
 }
 
 class SharedPreferencesRoute extends StatefulWidget {
-  const SharedPreferencesRoute({super.key});
+  const SharedPreferencesRoute({super.key, required this.title});
+
+  final String title;
 
   @override
   State<StatefulWidget> createState() => _SharedPreferencesRouteState();
@@ -43,6 +40,9 @@ class _SharedPreferencesRouteState extends State<SharedPreferencesRoute> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

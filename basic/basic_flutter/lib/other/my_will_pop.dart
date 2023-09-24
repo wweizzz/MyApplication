@@ -7,25 +7,18 @@ class MyWillPopScope extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return MaterialApp(
-    //     title: 'Flutter WillPopScope demo',
-    //     home: Scaffold(
-    //       appBar: AppBar(
-    //         title: const Text('Flutter WillPopScope demo'),
-    //       ),
-    //       body: const Center(child: WillPopScopeRoute()),
-    //     ));
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Flutter WillPopScope demo'),
-      ),
-      body: const Center(child: WillPopScopeRoute()),
-    );
+    // return const MaterialApp(
+    //   title: 'Flutter WillPopScope demo',
+    //   home: WillPopScopeRoute(title: 'Flutter WillPopScope Example'),
+    // );
+    return const WillPopScopeRoute(title: 'Flutter WillPopScope demo');
   }
 }
 
 class WillPopScopeRoute extends StatelessWidget {
-  const WillPopScopeRoute({super.key});
+  const WillPopScopeRoute({super.key, required this.title});
+
+  final String title;
 
   Future<bool> _showAlertDialog(BuildContext context) async {
     final shouldPop = await showDialog<bool>(
@@ -56,11 +49,16 @@ class WillPopScopeRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () => _showAlertDialog(context),
-      child: Container(
-        alignment: Alignment.center,
-        child: const Text("WillPopScope"),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(title),
+      ),
+      body: WillPopScope(
+        onWillPop: () => _showAlertDialog(context),
+        child: Container(
+          alignment: Alignment.center,
+          child: const Text("WillPopScope"),
+        ),
       ),
     );
   }

@@ -6,10 +6,10 @@ class MyColumn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter layout demo',
+      title: 'Flutter Column demo',
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Flutter layout demo'),
+          title: const Text('Flutter Column demo'),
         ),
         body: const Center(child: ColumnRoute()),
       ),

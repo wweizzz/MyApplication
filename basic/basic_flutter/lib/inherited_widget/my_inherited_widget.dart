@@ -7,20 +7,17 @@ class MyInheritedWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Flutter InheritedWidget demo',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Flutter InheritedWidget demo'),
-        ),
-        body: const Center(child: InheritedWidgetRoute()),
-      ),
+      home: InheritedWidgetRoute(title: 'Flutter InheritedWidget demo'),
     );
   }
 }
 
 class InheritedWidgetRoute extends StatefulWidget {
-  const InheritedWidgetRoute({super.key});
+  const InheritedWidgetRoute({super.key, required this.title});
+
+  final String title;
 
   @override
   State<InheritedWidgetRoute> createState() => _InheritedWidgetRouteState();
@@ -38,6 +35,9 @@ class _InheritedWidgetRouteState extends State<InheritedWidgetRoute> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
       body: Center(
         child: ShareDataWidget(
           data: _counter,

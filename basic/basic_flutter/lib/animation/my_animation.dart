@@ -6,20 +6,17 @@ class MyAnimation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Anim demo',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Flutter Anim demo'),
-        ),
-        body: const Center(child: AnimationRoute()),
-      ),
+    return const MaterialApp(
+      title: 'Flutter Animation demo',
+      home: AnimationRoute(title: 'Flutter Animation demo'),
     );
   }
 }
 
 class AnimationRoute extends StatefulWidget {
-  const AnimationRoute({super.key});
+  const AnimationRoute({super.key, required this.title});
+
+  final String title;
 
   @override
   State<AnimationRoute> createState() => _MyFadeState();
@@ -45,6 +42,9 @@ class _MyFadeState extends State<AnimationRoute> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
       body: Center(
         child: FadeTransition(
           opacity: curve,

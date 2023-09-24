@@ -7,37 +7,38 @@ class MyScrollView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter layout demo',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Flutter layout demo'),
-        ),
-        body: const Center(child: SingleChildScrollViewRoute()),
-      ),
+    return const MaterialApp(
+      title: 'Flutter ScrollView demo',
+      home: SingleChildScrollViewRoute(title: 'Flutter ScrollView demo'),
     );
   }
 }
 
 /// SingleChildScrollView
 class SingleChildScrollViewRoute extends StatelessWidget {
-  const SingleChildScrollViewRoute({super.key});
+  const SingleChildScrollViewRoute({super.key, required this.title});
+
+  final String title;
 
   @override
   Widget build(BuildContext context) {
-    return Scrollbar(
-      // 显示进度条
-      child: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
-        child: Center(
-          child: Column(
-            //动态创建一个List<Widget>
-            children: generateWordPairs()
-                .take(30)
-                .map((e) => Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: Text(e.asPascalCase, textScaleFactor: 1.2)))
-                .toList(),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(title),
+      ),
+      body: Scrollbar(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(16.0),
+          child: Center(
+            child: Column(
+              //动态创建一个List<Widget>
+              children: generateWordPairs()
+                  .take(30)
+                  .map((e) => Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: Text(e.asPascalCase, textScaleFactor: 1.2)))
+                  .toList(),
+            ),
           ),
         ),
       ),

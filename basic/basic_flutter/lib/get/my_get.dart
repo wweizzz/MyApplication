@@ -10,7 +10,10 @@ class MyGetX extends StatelessWidget {
     //
     // 如果你只用 Get 来进行状态管理或依赖管理，就没有必要使用GetMaterialApp。
     // GetMaterialApp 对于路由、snackBar、国际化、bottomSheet、对话框以及与路由相关的高级 apis 和没有上下文（context）的情况下是必要的。
-    return GetMaterialApp(home: GetXRoute());
+    return GetMaterialApp(
+      title: 'counter',
+      home: GetXPage(title: 'counter'),
+    );
   }
 }
 
@@ -24,15 +27,19 @@ class Controller extends GetxController {
   }
 }
 
-class GetXRoute extends StatelessWidget {
-  GetXRoute({super.key});
+class GetXPage extends StatelessWidget {
+  GetXPage({super.key, required this.title});
+
+  final String title;
 
   final controller = Get.put(Controller());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("counter")),
+      appBar: AppBar(
+        title: Text(title),
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

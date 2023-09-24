@@ -7,24 +7,24 @@ class MyGestureDetector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Flutter GestureDetector demo',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Flutter GestureDetector demo'),
-        ),
-        body: const Center(child: GestureDetectorRoute()),
-      ),
+      home: GestureDetectorRoute(title: 'Flutter GestureDetector demo'),
     );
   }
 }
 
 class GestureDetectorRoute extends StatelessWidget {
-  const GestureDetectorRoute({super.key});
+  const GestureDetectorRoute({super.key, required this.title});
+
+  final String title;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(title),
+      ),
       body: Center(
         child: GestureDetector(
           onTap: () {
@@ -37,7 +37,7 @@ class GestureDetectorRoute extends StatelessWidget {
             log('onLongPress');
           },
           child: const FlutterLogo(
-            size: 200,
+            size: 100,
           ),
         ),
       ),

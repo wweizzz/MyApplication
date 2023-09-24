@@ -6,20 +6,17 @@ class MyStreamBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Flutter StreamBuilder demo',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Flutter StreamBuilder demo'),
-        ),
-        body: const Center(child: FutureRoute()),
-      ),
+      home: FutureRoute(title: 'Flutter StreamBuilder demo'),
     );
   }
 }
 
 class FutureRoute extends StatelessWidget {
-  const FutureRoute({super.key});
+  const FutureRoute({super.key, required this.title});
+
+  final String title;
 
   Stream<int> counter() {
     return Stream.periodic(const Duration(seconds: 1), (i) {
@@ -29,21 +26,25 @@ class FutureRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<int>(
-      stream: counter(),
-      builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
-        if (snapshot.hasError) return Text('Error: ${snapshot.error}');
-        switch (snapshot.connectionState) {
-          case ConnectionState.none:
-            return const Text('Stream none');
-          case ConnectionState.waiting:
-            return const Text('Stream waiting');
-          case ConnectionState.active:
-            return Text('Stream active: ${snapshot.data}');
-          case ConnectionState.done:
-            return const Text('Stream done');
-        }
-      },
-    );
+    return Scaffold(
+        appBar: AppBar(
+          title: Text(title),
+        ),
+        body: StreamBuilder<int>(
+          stream: counter(),
+          builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
+            if (snapshot.hasError) return Text('Error: ${snapshot.error}');
+            switch (snapshot.connectionState) {
+              case ConnectionState.none:
+                return const Text('Stream none');
+              case ConnectionState.waiting:
+                return const Text('Stream waiting');
+              case ConnectionState.active:
+                return Text('Stream active: ${snapshot.data}');
+              case ConnectionState.done:
+                return const Text('Stream done');
+            }
+          },
+        ));
   }
 }

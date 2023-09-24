@@ -40,7 +40,7 @@ import 'package:provider/provider.dart';
 
 import 'other/my_notification.dart';
 import 'other/my_toast.dart';
-import 'paint/my_custom_paint.dart';
+import 'paint/my_paint.dart';
 
 void main() {
   ///添加全局生命周期监听类
@@ -211,7 +211,7 @@ class _MyAppState extends State<MyApp> {
             return const MyNestedScrollView();
           });
     },
-    'MyAnim': (RouteSettings settings, String? uniqueId) {
+    'MyAnimation': (RouteSettings settings, String? uniqueId) {
       return CupertinoPageRoute(
           settings: settings,
           builder: (_) {
@@ -288,11 +288,11 @@ class _MyAppState extends State<MyApp> {
             return const MyStreamBuilder();
           });
     },
-    'MyCustomPaint': (RouteSettings settings, String? uniqueId) {
+    'MyPaint': (RouteSettings settings, String? uniqueId) {
       return CupertinoPageRoute(
           settings: settings,
           builder: (_) {
-            return const MyCustomPaint();
+            return const MyPaint();
           });
     },
     'MySharedPreferences': (RouteSettings settings, String? uniqueId) {

@@ -7,33 +7,35 @@ class MyDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Flutter Dialog demo',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Flutter Dialog demo'),
-        ),
-        body: const Center(child: DialogRoute()),
-      ),
+      home: DialogRoute(title: 'Flutter Dialog demo'),
     );
   }
 }
 
 class DialogRoute extends StatelessWidget {
-  const DialogRoute({super.key});
+  const DialogRoute({super.key, required this.title});
+
+  final String title;
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: 6,
-      itemExtent: 50.0, // 列表项高度
-      //列表项构造器
-      itemBuilder: (BuildContext context, int index) {
-        return ListTile(
-          title: Text("$index"),
-          onTap: () => _showDialog(context, index),
-        );
-      },
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(title),
+      ),
+      body: ListView.builder(
+        itemCount: 6,
+        itemExtent: 50.0, // 列表项高度
+        //列表项构造器
+        itemBuilder: (BuildContext context, int index) {
+          return ListTile(
+            title: Text("$index"),
+            onTap: () => _showDialog(context, index),
+          );
+        },
+      ),
     );
   }
 

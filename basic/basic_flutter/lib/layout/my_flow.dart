@@ -8,10 +8,10 @@ class MyFlow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter layout demo',
+      title: 'Flutter Flow demo',
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Flutter layout demo'),
+          title: const Text('Flutter Flow demo'),
         ),
         body: const Center(child: FlowRoute()),
       ),

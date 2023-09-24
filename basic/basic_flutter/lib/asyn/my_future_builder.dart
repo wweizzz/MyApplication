@@ -6,20 +6,17 @@ class MyFutureBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Flutter FutureBuilder demo',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Flutter FutureBuilder demo'),
-        ),
-        body: const Center(child: FutureRoute()),
-      ),
+      home: FutureRoute(title: 'Flutter FutureBuilder demo'),
     );
   }
 }
 
 class FutureRoute extends StatelessWidget {
-  const FutureRoute({super.key});
+  const FutureRoute({super.key, required this.title});
+
+  final String title;
 
   Future<String> mockNetworkData() async {
     return Future.delayed(
@@ -28,21 +25,25 @@ class FutureRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: FutureBuilder<String>(
-        future: mockNetworkData(),
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            if (snapshot.hasError) {
-              return Text("Error: ${snapshot.error}");
-            } else {
-              return Text("Contents: ${snapshot.data}");
-            }
-          } else {
-            return const CircularProgressIndicator();
-          }
-        },
-      ),
-    );
+    return Scaffold(
+        appBar: AppBar(
+          title: Text(title),
+        ),
+        body: Center(
+          child: FutureBuilder<String>(
+            future: mockNetworkData(),
+            builder: (BuildContext context, AsyncSnapshot snapshot) {
+              if (snapshot.connectionState == ConnectionState.done) {
+                if (snapshot.hasError) {
+                  return Text("Error: ${snapshot.error}");
+                } else {
+                  return Text("Contents: ${snapshot.data}");
+                }
+              } else {
+                return const CircularProgressIndicator();
+              }
+            },
+          ),
+        ));
   }
 }

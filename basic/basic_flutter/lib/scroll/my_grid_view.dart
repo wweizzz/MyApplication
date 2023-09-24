@@ -6,15 +6,30 @@ class MyGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter layout demo',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Flutter layout demo'),
-        ),
-        body: const Center(child: GridViewRoute1()),
-      ),
+    return const MaterialApp(
+      title: 'Flutter GridView demo',
+      home: GridViewRoute(title: 'Flutter GridView demo'),
     );
+  }
+}
+
+class GridViewRoute extends StatelessWidget {
+  const GridViewRoute({super.key, required this.title});
+
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(title),
+      ),
+      body: getBody(),
+    );
+  }
+
+  Widget getBody() {
+    return const InfiniteGridViewRoute();
   }
 }
 
@@ -23,8 +38,34 @@ class GridViewRoute1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return GridView.count(
+      crossAxisCount: 2, // 横轴item的个数
+      childAspectRatio: 1.0,
+      children: <Widget>[
+        Image.asset('images/pic1.jpg'),
+        Image.asset('images/pic2.jpg'),
+        Image.asset('images/pic3.jpg'),
+        Image.asset('images/pic4.jpg'),
+        Image.asset('images/pic5.jpg'),
+        Image.asset('images/pic6.jpg'),
+        Image.asset('images/pic7.jpg'),
+        Image.asset('images/pic8.jpg'),
+        Image.asset('images/pic9.jpg'),
+        Image.asset('images/pic10.jpg'),
+        Image.asset('images/pic11.jpg'),
+        Image.asset('images/pic12.jpg'),
+      ],
+    );
+  }
+}
+
+class GridViewRoute2 extends StatelessWidget {
+  const GridViewRoute2({super.key});
+
+  @override
+  Widget build(BuildContext context) {
     return GridView.extent(
-      maxCrossAxisExtent: 100.0, // 子元素在横轴上的最大宽度
+      maxCrossAxisExtent: 100.0, // 横轴item的最大宽度
       childAspectRatio: 1.0,
       children: <Widget>[
         Image.asset('images/pic1.jpg'),
@@ -45,14 +86,14 @@ class GridViewRoute1 extends StatelessWidget {
 }
 
 /// GridView.builder
-class InfiniteGridView extends StatefulWidget {
-  const InfiniteGridView({super.key});
+class InfiniteGridViewRoute extends StatefulWidget {
+  const InfiniteGridViewRoute({super.key});
 
   @override
-  State<InfiniteGridView> createState() => _InfiniteGridViewState();
+  State<InfiniteGridViewRoute> createState() => _InfiniteGridViewRouteState();
 }
 
-class _InfiniteGridViewState extends State<InfiniteGridView> {
+class _InfiniteGridViewRouteState extends State<InfiniteGridViewRoute> {
   final List<String> _icons = [];
 
   /// SliverGridDelegateWithFixedCrossAxisCount 横轴为固定数量子元素

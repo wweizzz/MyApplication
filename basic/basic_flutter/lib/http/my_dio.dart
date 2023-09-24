@@ -7,20 +7,17 @@ class MyDio extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Flutter Dio demo',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Flutter Dio Example'),
-        ),
-        body: const DioRoute(),
-      ),
+      home: DioRoute(title: 'Flutter Dio Example'),
     );
   }
 }
 
 class DioRoute extends StatefulWidget {
-  const DioRoute({super.key});
+  const DioRoute({super.key, required this.title});
+
+  final String title;
 
   @override
   State<DioRoute> createState() => _DioRouteState();
@@ -49,6 +46,9 @@ class _DioRouteState extends State<DioRoute> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

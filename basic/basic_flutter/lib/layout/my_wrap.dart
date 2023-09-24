@@ -7,10 +7,10 @@ class MyWrap extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter layout demo',
+      title: 'Flutter Wrap demo',
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Flutter layout demo'),
+          title: const Text('Flutter Wrap demo'),
         ),
         body: const Center(child: WrapRoute()),
       ),

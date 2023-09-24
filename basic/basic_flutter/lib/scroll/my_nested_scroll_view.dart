@@ -7,19 +7,15 @@ class MyNestedScrollView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-        title: 'Flutter layout demo',
-        // home: Scaffold(
-        //   appBar: AppBar(
-        //     title: const Text('Flutter layout demo'),
-        //   ),
-        //   body: const Center(child: CustomScrollViewRoute()),
-        // ),
-        home: NestedScrollViewRoute());
+        title: 'Flutter NestedScrollView demo',
+        home: NestedScrollViewRoute(title: 'Flutter NestedScrollView demo'));
   }
 }
 
 class NestedScrollViewRoute extends StatelessWidget {
-  const NestedScrollViewRoute({super.key});
+  const NestedScrollViewRoute({super.key, required this.title});
+
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +27,7 @@ class NestedScrollViewRoute extends StatelessWidget {
               pinned: true,
               expandedHeight: 200.0,
               flexibleSpace: FlexibleSpaceBar(
-                title: const Text('Flutter layout demo'),
+                title: Text(title),
                 background: Image.asset(
                   'images/pic1.jpg',
                   fit: BoxFit.cover,

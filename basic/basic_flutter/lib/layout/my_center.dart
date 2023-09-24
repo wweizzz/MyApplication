@@ -6,10 +6,10 @@ class MyCenter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter layout demo',
+      title: 'Flutter Center demo',
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Flutter layout demo'),
+          title: const Text('Flutter Center demo'),
         ),
         body: const Center(child: CenterRoute()),
       ),

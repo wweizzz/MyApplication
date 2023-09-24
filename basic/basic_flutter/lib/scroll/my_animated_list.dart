@@ -7,20 +7,17 @@ class MyAnimatedList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter layout demo',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Flutter layout demo'),
-        ),
-        body: const Center(child: AnimatedListRoute()),
-      ),
+    return const MaterialApp(
+      title: 'Flutter AnimatedList demo',
+      home: AnimatedListRoute(title: 'Flutter AnimatedList demo'),
     );
   }
 }
 
 class AnimatedListRoute extends StatefulWidget {
-  const AnimatedListRoute({Key? key}) : super(key: key);
+  const AnimatedListRoute({Key? key, required this.title}) : super(key: key);
+
+  final String title;
 
   @override
   State<AnimatedListRoute> createState() => _AnimatedListRouteState();
@@ -43,23 +40,22 @@ class _AnimatedListRouteState extends State<AnimatedListRoute> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          AnimatedList(
-            key: globalKey,
-            initialItemCount: data.length,
-            itemBuilder: (
-              BuildContext context,
-              int index,
-              Animation<double> animation,
-            ) {
-              return FadeTransition(
-                opacity: animation,
-                child: buildItem(context, index),
-              );
-            },
-          ),
-        ],
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body: AnimatedList(
+        key: globalKey,
+        initialItemCount: data.length,
+        itemBuilder: (
+          BuildContext context,
+          int index,
+          Animation<double> animation,
+        ) {
+          return FadeTransition(
+            opacity: animation,
+            child: buildItem(context, index),
+          );
+        },
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _add,

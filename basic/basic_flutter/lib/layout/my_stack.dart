@@ -6,10 +6,10 @@ class MyStack extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter layout demo',
+      title: 'Flutter Stack demo',
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Flutter layout demo'),
+          title: const Text('Flutter Stack demo'),
         ),
         body: const Center(child: StackRoute()),
       ),

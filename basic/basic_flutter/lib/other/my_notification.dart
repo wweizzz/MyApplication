@@ -6,20 +6,17 @@ class MyNotification extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Flutter Notification demo',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Flutter Notification demo'),
-        ),
-        body: const Center(child: NotificationRoute()),
-      ),
+      home: NotificationRoute(title: 'Flutter Notification demo'),
     );
   }
 }
 
 class NotificationRoute extends StatefulWidget {
-  const NotificationRoute({super.key});
+  const NotificationRoute({super.key, required this.title});
+
+  final String title;
 
   @override
   State<NotificationRoute> createState() => _NotificationRouteState();
@@ -46,6 +43,9 @@ class _NotificationRouteState extends State<NotificationRoute> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
       body: const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
