@@ -23,6 +23,7 @@ import 'package:basic_flutter/other/my_dialog.dart';
 import 'package:basic_flutter/other/my_gesture_detector.dart';
 import 'package:basic_flutter/other/my_will_pop.dart';
 import 'package:basic_flutter/page/my_counter.dart';
+import 'package:basic_flutter/screenutil/my_screenutil.dart';
 import 'package:basic_flutter/scroll/my_animated_list.dart';
 import 'package:basic_flutter/scroll/my_custom_scroll_view.dart';
 import 'package:basic_flutter/scroll/my_grid_view.dart';
@@ -328,6 +329,13 @@ class _MyAppState extends State<MyApp> {
           settings: settings,
           builder: (_) {
             return const MyGetX2();
+          });
+    },
+    'MyScreenUtil': (RouteSettings settings, String? uniqueId) {
+      return CupertinoPageRoute(
+          settings: settings,
+          builder: (_) {
+            return const MyScreenUtil();
           });
     },
   };

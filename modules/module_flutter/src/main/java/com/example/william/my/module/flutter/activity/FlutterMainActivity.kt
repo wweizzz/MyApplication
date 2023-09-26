@@ -48,6 +48,7 @@ class FlutterMainActivity : BasicRecyclerActivity() {
             "MyIsolate",
             "MyGetX",
             "MyGetX2",
+            "MyScreenUtil",
         )
     }
 
