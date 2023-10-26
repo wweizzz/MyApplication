@@ -75,6 +75,10 @@ gradlePluginProtobuf = "0.9.4"
 gradlePluginGreenDao = "3.3.1"
 gradlePluginObjectBox = "3.7.0"
 gradlePluginHilt = "2.44"
+#
+androidxComposeBom = "2023.03.00"
+androidxComposeActivity = "1.7.0"
+androidxComposeViewModel = "2.6.1"
 # ##################################################################################################
 [libraries]
 #
@@ -139,6 +143,25 @@ androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation
 # https://developer.android.google.cn/training/dependency-injection/hilt-android
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "androidxHilt" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "androidxHilt" }
+# ##################################################################################################
+# https://developer.android.google.cn/jetpack/compose/bom
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidxComposeBom" }
+androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation" }
+androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-compose-ui = { group = "androidx.compose.ui", name = "ui" }
+androidx-compose-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+# Optional - Integration with activities
+androidx-compose-activity = { group = "androidx.activity", name = "activity-compose", version.ref = "androidxComposeActivity" }
+# Optional - Integration with ViewModels
+androidx-compose-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "androidxComposeViewModel" }
+# Optional - Integration with LiveData
+androidx-compose-livedata = { group = "androidx.compose.runtime", name = "runtime-livedata" }
+# Optional - Integration with RxJava
+androidx-compose-rxjava2 = { group = "androidx.compose.runtime", name = "runtime-rxjava2" }
 # ##################################################################################################
 # https://github.com/Tencent/MMKV
 mmkv = { group = "com.tencent", name = "mmkv-static", version.ref = "mmkv" }

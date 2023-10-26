@@ -153,6 +153,10 @@ object ARouterPath {
         const val Mavericks = "/module_arch/Mavericks"
     }
 
+    object Compose {
+        const val Main = "/module_compose/compose_main"
+    }
+
     object Flutter {
         const val Main = "/module_flutter/flutter_main"
     }

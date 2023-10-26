@@ -30,6 +30,7 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
                 add("implementation", project(":modules:module_opensource"))
                 add("implementation", project(":modules:module_sample"))
                 add("implementation", project(":modules:module_utils"))
+                add("implementation", project(":modules:module_compose"))
             }
         }
     }
