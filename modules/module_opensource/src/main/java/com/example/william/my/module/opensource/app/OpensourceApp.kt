@@ -11,5 +11,7 @@ class OpensourceApp : BaseAppInit() {
 
         Greendao.init(app)
         ObjectBox.init(app)
+
+        System.loadLibrary("msaoaidsec") // TODO （3）SDK初始化操作
     }
 }

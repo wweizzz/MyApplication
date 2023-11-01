@@ -28,6 +28,8 @@ class OpensourceActivity : RouterRecyclerActivity() {
         routerItems.add(RouterItem("GreenDao", ARouterPath.Opensource.GreenDao))
         routerItems.add(RouterItem("ObjectBox", ARouterPath.Opensource.ObjectBox))
         routerItems.add(RouterItem("PermissionX", ARouterPath.Opensource.PermissionX))
+        routerItems.add(RouterItem(" ", ""))
+        routerItems.add(RouterItem("OAID", ARouterPath.Opensource.OAID))
         return routerItems
     }
 }

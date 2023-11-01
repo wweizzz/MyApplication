@@ -49,6 +49,8 @@ dependencies {
     implementation(libs.loadsir)
     implementation(libs.greendao)
     implementation(libs.objectbox)
+
+    implementation(files("lib/oaid_sdk_2.1.0.aar"))
 }
 
 // https://github.com/greenrobot/greenDAO/issues/1110

@@ -124,6 +124,8 @@ object ARouterPath {
         const val PermissionX = "/module_opensource/PermissionX"
         const val GreenDao = "/module_opensource/GreenDao"
         const val ObjectBox = "/module_opensource/ObjectBox"
+
+        const val OAID = "/module_opensource/oaid"
     }
 
     object Sample {

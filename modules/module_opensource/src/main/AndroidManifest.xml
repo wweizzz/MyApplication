@@ -21,6 +21,8 @@
         <activity android:name=".activity2.GreenDaoActivity" />
         <activity android:name=".activity2.ObjectBoxActivity" />
         <activity android:name=".activity2.PermissionXActivity" />
+
+        <activity android:name=".oaid.OAIDActivity" />
     </application>
 
 </manifest>
