@@ -25,14 +25,14 @@ class FragmentActivity1 : BaseVBActivity<DemoActivityFragment1Binding>(),
 
     private var mTransaction: FragmentTransaction? = null
 
-    private val mTabs: ArrayList<TextView> = arrayListOf()
-
     private val mTitles: ArrayList<String> = arrayListOf(
         "primary1",
         "primaryDark1",
         "primary2",
         "primaryDark2",
     )
+
+    private val mTabs: ArrayList<TextView> = arrayListOf()
 
     private val mFragments: ArrayList<Fragment> = arrayListOf(
         PrimaryFragment(),
@@ -46,10 +46,25 @@ class FragmentActivity1 : BaseVBActivity<DemoActivityFragment1Binding>(),
     override fun initView(savedInstanceState: Bundle?) {
         super.initView(savedInstanceState)
 
+        initTab()
         initFragment(savedInstanceState)
-        initFragmentTab()
+        switchTab(0)
         switchFragment(0)
-        switchFragmentTab(0)
+    }
+
+    private fun initTab() {
+        for (i in 0 until mBinding.navigate.childCount) {
+            val textView: TextView = mBinding.navigate.getChildAt(i) as TextView
+            textView.text = mTitles[i]
+            textView.setOnClickListener(this)
+            textView.setTextColor(
+                ContextCompat.getColorStateList(
+                    this,
+                    R.color.demo_selector_select_primary_dark
+                )
+            )
+            mTabs.add(textView)
+        }
     }
 
     private fun initFragment(savedInstanceState: Bundle?) {
@@ -80,28 +95,18 @@ class FragmentActivity1 : BaseVBActivity<DemoActivityFragment1Binding>(),
         }
     }
 
-    private fun initFragmentTab() {
-        for (i in 0 until mBinding.navigate.childCount) {
-            val textView: TextView = mBinding.navigate.getChildAt(i) as TextView
-            textView.text = mTitles[i]
-            textView.setOnClickListener(this)
-            textView.setTextColor(
-                ContextCompat.getColorStateList(
-                    this,
-                    R.color.demo_selector_select_primary_dark
-                )
-            )
-            mTabs.add(textView)
-        }
-    }
-
-
     override fun onClick(v: View) {
         for (i in 0 until mBinding.navigate.childCount) {
             if (mBinding.navigate.getChildAt(i).id == v.id) {
+                switchTab(i)
                 switchFragment(i)
-                switchFragmentTab(i)
             }
+        }
+    }
+
+    private fun switchTab(position: Int) {
+        for (i in 0 until mTabs.size) {
+            mTabs[i].isSelected = i == position
         }
     }
 
@@ -122,11 +127,5 @@ class FragmentActivity1 : BaseVBActivity<DemoActivityFragment1Binding>(),
             }
         }
         mTransaction?.commitAllowingStateLoss()
-    }
-
-    private fun switchFragmentTab(position: Int) {
-        for (i in 0 until mTabs.size) {
-            mTabs[i].isSelected = i == position
-        }
     }
 }

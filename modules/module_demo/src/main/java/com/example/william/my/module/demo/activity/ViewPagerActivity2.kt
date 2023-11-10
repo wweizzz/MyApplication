@@ -37,7 +37,7 @@ class ViewPagerActivity2 : BaseVBActivity<DemoActivityViewPager2Binding>() {
         PrimaryDarkFragment(),
     )
 
-    private val mARouterFragments = arrayOf(
+    private val mARouterFragments: ArrayList<Fragment> = arrayListOf(
         ARouter.getInstance().build(
             ARouterPath.Fragment.FragmentPrimary
         ).navigation() as Fragment,

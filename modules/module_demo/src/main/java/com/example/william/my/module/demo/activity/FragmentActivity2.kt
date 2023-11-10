@@ -25,14 +25,14 @@ class FragmentActivity2 : BaseVBActivity<DemoActivityFragment2Binding>(),
 
     private var mTransaction: FragmentTransaction? = null
 
-    private val mTabs: ArrayList<RadioButton> = arrayListOf()
-
     private val mTitles: ArrayList<String> = arrayListOf(
         "primary1",
         "primaryDark1",
         "primary2",
         "primaryDark2",
     )
+
+    private val mTabs: ArrayList<RadioButton> = arrayListOf()
 
     private val mFragments: ArrayList<Fragment> = arrayListOf(
         PrimaryFragment(),
@@ -46,10 +46,25 @@ class FragmentActivity2 : BaseVBActivity<DemoActivityFragment2Binding>(),
     override fun initView(savedInstanceState: Bundle?) {
         super.initView(savedInstanceState)
 
+        initTab()
         initFragment(savedInstanceState)
-        initFragmentTab()
+        switchTab(0)
         switchFragment(0)
-        switchFragmentTab(0)
+    }
+
+    private fun initTab() {
+        mBinding.navigate.setOnCheckedChangeListener(this)
+        for (i in 0 until mBinding.navigate.childCount) {
+            val radioButton: RadioButton = mBinding.navigate.getChildAt(i) as RadioButton
+            radioButton.text = mTitles[i]
+            radioButton.setTextColor(
+                ContextCompat.getColorStateList(
+                    this,
+                    R.color.demo_selector_check_primary_dark
+                )
+            )
+            mTabs.add(radioButton)
+        }
     }
 
     private fun initFragment(savedInstanceState: Bundle?) {
@@ -80,28 +95,20 @@ class FragmentActivity2 : BaseVBActivity<DemoActivityFragment2Binding>(),
         }
     }
 
-    private fun initFragmentTab() {
-        mBinding.navigate.setOnCheckedChangeListener(this)
-        for (i in 0 until mBinding.navigate.childCount) {
-            val radioButton: RadioButton = mBinding.navigate.getChildAt(i) as RadioButton
-            radioButton.text = mTitles[i]
-            radioButton.setTextColor(
-                ContextCompat.getColorStateList(
-                    this,
-                    R.color.demo_selector_check_primary_dark
-                )
-            )
-            mTabs.add(radioButton)
-        }
-    }
-
     override fun onCheckedChanged(group: RadioGroup, checkedId: Int) {
         for (i in 0 until mBinding.navigate.childCount) {
             if (mBinding.navigate.getChildAt(i).id == checkedId) {
+                switchTab(i)
                 switchFragment(i)
-                switchFragmentTab(i)
             }
         }
+    }
+
+    private fun switchTab(position: Int) {
+        //for (i in 0 until mTabs.size) {
+        //    mTabs[i].isSelected = i == position
+        //}
+        mBinding.navigate.check(mTabs[position].id)
     }
 
     private fun switchFragment(position: Int) {
@@ -121,12 +128,5 @@ class FragmentActivity2 : BaseVBActivity<DemoActivityFragment2Binding>(),
             }
         }
         mTransaction?.commitAllowingStateLoss()
-    }
-
-    private fun switchFragmentTab(position: Int) {
-        //for (i in 0 until mTabs.size) {
-        //    mTabs[i].isSelected = i == position
-        //}
-        mBinding.navigate.check(mTabs[position].id)
     }
 }

@@ -17,8 +17,9 @@ abstract class BasicResponseActivity : BaseActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
     }
 
-    override fun initOnClick() {
-        super.initOnClick()
+
+    override fun initView() {
+        super.initView()
 
         mBinding.basicsResponse.setOnClickListener(this)
     }

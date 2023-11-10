@@ -24,7 +24,7 @@ androidxRoom = "2.5.2"
 androidxNavigation = "2.5.3"
 androidxHilt = "2.44"
 # ##################################################################################################
-mmkv = "1.2.14"
+mmkv = "1.3.2"
 utils = "1.31.1"
 permission = "1.7.1"
 arouter = "1.5.2"
@@ -60,7 +60,7 @@ banner = "2.2.2"
 citypicker = "2.0.3"
 countdownview = "2.1.6"
 easyfloat = "2.0.4"
-tablayout = "2.2.0"
+tablayout = "3.0.0"
 photoview = "2.3.0"
 pickerview = "4.1.9"
 popwindow = "2.1.1"
@@ -102,7 +102,7 @@ google-flexBox = { group = "com.google.android.flexbox", name = "flexbox", versi
 androidx-appCompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidxAppCompat" }
 androidx-constraintLayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "androidxConstraintLayout" }
 androidx-recyclerView = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "androidxRecyclerView" }
-androidx-viewpager2 = { group = "androidx.viewpager2", name = "viewpager2", version.ref = "androidxViewPager2" }
+androidx-viewPager2 = { group = "androidx.viewpager2", name = "viewpager2", version.ref = "androidxViewPager2" }
 # ##################################################################################################
 # https://developer.android.google.cn/kotlin/ktx
 # https://developer.android.google.cn/jetpack/androidx/releases/core
@@ -167,7 +167,7 @@ androidx-compose-livedata = { group = "androidx.compose.runtime", name = "runtim
 androidx-compose-rxjava2 = { group = "androidx.compose.runtime", name = "runtime-rxjava2" }
 # ##################################################################################################
 # https://github.com/Tencent/MMKV
-mmkv = { group = "com.tencent", name = "mmkv-static", version.ref = "mmkv" }
+mmkv = { group = "com.tencent", name = "mmkv", version.ref = "mmkv" }
 # https://github.com/Blankj/AndroidUtilCode
 utils = { group = "com.blankj", name = "utilcodex", version.ref = "utils" }
 # https://github.com/guolindev/PermissionX
@@ -248,7 +248,7 @@ countdownview = { group = "com.github.iwgang", name = "countdownview", version.r
 # https://github.com/princekin-f/EasyFloat
 easyfloat = { group = "com.github.princekin-f", name = "EasyFloat", version.ref = "easyfloat" }
 # https://github.com/H07000223/FlycoTabLayout
-tablayout = { group = "com.flyco.tablayout", name = "FlycoTabLayout_Lib", version.ref = "tablayout" }
+tablayout = { group = "io.github.h07000223", name = "flycoTabLayout", version.ref = "tablayout" }
 # https://github.com/chrisbanes/PhotoView
 photoview = { group = "com.github.chrisbanes", name = "PhotoView", version.ref = "photoview" }
 # https://github.com/Bigkoo/Android-PickerView

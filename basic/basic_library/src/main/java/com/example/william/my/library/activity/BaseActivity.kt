@@ -20,8 +20,6 @@ open class BaseActivity : AppCompatActivity() {
 
         initViewModel()
         observeViewModel()
-
-        initOnClick()
     }
 
     open fun initView(savedInstanceState: Bundle?) {
@@ -37,10 +35,6 @@ open class BaseActivity : AppCompatActivity() {
     }
 
     open fun observeViewModel() {
-
-    }
-
-    open fun initOnClick() {
 
     }
 

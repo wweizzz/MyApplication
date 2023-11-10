@@ -26,15 +26,15 @@ class TransitionFirstActivity : BaseVBActivity<DemoActivityTransitionFirstBindin
         super.initView()
 
         initIntent()
+
+        initOnClick()
     }
 
     private fun initIntent() {
         mIntent = Intent(this, TransitionSecondActivity::class.java)
     }
 
-    override fun initOnClick() {
-        super.initOnClick()
-
+    private fun initOnClick() {
         mBinding.transitionExplode.setOnClickListener(this)
         mBinding.transitionSlide.setOnClickListener(this)
         mBinding.transitionFade.setOnClickListener(this)

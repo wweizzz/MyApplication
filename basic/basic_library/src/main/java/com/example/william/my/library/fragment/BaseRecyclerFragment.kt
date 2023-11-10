@@ -24,8 +24,8 @@ abstract class BaseRecyclerFragment<T : Any> : BaseVBFragment<BaseFragmentRecycl
     protected var page: Int = 0
     protected var canRefresh = true
 
-    protected val onScrollListener: RecyclerView.OnScrollListener? = null
-    protected val itemDecoration: RecyclerView.ItemDecoration? = null
+    protected var onScrollListener: RecyclerView.OnScrollListener? = null
+    protected var itemDecoration: RecyclerView.ItemDecoration? = null
 
     protected lateinit var adapter: BaseQuickAdapter<T, QuickViewHolder>
     protected lateinit var manager: RecyclerView.LayoutManager
@@ -48,11 +48,13 @@ abstract class BaseRecyclerFragment<T : Any> : BaseVBFragment<BaseFragmentRecycl
 
         mBinding.recyclerView.isNestedScrollingEnabled = true
 
+        onScrollListener = initOnScrollListener()
         onScrollListener?.let {
-            mBinding.recyclerView.addOnScrollListener(onScrollListener)
+            mBinding.recyclerView.addOnScrollListener(it)
         }
+        itemDecoration = initItemDecoration()
         itemDecoration?.let {
-            mBinding.recyclerView.addItemDecoration(itemDecoration)
+            mBinding.recyclerView.addItemDecoration(it)
         }
         adapter = initRecyclerAdapter()
         adapter.let {
@@ -66,6 +68,14 @@ abstract class BaseRecyclerFragment<T : Any> : BaseVBFragment<BaseFragmentRecycl
 
         // 是否使用空布局（默认 false）
         adapter.isStateViewEnable = true
+    }
+
+    open fun initOnScrollListener(): RecyclerView.OnScrollListener? {
+        return null
+    }
+
+    open fun initItemDecoration(): RecyclerView.ItemDecoration? {
+        return null
     }
 
     protected abstract fun initRecyclerAdapter(): BaseQuickAdapter<T, QuickViewHolder>

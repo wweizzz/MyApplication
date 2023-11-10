@@ -12,15 +12,16 @@ class HookActivity : BasicResponseActivity() {
         super.initView()
 
         setTag()
+
+        setHook()
     }
 
     private fun setTag() {
         HookManager.setViewTag(mBinding.basicsResponse, "name", "hook")
     }
 
-    override fun initOnClick() {
-        super.initOnClick()
-
+    private fun setHook() {
         HookManager.hookOnClick(this, mBinding.basicsResponse)
     }
+
 }

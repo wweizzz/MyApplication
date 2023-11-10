@@ -18,8 +18,8 @@ abstract class BasicImageActivity : BaseActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
     }
 
-    override fun initOnClick() {
-        super.initOnClick()
+    override fun initView() {
+        super.initView()
 
         mBinding.basicsImage.setOnClickListener(this)
     }

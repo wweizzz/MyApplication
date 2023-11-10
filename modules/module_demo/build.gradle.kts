@@ -11,6 +11,6 @@ android {
 dependencies {
     implementation(libs.google.material)
     implementation(libs.google.flexBox)
-    implementation(libs.androidx.viewpager2)
+    implementation(libs.androidx.viewPager2)
     implementation(project(":libs:lib_widget"))
 }
