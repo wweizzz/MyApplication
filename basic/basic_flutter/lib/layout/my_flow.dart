@@ -13,7 +13,7 @@ class MyFlow extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Flutter Flow demo'),
         ),
-        body: const Center(child: FlowRoute()),
+        body: const FlowRoute(),
       ),
     );
   }
@@ -32,7 +32,7 @@ class FlowRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Flow(
-      delegate: MyFlowDelegate(margin: const EdgeInsets.all(10.0)),
+      delegate: MyFlowDelegate(margin: const EdgeInsets.all(0)),
       children: <Widget>[
         Image.asset('images/pic1.jpg', width: 100, height: 100),
         Image.asset('images/pic2.jpg', width: 100, height: 100),
@@ -40,6 +40,8 @@ class FlowRoute extends StatelessWidget {
         Image.asset('images/pic4.jpg', width: 100, height: 100),
         Image.asset('images/pic5.jpg', width: 100, height: 100),
         Image.asset('images/pic6.jpg', width: 100, height: 100),
+        Image.asset('images/pic7.jpg', width: 100, height: 100),
+        Image.asset('images/pic8.jpg', width: 100, height: 100),
       ],
     );
   }

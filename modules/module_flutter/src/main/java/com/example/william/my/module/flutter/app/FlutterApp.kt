@@ -2,7 +2,7 @@ package com.example.william.my.module.flutter.app
 
 import android.content.Intent
 import com.example.william.my.library.app.BaseAppInit
-import com.example.william.my.module.flutter.activity.FlutterMainActivity
+import com.example.william.my.module.flutter.FlutterMainActivity
 import com.idlefish.flutterboost.FlutterBoost
 import com.idlefish.flutterboost.FlutterBoostDelegate
 import com.idlefish.flutterboost.FlutterBoostRouteOptions

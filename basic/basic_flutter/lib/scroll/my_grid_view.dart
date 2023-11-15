@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-///GridView
+/// GridView
 class MyGridView extends StatelessWidget {
   const MyGridView({super.key});
 
@@ -33,6 +33,8 @@ class GridViewRoute extends StatelessWidget {
   }
 }
 
+/// GridView.count
+/// SliverGridDelegateWithFixedCrossAxisCount 横轴为固定数量子元素
 class GridViewRoute1 extends StatelessWidget {
   const GridViewRoute1({super.key});
 
@@ -59,6 +61,8 @@ class GridViewRoute1 extends StatelessWidget {
   }
 }
 
+/// GridView.extent
+/// SliverGridDelegateWithMaxCrossAxisExtent 横轴子元素为固定最大长度
 class GridViewRoute2 extends StatelessWidget {
   const GridViewRoute2({super.key});
 
@@ -97,13 +101,13 @@ class _InfiniteGridViewRouteState extends State<InfiniteGridViewRoute> {
   final List<String> _icons = [];
 
   /// SliverGridDelegateWithFixedCrossAxisCount 横轴为固定数量子元素
-  var gridDelegate1 = const SliverGridDelegateWithFixedCrossAxisCount(
+  var gridCountDelegate = const SliverGridDelegateWithFixedCrossAxisCount(
     crossAxisCount: 2, //每行三列
     childAspectRatio: 1.0, //宽高比为1
   );
 
   /// SliverGridDelegateWithMaxCrossAxisExtent 横轴子元素为固定最大长度
-  var gridDelegate2 = const SliverGridDelegateWithMaxCrossAxisExtent(
+  var gridExtentDelegate = const SliverGridDelegateWithMaxCrossAxisExtent(
       maxCrossAxisExtent: 100.0, // 子元素在横轴上的最大宽度
       childAspectRatio: 1.0 //宽高比为1
       );
@@ -118,14 +122,11 @@ class _InfiniteGridViewRouteState extends State<InfiniteGridViewRoute> {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-      gridDelegate: gridDelegate2,
       itemCount: _icons.length,
+      gridDelegate: gridExtentDelegate,
+      //列表项构造器
       itemBuilder: (context, index) {
-        //如果显示到最后一个并且Icon总数小于200时继续获取数据
-        if (_icons.length < 200) {
-          _retrieveIcons();
-        }
-        return Image.asset(_icons[index]);
+        return _itemBuilder(index);
       },
     );
   }
@@ -150,5 +151,13 @@ class _InfiniteGridViewRouteState extends State<InfiniteGridViewRoute> {
         ]);
       });
     });
+  }
+
+  Widget _itemBuilder(int index) {
+    //如果显示到最后一个并且Icon总数小于200时继续获取数据
+    if (_icons.length < 200) {
+      _retrieveIcons();
+    }
+    return Image.asset(_icons[index]);
   }
 }

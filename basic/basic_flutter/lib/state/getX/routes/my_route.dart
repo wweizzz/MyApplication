@@ -1,7 +1,7 @@
-import 'package:basic_flutter/get/error/error_binding.dart';
-import 'package:basic_flutter/get/error/error_view.dart';
-import 'package:basic_flutter/get/my_get_view.dart';
-import 'package:basic_flutter/get/routes/base/base_route.dart';
+import 'package:basic_flutter/state/getX/error/error_binding.dart';
+import 'package:basic_flutter/state/getX/error/error_view.dart';
+import 'package:basic_flutter/state/getX/my_get_view.dart';
+import 'package:basic_flutter/state/getX/routes/base/base_route.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
 class AppRoute extends BaseRoute {

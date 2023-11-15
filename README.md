@@ -41,31 +41,30 @@
 
 * FlutterBoost 框架
 * 布局类组件
-  * ConstrainedBox 和 SizedBox 约束布局
-  * Row 和 Column 线性布局
-  * Flex 弹性布局
-  * Wrap 和 Flow 流式布局
-  * Stack 层叠布局
-  * Align 相对布局
-  * Center 居中布局
-  * LayoutBuilder
-* 可滚动布局
-  * ListView 和 GridView
-  * AnimatedList
+  * 约束布局
+  * 线性布局（Row, Column）
+  * 弹性布局（Flex）
+  * 堆叠布局（Stack）
+  * 流式布局（Wrap, Flow）
+* 容器类组件
+* 可滚动组件
+  * ListView
+  * GridView
+  * SingleChildScrollView
   * PageView
   * TabBarView
-  * SingleChildScrollView
+  * AnimatedList
   * CustomScrollView
   * NestedScrollView
-* 系统组件
-  * Dialog
-  * Toast
-  * Notification
-  * WillPopScope 导航返回拦截
-  * InheritedWidget 数据共享
-  * ValueListenable 数据源监听
-  * FutureBuilder 接收异步事件数据
-  * StreamBuilder 接收异步事件数据
+* 功能型组件
+  * 导航返回拦截（WillPopScope）
+  * 数据共享组件（InheritedWidget）
+  * 数据源监听（ValueListenableBuilder）
+  * 异步UI更新（FutureBuilder、StreamBuilder）
+* 状态管理
+  * [Provider](https://pub.dev/packages/provider)
+  * [GetX](https://pub.dev/packages/get)
+  * [BloC](https://pub.dev/packages/flutter_bloc)
 
 ## modules_network
 

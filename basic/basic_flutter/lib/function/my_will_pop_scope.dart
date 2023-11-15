@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-///WillPopScope 导航返回拦截
-///每个 WillPopScope 仅对当前组件生效，不可在 MaterialApp 上使用。
+/// WillPopScope 导航返回拦截
+/// 每个 WillPopScope 仅对当前组件生效，不可在 MaterialApp 上使用。
 class MyWillPopScope extends StatelessWidget {
   const MyWillPopScope({super.key});
 
@@ -53,12 +53,16 @@ class WillPopScopeRoute extends StatelessWidget {
       appBar: AppBar(
         title: Text(title),
       ),
-      body: WillPopScope(
-        onWillPop: () => _showAlertDialog(context),
-        child: Container(
-          alignment: Alignment.center,
-          child: const Text("WillPopScope"),
-        ),
+      body: getBody(context),
+    );
+  }
+
+  Widget getBody(context) {
+    return WillPopScope(
+      onWillPop: () => _showAlertDialog(context),
+      child: Container(
+        alignment: Alignment.center,
+        child: const Text("WillPopScope"),
       ),
     );
   }

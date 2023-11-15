@@ -2,7 +2,7 @@ import 'package:basic_flutter/common/keep_alive.dart';
 import 'package:basic_flutter/common/log.dart';
 import 'package:flutter/material.dart';
 
-///PageView
+/// PageView
 class MyPageView extends StatelessWidget {
   const MyPageView({super.key});
 
@@ -33,10 +33,14 @@ class PageViewRoute extends StatelessWidget {
       appBar: AppBar(
         title: Text(title),
       ),
-      body: PageView(
-        // scrollDirection: Axis.vertical, // 滑动方向为垂直方向
-        children: children,
-      ),
+      body: getBody(children),
+    );
+  }
+
+  Widget getBody(children) {
+    return PageView(
+      // scrollDirection: Axis.vertical, // 滑动方向为垂直方向
+      children: children,
     );
   }
 }

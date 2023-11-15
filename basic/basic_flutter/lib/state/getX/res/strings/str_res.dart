@@ -1,5 +1,5 @@
-import 'package:basic_flutter/get/res/strings/str_res_keys_en.dart';
-import 'package:basic_flutter/get/res/strings/str_res_keys_zh.dart';
+import 'package:basic_flutter/state/getX/res/strings/str_res_keys_en.dart';
+import 'package:basic_flutter/state/getX/res/strings/str_res_keys_zh.dart';
 import 'package:get/get.dart';
 
 class MyTranslations extends Translations {

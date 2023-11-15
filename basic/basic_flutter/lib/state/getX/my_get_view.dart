@@ -1,9 +1,9 @@
 import 'package:basic_flutter/common/log.dart';
-import 'package:basic_flutter/get/my_get_binding.dart';
-import 'package:basic_flutter/get/my_get_logic.dart';
-import 'package:basic_flutter/get/res/strings/str_res.dart';
-import 'package:basic_flutter/get/res/strings/str_res_keys.dart';
-import 'package:basic_flutter/get/routes/my_route.dart';
+import 'package:basic_flutter/state/getX/my_get_binding.dart';
+import 'package:basic_flutter/state/getX/my_get_logic.dart';
+import 'package:basic_flutter/state/getX/res/strings/str_res.dart';
+import 'package:basic_flutter/state/getX/res/strings/str_res_keys.dart';
+import 'package:basic_flutter/state/getX/routes/my_route.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

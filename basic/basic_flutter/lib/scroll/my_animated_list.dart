@@ -1,7 +1,7 @@
 import 'package:basic_flutter/common/log.dart';
 import 'package:flutter/material.dart';
 
-///AnimatedList
+/// AnimatedList
 class MyAnimatedList extends StatelessWidget {
   const MyAnimatedList({super.key});
 
@@ -43,25 +43,30 @@ class _AnimatedListRouteState extends State<AnimatedListRoute> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: AnimatedList(
-        key: globalKey,
-        initialItemCount: data.length,
-        itemBuilder: (
-          BuildContext context,
-          int index,
-          Animation<double> animation,
-        ) {
-          return FadeTransition(
-            opacity: animation,
-            child: buildItem(context, index),
-          );
-        },
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _add,
-        tooltip: 'add',
-        child: const Icon(Icons.add),
-      ),
+      body: getBody(),
+      floatingActionButton: getFAB(),
+    );
+  }
+
+  Widget getBody() {
+    return AnimatedList(
+      key: globalKey,
+      initialItemCount: data.length,
+      itemBuilder: (context, index, animation) {
+        //添加列表项时会执行 渐显动画
+        return FadeTransition(
+          opacity: animation,
+          child: buildItem(context, index),
+        );
+      },
+    );
+  }
+
+  Widget getFAB() {
+    return FloatingActionButton(
+      onPressed: _add,
+      tooltip: 'add',
+      child: const Icon(Icons.add),
     );
   }
 
@@ -93,11 +98,13 @@ class _AnimatedListRouteState extends State<AnimatedListRoute> {
           var item = buildItem(context, index);
           log('删除 ${data[index]}');
           data.removeAt(index);
+          //删除列表项时会执行 渐隐动画
           return FadeTransition(
             opacity: CurvedAnimation(
               parent: animation,
               curve: const Interval(0.5, 1.0),
             ),
+            //删除列表项时会执行 缩小动画
             child: SizeTransition(
               sizeFactor: animation,
               axisAlignment: 0.0,

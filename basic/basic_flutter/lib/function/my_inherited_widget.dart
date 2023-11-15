@@ -1,7 +1,7 @@
 import 'package:basic_flutter/common/log.dart';
 import 'package:flutter/material.dart';
 
-/// InheritedWidget
+/// InheritedWidget 数据共享
 class MyInheritedWidget extends StatelessWidget {
   const MyInheritedWidget({super.key});
 
@@ -38,23 +38,32 @@ class _InheritedWidgetRouteState extends State<InheritedWidgetRoute> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: ShareDataWidget(
-          data: _counter,
-          child: const Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text('You have pushed the button this many times:'),
-              ShareDataText(),
-            ],
-          ),
+      body: getBody(),
+      floatingActionButton: getFAB(),
+    );
+  }
+
+  /// InheritedWidget
+  Widget getBody() {
+    return Center(
+      child: ShareDataWidget(
+        data: _counter,
+        child: const Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text('You have pushed the button this many times:'),
+            ShareDataText(),
+          ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+    );
+  }
+
+  Widget getFAB() {
+    return FloatingActionButton(
+      onPressed: _incrementCounter,
+      tooltip: 'increment',
+      child: const Icon(Icons.add),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// 线性布局
 class MyRow extends StatelessWidget {
   const MyRow({super.key});
 

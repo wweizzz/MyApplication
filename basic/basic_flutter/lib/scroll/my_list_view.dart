@@ -1,7 +1,7 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 
-///ListView
+/// ListView
 class MyListView extends StatelessWidget {
   const MyListView({super.key});
 
@@ -34,6 +34,7 @@ class ListViewRoute extends StatelessWidget {
   }
 }
 
+/// 默认构造函数
 class ListViewRoute1 extends StatelessWidget {
   const ListViewRoute1({super.key});
 
@@ -71,7 +72,7 @@ class ListViewRoute2 extends StatelessWidget {
       itemExtent: 50.0, // 列表项高度
       prototypeItem: const Text(""), // 列表项原型
       //列表项构造器
-      itemBuilder: (BuildContext context, int index) {
+      itemBuilder: (context, index) {
         return ListTile(title: Text("$index"));
       },
     );
@@ -106,33 +107,7 @@ class _InfiniteListViewState extends State<InfiniteListView> {
       itemCount: _words.length,
       //列表项构造器
       itemBuilder: (context, index) {
-        //显示loading
-        if (_words[index] == loadingTag) {
-          //不足100条，继续获取数据
-          if (_words.length - 1 < 100) {
-            //获取数据
-            _retrieveData();
-            //加载时显示loading
-            return Container(
-              padding: const EdgeInsets.all(10.0),
-              alignment: Alignment.center,
-              child: const SizedBox(
-                width: 24.0,
-                height: 24.0,
-                child: CircularProgressIndicator(strokeWidth: 2.0),
-              ),
-            );
-          } else {
-            //已经加载了100条数据，不再获取数据。
-            return Container(
-              alignment: Alignment.center,
-              padding: const EdgeInsets.all(10.0),
-              child: const Text("没有更多了"),
-            );
-          }
-        }
-        //显示单词列表项
-        return ListTile(title: Text(_words[index]));
+        return _itemBuilderLoading(index);
       },
       //分割器构造器
       separatorBuilder: (BuildContext context, int index) {
@@ -151,5 +126,43 @@ class _InfiniteListViewState extends State<InfiniteListView> {
         );
       });
     });
+  }
+
+  Widget _itemBuilder(int index) {
+    //如果显示到最后一个并且Icon总数小于200时继续获取数据
+    if (_words.length < 200) {
+      _retrieveData();
+    }
+    return ListTile(title: Text(_words[index]));
+  }
+
+  Widget _itemBuilderLoading(int index) {
+    //显示loading
+    if (_words[index] == loadingTag) {
+      //不足100条，继续获取数据
+      if (_words.length - 1 < 100) {
+        //获取数据
+        _retrieveData();
+        //加载时显示loading
+        return Container(
+          padding: const EdgeInsets.all(10.0),
+          alignment: Alignment.center,
+          child: const SizedBox(
+            width: 24.0,
+            height: 24.0,
+            child: CircularProgressIndicator(strokeWidth: 2.0),
+          ),
+        );
+      } else {
+        //已经加载了100条数据，不再获取数据。
+        return Container(
+          alignment: Alignment.center,
+          padding: const EdgeInsets.all(10.0),
+          child: const Text("没有更多了"),
+        );
+      }
+    }
+    //显示单词列表项
+    return ListTile(title: Text(_words[index]));
   }
 }

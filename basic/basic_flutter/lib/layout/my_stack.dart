@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// 堆叠布局，通过 Stack 和 Positioned 实现
 class MyStack extends StatelessWidget {
   const MyStack({super.key});
 
@@ -11,7 +12,7 @@ class MyStack extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Flutter Stack demo'),
         ),
-        body: const Center(child: StackRoute()),
+        body: const StackRoute(),
       ),
     );
   }
@@ -29,8 +30,7 @@ class StackRoute extends StatelessWidget {
         children: <Widget>[
           Container(
             color: Colors.blue,
-            child: const Text("Hello world",
-                textScaleFactor: 1.2, style: TextStyle(color: Colors.white)),
+            child: const Text("Hello world", textScaleFactor: 1.2),
           ),
           const Positioned(
             left: 18.0,

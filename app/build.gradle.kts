@@ -17,7 +17,7 @@ android {
             // armeabi-v7a：曾经主流的架构平台（占用率：10%）
             // arm64-v8a：目前主流架构平台（占用率：90%）
             //abiFilters 'armeabi-v7a', 'arm64-v8a' // , 'x86', 'x86_64'
-            abiFilters.addAll(arrayOf("armeabi-v7a", "arm64-v8a")) // , 'x86', 'x86_64'
+            abiFilters.addAll(arrayOf("armeabi-v7a", "arm64-v8a", "x86", "x86_64"))
         }
 
         addManifestPlaceholders(mutableMapOf("APP_NAME" to "My Application")) // 配置主包的应用名称

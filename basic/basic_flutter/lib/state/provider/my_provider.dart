@@ -14,7 +14,7 @@ class Counter with ChangeNotifier {
   }
 }
 
-///Provider
+/// Provider
 class MyProvider extends StatelessWidget {
   const MyProvider({super.key});
 

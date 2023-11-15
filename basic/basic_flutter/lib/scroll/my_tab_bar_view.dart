@@ -1,21 +1,21 @@
 import 'package:basic_flutter/common/keep_alive.dart';
 import 'package:flutter/material.dart';
 
-///TabView
-class MyTabView extends StatelessWidget {
-  const MyTabView({super.key});
+/// TabBarView
+class MyTabBarView extends StatelessWidget {
+  const MyTabBarView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'Flutter TabView demo',
-      home: TabViewRoute(title: 'Flutter TabView demo'),
+      home: TabBarViewRoute(title: 'Flutter TabView demo'),
     );
   }
 }
 
-class TabViewRoute extends StatelessWidget {
-  const TabViewRoute({super.key, required this.title});
+class TabBarViewRoute extends StatelessWidget {
+  const TabBarViewRoute({super.key, required this.title});
 
   final String title;
 

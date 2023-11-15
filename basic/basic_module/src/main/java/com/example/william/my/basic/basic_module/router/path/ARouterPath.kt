@@ -161,5 +161,12 @@ object ARouterPath {
 
     object Flutter {
         const val Main = "/module_flutter/flutter_main"
+        const val Layout = "/module_flutter/flutter_layout"
+        const val Container = "/module_flutter/flutter_container"
+        const val Scroll = "/module_flutter/flutter_scroll"
+        const val Function = "/module_flutter/flutter_function"
+        const val Http = "/module_flutter/flutter_http"
+        const val State = "/module_flutter/flutter_state"
+        const val Other = "/module_flutter/flutter_other"
     }
 }

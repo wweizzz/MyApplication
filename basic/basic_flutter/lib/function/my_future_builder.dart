@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-///FutureBuilder
+/// FutureBuilder
 class MyFutureBuilder extends StatelessWidget {
   const MyFutureBuilder({super.key});
 
@@ -26,24 +26,29 @@ class FutureRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(title),
-        ),
-        body: Center(
-          child: FutureBuilder<String>(
-            future: mockNetworkData(),
-            builder: (BuildContext context, AsyncSnapshot snapshot) {
-              if (snapshot.connectionState == ConnectionState.done) {
-                if (snapshot.hasError) {
-                  return Text("Error: ${snapshot.error}");
-                } else {
-                  return Text("Contents: ${snapshot.data}");
-                }
-              } else {
-                return const CircularProgressIndicator();
-              }
-            },
-          ),
-        ));
+      appBar: AppBar(
+        title: Text(title),
+      ),
+      body: getBody(),
+    );
+  }
+
+  Widget getBody() {
+    return Center(
+      child: FutureBuilder<String>(
+        future: mockNetworkData(),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            if (snapshot.hasError) {
+              return Text("Error: ${snapshot.error}");
+            } else {
+              return Text("Contents: ${snapshot.data}");
+            }
+          } else {
+            return const CircularProgressIndicator();
+          }
+        },
+      ),
+    );
   }
 }
