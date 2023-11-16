@@ -24,11 +24,14 @@ class LayoutBuilderRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
-        // 限制宽度为190，小于 200
-        SizedBox(
-            width: 290, child: ResponsiveColumn(children: buildChildren())),
-      ],
+      children: [buildItem()],
+    );
+  }
+
+  Widget buildItem() {
+    return SizedBox(
+      width: 200,
+      child: ResponsiveColumn(children: buildChildren()),
     );
   }
 
@@ -53,6 +56,10 @@ class ResponsiveColumn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // 通过 LayoutBuilder 拿到父组件传递的约束，然后判断 maxWidth 是否小于200
+    return getLayoutBuilder();
+  }
+
+  Widget getLayoutBuilder() {
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
         if (constraints.maxWidth < 200) {

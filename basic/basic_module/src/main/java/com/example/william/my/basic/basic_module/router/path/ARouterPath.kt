@@ -167,6 +167,7 @@ object ARouterPath {
         const val Function = "/module_flutter/flutter_function"
         const val Http = "/module_flutter/flutter_http"
         const val State = "/module_flutter/flutter_state"
+        const val Packages = "/module_flutter/flutter_packages"
         const val Other = "/module_flutter/flutter_other"
     }
 }

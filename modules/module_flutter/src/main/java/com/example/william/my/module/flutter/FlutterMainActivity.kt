@@ -17,6 +17,7 @@ class FlutterMainActivity : RouterRecyclerActivity() {
         routerItems.add(RouterItem("功能型组件", ARouterPath.Flutter.Function))
         routerItems.add(RouterItem("网络请求", ARouterPath.Flutter.Http))
         routerItems.add(RouterItem("状态管理", ARouterPath.Flutter.State))
+        routerItems.add(RouterItem("三方框架", ARouterPath.Flutter.Packages))
         routerItems.add(RouterItem("其他", ARouterPath.Flutter.Other))
         return routerItems
     }

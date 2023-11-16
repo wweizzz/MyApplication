@@ -1,8 +1,10 @@
-import 'package:basic_flutter/common/log.dart';
+import '../common/log.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+/// ScreenUtil
+/// https://pub.dev/packages/flutter_screenutil
 class MyScreenUtil extends StatelessWidget {
   const MyScreenUtil({Key? key}) : super(key: key);
 

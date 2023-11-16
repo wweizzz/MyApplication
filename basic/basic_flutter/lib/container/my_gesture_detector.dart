@@ -1,5 +1,6 @@
-import 'package:basic_flutter/common/log.dart';
 import 'package:flutter/material.dart';
+
+import '../common/log.dart';
 
 ///GestureDetector
 class MyGestureDetector extends StatelessWidget {
@@ -26,20 +27,24 @@ class GestureDetectorRoute extends StatelessWidget {
         title: Text(title),
       ),
       body: Center(
-        child: GestureDetector(
-          onTap: () {
-            log('onTap');
-          },
-          onDoubleTap: () {
-            log('onDoubleTap');
-          },
-          onLongPress: () {
-            log('onLongPress');
-          },
-          child: const FlutterLogo(
-            size: 100,
-          ),
-        ),
+        child: getBody(),
+      ),
+    );
+  }
+
+  Widget getBody() {
+    return GestureDetector(
+      onTap: () {
+        log('onTap');
+      },
+      onDoubleTap: () {
+        log('onDoubleTap');
+      },
+      onLongPress: () {
+        log('onLongPress');
+      },
+      child: const FlutterLogo(
+        size: 100,
       ),
     );
   }

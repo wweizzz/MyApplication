@@ -16,6 +16,7 @@ class FlutterFunctionActivity : BasicRecyclerActivity() {
             "MyValueListenableBuilder", // 数据源监听
             "MyFutureBuilder", // 异步UI更新
             "MyStreamBuilder", // 异步UI更新
+            "MyDialog", // Dialog
         )
     }
 

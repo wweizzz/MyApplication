@@ -1,6 +1,8 @@
-import 'package:basic_flutter/common/notification.dart';
+import '../common/notification.dart';
 import 'package:flutter/material.dart';
 
+/// Notifications
+/// https://pub.dev/packages/flutter_local_notifications
 class MyNotification extends StatelessWidget {
   const MyNotification({super.key});
 

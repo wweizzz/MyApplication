@@ -11,22 +11,8 @@ class FlutterOtherActivity : BasicRecyclerActivity() {
 
     override fun buildList(): ArrayList<String> {
         return arrayListOf(
-            "MyCounter",
-            "MyConstraints",
-            "MyLayoutBuilder",
             "MyAnimation",
-            "MyGestureDetector",
-            "MyDialog",
-            "MyToast",
-            "MyNotification",
-            "MyProvider",
-            "MyPaint",
-            "MySharedPreferences",
-            "MyHttp",
             "MyIsolate",
-            "MyGetX",
-            "MyGetX2",
-            "MyScreenUtil",
         )
     }
 

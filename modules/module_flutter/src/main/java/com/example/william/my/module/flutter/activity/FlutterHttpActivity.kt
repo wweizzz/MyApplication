@@ -14,7 +14,7 @@ class FlutterHttpActivity : BasicRecyclerActivity() {
 
     override fun buildList(): ArrayList<String> {
         return arrayListOf(
-
+            "MyDio",
         )
     }
 

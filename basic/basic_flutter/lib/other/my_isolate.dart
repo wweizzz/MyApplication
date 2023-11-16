@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:isolate';
 
-import 'package:basic_flutter/common/urls.dart';
+import '../common/urls.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 

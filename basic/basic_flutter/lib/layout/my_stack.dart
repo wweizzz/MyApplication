@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// 堆叠布局，通过 Stack 和 Positioned 实现
+/// Stack
 class MyStack extends StatelessWidget {
   const MyStack({super.key});
 

@@ -1,6 +1,7 @@
-import 'package:basic_flutter/common/log.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import '../common/log.dart';
 
 class MyDialog extends StatelessWidget {
   const MyDialog({super.key});
@@ -25,18 +26,21 @@ class DialogRoute extends StatelessWidget {
       appBar: AppBar(
         title: Text(title),
       ),
-      body: ListView.builder(
+      body: getBody(),
+    );
+  }
+
+  Widget getBody() {
+    return ListView.builder(
         itemCount: 6,
-        itemExtent: 50.0, // 列表项高度
+        itemExtent: 50.0,
         //列表项构造器
         itemBuilder: (BuildContext context, int index) {
           return ListTile(
             title: Text("$index"),
             onTap: () => _showDialog(context, index),
           );
-        },
-      ),
-    );
+        });
   }
 
   _showDialog(BuildContext context, int index) {
@@ -126,17 +130,18 @@ class DialogRoute extends StatelessWidget {
           children: <Widget>[
             const ListTile(title: Text("显示菜单列表")),
             Expanded(
-                child: ListView.builder(
-              itemCount: 20,
-              itemBuilder: (BuildContext context, int index) {
-                return ListTile(
-                  title: Text("$index"),
-                  onTap: () {
-                    Navigator.of(context).pop(index);
-                  },
-                );
-              },
-            )),
+              child: ListView.builder(
+                itemCount: 20,
+                itemBuilder: (BuildContext context, int index) {
+                  return ListTile(
+                    title: Text("$index"),
+                    onTap: () {
+                      Navigator.of(context).pop(index);
+                    },
+                  );
+                },
+              ),
+            ),
           ],
         );
         //使用AlertDialog会报错
@@ -154,26 +159,17 @@ class DialogRoute extends StatelessWidget {
     int? index = await showModalBottomSheet<int>(
       context: context,
       builder: (BuildContext context) {
-        var child = Column(
-          children: <Widget>[
-            const ListTile(title: Text("显示底部菜单列表")),
-            Expanded(
-                child: ListView.builder(
-              itemCount: 20,
-              itemBuilder: (BuildContext context, int index) {
-                return ListTile(
-                  title: Text("$index"),
-                  onTap: () {
-                    Navigator.of(context).pop(index);
-                  },
-                );
+        return ListView.builder(
+          itemCount: 20,
+          itemBuilder: (BuildContext context, int index) {
+            return ListTile(
+              title: Text("$index"),
+              onTap: () {
+                Navigator.of(context).pop(index);
               },
-            )),
-          ],
+            );
+          },
         );
-        //使用AlertDialog会报错
-        //return AlertDialog(content: child);
-        return Dialog(child: child);
       },
     );
     if (index != null) {
@@ -202,7 +198,6 @@ class DialogRoute extends StatelessWidget {
       builder: (ctx) {
         return Container(
           height: 200,
-          width: double.infinity,
           color: Colors.white,
           child: CupertinoDatePicker(
             mode: CupertinoDatePickerMode.dateAndTime,

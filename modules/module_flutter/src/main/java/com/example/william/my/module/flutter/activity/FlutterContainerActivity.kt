@@ -16,6 +16,10 @@ class FlutterContainerActivity : BasicRecyclerActivity() {
         return arrayListOf(
             "MyAlign",
             "MyCenter",
+            "MyConstrainedBox",
+            "MySizedBox",
+            "MyLayoutBuilder",
+            "MyGestureDetector",
         )
     }
 

@@ -9,6 +9,7 @@
         <activity android:name=".activity.FlutterFunctionActivity" />
         <activity android:name=".activity.FlutterHttpActivity" />
         <activity android:name=".activity.FlutterStateActivity" />
+        <activity android:name=".activity.FlutterPackagesActivity" />
         <activity android:name=".activity.FlutterOtherActivity" />
         <activity
             android:name="io.flutter.embedding.android.FlutterActivity"

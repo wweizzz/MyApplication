@@ -1,4 +1,4 @@
-import 'package:basic_flutter/common/log.dart';
+import '../common/log.dart';
 import 'package:flutter/material.dart';
 
 /// AnimatedList

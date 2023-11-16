@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-///Shared Preferences
+/// Shared Preferences
+/// https://pub.dev/packages/shared_preferences
 class MySharedPreferences extends StatelessWidget {
   const MySharedPreferences({super.key});
 

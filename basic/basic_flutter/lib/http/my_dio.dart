@@ -1,7 +1,10 @@
-import 'package:basic_flutter/common/urls.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
+import '../common/urls.dart';
+
+/// dio
+/// https://pub.dev/packages/dio
 class MyDio extends StatelessWidget {
   const MyDio({super.key});
 

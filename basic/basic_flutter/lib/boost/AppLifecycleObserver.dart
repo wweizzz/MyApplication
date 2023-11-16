@@ -1,6 +1,7 @@
-import 'package:basic_flutter/common/log.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boost/flutter_boost.dart';
+
+import '../common/log.dart';
 
 void addGlobalObserver() {
   PageVisibilityBinding.instance.addGlobalObserver(AppLifecycleObserver());

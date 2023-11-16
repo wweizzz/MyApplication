@@ -1,47 +1,47 @@
-import 'package:basic_flutter/boost/BoostBinding.dart';
-import 'package:basic_flutter/common/log.dart';
-import 'package:basic_flutter/container/my_align.dart';
-import 'package:basic_flutter/container/my_center.dart';
-import 'package:basic_flutter/function/my_future_builder.dart';
-import 'package:basic_flutter/function/my_inherited_widget.dart';
-import 'package:basic_flutter/function/my_stream_builder.dart';
-import 'package:basic_flutter/function/my_value_listenable_builder.dart';
-import 'package:basic_flutter/function/my_will_pop_scope.dart';
-import 'package:basic_flutter/http/my_dio.dart';
-import 'package:basic_flutter/http/my_isolate.dart';
-import 'package:basic_flutter/layout/my_column.dart';
-import 'package:basic_flutter/layout/my_flex.dart';
-import 'package:basic_flutter/layout/my_flow.dart';
-import 'package:basic_flutter/layout/my_row.dart';
-import 'package:basic_flutter/layout/my_stack.dart';
-import 'package:basic_flutter/layout/my_wrap.dart';
-import 'package:basic_flutter/other/my_animation.dart';
-import 'package:basic_flutter/other/my_constraints.dart';
-import 'package:basic_flutter/other/my_counter.dart';
-import 'package:basic_flutter/other/my_dialog.dart';
-import 'package:basic_flutter/other/my_gesture_detector.dart';
-import 'package:basic_flutter/other/my_layout_builder.dart';
-import 'package:basic_flutter/other/my_screenutil.dart';
-import 'package:basic_flutter/scroll/my_animated_list.dart';
-import 'package:basic_flutter/scroll/my_custom_scroll_view.dart';
-import 'package:basic_flutter/scroll/my_grid_view.dart';
-import 'package:basic_flutter/scroll/my_list_view.dart';
-import 'package:basic_flutter/scroll/my_nested_scroll_view.dart';
-import 'package:basic_flutter/scroll/my_page_view.dart';
-import 'package:basic_flutter/scroll/my_scroll_view.dart';
-import 'package:basic_flutter/scroll/my_tab_bar_view.dart';
-import 'package:basic_flutter/state/getX/my_get.dart';
-import 'package:basic_flutter/state/getX/my_get_view.dart';
-import 'package:basic_flutter/state/provider/my_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boost/flutter_boost.dart';
 import 'package:provider/provider.dart';
 
-import 'other/my_notification.dart';
-import 'other/my_paint.dart';
-import 'other/my_shared_preferences.dart';
-import 'other/my_toast.dart';
+import 'boost/BoostBinding.dart';
+import 'common/log.dart';
+import 'container/my_align.dart';
+import 'container/my_center.dart';
+import 'container/my_constrained_box.dart';
+import 'container/my_gesture_detector.dart';
+import 'container/my_layout_builder.dart';
+import 'container/my_sized_box.dart';
+import 'function/my_dialog.dart';
+import 'function/my_future_builder.dart';
+import 'function/my_inherited_widget.dart';
+import 'function/my_stream_builder.dart';
+import 'function/my_value_listenable_builder.dart';
+import 'function/my_will_pop_scope.dart';
+import 'http/my_dio.dart';
+import 'layout/my_column.dart';
+import 'layout/my_flex.dart';
+import 'layout/my_flow.dart';
+import 'layout/my_row.dart';
+import 'layout/my_stack.dart';
+import 'layout/my_wrap.dart';
+import 'other/my_animation.dart';
+import 'other/my_isolate.dart';
+import 'packages/my_notification.dart';
+import 'packages/my_screen_util.dart';
+import 'packages/my_shared_preferences.dart';
+import 'packages/my_toast.dart';
+import 'page/my_counter.dart';
+import 'scroll/my_animated_list.dart';
+import 'scroll/my_custom_scroll_view.dart';
+import 'scroll/my_grid_view.dart';
+import 'scroll/my_list_view.dart';
+import 'scroll/my_nested_scroll_view.dart';
+import 'scroll/my_page_view.dart';
+import 'scroll/my_scroll_view.dart';
+import 'scroll/my_tab_bar_view.dart';
+import 'state/getX/my_get.dart';
+import 'state/getX/my_get_view.dart';
+import 'state/provider/my_provider.dart';
 
 void main() {
   ///添加全局生命周期监听类
@@ -135,6 +135,34 @@ class _MyAppState extends State<MyApp> {
           settings: settings,
           builder: (_) {
             return const MyCenter();
+          });
+    },
+    'MyConstrainedBox': (RouteSettings settings, String? uniqueId) {
+      return CupertinoPageRoute(
+          settings: settings,
+          builder: (_) {
+            return const MyConstrainedBox();
+          });
+    },
+    'MySizedBox': (RouteSettings settings, String? uniqueId) {
+      return CupertinoPageRoute(
+          settings: settings,
+          builder: (_) {
+            return const MySizedBox();
+          });
+    },
+    'MyLayoutBuilder': (RouteSettings settings, String? uniqueId) {
+      return CupertinoPageRoute(
+          settings: settings,
+          builder: (_) {
+            return const MyLayoutBuilder();
+          });
+    },
+    'MyGestureDetector': (RouteSettings settings, String? uniqueId) {
+      return CupertinoPageRoute(
+          settings: settings,
+          builder: (_) {
+            return const MyGestureDetector();
           });
     },
   };
@@ -236,6 +264,24 @@ class _MyAppState extends State<MyApp> {
             return const MyStreamBuilder();
           });
     },
+    'MyDialog': (RouteSettings settings, String? uniqueId) {
+      return CupertinoPageRoute(
+          settings: settings,
+          builder: (_) {
+            return const MyDialog();
+          });
+    },
+  };
+
+  /// 网路请求
+  Map<String, FlutterBoostRouteFactory> httpMap = {
+    'MyDio': (RouteSettings settings, String? uniqueId) {
+      return CupertinoPageRoute(
+          settings: settings,
+          builder: (_) {
+            return const MyDio();
+          });
+    },
   };
 
   /// 状态管理
@@ -263,53 +309,8 @@ class _MyAppState extends State<MyApp> {
     },
   };
 
-  Map<String, FlutterBoostRouteFactory> otherRouter = {
-    'MyCounter': (RouteSettings settings, String? uniqueId) {
-      return MaterialPageRoute(
-          settings: settings,
-          builder: (_) {
-            Map<String, dynamic> map =
-                settings.arguments as Map<String, dynamic>;
-            String? pageName = map['pageName'] as String?;
-            log("pageName : $pageName");
-            return const MyCounter();
-          });
-    },
-    'MyConstraints': (RouteSettings settings, String? uniqueId) {
-      return CupertinoPageRoute(
-          settings: settings,
-          builder: (_) {
-            return const MyConstraints();
-          });
-    },
-    'MyLayoutBuilder': (RouteSettings settings, String? uniqueId) {
-      return CupertinoPageRoute(
-          settings: settings,
-          builder: (_) {
-            return const MyLayoutBuilder();
-          });
-    },
-    'MyAnimation': (RouteSettings settings, String? uniqueId) {
-      return CupertinoPageRoute(
-          settings: settings,
-          builder: (_) {
-            return const MyAnimation();
-          });
-    },
-    'MyGestureDetector': (RouteSettings settings, String? uniqueId) {
-      return CupertinoPageRoute(
-          settings: settings,
-          builder: (_) {
-            return const MyGestureDetector();
-          });
-    },
-    'MyDialog': (RouteSettings settings, String? uniqueId) {
-      return CupertinoPageRoute(
-          settings: settings,
-          builder: (_) {
-            return const MyDialog();
-          });
-    },
+  /// 三方框架
+  Map<String, FlutterBoostRouteFactory> packagesMap = {
     'MyToast': (RouteSettings settings, String? uniqueId) {
       return CupertinoPageRoute(
           settings: settings,
@@ -324,32 +325,11 @@ class _MyAppState extends State<MyApp> {
             return const MyNotification();
           });
     },
-    'MyPaint': (RouteSettings settings, String? uniqueId) {
-      return CupertinoPageRoute(
-          settings: settings,
-          builder: (_) {
-            return const MyPaint();
-          });
-    },
     'MySharedPreferences': (RouteSettings settings, String? uniqueId) {
       return CupertinoPageRoute(
           settings: settings,
           builder: (_) {
             return const MySharedPreferences();
-          });
-    },
-    'MyHttp': (RouteSettings settings, String? uniqueId) {
-      return CupertinoPageRoute(
-          settings: settings,
-          builder: (_) {
-            return const MyDio();
-          });
-    },
-    'MyIsolate': (RouteSettings settings, String? uniqueId) {
-      return CupertinoPageRoute(
-          settings: settings,
-          builder: (_) {
-            return const MyIsolate();
           });
     },
     'MyScreenUtil': (RouteSettings settings, String? uniqueId) {
@@ -361,16 +341,50 @@ class _MyAppState extends State<MyApp> {
     },
   };
 
+  Map<String, FlutterBoostRouteFactory> otherMap = {
+    'MyAnimation': (RouteSettings settings, String? uniqueId) {
+      return CupertinoPageRoute(
+          settings: settings,
+          builder: (_) {
+            return const MyAnimation();
+          });
+    },
+    'MyIsolate': (RouteSettings settings, String? uniqueId) {
+      return CupertinoPageRoute(
+          settings: settings,
+          builder: (_) {
+            return const MyIsolate();
+          });
+    },
+  };
+
+  Map<String, FlutterBoostRouteFactory> routerMap = {
+    'MyCounter': (RouteSettings settings, String? uniqueId) {
+      return MaterialPageRoute(
+          settings: settings,
+          builder: (_) {
+            Map<String, dynamic> map =
+                settings.arguments as Map<String, dynamic>;
+            String? pageName = map['pageName'] as String?;
+            log("pageName : $pageName");
+            return const MyCounter();
+          });
+    },
+  };
+
   Route<dynamic>? routeFactory(RouteSettings settings, String? uniqueId) {
-    Map<String, FlutterBoostRouteFactory> routerMap = {
+    Map<String, FlutterBoostRouteFactory> map = {
       ...layoutMap,
       ...containerMap,
       ...scrollMap,
       ...functionMap,
+      ...httpMap,
       ...stateMap,
-      ...otherRouter
+      ...packagesMap,
+      ...otherMap,
+      ...routerMap,
     };
-    FlutterBoostRouteFactory? func = routerMap[settings.name];
+    FlutterBoostRouteFactory? func = map[settings.name];
     if (func == null) {
       return null;
     }

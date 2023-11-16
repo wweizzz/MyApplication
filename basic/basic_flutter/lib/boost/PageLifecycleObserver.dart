@@ -1,6 +1,7 @@
-import 'package:basic_flutter/common/log.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_boost/flutter_boost.dart';
+
+import '../common/log.dart';
 
 ///单个生命周期示例
 class PageLifecycleObserver extends StatefulWidget {

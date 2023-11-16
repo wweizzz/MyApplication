@@ -1,5 +1,5 @@
-import 'package:basic_flutter/common/keep_alive.dart';
-import 'package:basic_flutter/common/log.dart';
+import '../common/keep_alive.dart';
+import '../common/log.dart';
 import 'package:flutter/material.dart';
 
 /// PageView

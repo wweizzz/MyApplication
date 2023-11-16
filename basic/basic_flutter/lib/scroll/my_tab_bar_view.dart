@@ -1,4 +1,4 @@
-import 'package:basic_flutter/common/keep_alive.dart';
+import '../common/keep_alive.dart';
 import 'package:flutter/material.dart';
 
 /// TabBarView

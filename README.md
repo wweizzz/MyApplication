@@ -44,8 +44,8 @@
   * 约束布局
   * 线性布局（Row, Column）
   * 弹性布局（Flex）
-  * 堆叠布局（Stack）
   * 流式布局（Wrap, Flow）
+  * 堆叠布局（Stack）
 * 容器类组件
 * 可滚动组件
   * ListView
@@ -65,6 +65,11 @@
   * [Provider](https://pub.dev/packages/provider)
   * [GetX](https://pub.dev/packages/get)
   * [BloC](https://pub.dev/packages/flutter_bloc)
+* 三方框架
+  * [Toast](https://pub.dev/packages/fluttertoast)
+  * [Notification](https://pub.dev/packages/flutter_local_notifications
+  * [SharedPreferences](https://pub.dev/packages/shared_preferences)
+  * [ScreenUtil](https://pub.dev/packages/flutter_screenutil)
 
 ## modules_network
 

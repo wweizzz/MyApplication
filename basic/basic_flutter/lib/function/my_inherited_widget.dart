@@ -1,5 +1,6 @@
-import 'package:basic_flutter/common/log.dart';
 import 'package:flutter/material.dart';
+
+import '../common/log.dart';
 
 /// InheritedWidget 数据共享
 class MyInheritedWidget extends StatelessWidget {

@@ -7,19 +7,17 @@ import com.idlefish.flutterboost.FlutterBoost
 import com.idlefish.flutterboost.FlutterBoostRouteOptions
 
 /**
- * 布局类组件用于控制子组件在父容器中的排列和位置，并且决定它们的大小.
+ * 开源软件包
  */
-@Route(path = ARouterPath.Flutter.Layout)
-class FlutterLayoutActivity : BasicRecyclerActivity() {
+@Route(path = ARouterPath.Flutter.Packages)
+class FlutterPackagesActivity : BasicRecyclerActivity() {
 
     override fun buildList(): ArrayList<String> {
         return arrayListOf(
-            "MyRow", // 水平排列子组件
-            "MyColumn", // 垂直排列子组件
-            "MyFlex", // 弹性布局，用于按比例分配空间
-            "MyWrap", // 流式布局，根据子组件大小自动换行的布局
-            "MyFlow", // 流式布局，根据子组件大小自动换行的布局
-            "MyStack", // 堆叠布局，可以自由定位子组件
+            "MyToast",
+            "MyNotification",
+            "MySharedPreferences",
+            "MyScreenUtil",
         )
     }
 

@@ -1,6 +1,8 @@
-import 'package:basic_flutter/common/toast.dart';
+import '../common/toast.dart';
 import 'package:flutter/material.dart';
 
+/// toast
+/// https://pub.dev/packages/fluttertoast
 class MyToast extends StatelessWidget {
   const MyToast({super.key});
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// 流式布局，根据子组件大小自动换行的布局
 class MyWrap extends StatelessWidget {
   const MyWrap({super.key});
 

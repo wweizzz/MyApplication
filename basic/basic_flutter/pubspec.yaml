@@ -39,7 +39,7 @@ dependencies:
   # https://github.com/Bungeefan/logger
   # https://pub.dev/packages/logger
   logger: ^2.0.1
-  # https://github.com/ponnamkarthik/FlutterToast/
+  # https://github.com/ponnamkarthik/FlutterToast
   # https://pub.dev/packages/fluttertoast
   fluttertoast: ^8.2.2
   # https://pub.dev/packages/device_preview

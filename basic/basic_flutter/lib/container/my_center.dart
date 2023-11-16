@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// Center，继承自 Align，其中 alignment 值为 Alignment.center
 class MyCenter extends StatelessWidget {
   const MyCenter({super.key});
 
@@ -31,7 +32,6 @@ class CenterRoute extends StatelessWidget {
   }
 }
 
-/// Center 继承自 Align，其中 alignment 值为 Alignment.center
 class CenterRoute1 extends StatelessWidget {
   const CenterRoute1({super.key});
 
@@ -40,8 +40,8 @@ class CenterRoute1 extends StatelessWidget {
     return DecoratedBox(
       decoration: const BoxDecoration(color: Colors.blue),
       child: Center(
-        widthFactor: 2,
-        heightFactor: 2,
+        widthFactor: 1.2,
+        heightFactor: 1.2,
         child: Image.asset('images/pic1.jpg', width: 100, height: 100),
       ),
     );
@@ -57,7 +57,7 @@ class CenterRoute2 extends StatelessWidget {
     return DecoratedBox(
       decoration: const BoxDecoration(color: Colors.blue),
       child: Center(
-        heightFactor: 2,
+        heightFactor: 1.2,
         child: Image.asset('images/pic2.jpg', width: 100, height: 100),
       ),
     );

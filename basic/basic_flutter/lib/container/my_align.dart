@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// Align
 class MyAlign extends StatelessWidget {
   const MyAlign({super.key});
 
@@ -25,12 +26,10 @@ class AlignRoute extends StatelessWidget {
     return const Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [AlignRoute1(), AlignRoute2()]),
-          Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [AlignRoute3(), AlignRoute4()]),
+          AlignRoute1(),
+          AlignRoute2(),
+          AlignRoute3(),
+          AlignRoute4(),
         ]);
   }
 }
@@ -41,8 +40,8 @@ class AlignRoute1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200.0,
-      width: 200.0,
+      height: 120.0,
+      width: 120.0,
       color: Colors.blue,
       child: Align(
         alignment: Alignment.topLeft,
@@ -60,8 +59,8 @@ class AlignRoute2 extends StatelessWidget {
     return DecoratedBox(
       decoration: const BoxDecoration(color: Colors.blue),
       child: Align(
-        widthFactor: 2,
-        heightFactor: 2,
+        widthFactor: 1.2,
+        heightFactor: 1.2,
         alignment: Alignment.topLeft,
         child: Image.asset('images/pic2.jpg', width: 100, height: 100),
       ),
@@ -78,8 +77,8 @@ class AlignRoute3 extends StatelessWidget {
     return DecoratedBox(
       decoration: const BoxDecoration(color: Colors.blue),
       child: Align(
-        widthFactor: 2,
-        heightFactor: 2,
+        widthFactor: 1.2,
+        heightFactor: 1.2,
         alignment: const Alignment(0, 0),
         child: Image.asset('images/pic3.jpg', width: 100, height: 100),
       ),
@@ -96,8 +95,8 @@ class AlignRoute4 extends StatelessWidget {
     return DecoratedBox(
       decoration: const BoxDecoration(color: Colors.blue),
       child: Align(
-        widthFactor: 2,
-        heightFactor: 2,
+        widthFactor: 1.2,
+        heightFactor: 1.2,
         alignment: const FractionalOffset(0, 0),
         child: Image.asset('images/pic4.jpg', width: 100, height: 100),
       ),
