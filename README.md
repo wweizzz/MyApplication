@@ -41,12 +41,17 @@
 
 * FlutterBoost 框架
 * 布局类组件
-  * 约束布局
   * 线性布局（Row, Column）
   * 弹性布局（Flex）
   * 流式布局（Wrap, Flow）
   * 堆叠布局（Stack）
 * 容器类组件
+  * Align
+  * Center
+  * ConstrainedBox
+  * SizedBox
+  * LayoutBuilder
+  * GestureDetector
 * 可滚动组件
   * ListView
   * GridView
@@ -61,6 +66,9 @@
   * 数据共享组件（InheritedWidget）
   * 数据源监听（ValueListenableBuilder）
   * 异步UI更新（FutureBuilder、StreamBuilder）
+  * Dialog
+* 网络请求
+  * [Dio](https://pub.dev/packages/dio)
 * 状态管理
   * [Provider](https://pub.dev/packages/provider)
   * [GetX](https://pub.dev/packages/get)
