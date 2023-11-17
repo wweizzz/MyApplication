@@ -7,7 +7,8 @@ import 'package:basic_flutter/state/getX/routes/my_route.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-// 界面控件，主要进行界面开发
+/// GetX
+/// https://pub.dev/packages/get
 class MyGetX2 extends StatelessWidget {
   const MyGetX2({super.key});
 
@@ -53,20 +54,20 @@ class FirstPage extends StatelessWidget {
               },
             ),
             ElevatedButton(
-              child: const Text('Show snackbar'),
+              child: const Text('Show SnackBar'),
               onPressed: () {
                 Get.snackbar("Hi", "I'm modern snackBar");
               },
             ),
             ElevatedButton(
-              child: const Text('Show dialog'),
+              child: const Text('Show Dialog'),
               onPressed: () {
                 Get.defaultDialog(
                     title: "title", middleText: "this is dialog message");
               },
             ),
             ElevatedButton(
-              child: const Text('Show bottomSheet'),
+              child: const Text('Show BottomSheet'),
               onPressed: () {
                 Get.bottomSheet(Container(
                   height: 200,

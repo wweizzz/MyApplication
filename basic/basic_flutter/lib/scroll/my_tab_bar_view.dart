@@ -1,5 +1,6 @@
-import '../common/keep_alive.dart';
 import 'package:flutter/material.dart';
+
+import '../common/keep_alive.dart';
 
 /// TabBarView
 class MyTabBarView extends StatelessWidget {
@@ -34,9 +35,8 @@ class TabBarViewRoute extends StatelessWidget {
         body: TabBarView(
           children: tabs.map((e) {
             return KeepAliveWrapper(
-              child: Container(
-                alignment: Alignment.center,
-                child: Text(e, textScaleFactor: 1.2),
+              child: Center(
+                child: Text(e),
               ),
             );
           }).toList(),

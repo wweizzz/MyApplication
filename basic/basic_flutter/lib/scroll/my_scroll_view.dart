@@ -32,16 +32,21 @@ class SingleChildScrollViewRoute extends StatelessWidget {
           child: Center(
             child: Column(
               //动态创建一个List<Widget>
-              children: generateWordPairs()
-                  .take(30)
-                  .map((e) => Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Text(e.asPascalCase, textScaleFactor: 1.2)))
-                  .toList(),
+              children: buildChildren(),
             ),
           ),
         ),
       ),
     );
+  }
+
+  List<Widget> buildChildren() {
+    return generateWordPairs()
+        .take(20)
+        .map(
+          (e) => Padding(
+              padding: const EdgeInsets.all(10), child: Text(e.asPascalCase)),
+        )
+        .toList();
   }
 }

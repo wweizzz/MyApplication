@@ -1,7 +1,8 @@
-import '../common/log.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../common/log.dart';
 
 /// ScreenUtil
 /// https://pub.dev/packages/flutter_screenutil
@@ -145,7 +146,6 @@ class ScreenUtilScaffold extends StatelessWidget {
                     color: Colors.black,
                     fontSize: 16.sp,
                   ),
-                  textScaleFactor: 1.0,
                 ),
                 Text(
                   '我的文字大小在设计稿上是16dp，会随着系统的文字缩放比例变化',

@@ -30,15 +30,15 @@ class StackRoute extends StatelessWidget {
         children: <Widget>[
           Container(
             color: Colors.blue,
-            child: const Text("Hello world", textScaleFactor: 1.2),
+            child: const Text("Hello world"),
           ),
           const Positioned(
             left: 18.0,
-            child: Text("I am Jack", textScaleFactor: 1.2),
+            child: Text("I am Jack"),
           ),
           const Positioned(
             top: 18.0,
-            child: Text("Your friend", textScaleFactor: 1.2),
+            child: Text("Your friend"),
           )
         ],
       ),

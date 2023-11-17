@@ -44,24 +44,32 @@ class ProviderPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(title),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Consumer<Counter>(
-              builder: (context, counter, child) => Text('${counter.value}'),
-            ),
-          ],
-        ),
+      body: getBody(),
+      floatingActionButton: getFAB(context),
+    );
+  }
+
+  Widget getBody() {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Text(
+            'You have pushed the button this many times:',
+          ),
+          Consumer<Counter>(
+            builder: (context, counter, child) => Text('${counter.value}'),
+          ),
+        ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => _incrementCounter(context),
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+    );
+  }
+
+  Widget getFAB(context) {
+    return FloatingActionButton(
+      onPressed: () => _incrementCounter(context),
+      tooltip: 'increment',
+      child: const Icon(Icons.add),
     );
   }
 }

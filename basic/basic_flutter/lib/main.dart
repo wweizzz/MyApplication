@@ -8,8 +8,11 @@ import 'common/log.dart';
 import 'container/my_align.dart';
 import 'container/my_center.dart';
 import 'container/my_constrained_box.dart';
+import 'container/my_container.dart';
+import 'container/my_decorated_box.dart';
 import 'container/my_gesture_detector.dart';
 import 'container/my_layout_builder.dart';
+import 'container/my_padding.dart';
 import 'container/my_sized_box.dart';
 import 'function/my_dialog.dart';
 import 'function/my_future_builder.dart';
@@ -123,6 +126,27 @@ class _MyAppState extends State<MyApp> {
 
   /// 容器类组件
   Map<String, FlutterBoostRouteFactory> containerMap = {
+    'MyPadding': (RouteSettings settings, String? uniqueId) {
+      return CupertinoPageRoute(
+          settings: settings,
+          builder: (_) {
+            return const MyPadding();
+          });
+    },
+    'MyDecoratedBox': (RouteSettings settings, String? uniqueId) {
+      return CupertinoPageRoute(
+          settings: settings,
+          builder: (_) {
+            return const MyDecoratedBox();
+          });
+    },
+    'MyContainer': (RouteSettings settings, String? uniqueId) {
+      return CupertinoPageRoute(
+          settings: settings,
+          builder: (_) {
+            return const MyContainer();
+          });
+    },
     'MyAlign': (RouteSettings settings, String? uniqueId) {
       return CupertinoPageRoute(
           settings: settings,

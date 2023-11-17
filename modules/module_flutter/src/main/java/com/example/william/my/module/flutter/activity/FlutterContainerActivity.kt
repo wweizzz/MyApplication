@@ -14,6 +14,9 @@ class FlutterContainerActivity : BasicRecyclerActivity() {
 
     override fun buildList(): ArrayList<String> {
         return arrayListOf(
+            "MyPadding",
+            "MyDecoratedBox",
+            "MyContainer",
             "MyAlign",
             "MyCenter",
             "MyConstrainedBox",

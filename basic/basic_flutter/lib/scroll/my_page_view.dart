@@ -1,6 +1,7 @@
+import 'package:flutter/material.dart';
+
 import '../common/keep_alive.dart';
 import '../common/log.dart';
-import 'package:flutter/material.dart';
 
 /// PageView
 class MyPageView extends StatelessWidget {
@@ -58,6 +59,8 @@ class _PageState extends State<Page> {
   @override
   Widget build(BuildContext context) {
     log("build ${widget.text}");
-    return Center(child: Text(widget.text, textScaleFactor: 1.2));
+    return Center(
+      child: Text(widget.text),
+    );
   }
 }

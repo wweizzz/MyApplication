@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 
 class AppRoute extends BaseRoute {
   @override
-  String get prefix => "prefix";
+  String get prefix => "/prefix";
 
   String get home => "/home";
 

@@ -30,7 +30,7 @@ class LayoutBuilderRoute extends StatelessWidget {
 
   Widget buildItem() {
     return SizedBox(
-      width: 200,
+      width: 180,
       child: ResponsiveColumn(children: buildChildren()),
     );
   }
@@ -38,12 +38,10 @@ class LayoutBuilderRoute extends StatelessWidget {
   List<Widget> buildChildren() {
     return generateWordPairs()
         .take(12)
-        .map((e) => Padding(
-            padding: const EdgeInsets.all(10),
-            child: Text(
-              e.asPascalCase,
-              textScaleFactor: 1.2,
-            )))
+        .map(
+          (e) => Padding(
+              padding: const EdgeInsets.all(10), child: Text(e.asPascalCase)),
+        )
         .toList();
   }
 }

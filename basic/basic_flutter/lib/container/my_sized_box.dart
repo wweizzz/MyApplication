@@ -7,10 +7,10 @@ class MySizedBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter SizeBox demo',
+      title: 'Flutter SizedBox demo',
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Flutter SizeBox demo'),
+          title: const Text('Flutter SizedBox demo'),
         ),
         body: const Center(child: SizedBoxRoute()),
       ),

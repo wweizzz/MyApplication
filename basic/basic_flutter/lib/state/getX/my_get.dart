@@ -1,6 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+// 状态管理器
+class Controller extends GetxController {
+  // 响应式变量
+  var count = 0.obs;
+
+  void increment() {
+    count++;
+  }
+}
+
+/// GetX
+/// https://pub.dev/packages/get
 class MyGetX extends StatelessWidget {
   const MyGetX({super.key});
 
@@ -11,19 +23,9 @@ class MyGetX extends StatelessWidget {
     // 如果你只用 Get 来进行状态管理或依赖管理，就没有必要使用GetMaterialApp。
     // GetMaterialApp 对于路由、snackBar、国际化、bottomSheet、对话框以及与路由相关的高级 apis 和没有上下文（context）的情况下是必要的。
     return GetMaterialApp(
-      title: 'counter',
-      home: GetXPage(title: 'counter'),
+      title: 'GetX',
+      home: GetXPage(title: 'GetX'),
     );
-  }
-}
-
-// 状态管理器
-class Controller extends GetxController {
-  // 响应式变量
-  var count = 0.obs;
-
-  void increment() {
-    count++;
   }
 }
 
@@ -40,38 +42,28 @@ class GetXPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(title),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            GetX<Controller>(
-                builder: (_) => Text(
-                      'clicks: ${controller.count}',
-                    )),
-            ElevatedButton(
-              child: const Text('Next Route'),
-              onPressed: () {
-                Get.to(Second());
-              },
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: controller.increment,
-        child: const Icon(Icons.add),
+      body: getBody(),
+      floatingActionButton: getFAB(),
+    );
+  }
+
+  Widget getBody() {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          GetX<Controller>(builder: (_) => Text('clicks: ${controller.count}')),
+          const Text('GetX'),
+        ],
       ),
     );
   }
-}
 
-class Second extends StatelessWidget {
-  Second({super.key});
-
-  final Controller ctrl = Get.find();
-
-  @override
-  Widget build(context) {
-    return Scaffold(body: Center(child: Text("${ctrl.count}")));
+  Widget getFAB() {
+    return FloatingActionButton(
+      onPressed: () => controller.increment,
+      tooltip: 'increment',
+      child: const Icon(Icons.add),
+    );
   }
 }
