@@ -42,7 +42,7 @@ import 'scroll/my_nested_scroll_view.dart';
 import 'scroll/my_page_view.dart';
 import 'scroll/my_scroll_view.dart';
 import 'scroll/my_tab_bar_view.dart';
-import 'state/getX/my_get.dart';
+import 'state/get/my_get.dart';
 import 'state/getX/my_get_view.dart';
 import 'state/provider/my_provider.dart';
 
