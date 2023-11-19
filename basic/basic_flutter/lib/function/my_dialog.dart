@@ -68,15 +68,11 @@ class DialogRoute extends StatelessWidget {
             title: const Text('请选择语言'),
             children: <Widget>[
               SimpleDialogOption(
-                onPressed: () {
-                  Navigator.pop(context, 1);
-                },
+                onPressed: () => Navigator.pop(context, 1),
                 child: const Text('中文简体'),
               ),
               SimpleDialogOption(
-                onPressed: () {
-                  Navigator.pop(context, 2);
-                },
+                onPressed: () => Navigator.pop(context, 2),
                 child: const Text('美国英语'),
               ),
             ],
@@ -98,15 +94,11 @@ class DialogRoute extends StatelessWidget {
           actions: <Widget>[
             TextButton(
               child: const Text("取消"),
-              onPressed: () {
-                Navigator.of(context).pop(false);
-              },
+              onPressed: () => Navigator.of(context).pop(false),
             ),
             TextButton(
               child: const Text("删除"),
-              onPressed: () {
-                Navigator.of(context).pop(true);
-              },
+              onPressed: () => Navigator.of(context).pop(true),
             ),
           ],
         );
@@ -135,9 +127,7 @@ class DialogRoute extends StatelessWidget {
                 itemBuilder: (BuildContext context, int index) {
                   return ListTile(
                     title: Text("$index"),
-                    onTap: () {
-                      Navigator.of(context).pop(index);
-                    },
+                    onTap: () => Navigator.of(context).pop(index),
                   );
                 },
               ),
@@ -164,9 +154,7 @@ class DialogRoute extends StatelessWidget {
           itemBuilder: (BuildContext context, int index) {
             return ListTile(
               title: Text("$index"),
-              onTap: () {
-                Navigator.of(context).pop(index);
-              },
+              onTap: () => Navigator.of(context).pop(index),
             );
           },
         );

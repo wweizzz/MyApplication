@@ -39,14 +39,15 @@ class ContainerRoute extends StatelessWidget {
 
   BoxDecoration buildBoxDecoration() {
     return BoxDecoration(
-        gradient: LinearGradient(
-          colors: [Colors.blue, Colors.blue.shade700],
-        ),
-        borderRadius: BorderRadius.circular(6.0),
-        boxShadow: const [
-          BoxShadow(
-              color: Colors.grey, offset: Offset(2.0, 2.0), blurRadius: 4.0),
-        ]);
+      gradient: LinearGradient(
+        colors: [Colors.blue, Colors.blue.shade700],
+      ),
+      borderRadius: BorderRadius.circular(6.0),
+      boxShadow: const [
+        BoxShadow(
+            color: Colors.grey, offset: Offset(2.0, 2.0), blurRadius: 4.0),
+      ],
+    );
   }
 
   Widget buildChild() {

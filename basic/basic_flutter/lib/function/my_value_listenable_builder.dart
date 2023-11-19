@@ -57,9 +57,7 @@ class _ValueListenableBuilderState extends State<ValueListenableBuilderRoute> {
           );
         },
         valueListenable: _counter,
-        child: const Text(
-          'You have pushed the button this many times:',
-        ),
+        child: const Text('You have pushed the button this many times:'),
       ),
     );
   }

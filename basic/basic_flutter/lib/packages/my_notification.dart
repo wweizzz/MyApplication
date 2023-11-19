@@ -1,5 +1,6 @@
-import '../common/notification.dart';
 import 'package:flutter/material.dart';
+
+import '../common/notification.dart';
 
 /// Notifications
 /// https://pub.dev/packages/flutter_local_notifications
@@ -48,17 +49,20 @@ class _NotificationRouteState extends State<NotificationRoute> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => _showNotification(),
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+      body: getBody(),
+      floatingActionButton: getFAB(),
+    );
+  }
+
+  Widget getBody() {
+    return const Center();
+  }
+
+  Widget getFAB() {
+    return FloatingActionButton(
+      onPressed: () => _showNotification(),
+      tooltip: 'notification',
+      child: const Icon(Icons.add),
     );
   }
 }

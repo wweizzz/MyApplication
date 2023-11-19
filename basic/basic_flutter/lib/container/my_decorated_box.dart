@@ -29,28 +29,27 @@ class DecoratedBoxRoute extends StatelessWidget {
   Widget getBody() {
     return DecoratedBox(
       decoration: buildBoxDecoration(),
-      child: buildPadding(),
+      child: buildChild(),
     );
   }
 
   BoxDecoration buildBoxDecoration() {
     return BoxDecoration(
-        gradient: LinearGradient(
-          colors: [Colors.blue, Colors.blue.shade700],
-        ),
-        borderRadius: BorderRadius.circular(6.0),
-        boxShadow: const [
-          BoxShadow(
-              color: Colors.grey, offset: Offset(2.0, 2.0), blurRadius: 4.0),
-        ]);
+      gradient: LinearGradient(
+        colors: [Colors.blue, Colors.blue.shade700],
+      ),
+      borderRadius: BorderRadius.circular(6.0),
+      boxShadow: const [
+        BoxShadow(
+            color: Colors.grey, offset: Offset(2.0, 2.0), blurRadius: 4.0),
+      ],
+    );
   }
 
-  Widget buildPadding() {
+  Widget buildChild() {
     return const Padding(
       padding: EdgeInsets.symmetric(horizontal: 100.0, vertical: 20.0),
-      child: Text(
-        "Padding",
-      ),
+      child: Text("Padding"),
     );
   }
 }

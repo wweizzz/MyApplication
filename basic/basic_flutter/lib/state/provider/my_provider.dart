@@ -1,18 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-/// Simplest possible model, with just one field.
-///
-/// [ChangeNotifier] is a class in `flutter:foundation`. [Counter] does
-/// _not_ depend on Provider.
-class Counter with ChangeNotifier {
-  int value = 0;
-
-  void increment() {
-    value += 1;
-    notifyListeners();
-  }
-}
+import 'page/my_provider_page.dart';
 
 /// Provider
 /// https://pub.dev/packages/provider
@@ -23,53 +11,7 @@ class MyProvider extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'Flutter Provider demo',
-      home: ProviderPage(title: 'Flutter Provider demo'),
-    );
-  }
-}
-
-class ProviderPage extends StatelessWidget {
-  const ProviderPage({super.key, required this.title});
-
-  final String title;
-
-  void _incrementCounter(BuildContext context) {
-    var counter = context.read<Counter>();
-    counter.increment();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-      ),
-      body: getBody(),
-      floatingActionButton: getFAB(context),
-    );
-  }
-
-  Widget getBody() {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Text(
-            'You have pushed the button this many times:',
-          ),
-          Consumer<Counter>(
-            builder: (context, counter, child) => Text('${counter.value}'),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget getFAB(context) {
-    return FloatingActionButton(
-      onPressed: () => _incrementCounter(context),
-      tooltip: 'increment',
-      child: const Icon(Icons.add),
+      home: MyProviderPage(title: 'Flutter Provider demo'),
     );
   }
 }

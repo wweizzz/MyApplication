@@ -1,5 +1,6 @@
-import '../common/toast.dart';
 import 'package:flutter/material.dart';
+
+import '../common/toast.dart';
 
 /// toast
 /// https://pub.dev/packages/fluttertoast
@@ -30,17 +31,20 @@ class ToastRoute extends StatelessWidget {
       appBar: AppBar(
         title: Text(title),
       ),
-      body: const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => _showToast(),
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+      body: getBody(),
+      floatingActionButton: getFAB(),
+    );
+  }
+
+  Widget getBody() {
+    return const Center();
+  }
+
+  Widget getFAB() {
+    return FloatingActionButton(
+      onPressed: () => _showToast(),
+      tooltip: 'toast',
+      child: const Icon(Icons.add),
     );
   }
 }

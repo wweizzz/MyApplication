@@ -15,8 +15,9 @@ class FlutterStateActivity : BasicRecyclerActivity() {
     override fun buildList(): ArrayList<String> {
         return arrayListOf(
             "MyProvider", // Provider
+            "MyBloC", // BloC
+            "MyGet", // GetX
             "MyGetX", // GetX
-            "MyGetX2", // GetX
         )
     }
 

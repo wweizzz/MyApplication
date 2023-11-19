@@ -43,9 +43,7 @@ class GestureDetectorRoute extends StatelessWidget {
       onLongPress: () {
         log('onLongPress');
       },
-      child: const FlutterLogo(
-        size: 100,
-      ),
+      child: const FlutterLogo(size: 100),
     );
   }
 }

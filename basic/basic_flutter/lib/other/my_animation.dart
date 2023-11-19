@@ -48,16 +48,12 @@ class _MyFadeState extends State<AnimationRoute> with TickerProviderStateMixin {
       body: Center(
         child: FadeTransition(
           opacity: curve,
-          child: const FlutterLogo(
-            size: 100,
-          ),
+          child: const FlutterLogo(size: 100),
         ),
       ),
       floatingActionButton: FloatingActionButton(
         tooltip: 'Fade',
-        onPressed: () {
-          controller.forward();
-        },
+        onPressed: () => controller.forward(),
         child: const Icon(Icons.brush),
       ),
     );

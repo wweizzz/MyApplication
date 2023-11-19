@@ -1,5 +1,8 @@
+import 'package:basic_flutter/state/bloc/my_bloc.dart';
+import 'package:basic_flutter/state/provider/notifier/my_provider_notifier.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_boost/flutter_boost.dart';
 import 'package:provider/provider.dart';
 
@@ -42,8 +45,8 @@ import 'scroll/my_nested_scroll_view.dart';
 import 'scroll/my_page_view.dart';
 import 'scroll/my_scroll_view.dart';
 import 'scroll/my_tab_bar_view.dart';
-import 'state/get/my_get.dart';
-import 'state/getX/my_get_view.dart';
+import 'state/bloc/observer/my_bloc_observer.dart';
+import 'state/get/my_get_app.dart';
 import 'state/provider/my_provider.dart';
 
 void main() {
@@ -53,6 +56,8 @@ void main() {
   ///这里的CustomFlutterBinding调用务必不可缺少，用于控制Boost状态的resume和pause
   CustomFlutterBinding();
 
+  Bloc.observer = const AppBlocObserver();
+
   //runApp(const MyApp());
   runApp(ChangeNotifierProvider(
     //在生成器中初始化模型。
@@ -61,7 +66,7 @@ void main() {
     // Initialize the model in the builder.
     // That way, Provider can own Counter's lifecycle,
     // making sure to call `dispose` when not needed anymore.
-    create: (context) => Counter(),
+    create: (context) => MyProviderNotifier(),
     child: const MyApp(),
   ));
 }
@@ -317,18 +322,18 @@ class _MyAppState extends State<MyApp> {
             return const MyProvider();
           });
     },
-    'MyGetX': (RouteSettings settings, String? uniqueId) {
+    'MyGet': (RouteSettings settings, String? uniqueId) {
       return CupertinoPageRoute(
           settings: settings,
           builder: (_) {
-            return const MyGetX();
+            return const MyGet();
           });
     },
-    'MyGetX2': (RouteSettings settings, String? uniqueId) {
+    'MyBloC': (RouteSettings settings, String? uniqueId) {
       return CupertinoPageRoute(
           settings: settings,
           builder: (_) {
-            return const MyGetX2();
+            return const MyBloC();
           });
     },
   };

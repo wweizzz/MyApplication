@@ -26,22 +26,30 @@ class TabBarViewRoute extends StatelessWidget {
     return DefaultTabController(
       length: tabs.length,
       child: Scaffold(
-        appBar: AppBar(
-          title: Text(title),
-          bottom: TabBar(
-            tabs: tabs.map((e) => Tab(text: e)).toList(),
-          ),
-        ),
-        body: TabBarView(
-          children: tabs.map((e) {
-            return KeepAliveWrapper(
-              child: Center(
-                child: Text(e),
-              ),
-            );
-          }).toList(),
-        ),
+        appBar: getAppBar(tabs),
+        body: getBody(tabs),
       ),
+    );
+  }
+
+  AppBar getAppBar(tabs) {
+    return AppBar(
+      title: Text(title),
+      bottom: TabBar(
+        tabs: tabs.map((tab) => Tab(text: tab)).toList(),
+      ),
+    );
+  }
+
+  Widget getBody(tabs) {
+    return TabBarView(
+      children: tabs.map((e) {
+        return KeepAliveWrapper(
+          child: Center(
+            child: Text(e),
+          ),
+        );
+      }).toList(),
     );
   }
 }

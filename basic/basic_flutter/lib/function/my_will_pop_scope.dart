@@ -29,15 +29,11 @@ class WillPopScopeRoute extends StatelessWidget {
           actionsAlignment: MainAxisAlignment.spaceBetween,
           actions: [
             TextButton(
-              onPressed: () {
-                Navigator.pop(context, true);
-              },
+              onPressed: () => Navigator.pop(context, true),
               child: const Text('Yes'),
             ),
             TextButton(
-              onPressed: () {
-                Navigator.pop(context, false);
-              },
+              onPressed: () => Navigator.pop(context, false),
               child: const Text('No'),
             ),
           ],

@@ -26,14 +26,18 @@ class SingleChildScrollViewRoute extends StatelessWidget {
       appBar: AppBar(
         title: Text(title),
       ),
-      body: Scrollbar(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(16.0),
-          child: Center(
-            child: Column(
-              //动态创建一个List<Widget>
-              children: buildChildren(),
-            ),
+      body: getBody(),
+    );
+  }
+
+  Widget getBody() {
+    return Scrollbar(
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.all(16.0),
+        child: Center(
+          child: Column(
+            //动态创建一个List<Widget>
+            children: buildChildren(),
           ),
         ),
       ),
@@ -44,8 +48,10 @@ class SingleChildScrollViewRoute extends StatelessWidget {
     return generateWordPairs()
         .take(20)
         .map(
-          (e) => Padding(
-              padding: const EdgeInsets.all(10), child: Text(e.asPascalCase)),
+          (word) => Padding(
+            padding: const EdgeInsets.all(10),
+            child: Text(word.asPascalCase),
+          ),
         )
         .toList();
   }
