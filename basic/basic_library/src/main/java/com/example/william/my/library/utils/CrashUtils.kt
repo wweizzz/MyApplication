@@ -4,9 +4,7 @@ import android.content.pm.PackageManager
 import android.os.Build
 import android.text.TextUtils
 import com.example.william.my.library.app.BaseApp
-import com.example.william.my.library.utils.FileSDCardUtil.getCacheDirPath
-import com.example.william.my.library.utils.FileSDCardUtil.isSpace
-import com.example.william.my.library.utils.FileSDCardUtil.writeFileFromString
+import com.example.william.my.library.utils.FileSDCardUtil
 import java.io.File
 import java.io.PrintWriter
 import java.io.StringWriter
@@ -57,8 +55,8 @@ object CrashUtils {
      */
     @JvmOverloads
     fun init(crashDirPath: String = "", onCrashListener: OnCrashListener? = null) {
-        val dirPath: String = if (isSpace(crashDirPath)) {
-            getCacheDirPath() + FILE_SEP + "crash" + FILE_SEP
+        val dirPath: String = if (FileSDCardUtil.isSpace(crashDirPath)) {
+            FileSDCardUtil.getCacheDirPath() + FILE_SEP + "crash" + FILE_SEP
         } else {
             if (crashDirPath.endsWith(FILE_SEP!!)) crashDirPath else crashDirPath + FILE_SEP
         }
@@ -77,14 +75,14 @@ object CrashUtils {
             val time = SimpleDateFormat("yyyy_MM_dd-HH_mm_ss", Locale.CHINA).format(Date())
             val crashInfo = CrashInfo(time, e)
             val crashFile = "$dirPath$time.txt"
-            writeFileFromString(crashFile, crashInfo.toString(), true)
+            FileSDCardUtil.writeFileFromString(crashFile, crashInfo.toString(), true)
             onCrashListener?.onCrash(crashInfo)
             DEFAULT_UNCAUGHT_EXCEPTION_HANDLER?.uncaughtException(t, e)
         }
     }
 
     private fun getAppVersionName(packageName: String?): String {
-        return if (isSpace(packageName)) "" else try {
+        return if (FileSDCardUtil.isSpace(packageName)) "" else try {
             val pm = BaseApp.app.packageManager
             val pi = pm.getPackageInfo(packageName!!, 0)
             if (pi == null) "" else pi.versionName
@@ -95,7 +93,7 @@ object CrashUtils {
     }
 
     private fun getAppVersionCode(packageName: String?): Int {
-        return if (isSpace(packageName)) -1 else try {
+        return if (FileSDCardUtil.isSpace(packageName)) -1 else try {
             val pm = BaseApp.app.packageManager
             val pi = pm.getPackageInfo(packageName!!, 0)
             pi?.versionCode ?: -1

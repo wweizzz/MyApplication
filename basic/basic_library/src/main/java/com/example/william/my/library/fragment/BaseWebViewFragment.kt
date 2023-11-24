@@ -1,11 +1,11 @@
 package com.example.william.my.library.fragment
 
 import com.example.william.my.library.R
-import com.example.william.my.library.databinding.BasicsFragmentWebViewBinding
+import com.example.william.my.library.databinding.BaseFragmentWebViewBinding
 
 class BaseWebViewFragment :
-    BaseVBFragment<BasicsFragmentWebViewBinding>(R.layout.basics_fragment_web_view) {
-    override fun getViewBinding(): BasicsFragmentWebViewBinding {
-        return BasicsFragmentWebViewBinding.inflate(layoutInflater)
+    BaseVBFragment<BaseFragmentWebViewBinding>(R.layout.base_fragment_web_view) {
+    override fun getViewBinding(): BaseFragmentWebViewBinding {
+        return BaseFragmentWebViewBinding.inflate(layoutInflater)
     }
 }

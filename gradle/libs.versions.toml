@@ -1,4 +1,7 @@
 [versions]
+versionCode = "100"
+versionName = "1.0.0" # X.Y.Z; X = Major, Y = minor, Z = Patch level
+# ##################################################################################################
 desugar = "2.0.3"
 kotlinx = "1.7.2"
 googleGson = "2.10.1"
@@ -34,7 +37,7 @@ autodispose = "2.1.1"
 rxlifecycle = "4.0.2"
 # ##################################################################################################
 immersionbar = "3.2.2"
-brvah = "4.0.0-beta10"
+brvah = "4.1.0"
 smartrefresh = "2.0.6"
 mavericks = "3.0.6"
 # ##################################################################################################
@@ -180,9 +183,9 @@ greendao = { group = "org.greenrobot", name = "greendao", version.ref = "greenda
 # https://github.com/objectbox/objectbox-java
 objectbox = { group = "io.objectbox", name = "objectbox-kotlin", version.ref = "objectbox" }
 # https://github.com/ReactiveX/RxJava
-rxjava3 = { group = "io.reactivex.rxjava3", name = "rxjava", version.ref = "rxjava" }
+# rxjava3 = { group = "io.reactivex.rxjava3", name = "rxjava", version.ref = "rxjava" }
 # https://github.com/ReactiveX/RxAndroid
-rxandroid = { group = "io.reactivex.rxjava3", name = "rxandroid", version.ref = "rxandroid" }
+# rxandroid = { group = "io.reactivex.rxjava3", name = "rxandroid", version.ref = "rxandroid" }
 # https://github.com/uber/AutoDispose
 autodispose = { group = "com.uber.autodispose2", name = "autodispose-androidx-lifecycle", version.ref = "autodispose" }
 # https://github.com/trello/RxLifecycle
@@ -192,7 +195,7 @@ rxlifecycle = { group = "com.trello.rxlifecycle4", name = "rxlifecycle-android-l
 immersionbar = { group = "com.geyifeng.immersionbar", name = "immersionbar", version.ref = "immersionbar" }
 immersionbar-ktx = { group = "com.geyifeng.immersionbar", name = "immersionbar-ktx", version.ref = "immersionbar" }
 # https://github.com/CymChad/BaseRecyclerViewAdapterHelper
-brvah = { group = "io.github.cymchad", name = "BaseRecyclerViewAdapterHelper", version.ref = "brvah" }
+brvah = { group = "io.github.cymchad", name = "BaseRecyclerViewAdapterHelper4", version.ref = "brvah" }
 # https://github.com/scwang90/SmartRefreshLayout
 smartrefresh-layout = { group = "io.github.scwang90", name = "refresh-layout-kernel", version.ref = "smartrefresh" }
 smartrefresh-header = { group = "io.github.scwang90", name = "refresh-header-classics", version.ref = "smartrefresh" }

@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import com.alibaba.android.arouter.exception.HandlerException
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
-import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.viewholder.QuickViewHolder
+import com.chad.library.adapter4.BaseQuickAdapter
+import com.chad.library.adapter4.viewholder.QuickViewHolder
 import com.example.william.my.basic.basic_module.R
 import com.example.william.my.basic.basic_module.router.item.RouterItem
 import com.example.william.my.basic.basic_module.router.path.ARouterPath

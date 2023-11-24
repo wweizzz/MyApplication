@@ -13,6 +13,7 @@ class AndroidUtilsActivity : RouterRecyclerActivity() {
 
     override fun buildRouter(): ArrayList<RouterItem> {
         val routerItems: ArrayList<RouterItem> = arrayListOf()
+        routerItems.add(RouterItem("AdaptScreenUtilsActivity", ARouterPath.Utils.AdaptScreenUtils))
         routerItems.add(RouterItem("FileIOUtilsActivity", ARouterPath.Utils.FileIOUtils))
         routerItems.add(RouterItem("PermissionUtilsActivity", ARouterPath.Utils.PermissionUtils))
         return routerItems

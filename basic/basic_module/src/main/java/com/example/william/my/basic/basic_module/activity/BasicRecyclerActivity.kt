@@ -6,8 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.LayoutManager
-import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.viewholder.QuickViewHolder
+import com.chad.library.adapter4.BaseQuickAdapter
+import com.chad.library.adapter4.viewholder.QuickViewHolder
+
 import com.example.william.my.basic.basic_module.R
 import com.example.william.my.basic.basic_module.databinding.BasicsLayoutRecyclerBinding
 import com.example.william.my.basic.basic_module.dialog.BasicDialogFragment

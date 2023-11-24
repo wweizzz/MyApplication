@@ -75,7 +75,7 @@
   * [BloC](https://pub.dev/packages/flutter_bloc)
 * 三方框架
   * [Toast](https://pub.dev/packages/fluttertoast)
-  * [Notification](https://pub.dev/packages/flutter_local_notifications
+  * [Notification](https://pub.dev/packages/flutter_local_notifications)
   * [SharedPreferences](https://pub.dev/packages/shared_preferences)
   * [ScreenUtil](https://pub.dev/packages/flutter_screenutil)
 

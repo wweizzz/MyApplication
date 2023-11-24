@@ -13,7 +13,6 @@ object NetworkUtils {
 
     private fun getActiveNetworkInfo(context: Context): NetworkInfo? {
         val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-            ?: return null
         return cm.activeNetworkInfo
     }
 }

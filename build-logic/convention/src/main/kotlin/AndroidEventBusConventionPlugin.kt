@@ -33,7 +33,7 @@ class AndroidEventBusConventionPlugin : Plugin<Project> {
                         project.path.replace(":", ".")
                 val eventBusClassName = "My" +
                         project.name.substringAfter("_", project.name)
-                            .capitalize(Locale.getDefault()) + "EventBusIndex"
+                            .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() } + "EventBusIndex"
                 println("eventBusClassPath : $eventBusClassPath")
                 println("eventBusClassName : $eventBusClassName")
                 arguments {

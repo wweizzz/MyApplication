@@ -1,7 +1,7 @@
 package com.example.william.my.module.arch.fragment
 
-import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.viewholder.QuickViewHolder
+import com.chad.library.adapter4.BaseQuickAdapter
+import com.chad.library.adapter4.viewholder.QuickViewHolder
 import com.example.william.my.basic.basic_repository.bean.Article
 import com.example.william.my.basic.basic_repository.data.ServiceLocator
 import com.example.william.my.library.fragment.BaseRecyclerFragment

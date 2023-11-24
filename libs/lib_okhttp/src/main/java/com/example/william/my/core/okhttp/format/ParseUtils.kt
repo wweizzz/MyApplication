@@ -36,7 +36,6 @@ object ParseUtils {
      * application/x-www-form-urlencoded
      */
     fun isParseAble(mediaType: MediaType?): Boolean {
-        Log.e("TAG", "ParseUtils isParseAble mediaType.subtype " + mediaType?.subtype)
         return if (mediaType == null) {
             false
         } else (isText(mediaType) || isPlain(mediaType)

@@ -9,5 +9,4 @@ android {
 dependencies {
     api(libs.google.gson)
     api(libs.okhttp)
-    api(libs.rxandroid)
 }

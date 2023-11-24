@@ -1,10 +1,9 @@
-package com.example.william.my.library.utils
+package com.example.william.my.library.scheme
 
 import android.app.Activity
 import android.content.Intent
 import android.text.TextUtils
 import com.example.william.my.library.activity.BaseActivity
-import com.example.william.my.library.scheme.ProtocolConstants
 
 /**
  * 私有协议Schema跳转帮助类

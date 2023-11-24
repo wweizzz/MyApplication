@@ -3,6 +3,7 @@
 
     <application>
         <activity android:name=".AndroidUtilsActivity" />
+        <activity android:name=".activity.AdaptScreenUtilsActivity" />
         <activity android:name=".activity.FileIOUtilsActivity" />
         <activity android:name=".activity.PermissionUtilsActivity" />
     </application>

@@ -7,9 +7,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.viewholder.QuickViewHolder
-import com.example.william.my.library.databinding.BasicsFragmentRecyclerBinding
+import com.chad.library.adapter4.BaseQuickAdapter
+import com.chad.library.adapter4.viewholder.QuickViewHolder
+import com.example.william.my.library.databinding.BaseFragmentRecyclerViewBinding
 import com.example.william.my.library.view.IEmptyView
 import com.scwang.smart.refresh.layout.api.RefreshLayout
 import com.scwang.smart.refresh.layout.listener.OnRefreshLoadMoreListener
@@ -17,7 +17,7 @@ import com.scwang.smart.refresh.layout.listener.OnRefreshLoadMoreListener
 /**
  * https://github.com/CymChad/BaseRecyclerViewAdapterHelper
  */
-abstract class BaseRecyclerFragment<T> : BaseVBFragment<BasicsFragmentRecyclerBinding>(),
+abstract class BaseRecyclerFragment<T : Any> : BaseVBFragment<BaseFragmentRecyclerViewBinding>(),
     BaseQuickAdapter.OnItemClickListener<T>, BaseQuickAdapter.OnItemChildClickListener<T>,
     OnRefreshLoadMoreListener {
 
@@ -30,10 +30,8 @@ abstract class BaseRecyclerFragment<T> : BaseVBFragment<BasicsFragmentRecyclerBi
     protected lateinit var adapter: BaseQuickAdapter<T, QuickViewHolder>
     protected lateinit var manager: RecyclerView.LayoutManager
 
-    protected val emptyView: IEmptyView? = null
-
-    override fun getViewBinding(): BasicsFragmentRecyclerBinding {
-        return BasicsFragmentRecyclerBinding.inflate(layoutInflater)
+    override fun getViewBinding(): BaseFragmentRecyclerViewBinding {
+        return BaseFragmentRecyclerViewBinding.inflate(layoutInflater)
     }
 
     override fun initView(view: View?, state: Bundle?) {
@@ -65,13 +63,9 @@ abstract class BaseRecyclerFragment<T> : BaseVBFragment<BasicsFragmentRecyclerBi
         manager.let {
             mBinding.recyclerView.layoutManager = manager
         }
-        emptyView?.let {
-            emptyView.showEmptyView()
-            emptyView.setOnClickListener(object : IEmptyView.OnEmptyClickListener {
-                override fun onRefresh() {}
-            })
-            adapter.emptyView = emptyView.rootView
-        }
+
+        // 是否使用空布局（默认 false）
+        adapter.isStateViewEnable = true
     }
 
     protected abstract fun initRecyclerAdapter(): BaseQuickAdapter<T, QuickViewHolder>
@@ -117,7 +111,7 @@ abstract class BaseRecyclerFragment<T> : BaseVBFragment<BasicsFragmentRecyclerBi
             val textView = TextView(activity)
             textView.gravity = Gravity.CENTER
             textView.text = "无数据"
-            adapter.emptyView = textView
+            adapter.stateView = textView
         }
         mBinding.smartRefresh.setEnableLoadMore(false)
     }

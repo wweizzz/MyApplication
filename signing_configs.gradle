@@ -1,0 +1,18 @@
+project.apply plugin: 'kotlin-android'
+
+android {
+    signingConfigs {
+        debug {
+            storeFile file("app.jks")
+            storePassword "123456"
+            keyAlias "app"
+            keyPassword "123456"
+        }
+        release {
+            storeFile file("app.jks")
+            storePassword "123456"
+            keyAlias "app"
+            keyPassword "123456"
+        }
+    }
+}

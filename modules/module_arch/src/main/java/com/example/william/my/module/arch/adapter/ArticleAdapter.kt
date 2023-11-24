@@ -2,8 +2,8 @@ package com.example.william.my.module.arch.adapter
 
 import android.content.Context
 import android.view.ViewGroup
-import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.viewholder.QuickViewHolder
+import com.chad.library.adapter4.BaseQuickAdapter
+import com.chad.library.adapter4.viewholder.QuickViewHolder
 import com.example.william.my.basic.basic_repository.bean.Article
 import com.example.william.my.module.arch.R
 

@@ -23,6 +23,7 @@ object ARouterPath {
 
     object Utils {
         const val Main = "/module_utils/utils_main"
+        const val AdaptScreenUtils = "/module_utils/AdaptScreenUtils"
         const val FileIOUtils = "/module_utils/FileIOUtils"
         const val PermissionUtils = "/module_utils/PermissionUtils"
     }

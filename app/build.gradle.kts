@@ -1,3 +1,7 @@
+import com.android.build.gradle.internal.api.BaseVariantOutputImpl
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+
 plugins {
     id("nowinandroid.android.application")
     id("nowinandroid.android.hilt")
@@ -19,7 +23,15 @@ android {
             //abiFilters 'armeabi-v7a', 'arm64-v8a' // , 'x86', 'x86_64'
             abiFilters.addAll(arrayOf("armeabi-v7a", "arm64-v8a", "x86", "x86_64"))
         }
-
+        applicationVariants.all {
+            outputs.all {
+                val outputImpl = this as BaseVariantOutputImpl
+                val createTime =
+                    LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy_MM_dd"))
+                outputImpl.outputFileName =
+                    "MyApplication" + "_${versionName}_${baseName}_$createTime.apk"
+            }
+        }
         addManifestPlaceholders(mutableMapOf("APP_NAME" to "My Application")) // 配置主包的应用名称
     }
 }

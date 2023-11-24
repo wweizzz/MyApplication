@@ -8,7 +8,7 @@ abstract class BaseFragmentActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.basics_activity_fragment)
+        setContentView(R.layout.base_activity_fragment)
     }
 
     override fun initView() {

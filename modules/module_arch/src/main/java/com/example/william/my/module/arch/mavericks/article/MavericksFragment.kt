@@ -1,9 +1,10 @@
 package com.example.william.my.module.arch.mavericks.article
 
+import androidx.lifecycle.Lifecycle
 import com.airbnb.mvrx.MavericksView
 import com.airbnb.mvrx.fragmentViewModel
-import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.viewholder.QuickViewHolder
+import com.chad.library.adapter4.BaseQuickAdapter
+import com.chad.library.adapter4.viewholder.QuickViewHolder
 import com.example.william.my.basic.basic_repository.bean.Article
 import com.example.william.my.library.fragment.BaseRecyclerFragment
 import com.example.william.my.module.arch.adapter.ArticleAdapter
@@ -12,7 +13,7 @@ import com.example.william.my.module.arch.adapter.ArticleAdapter
  * Mavericks
  * https://airbnb.io/mavericks/
  */
-class MavericksFragment : BaseRecyclerFragment<Article>(), MavericksView {
+class MavericksFragment(override val lifecycle: Lifecycle) : BaseRecyclerFragment<Article>(), MavericksView {
 
     private val viewModel: ArticleViewModel by fragmentViewModel()
 
