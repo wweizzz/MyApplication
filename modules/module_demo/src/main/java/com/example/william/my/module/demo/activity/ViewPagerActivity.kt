@@ -33,9 +33,8 @@ class ViewPagerActivity : BaseVBActivity<DemoActivityViewPagerBinding>() {
     )
 
     private val mARouterFragments = arrayOf(
-        ARouter.getInstance().build(
-            ARouterPath.Fragment.FragmentPrimary
-        ).navigation() as Fragment,
+        ARouter.getInstance().build(ARouterPath.Fragment.FragmentPrimary)
+            .navigation() as Fragment,
         ARouter.getInstance().build(ARouterPath.Fragment.FragmentPrimaryDark)
             .navigation() as Fragment,
         ARouter.getInstance().build(ARouterPath.Fragment.FragmentPrimaryDark)

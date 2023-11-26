@@ -63,7 +63,7 @@ class FragmentTabHostActivity : BaseVBActivity<DemoActivityFragmentTabHostBindin
 
     private fun getTabView(textArray: ArrayList<String>, i: Int): View {
         val view = layoutInflater.inflate(R.layout.demo_item_tab_host, mBinding.tabs, false)
-        val textView = view.findViewById<TextView>(R.id.item_tab_textView)
+        val textView = view.findViewById<TextView>(R.id.item_tab_text)
         textView.text = textArray[i]
         textView.setTextColor(
             ContextCompat.getColorStateList(

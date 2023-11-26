@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/item_tab_textView"
+        android:id="@+id/item_tab_text"
         android:layout_width="match_parent"
         android:layout_height="@dimen/basics_btn_height"
         android:gravity="center" />

@@ -44,7 +44,7 @@ class FragmentActivity1 : BaseVBActivity<DemoActivityFragment1Binding>(),
     private val isNewWay = false // 是否使用新的适配方式：setMaxLifecycle
 
     override fun initView(savedInstanceState: Bundle?) {
-        super.initView()
+        super.initView(savedInstanceState)
 
         initFragment(savedInstanceState)
         initFragmentTab()

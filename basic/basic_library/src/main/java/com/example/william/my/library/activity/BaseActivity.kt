@@ -17,7 +17,10 @@ open class BaseActivity : AppCompatActivity() {
 
         initView(savedInstanceState)
         initView()
+
+        initViewModel()
         observeViewModel()
+
         initOnClick()
     }
 
@@ -26,6 +29,10 @@ open class BaseActivity : AppCompatActivity() {
     }
 
     open fun initView() {
+
+    }
+
+    open fun initViewModel() {
 
     }
 

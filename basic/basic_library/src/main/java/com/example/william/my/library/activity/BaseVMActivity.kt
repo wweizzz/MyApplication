@@ -15,11 +15,14 @@ abstract class BaseVMActivity<VB : ViewBinding?, VM : BaseViewModel> : BaseVBAct
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        _model = initViewModel()
+    }
+
+    override fun initViewModel() {
+        _model = viewModel()
         lifecycle.addObserver(_model!!)
     }
 
-    private fun initViewModel(): VM? {
+    private fun viewModel(): VM? {
         try {
             val aClass =
                 (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[1] as Class<VM>

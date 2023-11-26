@@ -98,7 +98,6 @@ object ActivityManagerUtil {
             Application.ActivityLifecycleCallbacks {
             override fun onActivityCreated(activity: Activity, bundle: Bundle?) {
                 allActivityStacks.add(activity)
-                Log.e(TAG, activity.javaClass.simpleName)
             }
 
             override fun onActivityStarted(activity: Activity) {

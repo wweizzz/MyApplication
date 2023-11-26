@@ -11,7 +11,7 @@ abstract class BaseVMFragment<VB : ViewBinding?, VM : BaseViewModel>(layout: Int
     BaseVBFragment<VB>(layout) {
 
     private var _viewModel: VM? = null
-    protected val viewModel get() = _viewModel!!
+    protected val mViewModel get() = _viewModel!!
 
     override fun initViewModel() {
         _viewModel = viewModel()

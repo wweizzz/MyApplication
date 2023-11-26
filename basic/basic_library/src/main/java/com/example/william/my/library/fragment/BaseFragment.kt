@@ -52,7 +52,7 @@ open class BaseFragment(layout: Int = 0) : NewLazyFragment(layout) {
      * 在此方法内初始化控件
      */
     open fun initView(view: View?, state: Bundle?) {
-
+        //Log.e("TAG", this.javaClass.simpleName)
     }
 
     /**
