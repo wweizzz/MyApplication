@@ -71,6 +71,8 @@ include(":basic:basic_library")
 include(":basic:basic_module")
 include(":basic:basic_repository")
 
+include(":libs:lib_widget")
+
 include(":libs:lib_volley")
 include(":libs:lib_okhttp")
 include(":libs:lib_websocket")
@@ -79,8 +81,7 @@ include(":libs:lib_download")
 
 include(":libs:lib_eventbus")
 include(":libs:lib_ninepatch")
-
-include(":libs:lib_widget")
+include(":libs:lib_imageloader")
 
 include(":modules:module_flutter")
 include(":modules:module_arch")

@@ -1,4 +1,4 @@
-package com.example.william.my.module.network.glide;
+package com.example.william.my.core.imageloader.module;
 
 import com.bumptech.glide.annotation.GlideModule;
 import com.bumptech.glide.module.AppGlideModule;
