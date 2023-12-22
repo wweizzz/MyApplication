@@ -14,24 +14,19 @@
  *   limitations under the License.
  */
 
+import com.google.samples.apps.nowinandroid.configureBasicAndroid
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import org.gradle.kotlin.dsl.dependencies
 
 class AndroidFeatureConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
-            dependencies {
-                add("implementation", project(":modules:module_flutter"))
-                add("implementation", project(":modules:module_arch"))
-                add("implementation", project(":modules:module_demo"))
-                add("implementation", project(":modules:module_libraries"))
-                add("implementation", project(":modules:module_network"))
-                add("implementation", project(":modules:module_opensource"))
-                add("implementation", project(":modules:module_sample"))
-                add("implementation", project(":modules:module_utils"))
-                add("implementation", project(":modules:module_compose"))
+            with(pluginManager) {
+                apply("nowinandroid.android.library")
+                apply("nowinandroid.android.arouter")
+                apply("nowinandroid.android.eventbus")
             }
+            configureBasicAndroid()
         }
     }
 }

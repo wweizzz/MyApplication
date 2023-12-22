@@ -6,7 +6,7 @@ import com.airbnb.mvrx.fragmentViewModel
 import com.chad.library.adapter4.BaseQuickAdapter
 import com.chad.library.adapter4.viewholder.QuickViewHolder
 import com.example.william.my.basic.basic_repository.bean.Article
-import com.example.william.my.library.fragment.BaseRecyclerFragment
+import com.example.william.my.lib.fragment.BaseRecyclerFragment
 import com.example.william.my.module.arch.adapter.ArticleAdapter
 
 /**

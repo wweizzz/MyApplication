@@ -1,6 +1,5 @@
 plugins {
-    id("nowinandroid.android.library")
-    id("nowinandroid.android.basic")
+    id("nowinandroid.android.feature")
 }
 
 android {

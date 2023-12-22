@@ -23,7 +23,9 @@ import org.gradle.kotlin.dsl.dependencies
 class AndroidProtobufConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
-            pluginManager.apply("com.google.protobuf")
+            with(pluginManager) {
+                apply("com.google.protobuf")
+            }
             extensions.configure<ProtobufExtension> {
                 protoc {
                     // The artifact spec for the Protobuf Compiler

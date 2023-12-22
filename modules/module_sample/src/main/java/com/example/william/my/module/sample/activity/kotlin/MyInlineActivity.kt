@@ -4,7 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import com.example.william.my.basic.basic_module.activity.BasicResponseActivity
-import com.example.william.my.library.utils.Utils
+import com.example.william.my.lib.utils.Utils
 import com.google.gson.Gson
 
 /**

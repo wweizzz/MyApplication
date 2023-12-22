@@ -2,18 +2,20 @@ package com.google.samples.apps.nowinandroid
 
 import com.android.build.api.dsl.ApplicationExtension
 import com.android.build.api.dsl.LibraryExtension
+import org.gradle.api.artifacts.VersionCatalog
 
 /**
  * Configure base build with Android options
  */
 fun configureApplicationAndroid(
     commonExtension: ApplicationExtension,
+    versions: VersionCatalog,
 ) {
     commonExtension.apply {
-        compileSdk = 34
+        compileSdk = versions.findVersion("compileSdk").get().toString().toInt()
         defaultConfig {
-            minSdk = 21
-            targetSdk = 34
+            minSdk = versions.findVersion("minSdk").get().toString().toInt()
+            targetSdk = versions.findVersion("targetSdk").get().toString().toInt()
             testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
             multiDexEnabled = true // dex分包支持
         }
@@ -59,11 +61,12 @@ fun configureApplicationAndroid(
  */
 fun configureLibraryAndroid(
     commonExtension: LibraryExtension,
+    versions: VersionCatalog,
 ) {
     commonExtension.apply {
-        compileSdk = 34
+        compileSdk = versions.findVersion("compileSdk").get().toString().toInt()
         defaultConfig {
-            minSdk = 21
+            minSdk = versions.findVersion("minSdk").get().toString().toInt()
             testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
             consumerProguardFiles("consumer-rules.pro")
             multiDexEnabled = true // dex分包支持

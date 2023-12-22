@@ -1,6 +1,5 @@
 plugins {
-    id("nowinandroid.android.library")
-    id("nowinandroid.android.basic")
+    id("nowinandroid.android.feature")
     id("nowinandroid.android.hilt")
     id("com.google.protobuf")
     //id("nowinandroid.android.room")
@@ -56,7 +55,7 @@ dependencies {
     implementation(libs.androidx.datastore.runtime)
     implementation(libs.androidx.datastore.preferences.runtime)
     // You need to depend on the lite runtime library, not protobuf-java
-    implementation("com.google.protobuf:protobuf-javalite:3.24.0")
+    implementation(libs.google.protobuf.javalite)
 
     //WorkManager
     implementation(libs.androidx.work.ktx)

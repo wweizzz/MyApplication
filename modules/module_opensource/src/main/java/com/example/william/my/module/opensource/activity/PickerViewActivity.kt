@@ -13,7 +13,7 @@ import com.bigkoo.pickerview.view.OptionsPickerView
 import com.example.william.my.basic.basic_module.activity.BasicResponseActivity
 import com.example.william.my.basic.basic_module.router.path.ARouterPath
 import com.example.william.my.basic.basic_module.router.service.ResourceUtilsService
-import com.example.william.my.library.utils.Utils.show
+import com.example.william.my.lib.utils.Utils.show
 import com.example.william.my.module.opensource.data.ProvinceData
 import com.google.gson.Gson
 import org.json.JSONArray

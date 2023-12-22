@@ -2,7 +2,7 @@ package com.example.william.my.module.network.nano
 
 import android.app.Application
 import android.content.res.AssetManager
-import com.example.william.my.library.utils.Utils
+import com.example.william.my.lib.utils.Utils
 import fi.iki.elonen.NanoHTTPD
 import java.io.BufferedReader
 import java.io.IOException

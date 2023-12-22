@@ -1,6 +1,6 @@
 package com.example.william.my.module.opensource.app
 
-import com.example.william.my.library.app.BaseAppInit
+import com.example.william.my.lib.app.BaseAppInit
 import com.example.william.my.module.opensource.greendao.Greendao
 import com.example.william.my.module.opensource.objectbox.ObjectBox
 

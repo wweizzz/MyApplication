@@ -16,15 +16,14 @@
 
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import org.gradle.kotlin.dsl.dependencies
 
 class AndroidBasicConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
-            dependencies {
-                add("implementation", project(":basic:basic_library"))
-                add("implementation", project(":basic:basic_module"))
-                add("implementation", project(":basic:basic_repository"))
+            with(pluginManager) {
+                apply("nowinandroid.android.library")
+                apply("nowinandroid.android.arouter")
+                apply("nowinandroid.android.eventbus")
             }
         }
     }

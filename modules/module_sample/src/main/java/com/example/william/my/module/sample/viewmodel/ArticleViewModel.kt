@@ -14,7 +14,7 @@ import com.example.william.my.basic.basic_repository.bean.ArticleData
 import com.example.william.my.basic.basic_repository.data.ServiceLocator
 import com.example.william.my.basic.basic_repository.data.source.ArticleRepository
 import com.example.william.my.core.retrofit.response.RetrofitResponse
-import com.example.william.my.library.app.BaseApp
+import com.example.william.my.lib.app.BaseApp
 
 /**
  * 如果需要Context则使用AndroidViewModel

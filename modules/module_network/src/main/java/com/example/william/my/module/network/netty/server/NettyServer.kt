@@ -1,7 +1,6 @@
 package com.example.william.my.module.network.netty.server
 
-import com.example.william.my.library.utils.Utils
-import com.example.william.my.module.network.socket.SocketServer
+import com.example.william.my.lib.utils.Utils
 import io.netty.bootstrap.ServerBootstrap
 import io.netty.channel.Channel
 import io.netty.channel.ChannelOption

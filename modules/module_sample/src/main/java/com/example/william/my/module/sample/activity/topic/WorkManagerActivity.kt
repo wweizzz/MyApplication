@@ -17,7 +17,7 @@ import androidx.work.WorkRequest
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.activity.BasicResponseActivity
 import com.example.william.my.basic.basic_module.router.path.ARouterPath
-import com.example.william.my.library.utils.Utils
+import com.example.william.my.lib.utils.Utils
 import com.example.william.my.module.sample.work.ExpeditedWorker
 import com.example.william.my.module.sample.work.UploadWorker
 import java.util.concurrent.TimeUnit

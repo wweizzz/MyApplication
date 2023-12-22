@@ -6,7 +6,7 @@ import com.example.william.my.basic.basic_module.router.path.ARouterPath
 import com.example.william.my.core.eventbus.flow.FlowEventBus
 import com.example.william.my.core.eventbus.livedata.LiveEventBus
 import com.example.william.my.core.eventbus.rxjava.RxEventBus
-import com.example.william.my.library.eventbus.EventBusHelper
+import com.example.william.my.lib.eventbus.EventBusHelper
 import com.example.william.my.module.libraries.event.GlobalEvent
 import com.example.william.my.module.libraries.event.StickyEvent
 import org.greenrobot.eventbus.Subscribe

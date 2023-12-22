@@ -21,6 +21,10 @@ import com.example.william.my.core.imageloader.module.GlideApp
 import java.security.MessageDigest
 import java.util.concurrent.ExecutionException
 
+/**
+ * https://bumptech.github.io/glide
+ * https://github.com/bumptech/glide
+ */
 object ImageLoader {
 
     fun clear(context: Context?) {

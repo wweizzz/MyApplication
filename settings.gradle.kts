@@ -2,12 +2,12 @@ pluginManagement {
     includeBuild("build-logic")
     repositories {
         maven {
-            url = uri("https://maven.aliyun.com/repository/public")
-            name = "Jcenter"
-        }
-        maven {
             url = uri("https://maven.aliyun.com/repository/google")
             name = "Google"
+        }
+        maven {
+            url = uri("https://maven.aliyun.com/repository/public")
+            name = "Central&Jcenter"
         }
         maven {
             url = uri("https://jitpack.io")
@@ -37,12 +37,12 @@ dependencyResolutionManagement {
     //@Suppress("UnstableApiUsage")
     repositories {
         maven {
-            url = uri("https://maven.aliyun.com/repository/public")
-            name = "Jcenter"
-        }
-        maven {
             url = uri("https://maven.aliyun.com/repository/google")
             name = "Google"
+        }
+        maven {
+            url = uri("https://maven.aliyun.com/repository/public")
+            name = "Central&Jcenter"
         }
         maven {
             url = uri("https://jitpack.io")
@@ -63,11 +63,11 @@ dependencyResolutionManagement {
 rootProject.name = "My Application"
 
 apply {
-    from("settings_flutter.gradle")
+    from("configs_flutter.gradle")
 }
 
 include(":app")
-include(":basic:basic_library")
+include(":basic:basic_lib")
 include(":basic:basic_module")
 include(":basic:basic_repository")
 
@@ -91,4 +91,3 @@ include(":modules:module_network")
 include(":modules:module_opensource")
 include(":modules:module_sample")
 include(":modules:module_utils")
-include(":modules:module_compose")

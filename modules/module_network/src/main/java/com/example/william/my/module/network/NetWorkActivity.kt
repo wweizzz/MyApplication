@@ -14,9 +14,6 @@ class NetWorkActivity : RouterRecyclerActivity() {
             RouterItem("CoilActivity", ARouterPath.Network.Coil)
         )
         routerItems.add(
-            RouterItem("GlideActivity", ARouterPath.Network.Glide)
-        )
-        routerItems.add(
             RouterItem("HttpURLActivity", ARouterPath.Network.HttpURL)
         )
         routerItems.add(

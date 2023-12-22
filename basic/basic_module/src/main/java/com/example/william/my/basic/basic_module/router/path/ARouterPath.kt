@@ -83,7 +83,6 @@ object ARouterPath {
     object Network {
         const val Main = "/module_net/net_main"
         const val Coil = "/module_net/coil"
-        const val Glide = "/module_net/Glide"
         const val HttpURL = "/module_net/http_url"
         const val Volley = "/module_net/volley"
         const val VolleyHelper = "/module_net/volley_helper"
@@ -107,7 +106,7 @@ object ARouterPath {
 
     object Opensource {
         const val Main = "/module_opensource/opensource_main"
-        const val BadgeView = "/module_opensource/BadgeView"
+        const val Badge = "/module_opensource/Badge"
         const val Banner = "/module_opensource/Banner"
         const val CityPicker = "/module_opensource/CityPicker"
         const val CountdownView = "/module_opensource/CountdownView"

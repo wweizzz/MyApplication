@@ -16,7 +16,7 @@
 
 import com.android.build.api.variant.LibraryAndroidComponentsExtension
 import com.android.build.gradle.LibraryExtension
-import com.google.samples.apps.nowinandroid.configureDependenciesAndroid
+import com.google.samples.apps.nowinandroid.configureDepsAndroid
 import com.google.samples.apps.nowinandroid.configureKotlinAndroid
 import com.google.samples.apps.nowinandroid.configureLibraryAndroid
 import com.google.samples.apps.nowinandroid.configurePrintApksTask
@@ -32,15 +32,12 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
             with(pluginManager) {
                 apply("com.android.library")
                 apply("kotlin-android")
+                apply("kotlin-kapt")
                 apply("kotlin-parcelize")
-                apply("nowinandroid.android.hilt")
-                apply("nowinandroid.android.arouter")
-                apply("nowinandroid.android.eventbus")
             }
             extensions.configure<LibraryExtension> {
-                defaultConfig.targetSdk = 34
                 configureKotlinAndroid(this)
-                configureLibraryAndroid(this)
+                configureLibraryAndroid(this, target.libs)
             }
             extensions.configure<LibraryAndroidComponentsExtension> {
                 configurePrintApksTask(this)
@@ -53,7 +50,7 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
                     force("org.objenesis:objenesis:2.6")
                 }
             }
-            configureDependenciesAndroid()
+            configureDepsAndroid()
         }
     }
 }

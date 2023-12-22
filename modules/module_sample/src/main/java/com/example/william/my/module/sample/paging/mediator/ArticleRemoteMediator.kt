@@ -10,7 +10,7 @@ import com.example.william.my.basic.basic_repository.bean.Article
 import com.example.william.my.basic.basic_repository.bean.RemoteKey
 import com.example.william.my.basic.basic_repository.data.source.ArticleRepository
 import com.example.william.my.basic.basic_repository.database.ArticleDatabase
-import com.example.william.my.library.utils.Utils
+import com.example.william.my.lib.utils.Utils
 import retrofit2.HttpException
 import java.io.IOException
 import java.util.concurrent.TimeUnit

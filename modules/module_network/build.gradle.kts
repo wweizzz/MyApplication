@@ -1,6 +1,5 @@
 plugins {
-    id("nowinandroid.android.library")
-    id("nowinandroid.android.basic")
+    id("nowinandroid.android.feature")
 }
 
 android {
@@ -15,8 +14,6 @@ android {
 
 dependencies {
     implementation(libs.coil)
-    //implementation(libs.glide)
-    //kapt(libs.glide.compiler)
     implementation(libs.netty)
     implementation(libs.nanohttpd)
     implementation(libs.websocket)

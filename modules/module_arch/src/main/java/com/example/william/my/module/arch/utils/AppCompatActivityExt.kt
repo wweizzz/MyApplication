@@ -22,7 +22,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.william.my.library.app.BaseApp
+import com.example.william.my.lib.app.BaseApp
 import com.example.william.my.module.arch.factory.ViewModelFactory
 
 fun <T : ViewModel> AppCompatActivity.obtainViewModel(viewModelClass: Class<T>) =

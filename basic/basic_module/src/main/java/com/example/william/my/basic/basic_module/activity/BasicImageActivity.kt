@@ -5,7 +5,7 @@ import android.view.View
 import com.example.william.my.basic.basic_module.R
 import com.example.william.my.basic.basic_module.databinding.BasicsLayoutImageBinding
 import com.example.william.my.basic.basic_module.dialog.BasicDialogFragment
-import com.example.william.my.library.activity.BaseActivity
+import com.example.william.my.lib.activity.BaseActivity
 
 abstract class BasicImageActivity : BaseActivity(), View.OnClickListener {
 

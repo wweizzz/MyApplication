@@ -24,7 +24,7 @@ public class VerifyCodeView extends RelativeLayout {
 
     private int mCodeNum;
     private int mCodeWidth, mCodeHeight, mCodeMargin;
-    private int mTextSize, mTextColor, mTextBgColor;
+    private int mTextSize, mTextColor;
     private Drawable mTextBgNormal, mTextBgFocus;
 
     private EditText mEditText;
@@ -59,7 +59,6 @@ public class VerifyCodeView extends RelativeLayout {
             mCodeMargin = a.getDimensionPixelSize(R.styleable.VerifyCodeView_code_margin, 8);
             mTextSize = a.getDimensionPixelSize(R.styleable.VerifyCodeView_code_size, 14);
             mTextColor = a.getColor(R.styleable.VerifyCodeView_code_color, Color.GRAY);
-            mTextBgColor = a.getColor(R.styleable.VerifyCodeView_code_bg_color, Color.LTGRAY);
             mTextBgNormal = a.getDrawable(R.styleable.VerifyCodeView_code_bg_normal);
             mTextBgFocus = a.getDrawable(R.styleable.VerifyCodeView_code_bg_focus);
             if (mTextBgFocus == null) {
@@ -79,7 +78,6 @@ public class VerifyCodeView extends RelativeLayout {
             textView.setGravity(Gravity.CENTER);
             textView.setTextSize(mTextSize);
             textView.setTextColor(mTextColor);
-            textView.setBackgroundColor(mTextBgColor);
             LayoutParams params = new LayoutParams(SizeUtils.dp2px(mCodeWidth), SizeUtils.dp2px(mCodeHeight));
             params.setMarginStart(SizeUtils.dp2px(mCodeMargin));
             textView.setLayoutParams(params);

@@ -4,17 +4,14 @@ import java.time.format.DateTimeFormatter
 
 plugins {
     id("nowinandroid.android.application")
-    id("nowinandroid.android.hilt")
-    id("nowinandroid.android.basic")
-    id("nowinandroid.android.feature")
 }
 
 android {
     namespace = "com.example.william.my.application"
     defaultConfig {
         applicationId = "com.example.william.my.application"
-        versionCode = 100
-        versionName = "1.0.0" // X.Y.Z; X = Major, Y = minor, Z = Patch level
+        versionCode = libs.versions.versionCode.get().toInt()
+        versionName = libs.versions.versionName.get().toString()
 
         ndk {
             // armeabi：万金油架构平台（占用率：0%）

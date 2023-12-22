@@ -5,7 +5,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.activity.BasicResponseActivity
 import com.example.william.my.basic.basic_module.router.path.ARouterPath
 import com.example.william.my.basic.basic_repository.base.Constants
-import com.example.william.my.library.utils.AppExecutorsHelper
+import com.example.william.my.lib.utils.AppExecutorsHelper
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader

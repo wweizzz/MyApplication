@@ -1,6 +1,6 @@
 package com.example.william.my.module.network.netty.server
 
-import com.example.william.my.library.utils.Utils
+import com.example.william.my.lib.utils.Utils
 import io.netty.channel.ChannelHandlerContext
 import io.netty.channel.SimpleChannelInboundHandler
 import io.netty.channel.group.ChannelGroup

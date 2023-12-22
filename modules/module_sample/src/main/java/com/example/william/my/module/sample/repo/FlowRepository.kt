@@ -4,7 +4,7 @@ import com.example.william.my.basic.basic_repository.api.NetworkApi
 import com.example.william.my.basic.basic_repository.bean.UserData
 import com.example.william.my.core.retrofit.helper.RetrofitHelper
 import com.example.william.my.core.retrofit.response.RetrofitResponse
-import com.example.william.my.library.utils.Utils
+import com.example.william.my.lib.utils.Utils
 import com.example.william.my.module.sample.utils.ThreadUtils
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow

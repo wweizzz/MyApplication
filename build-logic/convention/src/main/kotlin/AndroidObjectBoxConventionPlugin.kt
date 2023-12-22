@@ -22,7 +22,9 @@ import org.jetbrains.kotlin.gradle.plugin.KaptExtension
 class AndroidObjectBoxConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
-            pluginManager.apply("io.objectbox")
+            with(pluginManager) {
+                apply("io.objectbox")
+            }
             extensions.configure<KaptExtension> {
                 arguments {
                     arg("objectbox.debug", true)

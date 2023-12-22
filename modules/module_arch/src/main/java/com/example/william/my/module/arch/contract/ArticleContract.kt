@@ -16,8 +16,8 @@
 package com.example.william.my.module.arch.contract
 
 import com.example.william.my.basic.basic_repository.bean.Article
-import com.example.william.my.library.presenter.IBasePresenter
-import com.example.william.my.library.view.IBaseView
+import com.example.william.my.lib.presenter.IBasePresenter
+import com.example.william.my.lib.view.IBaseView
 
 /**
  * This specifies the contract between the view and the presenter.

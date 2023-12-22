@@ -10,7 +10,7 @@ class OpensourceActivity : RouterRecyclerActivity() {
 
     override fun buildRouter(): ArrayList<RouterItem> {
         val routerItems: ArrayList<RouterItem> = arrayListOf()
-        routerItems.add(RouterItem("BadgeView", ARouterPath.Opensource.BadgeView))
+        routerItems.add(RouterItem("Badge", ARouterPath.Opensource.Badge))
         routerItems.add(RouterItem("Banner", ARouterPath.Opensource.Banner))
         routerItems.add(RouterItem("CityPicker", ARouterPath.Opensource.CityPicker))
         routerItems.add(RouterItem("CountdownView", ARouterPath.Opensource.CountdownView))

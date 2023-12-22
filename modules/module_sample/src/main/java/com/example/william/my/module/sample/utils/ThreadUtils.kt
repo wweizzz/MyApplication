@@ -1,7 +1,7 @@
 package com.example.william.my.module.sample.utils
 
 import android.os.Looper
-import com.example.william.my.library.utils.Utils
+import com.example.william.my.lib.utils.Utils
 
 object ThreadUtils {
 

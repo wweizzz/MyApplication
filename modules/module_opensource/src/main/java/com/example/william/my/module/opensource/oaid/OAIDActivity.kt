@@ -3,7 +3,7 @@ package com.example.william.my.module.opensource.oaid
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.bun.miitmdid.core.MdidSdkHelper
 import com.example.william.my.basic.basic_module.router.path.ARouterPath
-import com.example.william.my.library.activity.BaseVBActivity
+import com.example.william.my.lib.activity.BaseVBActivity
 import com.example.william.my.module.opensource.databinding.OpenActivityOaidBinding
 import com.example.william.my.module.opensource.oaid.DemoHelper.AppIdsUpdater
 import com.example.william.my.module.opensource.oaid.utils.CertUtil

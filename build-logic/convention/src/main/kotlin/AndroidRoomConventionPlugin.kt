@@ -29,7 +29,9 @@ import java.io.File
 class AndroidRoomConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
-            pluginManager.apply("kotlin-kapt")
+            with(pluginManager) {
+                apply("kotlin-kapt")
+            }
             extensions.configure<KaptExtension> {
                 // The schemas directory contains a schema file for each version of the Room database.
                 // This is required to enable Room auto migrations.

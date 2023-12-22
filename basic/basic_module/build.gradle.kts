@@ -1,5 +1,5 @@
 plugins {
-    id("nowinandroid.android.library")
+    id("nowinandroid.android.basic")
 }
 
 android {
@@ -7,5 +7,5 @@ android {
 }
 
 dependencies {
-    api(project(":basic:basic_library"))
+    api(project(":basic:basic_lib"))
 }

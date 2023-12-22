@@ -24,7 +24,9 @@ import org.greenrobot.greendao.gradle.GreendaoOptions
 class AndroidGreenDaoConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
-            pluginManager.apply("org.greenrobot.greendao")
+            with(pluginManager) {
+                apply("org.greenrobot.greendao")
+            }
             extensions.configure<GreendaoOptions> {
                 schemaVersion = 1
                 daoPackage = "com.example.william.my.module.opensource.greendao.dao"

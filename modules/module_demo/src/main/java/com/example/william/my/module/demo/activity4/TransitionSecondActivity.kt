@@ -6,7 +6,7 @@ import android.transition.Fade
 import android.transition.Slide
 import android.view.View
 import android.view.Window
-import com.example.william.my.library.activity.BaseActivity
+import com.example.william.my.lib.activity.BaseActivity
 import com.example.william.my.module.demo.R
 
 class TransitionSecondActivity : BaseActivity() {

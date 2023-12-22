@@ -2,7 +2,7 @@ package com.example.william.my.basic.basic_module.router.navigation
 
 import com.alibaba.android.arouter.facade.Postcard
 import com.alibaba.android.arouter.facade.callback.NavigationCallback
-import com.example.william.my.library.utils.Utils
+import com.example.william.my.lib.utils.Utils
 
 /**
  * 登录拦截器

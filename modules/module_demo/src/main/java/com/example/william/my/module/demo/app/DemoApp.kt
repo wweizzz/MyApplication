@@ -1,6 +1,6 @@
 package com.example.william.my.module.demo.app
 
-import com.example.william.my.library.app.BaseAppInit
+import com.example.william.my.lib.app.BaseAppInit
 
 class DemoApp : BaseAppInit() {
 

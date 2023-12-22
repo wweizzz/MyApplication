@@ -3,8 +3,8 @@ package com.example.william.my.basic.basic_module.dialog
 import android.os.Bundle
 import android.view.View
 import com.example.william.my.basic.basic_module.databinding.BasicsLayoutDiallogBinding
-import com.example.william.my.library.R
-import com.example.william.my.library.dialog.BaseVBDialogFragment
+import com.example.william.my.lib.R
+import com.example.william.my.lib.dialog.BaseVBDialogFragment
 
 class BasicDialogFragment :
     BaseVBDialogFragment<BasicsLayoutDiallogBinding>(R.style.Basics_Dialog_Translate_Slide_Alpha) {

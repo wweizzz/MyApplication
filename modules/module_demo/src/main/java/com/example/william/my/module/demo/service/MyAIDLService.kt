@@ -4,7 +4,7 @@ import android.app.Service
 import android.content.Intent
 import android.os.Binder
 import android.os.IBinder
-import com.example.william.my.library.utils.Utils.show
+import com.example.william.my.lib.utils.Utils.show
 import com.example.william.my.module.demo.IMyAidlInterface
 
 class MyAIDLService : Service() {
