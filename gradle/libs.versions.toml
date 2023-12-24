@@ -7,10 +7,10 @@ targetSdk = "34"
 compileSdk = "34"
 # ##################################################################################################
 desugar = "2.0.3"
-kotlinx = "1.7.2"
+kotlinx = "1.7.3"
 googleGson = "2.10.1"
-googleGuava = "31.1-android"
-googleProtobuf = "3.24.0"
+googleGuava = "33.0.0-android"
+googleProtobuf = "3.24.4"
 googleFlexbox = "3.0.0"
 googleMaterial = "1.9.0"
 # ##################################################################################################

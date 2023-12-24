@@ -30,7 +30,7 @@ import com.example.william.my.basic.basic_repository.database.dao.RemoteKeyDao
  *
  * Note that exportSchema should be true in production databases.
  */
-@Database(entities = [Article::class, RemoteKey::class], version = 1, exportSchema = true)
+@Database(entities = [Article::class, RemoteKey::class], version = 1, exportSchema = false)
 abstract class ArticleDatabase : RoomDatabase() {
 
     companion object {
