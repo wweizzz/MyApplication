@@ -393,7 +393,7 @@ class _MyAppState extends State<MyApp> {
           settings: settings,
           builder: (_) {
             Map<String, dynamic> map =
-                settings.arguments as Map<String, dynamic>;
+            settings.arguments as Map<String, dynamic>;
             String? pageName = map['pageName'] as String?;
             log("pageName : $pageName");
             return const MyCounter();

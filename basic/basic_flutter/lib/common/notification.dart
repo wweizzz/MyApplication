@@ -10,21 +10,21 @@ class NotificationHelper {
 
   // FlutterLocalNotificationsPlugin是一个用于处理本地通知的插件，它提供了在Flutter应用程序中发送和接收本地通知的功能。
   final FlutterLocalNotificationsPlugin _notificationsPlugin =
-      FlutterLocalNotificationsPlugin();
+  FlutterLocalNotificationsPlugin();
 
   // 初始化函数
   Future<void> initialize() async {
     // AndroidInitializationSettings是一个用于设置Android上的本地通知初始化的类
     // 使用了app_icon作为参数，这意味着在Android上，应用程序的图标将被用作本地通知的图标。
     const AndroidInitializationSettings initializationSettingsAndroid =
-        AndroidInitializationSettings('@mipmap/ic_launcher');
+    AndroidInitializationSettings('@mipmap/ic_launcher');
     // 15.1是DarwinInitializationSettings，旧版本好像是IOSInitializationSettings（有些例子中就是这个）
     const DarwinInitializationSettings initializationSettingsIOS =
-        DarwinInitializationSettings();
+    DarwinInitializationSettings();
     const InitializationSettings initializationSettings =
-        InitializationSettings(
-            android: initializationSettingsAndroid,
-            iOS: initializationSettingsIOS);
+    InitializationSettings(
+        android: initializationSettingsAndroid,
+        iOS: initializationSettingsIOS);
     await _notificationsPlugin.initialize(initializationSettings);
   }
 
@@ -38,16 +38,16 @@ class NotificationHelper {
     // Priority.high：用于指定通知的优先级，设置为高优先级。
     // 'ticker'：用于指定通知的提示文本，即通知出现在通知中心的文本内容。
     const AndroidNotificationDetails androidNotificationDetails =
-        AndroidNotificationDetails('your.channel.id', 'your channel name',
-            channelDescription: 'your channel description',
-            importance: Importance.max,
-            priority: Priority.high,
-            ticker: 'ticker');
+    AndroidNotificationDetails('your.channel.id', 'your channel name',
+        channelDescription: 'your channel description',
+        importance: Importance.max,
+        priority: Priority.high,
+        ticker: 'ticker');
 
     // ios的通知
     const String darwinNotificationCategoryPlain = 'plainCategory';
     const DarwinNotificationDetails iosNotificationDetails =
-        DarwinNotificationDetails(
+    DarwinNotificationDetails(
       categoryIdentifier: darwinNotificationCategoryPlain,
     );
     // 创建跨平台通知

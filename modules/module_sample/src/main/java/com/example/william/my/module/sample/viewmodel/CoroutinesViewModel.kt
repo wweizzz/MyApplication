@@ -1,7 +1,11 @@
 package com.example.william.my.module.sample.viewmodel
 
-import androidx.lifecycle.*
-import com.example.william.my.basic.basic_repository.bean.UserData
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
+import com.example.william.my.basic.basic_module.bean.UserBean
 import com.example.william.my.basic.basic_repository.data.NetworkResult
 import com.example.william.my.core.retrofit.response.RetrofitResponse
 import com.example.william.my.module.sample.repo.CoroutinesRepository
@@ -36,7 +40,7 @@ class CoroutinesViewModel(private val repository: CoroutinesRepository) : ViewMo
 
             // 执行网络请求 并 挂起，直至请求完成
             // Make the network call and suspend execution until it finishes
-            val result: NetworkResult<RetrofitResponse<UserData>> =
+            val result: NetworkResult<RetrofitResponse<UserBean>> =
                 try {
                     repository.login(username, password)
                 } catch (e: Exception) {
@@ -50,7 +54,7 @@ class CoroutinesViewModel(private val repository: CoroutinesRepository) : ViewMo
                     _login.postValue("加载中……")
                 }
 
-                is NetworkResult.Success<RetrofitResponse<UserData>> -> {
+                is NetworkResult.Success<RetrofitResponse<UserBean>> -> {
                     _login.postValue(Gson().toJson(result.data))
                 }
 

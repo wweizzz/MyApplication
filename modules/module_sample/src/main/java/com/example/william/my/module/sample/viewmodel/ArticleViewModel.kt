@@ -10,7 +10,7 @@ import androidx.lifecycle.switchMap
 import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
-import com.example.william.my.basic.basic_repository.bean.ArticleData
+import com.example.william.my.basic.basic_repository.bean.ArticleListData
 import com.example.william.my.basic.basic_repository.data.ServiceLocator
 import com.example.william.my.basic.basic_repository.data.source.ArticleRepository
 import com.example.william.my.core.retrofit.response.RetrofitResponse
@@ -35,7 +35,7 @@ class ArticleViewModel(
     private val _articleData = MutableLiveData<Int>()
 
     // 转换 LiveData
-    val articleData: LiveData<RetrofitResponse<ArticleData>> = _articleData.switchMap { page ->
+    val articleData: LiveData<RetrofitResponse<ArticleListData>> = _articleData.switchMap { page ->
         repository.getArticleLiveData(page)
     }
 
@@ -44,6 +44,10 @@ class ArticleViewModel(
     }
 
     // Define ViewModel factory in a companion object
+
+    /**
+     * object : ViewModelProvider.Factory {}
+     */
     companion object {
         val Factory: ViewModelProvider.Factory = object : ViewModelProvider.Factory {
             @Suppress("UNCHECKED_CAST")
@@ -62,6 +66,9 @@ class ArticleViewModel(
             }
         }
 
+        /**
+         * viewModelFactory {}
+         */
         val Factory2: ViewModelProvider.Factory = viewModelFactory {
             initializer {
                 val application =

@@ -1,7 +1,7 @@
 package com.example.william.my.module.sample.repo
 
-import com.example.william.my.basic.basic_repository.api.NetworkApi
-import com.example.william.my.basic.basic_repository.bean.UserData
+import com.example.william.my.basic.basic_module.bean.UserBean
+import com.example.william.my.basic.basic_repository.api.NetworkApi2
 import com.example.william.my.basic.basic_repository.data.NetworkResult
 import com.example.william.my.core.retrofit.helper.RetrofitHelper
 import com.example.william.my.core.retrofit.response.RetrofitResponse
@@ -17,12 +17,12 @@ import kotlinx.coroutines.withContext
  */
 class CoroutinesRepository(private val defaultDispatcher: CoroutineDispatcher) {
 
-    private val api = RetrofitHelper.buildApi(NetworkApi::class.java)
+    private val api = RetrofitHelper.buildApi(NetworkApi2::class.java)
 
     suspend fun login(
         username: String,
         password: String
-    ): NetworkResult<RetrofitResponse<UserData>> {
+    ): NetworkResult<RetrofitResponse<UserBean>> {
 
         return withContext(defaultDispatcher) {
             //打印线程

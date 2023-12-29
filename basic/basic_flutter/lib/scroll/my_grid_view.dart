@@ -110,7 +110,7 @@ class _InfiniteGridViewRouteState extends State<InfiniteGridViewRoute> {
   var gridExtentDelegate = const SliverGridDelegateWithMaxCrossAxisExtent(
       maxCrossAxisExtent: 100.0, // 子元素在横轴上的最大宽度
       childAspectRatio: 1.0 //宽高比为1
-      );
+  );
 
   @override
   void initState() {

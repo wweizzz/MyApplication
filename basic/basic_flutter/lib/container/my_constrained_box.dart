@@ -30,12 +30,14 @@ class ConstrainedBoxRoute extends StatelessWidget {
   }
 
   /// 传递给子元素的约束信息
-  BoxConstraints boxConstraints() => const BoxConstraints(
+  BoxConstraints boxConstraints() =>
+      const BoxConstraints(
         minWidth: double.infinity, //宽度尽可能大
         minHeight: 50.0, //最小高度为50像素
       );
 
-  DecoratedBox blueBox() => const DecoratedBox(
+  DecoratedBox blueBox() =>
+      const DecoratedBox(
         decoration: BoxDecoration(color: Colors.blue),
       );
 }

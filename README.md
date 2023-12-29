@@ -41,43 +41,43 @@
 
 * FlutterBoost 框架
 * 布局类组件
-  * 线性布局（Row, Column）
-  * 弹性布局（Flex）
-  * 流式布局（Wrap, Flow）
-  * 堆叠布局（Stack）
+    * 线性布局（Row, Column）
+    * 弹性布局（Flex）
+    * 流式布局（Wrap, Flow）
+    * 堆叠布局（Stack）
 * 容器类组件
-  * Align
-  * Center
-  * ConstrainedBox
-  * SizedBox
-  * LayoutBuilder
-  * GestureDetector
+    * Align
+    * Center
+    * ConstrainedBox
+    * SizedBox
+    * LayoutBuilder
+    * GestureDetector
 * 可滚动组件
-  * ListView
-  * GridView
-  * SingleChildScrollView
-  * PageView
-  * TabBarView
-  * AnimatedList
-  * CustomScrollView
-  * NestedScrollView
+    * ListView
+    * GridView
+    * SingleChildScrollView
+    * PageView
+    * TabBarView
+    * AnimatedList
+    * CustomScrollView
+    * NestedScrollView
 * 功能型组件
-  * 导航返回拦截（WillPopScope）
-  * 数据共享组件（InheritedWidget）
-  * 数据源监听（ValueListenableBuilder）
-  * 异步UI更新（FutureBuilder、StreamBuilder）
-  * Dialog
+    * 导航返回拦截（WillPopScope）
+    * 数据共享组件（InheritedWidget）
+    * 数据源监听（ValueListenableBuilder）
+    * 异步UI更新（FutureBuilder、StreamBuilder）
+    * Dialog
 * 网络请求
-  * [Dio](https://pub.dev/packages/dio)
+    * [Dio](https://pub.dev/packages/dio)
 * 状态管理
-  * [Provider](https://pub.dev/packages/provider)
-  * [GetX](https://pub.dev/packages/get)
-  * [BloC](https://pub.dev/packages/flutter_bloc)
+    * [Provider](https://pub.dev/packages/provider)
+    * [GetX](https://pub.dev/packages/get)
+    * [BloC](https://pub.dev/packages/flutter_bloc)
 * 三方框架
-  * [Toast](https://pub.dev/packages/fluttertoast)
-  * [Notification](https://pub.dev/packages/flutter_local_notifications)
-  * [SharedPreferences](https://pub.dev/packages/shared_preferences)
-  * [ScreenUtil](https://pub.dev/packages/flutter_screenutil)
+    * [Toast](https://pub.dev/packages/fluttertoast)
+    * [Notification](https://pub.dev/packages/flutter_local_notifications)
+    * [SharedPreferences](https://pub.dev/packages/shared_preferences)
+    * [ScreenUtil](https://pub.dev/packages/flutter_screenutil)
 
 ## modules_network
 

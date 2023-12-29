@@ -31,6 +31,7 @@ class AndroidRoomConventionPlugin : Plugin<Project> {
         with(target) {
             with(pluginManager) {
                 apply("kotlin-kapt")
+                //apply("androidx.room")
             }
             extensions.configure<KaptExtension> {
                 // The schemas directory contains a schema file for each version of the Room database.
@@ -40,6 +41,12 @@ class AndroidRoomConventionPlugin : Plugin<Project> {
                     arg(RoomSchemaArgProvider(File(projectDir, "schemas")))
                 }
             }
+            //extensions.configure<RoomExtension> {
+            //    // The schemas directory contains a schema file for each version of the Room database.
+            //    // This is required to enable Room auto migrations.
+            //    // See https://developer.android.com/reference/kotlin/androidx/room/AutoMigration.
+            //    schemaDirectory("$projectDir/schemas")
+            //}
             dependencies {
                 add("implementation", libs.findLibrary("androidx.room.runtime").get())
                 add("implementation", libs.findLibrary("androidx.room.ktx").get())

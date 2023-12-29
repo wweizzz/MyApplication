@@ -1,0 +1,94 @@
+package com.example.william.my.module.room.paging.mediator
+
+import androidx.paging.ExperimentalPagingApi
+import androidx.paging.LoadType
+import androidx.paging.PagingState
+import androidx.paging.rxjava3.RxRemoteMediator
+import com.example.william.my.basic.basic_repository.api.NetworkApi
+import com.example.william.my.basic.basic_repository.bean.Article
+import com.example.william.my.basic.basic_repository.bean.RemoteKey
+import com.example.william.my.basic.basic_repository.data.source.ArticleRepository
+import com.example.william.my.basic.basic_repository.database.ArticleDatabase
+import io.reactivex.rxjava3.core.Single
+import io.reactivex.rxjava3.functions.Function
+import io.reactivex.rxjava3.schedulers.Schedulers
+import retrofit2.HttpException
+import java.io.IOException
+
+
+@OptIn(ExperimentalPagingApi::class)
+class RxRemoteMediator(
+    private val database: ArticleDatabase,
+    private val networkApi: NetworkApi,
+    private val repository: ArticleRepository
+) : RxRemoteMediator<Int, Article>() {
+
+    private val articleDao = database.articleDao()
+    private val remoteKeyDao = database.remoteKeyDao()
+
+    override fun loadSingle(
+        loadType: LoadType,
+        state: PagingState<Int, Article>
+    ): Single<MediatorResult> {
+        // The network load method takes an optional String parameter. For every page
+        // after the first, pass the String token returned from the previous page to
+        // let it continue from where it left off. For REFRESH, pass null to load the
+        // first page.
+        var remoteKeySingle: Single<RemoteKey>? = null
+        remoteKeySingle = when (loadType) {
+            LoadType.REFRESH -> {
+                // Initial load should use null as the page key, so you can return null
+                // directly.
+                Single.just(RemoteKey(tag, null))
+            }
+
+            LoadType.PREPEND -> {
+                // In this example, you never need to prepend, since REFRESH will always
+                // load the first page in the list. Immediately return, reporting end of
+                // pagination.
+                return Single.just(MediatorResult.Success(true))
+            }
+
+            LoadType.APPEND -> {
+                // Query remoteKeyDao for the next RemoteKey.
+                database.remoteKeyDao().remoteKeyByTagSingle("mQuery")
+            }
+        }
+        return remoteKeySingle
+            .subscribeOn(Schedulers.io())
+            .flatMap(Function<RemoteKey, Single<MediatorResult>> { (_, nextPageKey): RemoteKey ->
+                // You must explicitly check if the page key is null when appending,
+                // since null is only valid for initial load. If you receive null
+                // for APPEND, that means you have reached the end of pagination and
+                // there are no more items to load.
+                if (loadType != LoadType.REFRESH && nextPageKey == null) {
+                    return@Function Single.just<MediatorResult>(MediatorResult.Success(true))
+                }
+                return@Function networkApi.getArticleSingle(nextPageKey!!)
+                    .map { response ->
+                        database.runInTransaction {
+                            if (loadType === LoadType.REFRESH) {
+                                //remoteKeyDao.deleteByTag(tag)
+                                //articleDao.deleteAllArticles()
+                            }
+
+                            // Update RemoteKey for this query.
+
+                            // Insert new users into database, which invalidates the current
+                            // PagingData, allowing Paging to present the updates in the DB.
+                        }
+                        MediatorResult.Success(response.data!!.datas.isEmpty())
+                    }
+            })
+            .onErrorResumeNext { e: Throwable ->
+                if (e is IOException || e is HttpException) {
+                    return@onErrorResumeNext Single.just(MediatorResult.Error(e))
+                }
+                Single.error(e)
+            }
+    }
+
+    companion object {
+        private const val tag = "article"
+    }
+}

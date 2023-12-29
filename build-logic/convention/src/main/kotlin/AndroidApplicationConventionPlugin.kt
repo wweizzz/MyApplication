@@ -16,13 +16,11 @@
 
 import com.android.build.api.dsl.ApplicationExtension
 import com.android.build.api.variant.ApplicationAndroidComponentsExtension
-import com.google.samples.apps.nowinandroid.configureApplicationAndroid
-import com.google.samples.apps.nowinandroid.configureBasicAndroid
 import com.google.samples.apps.nowinandroid.configureDepsAndroid
 import com.google.samples.apps.nowinandroid.configureFeatureAndroid
+import com.google.samples.apps.nowinandroid.configureFlavors
 import com.google.samples.apps.nowinandroid.configureKotlinAndroid
 import com.google.samples.apps.nowinandroid.configurePrintApksTask
-import com.google.samples.apps.nowinandroid.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
@@ -35,19 +33,19 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                 apply("kotlin-android")
                 apply("kotlin-kapt")
                 apply("kotlin-parcelize")
-                apply("nowinandroid.android.hilt")
-                apply("nowinandroid.android.arouter")
-                apply("nowinandroid.android.eventbus")
+                apply("nowinandroid.android.lint")
             }
             extensions.configure<ApplicationExtension> {
+                compileSdk = 34
+                defaultConfig.minSdk = 21
+                defaultConfig.targetSdk = 34
                 configureKotlinAndroid(this)
-                configureApplicationAndroid(this, target.libs)
+                configureFlavors(this)
             }
             extensions.configure<ApplicationAndroidComponentsExtension> {
                 configurePrintApksTask(this)
             }
             configureDepsAndroid()
-            configureBasicAndroid()
             configureFeatureAndroid()
         }
     }

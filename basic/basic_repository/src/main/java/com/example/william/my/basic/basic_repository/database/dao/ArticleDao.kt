@@ -21,7 +21,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.william.my.basic.basic_repository.bean.Article
+import com.example.william.my.basic.basic_repository.bean.ArticleData
 
 /**
  * Data Access Object for the article table.
@@ -35,7 +35,7 @@ interface ArticleDao {
      * @return all tasks.
      */
     @Query("SELECT * FROM Articles")
-    suspend fun getArticles(): List<Article>
+    suspend fun getArticles(): List<ArticleData>
 
     /**
      * Insert articles in the database. If the articlse already exists, replace it.
@@ -43,7 +43,7 @@ interface ArticleDao {
      * @param articles the article to be inserted.
      */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertArticles(articles: List<Article>)
+    suspend fun insertArticles(articles: List<ArticleData>)
 
     /**
      * Insert a article in the database. If the article already exists, replace it.
@@ -51,7 +51,7 @@ interface ArticleDao {
      * @param article the article to be inserted.
      */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertArticle(article: Article)
+    suspend fun insertArticle(article: ArticleData)
 
     /**
      * Delete all articles.
@@ -63,5 +63,5 @@ interface ArticleDao {
      * PagingSource
      */
     @Query("Select * From Articles Order By page")
-    fun getArticlesPagingSource(): PagingSource<Int, Article>
+    fun getArticlesPagingSource(): PagingSource<Int, ArticleData>
 }

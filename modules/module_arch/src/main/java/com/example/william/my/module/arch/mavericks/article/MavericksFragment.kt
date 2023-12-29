@@ -13,7 +13,8 @@ import com.example.william.my.module.arch.adapter.ArticleAdapter
  * Mavericks
  * https://airbnb.io/mavericks/
  */
-class MavericksFragment(override val lifecycle: Lifecycle) : BaseRecyclerFragment<Article>(), MavericksView {
+class MavericksFragment(override val lifecycle: Lifecycle) : BaseRecyclerFragment<Article>(),
+    MavericksView {
 
     private val viewModel: ArticleViewModel by fragmentViewModel()
 

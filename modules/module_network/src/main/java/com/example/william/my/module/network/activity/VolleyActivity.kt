@@ -10,8 +10,8 @@ import com.android.volley.toolbox.DiskBasedCache
 import com.android.volley.toolbox.HurlStack
 import com.android.volley.toolbox.JsonObjectRequest
 import com.example.william.my.basic.basic_module.activity.BasicRecyclerActivity
+import com.example.william.my.basic.basic_module.base.Constants
 import com.example.william.my.basic.basic_module.router.path.ARouterPath
-import com.example.william.my.basic.basic_repository.base.Constants
 import com.example.william.my.core.volley.StringRequest2
 import org.json.JSONObject
 

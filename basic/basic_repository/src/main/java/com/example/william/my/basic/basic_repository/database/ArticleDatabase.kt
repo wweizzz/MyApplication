@@ -13,15 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.example.william.my.basic.basic_repository.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.william.my.basic.basic_repository.bean.Article
-import com.example.william.my.basic.basic_repository.bean.RemoteKey
+import com.example.william.my.basic.basic_repository.bean.ArticleData
+import com.example.william.my.basic.basic_repository.bean.RemoteKeyData
 import com.example.william.my.basic.basic_repository.database.dao.ArticleDao
 import com.example.william.my.basic.basic_repository.database.dao.RemoteKeyDao
 
@@ -30,7 +29,7 @@ import com.example.william.my.basic.basic_repository.database.dao.RemoteKeyDao
  *
  * Note that exportSchema should be true in production databases.
  */
-@Database(entities = [Article::class, RemoteKey::class], version = 1, exportSchema = false)
+@Database(entities = [ArticleData::class, RemoteKeyData::class], version = 1, exportSchema = false)
 abstract class ArticleDatabase : RoomDatabase() {
 
     companion object {

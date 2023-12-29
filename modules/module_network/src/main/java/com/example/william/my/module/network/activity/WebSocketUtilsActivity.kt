@@ -3,8 +3,8 @@ package com.example.william.my.module.network.activity
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.activity.BasicResponseActivity
+import com.example.william.my.basic.basic_module.base.Constants
 import com.example.william.my.basic.basic_module.router.path.ARouterPath
-import com.example.william.my.basic.basic_repository.base.Constants
 import com.example.william.my.core.websocket.WebSocketObserver
 import com.example.william.my.core.websocket.WebSocketUtils
 import okhttp3.Response

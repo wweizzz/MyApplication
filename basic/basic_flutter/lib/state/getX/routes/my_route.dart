@@ -18,7 +18,8 @@ class AppRoute extends BaseRoute {
   String get error404 => "$prefix/error/unknown404";
 
   /// 找不到页面
-  GetPage get unknown => GetPage(
+  GetPage get unknown =>
+      GetPage(
         name: error404,
         page: () => const ErrorPage(),
         binding: ErrorBinding(),

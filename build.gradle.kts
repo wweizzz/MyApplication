@@ -9,7 +9,7 @@ buildscript {
     }
 }
 
-// only buildscript {}, pluginManagement {} and other plugins {} script blocks are allowed before plugins {} blocks, no other statements are allowed.
+//only buildscript {}, pluginManagement {} and other plugins {} script blocks are allowed before plugins {} blocks, no other statements are allowed.
 //plugins {
 //    id("com.android.application") version "8.1.0" apply false
 //    id("com.android.library") version "8.1.0" apply false

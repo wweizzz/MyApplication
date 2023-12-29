@@ -6,7 +6,7 @@ minSdk = "24"
 targetSdk = "34"
 compileSdk = "34"
 # ##################################################################################################
-desugar = "2.0.3"
+desugar = "2.0.4"
 kotlinx = "1.7.3"
 googleGson = "2.10.1"
 googleGuava = "33.0.0-android"
@@ -86,6 +86,7 @@ gradlePluginProtobuf = "0.9.4"
 gradlePluginGreenDao = "3.3.1"
 gradlePluginObjectBox = "3.7.0"
 gradlePluginHilt = "2.44"
+androidx-test-ext-junit = "1.1.5"
 # ##################################################################################################
 [libraries]
 #
@@ -98,6 +99,7 @@ google-gson = { group = "com.google.code.gson", name = "gson", version.ref = "go
 # https://github.com/google/guava
 google-guava = { group = "com.google.guava", name = "guava", version.ref = "googleGuava" }
 # https://github.com/protocolbuffers/protobuf
+google-protoc = { group = "com.google.protobuf", name = "protoc", version.ref = "googleProtobuf" }
 google-protobuf-javalite = { group = "com.google.protobuf", name = "protobuf-javalite", version.ref = "googleProtobuf" }
 # https://github.com/google/flexbox-layout
 google-flexBox = { group = "com.google.android.flexbox", name = "flexbox", version.ref = "googleFlexbox" }
@@ -253,15 +255,26 @@ gradlePlugin-kotlin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-pl
 gradlePlugin-protobuf = { group = "com.google.protobuf", name = "protobuf-gradle-plugin", version.ref = "gradlePluginProtobuf" }
 gradlePlugin-greendao = { group = "org.greenrobot", name = "greendao-gradle-plugin", version.ref = "gradlePluginGreenDao" }
 gradlePlugin-objectbox = { group = "io.objectbox", name = "objectbox-gradle-plugin", version.ref = "gradlePluginObjectBox" }
+androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-ext-junit" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "gradlePluginAndroid" }
 android-library = { id = "com.android.library", version.ref = "gradlePluginAndroid" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "gradlePluginKotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "gradlePluginKotlin" }
+kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "gradlePluginKotlin" }
+
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "gradlePluginHilt" }
 
 # Plugins defined by this project
 nowinandroid-android-application = { id = "nowinandroid.android.application", version = "unspecified" }
+nowinandroid-android-library = { id = "nowinandroid.android.library", version = "unspecified" }
+nowinandroid-android-hilt = { id = "nowinandroid.android.hilt", version = "unspecified" }
+nowinandroid-android-arouter = { id = "nowinandroid.android.arouter", version = "unspecified" }
+nowinandroid-android-eventbus = { id = "nowinandroid.android.eventbus", version = "unspecified" }
+nowinandroid-android-protobuf = { id = "nowinandroid.android.protobuf", version = "unspecified" }
+nowinandroid-android-room = { id = "nowinandroid.android.room", version = "unspecified" }
+nowinandroid-android-greendao = { id = "nowinandroid.android.greendao", version = "unspecified" }
+nowinandroid-android-objectbox = { id = "nowinandroid.android.objectbox", version = "unspecified" }
 
 [bundles]

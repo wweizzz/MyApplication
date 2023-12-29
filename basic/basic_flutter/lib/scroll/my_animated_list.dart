@@ -94,7 +94,7 @@ class _AnimatedListRouteState extends State<AnimatedListRoute> {
     setState(() {
       globalKey.currentState!.removeItem(
         index,
-        (context, animation) {
+            (context, animation) {
           var item = buildItem(context, index);
           log('删除 ${data[index]}');
           data.removeAt(index);

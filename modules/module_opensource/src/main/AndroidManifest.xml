@@ -18,8 +18,8 @@
         <activity android:name=".activity.SwipeLayoutActivity" />
 
         <activity android:name=".activity2.MMKVActivity" />
-        <activity android:name=".activity2.GreenDaoActivity" />
-        <activity android:name=".activity2.ObjectBoxActivity" />
+        <activity android:name="com.example.william.my.module.database.activity.GreenDaoActivity" />
+        <activity android:name="com.example.william.my.module.database.activity.ObjectBoxActivity" />
         <activity android:name=".activity2.PermissionXActivity" />
 
         <activity android:name=".oaid.OAIDActivity" />

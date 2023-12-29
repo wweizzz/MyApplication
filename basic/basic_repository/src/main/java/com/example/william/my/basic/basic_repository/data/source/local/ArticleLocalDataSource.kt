@@ -16,8 +16,8 @@
 package com.example.william.my.basic.basic_repository.data.source.local
 
 import androidx.lifecycle.LiveData
-import com.example.william.my.basic.basic_repository.bean.Article
 import com.example.william.my.basic.basic_repository.bean.ArticleData
+import com.example.william.my.basic.basic_repository.bean.ArticleListData
 import com.example.william.my.basic.basic_repository.data.NetworkResult
 import com.example.william.my.basic.basic_repository.data.source.ArticleDataSource
 import com.example.william.my.basic.basic_repository.database.dao.ArticleDao
@@ -35,23 +35,26 @@ class ArticleLocalDataSource(
         TODO("Not yet implemented")
     }
 
-    override fun getArticleLiveData(page: Int, postValue: (RetrofitResponse<ArticleData>) -> Unit) {
+    override fun getArticleLiveData(
+        page: Int,
+        postValue: (RetrofitResponse<ArticleListData>) -> Unit
+    ) {
         TODO("Not yet implemented")
     }
 
-    override fun getArticleLiveData(page: Int): LiveData<RetrofitResponse<ArticleData>> {
+    override fun getArticleLiveData(page: Int): LiveData<RetrofitResponse<ArticleListData>> {
         TODO("Not yet implemented")
     }
 
-    override fun getArticleSingle(page: Int): Single<RetrofitResponse<ArticleData>> {
+    override fun getArticleSingle(page: Int): Single<RetrofitResponse<ArticleListData>> {
         TODO("Not yet implemented")
     }
 
-    override suspend fun getArticleSuspend(page: Int): RetrofitResponse<ArticleData> {
+    override suspend fun getArticleSuspend(page: Int): RetrofitResponse<ArticleListData> {
         TODO("Not yet implemented")
     }
 
-    override suspend fun getArticleResult(page: Int): NetworkResult<List<Article>> {
+    override suspend fun getArticleResult(page: Int): NetworkResult<List<ArticleData>> {
         return withContext(ioDispatcher) {
             try {
                 val articles = articleDao.getArticles()
@@ -62,11 +65,11 @@ class ArticleLocalDataSource(
         }
     }
 
-    override fun saveArticles(articles: List<Article>) {
+    override fun saveArticles(articles: List<ArticleData>) {
         TODO("Not yet implemented")
     }
 
-    override fun saveArticle(articles: Article) {
+    override fun saveArticle(article: ArticleData) {
         TODO("Not yet implemented")
     }
 

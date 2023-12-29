@@ -1,25 +1,48 @@
 import com.android.build.gradle.internal.api.BaseVariantOutputImpl
+import com.google.samples.apps.nowinandroid.NiaBuildType
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 plugins {
-    id("nowinandroid.android.application")
+    alias(libs.plugins.nowinandroid.android.application)
+    alias(libs.plugins.nowinandroid.android.arouter)
+    alias(libs.plugins.nowinandroid.android.eventbus)
+    //alias(libs.plugins.nowinandroid.android.hilt)
 }
 
 android {
     namespace = "com.example.william.my.application"
     defaultConfig {
         applicationId = "com.example.william.my.application"
-        versionCode = libs.versions.versionCode.get().toInt()
-        versionName = libs.versions.versionName.get().toString()
+        versionCode = 1
+        versionName = "1.0.0" // X.Y.Z; X = Major, Y = minor, Z = Patch level
 
-        ndk {
-            // armeabi：万金油架构平台（占用率：0%）
-            // armeabi-v7a：曾经主流的架构平台（占用率：10%）
-            // arm64-v8a：目前主流架构平台（占用率：90%）
-            //abiFilters 'armeabi-v7a', 'arm64-v8a' // , 'x86', 'x86_64'
-            abiFilters.addAll(arrayOf("armeabi-v7a", "arm64-v8a", "x86", "x86_64"))
+        // Custom test runner to set up Hilt dependency graph
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        //vectorDrawables {
+        //    useSupportLibrary = true
+        //}
+
+        buildTypes {
+            debug {
+                applicationIdSuffix = NiaBuildType.DEBUG.applicationIdSuffix
+            }
+            getByName("release") {
+                isMinifyEnabled = true
+                applicationIdSuffix = NiaBuildType.RELEASE.applicationIdSuffix
+                proguardFiles(
+                    getDefaultProguardFile("proguard-android-optimize.txt"),
+                    "proguard-rules.pro"
+                )
+
+                // To publish on the Play store a private signing key is required, but to allow anyone
+                // who clones the code to sign and run the release variant, use the debug signing key.
+                // TODO: Abstract the signing configuration to a separate file to avoid hardcoding this.
+                signingConfig = signingConfigs.getByName("debug")
+            }
         }
+
         applicationVariants.all {
             outputs.all {
                 val outputImpl = this as BaseVariantOutputImpl
@@ -29,10 +52,33 @@ android {
                     "MyApplication" + "_${versionName}_${baseName}_$createTime.apk"
             }
         }
+
+        //packaging {
+        //    resources {
+        //        excludes.add("/META-INF/{AL2.0,LGPL2.1}")
+        //    }
+        //}
+
+        //testOptions {
+        //    unitTests {
+        //        isIncludeAndroidResources = true
+        //    }
+        //}
+
+        //ndk {
+        //    // armeabi：万金油架构平台（占用率：0%）
+        //    // armeabi-v7a：曾经主流的架构平台（占用率：10%）
+        //    // arm64-v8a：目前主流架构平台（占用率：90%）
+        //    //abiFilters 'armeabi-v7a', 'arm64-v8a' // , 'x86', 'x86_64'
+        //    abiFilters.addAll(arrayOf("armeabi-v7a", "arm64-v8a", "x86", "x86_64"))
+        //}
+
         addManifestPlaceholders(mutableMapOf("APP_NAME" to "My Application")) // 配置主包的应用名称
     }
 }
 
 dependencies {
     implementation(libs.google.material)
+    implementation(project(":basic:basic_lib"))
+    implementation(project(":basic:basic_module"))
 }

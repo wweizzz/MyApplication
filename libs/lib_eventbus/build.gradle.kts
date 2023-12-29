@@ -1,5 +1,5 @@
 plugins {
-    id("nowinandroid.android.library")
+    alias(libs.plugins.nowinandroid.android.library)
 }
 
 android {
@@ -8,7 +8,7 @@ android {
 
 dependencies {
     //RxEventBus
-    implementation(libs.rxjava3)
+    api(libs.rxjava3)
     //FlowEventBus
     //viewModelScope
     implementation(libs.androidx.lifecycle.viewmodel.ktx)

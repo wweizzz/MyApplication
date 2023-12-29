@@ -4,18 +4,17 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.william.my.basic.basic_repository.bean.RemoteKey
+import com.example.william.my.basic.basic_repository.bean.RemoteKeyData
 import io.reactivex.rxjava3.core.Single
-
 
 @Dao
 interface RemoteKeyDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertKey(key: RemoteKey)
+    suspend fun insertKey(key: RemoteKeyData)
 
     @Query("SELECT * FROM RemoteKey WHERE tag = :tag")
-    suspend fun remoteKeyByTag(tag: String): RemoteKey?
+    suspend fun remoteKeyByTag(tag: String): RemoteKeyData?
 
     @Query("DELETE FROM RemoteKey WHERE tag = :tag")
     suspend fun deleteByTag(tag: String)
@@ -24,5 +23,5 @@ interface RemoteKeyDao {
     suspend fun lastUpdated(): Long?
 
     @Query("SELECT * FROM RemoteKey WHERE tag = :tag")
-    fun remoteKeyByTagSingle(tag: String): Single<RemoteKey>
+    fun remoteKeyByTagSingle(tag: String): Single<RemoteKeyData>
 }

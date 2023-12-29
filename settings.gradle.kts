@@ -14,10 +14,6 @@ pluginManagement {
             name = "JitPack"
         }
         maven {
-            url = uri("https://oss.sonatype.org/content/repositories/public")
-            name = "Sonatype"
-        }
-        maven {
             url = uri("https://storage.flutter-io.cn/download.flutter.io")
             name = "Flutter"
         }
@@ -47,10 +43,6 @@ dependencyResolutionManagement {
         maven {
             url = uri("https://jitpack.io")
             name = "JitPack"
-        }
-        maven {
-            url = uri("https://oss.sonatype.org/content/repositories/public")
-            name = "Sonatype"
         }
         maven {
             url = uri("https://storage.flutter-io.cn/download.flutter.io")
@@ -84,10 +76,16 @@ include(":libs:lib_ninepatch")
 include(":libs:lib_imageloader")
 
 include(":modules:module_flutter")
-include(":modules:module_arch")
+
 include(":modules:module_demo")
 include(":modules:module_libraries")
-include(":modules:module_network")
+
 include(":modules:module_opensource")
-include(":modules:module_sample")
 include(":modules:module_utils")
+
+include(":modules:module_network")
+include(":modules:module_sample")
+//include(":modules:module_arch")
+
+//include(":modules:module_room")
+//include(":modules:module_database")

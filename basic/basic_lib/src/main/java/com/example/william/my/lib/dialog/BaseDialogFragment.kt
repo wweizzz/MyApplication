@@ -44,6 +44,14 @@ abstract class BaseDialogFragment(
                 window.setBackgroundDrawableResource(android.R.color.transparent)
             }
         }
+        initView(view, savedInstanceState)
+    }
+
+    /**
+     * 在此方法内初始化控件
+     */
+    open fun initView(view: View?, state: Bundle?) {
+
     }
 
     override fun show(manager: FragmentManager, tag: String?) {

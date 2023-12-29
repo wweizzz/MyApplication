@@ -16,8 +16,8 @@
 package com.example.william.my.basic.basic_repository.data.source
 
 import androidx.lifecycle.LiveData
-import com.example.william.my.basic.basic_repository.bean.Article
 import com.example.william.my.basic.basic_repository.bean.ArticleData
+import com.example.william.my.basic.basic_repository.bean.ArticleListData
 import com.example.william.my.basic.basic_repository.data.NetworkResult
 import com.example.william.my.core.retrofit.response.RetrofitResponse
 import io.reactivex.rxjava3.core.Single
@@ -35,8 +35,8 @@ class DefaultArticleRepository(
 
     override fun getArticle(page: Int, callback: ArticleRepository.LoadArticleCallback) {
         articlesRemoteDataSource.getArticle(page, object : ArticleDataSource.LoadArticleCallback {
-            override fun onArticleLoaded(article: List<Article>) {
-                callback.onArticleLoaded(article)
+            override fun onArticleLoaded(articles: List<ArticleData>) {
+                callback.onArticleLoaded(articles)
             }
 
             override fun onDataNotAvailable() {
@@ -50,7 +50,7 @@ class DefaultArticleRepository(
      */
     override fun getArticleLiveData(
         page: Int,
-        postValue: (RetrofitResponse<ArticleData>) -> Unit
+        postValue: (RetrofitResponse<ArticleListData>) -> Unit
     ) {
         articlesRemoteDataSource.getArticleLiveData(page, postValue)
     }
@@ -58,7 +58,7 @@ class DefaultArticleRepository(
     /**
      * ArticleLiveDataViewModel
      */
-    override fun getArticleLiveData(page: Int): LiveData<RetrofitResponse<ArticleData>> {
+    override fun getArticleLiveData(page: Int): LiveData<RetrofitResponse<ArticleListData>> {
         return articlesRemoteDataSource.getArticleLiveData(page)
     }
 
@@ -66,7 +66,7 @@ class DefaultArticleRepository(
      * Single
      * ArticleLiveDataViewModel
      */
-    override fun getArticleSingle(page: Int): Single<RetrofitResponse<ArticleData>> {
+    override fun getArticleSingle(page: Int): Single<RetrofitResponse<ArticleListData>> {
         return articlesRemoteDataSource.getArticleSingle(page)
     }
 
@@ -74,14 +74,14 @@ class DefaultArticleRepository(
      * Continuation
      * ArticleStateFlowViewModel
      */
-    override suspend fun getArticleSuspend(page: Int): RetrofitResponse<ArticleData> {
+    override suspend fun getArticleSuspend(page: Int): RetrofitResponse<ArticleListData> {
         return articlesRemoteDataSource.getArticleSuspend(page)
     }
 
     override suspend fun getArticleResult(
         page: Int,
         forceUpdate: Boolean
-    ): NetworkResult<List<Article>> {
+    ): NetworkResult<List<ArticleData>> {
         // Set app as busy while this function executes.
         if (forceUpdate) {
             try {

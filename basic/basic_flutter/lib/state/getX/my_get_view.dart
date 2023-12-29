@@ -23,7 +23,8 @@ class FirstPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             GetX<MyGetXLogic>(
-                builder: (_) => Text(
+                builder: (_) =>
+                    Text(
                       'clicks: ${controller.count}',
                     )),
             ElevatedButton(
@@ -89,13 +90,13 @@ class SecondPage extends GetView<MyGetXLogic> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Obx(
-              () {
+                  () {
                 log("count1 rebuild");
                 return Text('count1 : ${controller.count1}');
               },
             ),
             Obx(
-              () {
+                  () {
                 log("count2 rebuild");
                 return Text('count2 : ${controller.count2}');
               },
@@ -105,8 +106,10 @@ class SecondPage extends GetView<MyGetXLogic> {
               return Text('The sum of count1 and count1 : ${controller.sum}');
             }),
             Obx(
-              () => Text(
-                  'Name: ${controller.user.value.name},Age: ${controller.user.value.age}'),
+                  () =>
+                  Text(
+                      'Name: ${controller.user.value.name},Age: ${controller
+                          .user.value.age}'),
             ),
             ElevatedButton(
               child: const Text("Increment"),
@@ -161,11 +164,12 @@ class ThirdPage extends GetView<MyGetXLogic> {
         title: Text("Third Route ${Get.arguments}"),
       ),
       body: Center(
-          child: Obx(() => ListView.builder(
-              itemCount: controller.list.length,
-              itemBuilder: (context, index) {
-                return Text("${controller.list[index]}");
-              }))),
+          child: Obx(() =>
+              ListView.builder(
+                  itemCount: controller.list.length,
+                  itemBuilder: (context, index) {
+                    return Text("${controller.list[index]}");
+                  }))),
       floatingActionButton: FloatingActionButton(
           child: const Icon(Icons.add),
           onPressed: () {

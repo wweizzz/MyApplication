@@ -1,7 +1,7 @@
 package com.example.william.my.module.sample.repo
 
-import com.example.william.my.basic.basic_repository.base.Constants
-import com.example.william.my.basic.basic_repository.bean.LoginBean
+import com.example.william.my.basic.basic_module.base.Constants
+import com.example.william.my.basic.basic_module.bean.LoginBean
 import com.example.william.my.basic.basic_repository.data.NetworkResult
 import com.example.william.my.module.sample.utils.ThreadUtils
 import com.google.gson.Gson

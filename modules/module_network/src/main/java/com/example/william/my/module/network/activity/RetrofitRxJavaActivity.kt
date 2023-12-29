@@ -3,10 +3,10 @@ package com.example.william.my.module.network.activity
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.activity.BasicResponseActivity
+import com.example.william.my.basic.basic_module.api.NetworkApi
+import com.example.william.my.basic.basic_module.base.Constants
+import com.example.william.my.basic.basic_module.bean.UserBean
 import com.example.william.my.basic.basic_module.router.path.ARouterPath
-import com.example.william.my.basic.basic_repository.api.NetworkApi
-import com.example.william.my.basic.basic_repository.base.Constants
-import com.example.william.my.basic.basic_repository.bean.UserData
 import com.example.william.my.core.retrofit.converter.RetrofitConverterFactory
 import com.example.william.my.core.retrofit.response.RetrofitResponse
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -41,15 +41,15 @@ class RetrofitRxJavaActivity : BasicResponseActivity() {
         val api: NetworkApi = retrofit.create(NetworkApi::class.java)
 
         // （4）调用网络接口中的方法获取 Observable 对象
-        val single: Single<RetrofitResponse<UserData>> =
+        val single: Single<RetrofitResponse<UserBean>> =
             api.loginSingle(Constants.Value_Username, Constants.Value_Password)
 
         // （5）进行网络请求
         single
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : DisposableSingleObserver<RetrofitResponse<UserData>>() {
-                override fun onSuccess(response: RetrofitResponse<UserData>) {
+            .subscribe(object : DisposableSingleObserver<RetrofitResponse<UserBean>>() {
+                override fun onSuccess(response: RetrofitResponse<UserBean>) {
                     val netSuccess = "onResponse: " + response.string()
                     showResponse(netSuccess)
                 }

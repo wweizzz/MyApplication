@@ -88,7 +88,7 @@ class ScreenUtilScaffold extends StatelessWidget {
                   color: Colors.red,
                   child: Text(
                     '我的实际宽度:${180.w}dp \n'
-                    '我的实际高度:${200.h}dp',
+                        '我的实际高度:${200.h}dp',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 12.sp,
@@ -102,7 +102,7 @@ class ScreenUtilScaffold extends StatelessWidget {
                   color: Colors.blue,
                   child: Text(
                     '我的设计稿宽度: 180dp \n'
-                    '我的设计稿高度: 200dp',
+                        '我的设计稿高度: 200dp',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: ScreenUtil().setSp(12),
@@ -117,7 +117,7 @@ class ScreenUtilScaffold extends StatelessWidget {
                 color: Colors.green,
               ),
               constraints:
-                  const BoxConstraints(maxWidth: 200, maxHeight: 200).r,
+              const BoxConstraints(maxWidth: 200, maxHeight: 200).r,
               padding: const EdgeInsets.all(10).w,
               alignment: Alignment.center,
               child: Text(

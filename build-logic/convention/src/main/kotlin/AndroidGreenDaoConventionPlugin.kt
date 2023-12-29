@@ -29,7 +29,7 @@ class AndroidGreenDaoConventionPlugin : Plugin<Project> {
             }
             extensions.configure<GreendaoOptions> {
                 schemaVersion = 1
-                daoPackage = "com.example.william.my.module.opensource.greendao.dao"
+                daoPackage = "com.example.william.my.module.database.greendao.dao"
                 targetGenDir("src/main/java")
             }
             dependencies {

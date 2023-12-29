@@ -4,7 +4,7 @@ import androidx.activity.viewModels
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.activity.BasicResponseActivity
 import com.example.william.my.basic.basic_module.router.path.ARouterPath
-import com.example.william.my.basic.basic_repository.bean.ArticleData
+import com.example.william.my.basic.basic_repository.bean.ArticleListData
 import com.example.william.my.core.retrofit.loading.LoadingTip
 import com.example.william.my.core.retrofit.loading.LoadingTip.LoadingTipListener
 import com.example.william.my.core.retrofit.observer.WithLoadingTipObserver
@@ -37,8 +37,8 @@ class ViewModelActivity : BasicResponseActivity(), LoadingTipListener {
     override fun observeViewModel() {
         viewModel.articleData.observe(
             this,
-            object : WithLoadingTipObserver<ArticleData>(loadingTip, "article") {
-                override fun onResponse(response: ArticleData) {
+            object : WithLoadingTipObserver<ArticleListData>(loadingTip, "article") {
+                override fun onResponse(response: ArticleListData) {
                     if (response.datas.isNotEmpty()) {
                         showResponse(response.datas[0].string())
                     } else {

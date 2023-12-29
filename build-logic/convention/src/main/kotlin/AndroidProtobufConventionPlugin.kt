@@ -15,6 +15,7 @@
  */
 
 import com.google.protobuf.gradle.ProtobufExtension
+import com.google.samples.apps.nowinandroid.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
@@ -26,6 +27,7 @@ class AndroidProtobufConventionPlugin : Plugin<Project> {
             with(pluginManager) {
                 apply("com.google.protobuf")
             }
+            // https://github.com/google/protobuf-gradle-plugin
             extensions.configure<ProtobufExtension> {
                 protoc {
                     // The artifact spec for the Protobuf Compiler
@@ -43,7 +45,7 @@ class AndroidProtobufConventionPlugin : Plugin<Project> {
             }
             dependencies {
                 // You need to depend on the lite runtime library, not protobuf-java
-                add("implementation", "com.google.protobuf:protobuf-javalite:3.24.0")
+                add("implementation", libs.findLibrary("google.protobuf.javalite").get())
             }
         }
     }

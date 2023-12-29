@@ -1,11 +1,13 @@
 plugins {
-    id("nowinandroid.android.feature")
+    alias(libs.plugins.nowinandroid.android.library)
+    alias(libs.plugins.nowinandroid.android.arouter)
+    alias(libs.plugins.nowinandroid.android.eventbus)
 }
 
 android {
     namespace = "com.example.william.my.module.network"
     resourcePrefix("network_")
-    // Netty
+    //Netty
     //packaging {
     //    resources.excludes.add("META-INF/INDEX.LIST")
     //    resources.excludes.add("META-INF/io.netty.versions.properties")
@@ -13,6 +15,9 @@ android {
 }
 
 dependencies {
+    implementation(project(":basic:basic_lib"))
+    implementation(project(":basic:basic_module"))
+
     implementation(libs.coil)
     implementation(libs.netty)
     implementation(libs.nanohttpd)
@@ -22,5 +27,6 @@ dependencies {
     implementation(project(":libs:lib_retrofit"))
     implementation(project(":libs:lib_download"))
     implementation(project(":libs:lib_websocket"))
+
     implementation("org.slf4j:slf4j-nop:2.0.7")
 }

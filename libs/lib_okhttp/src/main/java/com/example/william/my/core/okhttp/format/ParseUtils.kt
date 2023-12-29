@@ -1,7 +1,6 @@
 package com.example.william.my.core.okhttp.format
 
 import android.text.TextUtils
-import android.util.Log
 import okhttp3.Headers
 import okhttp3.MediaType
 import okhttp3.Request

@@ -52,6 +52,10 @@ gradlePlugin {
             id = "nowinandroid.android.library"
             implementationClass = "AndroidLibraryConventionPlugin"
         }
+        register("androidLint") {
+            id = "nowinandroid.android.lint"
+            implementationClass = "AndroidLintConventionPlugin"
+        }
         register("androidARouter") {
             id = "nowinandroid.android.arouter"
             implementationClass = "AndroidARouterConventionPlugin"
@@ -60,6 +64,22 @@ gradlePlugin {
             id = "nowinandroid.android.eventbus"
             implementationClass = "AndroidEventBusConventionPlugin"
         }
+        register("androidHilt") {
+            id = "nowinandroid.android.hilt"
+            implementationClass = "AndroidHiltConventionPlugin"
+        }
+
+        //
+        register("androidProtobuf") {
+            id = "nowinandroid.android.protobuf"
+            implementationClass = "AndroidProtobufConventionPlugin"
+        }
+        register("androidRoom") {
+            id = "nowinandroid.android.room"
+            implementationClass = "AndroidRoomConventionPlugin"
+        }
+
+        //
         register("androidGreenDao") {
             id = "nowinandroid.android.greendao"
             implementationClass = "AndroidGreenDaoConventionPlugin"
@@ -67,26 +87,6 @@ gradlePlugin {
         register("androidObjectBox") {
             id = "nowinandroid.android.objectbox"
             implementationClass = "AndroidObjectBoxConventionPlugin"
-        }
-        register("androidRoom") {
-            id = "nowinandroid.android.room"
-            implementationClass = "AndroidRoomConventionPlugin"
-        }
-        register("androidProtobuf") {
-            id = "nowinandroid.android.protobuf"
-            implementationClass = "AndroidProtobufConventionPlugin"
-        }
-        register("androidHilt") {
-            id = "nowinandroid.android.hilt"
-            implementationClass = "AndroidHiltConventionPlugin"
-        }
-        register("androidBasic") {
-            id = "nowinandroid.android.basic"
-            implementationClass = "AndroidBasicConventionPlugin"
-        }
-        register("androidFeature") {
-            id = "nowinandroid.android.feature"
-            implementationClass = "AndroidFeatureConventionPlugin"
         }
     }
 }

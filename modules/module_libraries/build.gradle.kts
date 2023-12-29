@@ -1,5 +1,7 @@
 plugins {
-    id("nowinandroid.android.feature")
+    alias(libs.plugins.nowinandroid.android.library)
+    alias(libs.plugins.nowinandroid.android.arouter)
+    alias(libs.plugins.nowinandroid.android.eventbus)
 }
 
 android {
@@ -8,6 +10,9 @@ android {
 }
 
 dependencies {
+    implementation(project(":basic:basic_lib"))
+    implementation(project(":basic:basic_module"))
+
     implementation(project(":libs:lib_eventbus"))
     implementation(project(":libs:lib_ninepatch"))
 }

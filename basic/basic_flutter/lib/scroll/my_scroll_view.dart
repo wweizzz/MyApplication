@@ -48,11 +48,12 @@ class SingleChildScrollViewRoute extends StatelessWidget {
     return generateWordPairs()
         .take(20)
         .map(
-          (word) => Padding(
+          (word) =>
+          Padding(
             padding: const EdgeInsets.all(10),
             child: Text(word.asPascalCase),
           ),
-        )
+    )
         .toList();
   }
 }

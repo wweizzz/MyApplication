@@ -30,7 +30,8 @@ class SizedBoxRoute extends StatelessWidget {
     );
   }
 
-  DecoratedBox blueBox() => const DecoratedBox(
+  DecoratedBox blueBox() =>
+      const DecoratedBox(
         decoration: BoxDecoration(color: Colors.blue),
       );
 }
