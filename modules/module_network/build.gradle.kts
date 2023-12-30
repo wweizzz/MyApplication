@@ -17,6 +17,7 @@ android {
 dependencies {
     implementation(project(":basic:basic_lib"))
     implementation(project(":basic:basic_module"))
+    implementation(project(":basic:basic_repo"))
 
     implementation(libs.coil)
     implementation(libs.netty)

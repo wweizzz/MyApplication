@@ -10,7 +10,6 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.R
 import com.example.william.my.basic.basic_module.activity.BasicRecyclerActivity
 import com.example.william.my.basic.basic_module.router.path.ARouterPath
-import com.example.william.my.module.demo.dialog.MyBottomSheetDialog
 import com.example.william.my.module.demo.dialog.MyCreateDialogDialog
 import com.example.william.my.module.demo.dialog.MyCreateViewDialog
 import java.util.Calendar
@@ -28,7 +27,6 @@ class DialogActivity : BasicRecyclerActivity() {
             "自定义对话框2",
             "DialogFragment——onCreateDialog",
             "DialogFragment——onCreateView",
-            "BottomSheetDialogFragment",
         )
     }
 
@@ -128,11 +126,6 @@ class DialogActivity : BasicRecyclerActivity() {
             7 -> {
                 val dialogFragment2 = MyCreateViewDialog()
                 dialogFragment2.show(supportFragmentManager, dialogFragment2.tag)
-            }
-
-            8 -> {
-                val dialogFragment3 = MyBottomSheetDialog()
-                dialogFragment3.show(supportFragmentManager, dialogFragment3.tag)
             }
 
             else -> {}

@@ -27,12 +27,16 @@ class ModuleActivity : RouterRecyclerActivity() {
         val routerItems: ArrayList<RouterItem> = arrayListOf()
         routerItems.add(RouterItem("FlutterActivity", ARouterPath.Flutter.Main))
 
-        routerItems.add(RouterItem("DemoActivity", ARouterPath.Demo.Main))
-        routerItems.add(RouterItem("LibrariesActivity", ARouterPath.Libraries.Main))
-
+        routerItems.add(RouterItem("", ""))
         routerItems.add(RouterItem("OpensourceActivity", ARouterPath.Opensource.Main))
         routerItems.add(RouterItem("UtilsActivity", ARouterPath.Utils.Main))
 
+        routerItems.add(RouterItem("", ""))
+        routerItems.add(RouterItem("DemoActivity", ARouterPath.Demo.Main))
+        routerItems.add(RouterItem("WidgetActivity", ARouterPath.Widget.Main))
+        routerItems.add(RouterItem("LibrariesActivity", ARouterPath.Libraries.Main))
+
+        routerItems.add(RouterItem("", ""))
         routerItems.add(RouterItem("NetworkActivity", ARouterPath.Network.Main))
         routerItems.add(RouterItem("SampleActivity", ARouterPath.Sample.Main))
         routerItems.add(RouterItem("ArchActivity", ARouterPath.Arch.Main))

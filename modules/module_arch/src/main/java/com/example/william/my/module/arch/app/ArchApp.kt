@@ -7,6 +7,7 @@ class ArchApp : BaseAppInit() {
 
     override fun init() {
         super.init()
+
         Mavericks.initialize(app)
     }
 }

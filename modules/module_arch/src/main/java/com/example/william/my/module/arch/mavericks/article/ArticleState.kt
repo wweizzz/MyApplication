@@ -3,7 +3,7 @@ package com.example.william.my.module.arch.mavericks.article
 import com.airbnb.mvrx.Async
 import com.airbnb.mvrx.MavericksState
 import com.airbnb.mvrx.Uninitialized
-import com.example.william.my.basic.basic_repository.bean.ArticleData
+import com.example.william.my.basic.basic_repository.bean.ArticleListData
 import com.example.william.my.core.retrofit.response.RetrofitResponse
 
 /**
@@ -13,5 +13,5 @@ import com.example.william.my.core.retrofit.response.RetrofitResponse
  * 必须实现MavericksState接口。MavericksState只是一个标识接口。
  */
 data class ArticleState(
-    val articleData: Async<RetrofitResponse<ArticleData>> = Uninitialized,
+    val articleResponse: Async<RetrofitResponse<ArticleListData>> = Uninitialized,
 ) : MavericksState

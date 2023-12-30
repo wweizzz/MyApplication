@@ -42,6 +42,7 @@ internal fun Project.configureDepsAndroid() {
         add("implementation", libs.findLibrary("smartrefresh.layout").get())
         add("implementation", libs.findLibrary("smartrefresh.header").get())
         add("implementation", libs.findLibrary("smartrefresh.footer").get())
+
         //
         add("testImplementation", libs.findLibrary("junit").get())
         add("androidTestImplementation", libs.findLibrary("androidx-test-ext").get())
@@ -50,30 +51,20 @@ internal fun Project.configureDepsAndroid() {
     }
 }
 
-internal fun Project.configureBasicAndroid() {
-    dependencies {
-        dependencies {
-            add("implementation", project(":basic:basic_lib"))
-            add("implementation", project(":basic:basic_module"))
-            add("implementation", project(":basic:basic_repository"))
-        }
-    }
-}
-
 internal fun Project.configureFeatureAndroid() {
     dependencies {
         add("implementation", project(":modules:module_flutter"))
 
-        add("implementation", project(":modules:module_demo"))
-        add("implementation", project(":modules:module_libraries"))
-
         add("implementation", project(":modules:module_opensource"))
         add("implementation", project(":modules:module_utils"))
 
-        add("implementation", project(":modules:module_network"))
+        add("implementation", project(":modules:module_demo"))
+        add("implementation", project(":modules:module_widget"))
+        add("implementation", project(":modules:module_libraries"))
 
+        add("implementation", project(":modules:module_network"))
         add("implementation", project(":modules:module_sample"))
-        //add("implementation", project(":modules:module_arch"))
+        add("implementation", project(":modules:module_arch"))
 
         //add("implementation", project(":modules:module_room"))
         //add("implementation", project(":modules:module_database"))

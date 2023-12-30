@@ -2,7 +2,7 @@ package com.example.william.my.module.arch.fragment
 
 import com.chad.library.adapter4.BaseQuickAdapter
 import com.chad.library.adapter4.viewholder.QuickViewHolder
-import com.example.william.my.basic.basic_repository.bean.Article
+import com.example.william.my.basic.basic_repository.bean.ArticleDetailData
 import com.example.william.my.basic.basic_repository.data.ServiceLocator
 import com.example.william.my.lib.fragment.BaseRecyclerFragment
 import com.example.william.my.module.arch.adapter.ArticleAdapter
@@ -12,11 +12,11 @@ import com.example.william.my.module.arch.presenter.ArticlePresenter
 /**
  * MVP：Model-View-Presenter
  */
-class MvpFragment : BaseRecyclerFragment<Article>(), ArticleContract.View {
+class MvpFragment : BaseRecyclerFragment<ArticleDetailData>(), ArticleContract.View {
 
-    private lateinit var articlePresenter: ArticlePresenter
+    private lateinit var presenter: ArticlePresenter
 
-    override fun initRecyclerAdapter(): BaseQuickAdapter<Article, QuickViewHolder> {
+    override fun initRecyclerAdapter(): BaseQuickAdapter<ArticleDetailData, QuickViewHolder> {
         return ArticleAdapter(arrayListOf())
     }
 
@@ -24,7 +24,7 @@ class MvpFragment : BaseRecyclerFragment<Article>(), ArticleContract.View {
         super.observeViewModel()
 
         // Create the presenter
-        articlePresenter =
+        presenter =
             ArticlePresenter(
                 ServiceLocator.provideArticleRepository(requireActivity().applicationContext), this
             )
@@ -34,11 +34,11 @@ class MvpFragment : BaseRecyclerFragment<Article>(), ArticleContract.View {
 
     override fun queryData() {
         super.queryData()
-        articlePresenter.loadArticle(page)
+        presenter.loadArticle(page)
     }
 
-    override fun showArticle(article: List<Article>) {
-        onDataSuccess(article)
+    override fun showArticle(articles: List<ArticleDetailData>) {
+        onDataSuccess(articles)
     }
 
     override fun showNoArticle() {

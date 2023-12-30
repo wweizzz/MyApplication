@@ -3,10 +3,10 @@ package com.example.william.my.module.network.activity
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.activity.BasicResponseActivity
-import com.example.william.my.basic.basic_module.api.NetworkApi
 import com.example.william.my.basic.basic_module.base.Constants
-import com.example.william.my.basic.basic_module.bean.UserBean
 import com.example.william.my.basic.basic_module.router.path.ARouterPath
+import com.example.william.my.basic.basic_repo.api.NetworkApi
+import com.example.william.my.basic.basic_repo.bean.UserBean
 import com.example.william.my.core.retrofit.callback.RetrofitResponseCallback
 import com.example.william.my.core.retrofit.exception.ApiException
 import com.example.william.my.core.retrofit.helper.RetrofitHelper

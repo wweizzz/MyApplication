@@ -8,7 +8,6 @@
         <activity android:name=".activity.kotlin.FLowActivity" />
 
         <activity android:name=".activity.topic.DataStoreActivity" />
-        <activity android:name=".activity.topic.ViewModelActivity" />
         <activity android:name=".activity.topic.WorkManagerActivity" />
 
         <activity android:name=".activity.androidx.ActivityResultActivity" />

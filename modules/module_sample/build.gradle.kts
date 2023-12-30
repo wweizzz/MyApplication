@@ -14,7 +14,8 @@ android {
 dependencies {
     implementation(project(":basic:basic_lib"))
     implementation(project(":basic:basic_module"))
-    implementation(project(":basic:basic_repository"))
+    implementation(project(":basic:basic_repo"))
+
     //DataStore
     implementation(libs.androidx.datastore.runtime)
     implementation(libs.androidx.datastore.preferences.runtime)

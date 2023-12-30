@@ -17,8 +17,8 @@ package com.example.william.my.basic.basic_repository.data.source.remote
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.william.my.basic.basic_repository.api.NetworkApi2
-import com.example.william.my.basic.basic_repository.bean.ArticleData
+import com.example.william.my.basic.basic_repository.api.ArticleApi
+import com.example.william.my.basic.basic_repository.bean.ArticleDetailData
 import com.example.william.my.basic.basic_repository.bean.ArticleListData
 import com.example.william.my.basic.basic_repository.data.NetworkResult
 import com.example.william.my.basic.basic_repository.data.source.ArticleDataSource
@@ -35,7 +35,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 
 object ArticleRemoteDataSource : ArticleDataSource {
 
-    private var articleApi = RetrofitHelper.buildApi(NetworkApi2::class.java)
+    private var articleApi = RetrofitHelper.buildApi(ArticleApi::class.java)
 
     override fun getArticle(page: Int, callback: ArticleDataSource.LoadArticleCallback) {
         articleApi.getArticleSingle(page).onErrorResumeNext(HttpResultFunction())
@@ -100,7 +100,7 @@ object ArticleRemoteDataSource : ArticleDataSource {
         return articleApi.getArticleSuspend(page)
     }
 
-    override suspend fun getArticleResult(page: Int): NetworkResult<List<ArticleData>> {
+    override suspend fun getArticleResult(page: Int): NetworkResult<List<ArticleDetailData>> {
         return try {
             val response = articleApi.getArticleSuspend(page)
             NetworkResult.Success(response.data!!.datas)
@@ -109,11 +109,11 @@ object ArticleRemoteDataSource : ArticleDataSource {
         }
     }
 
-    override fun saveArticles(articles: List<ArticleData>) {
+    override fun saveArticles(articles: List<ArticleDetailData>) {
 
     }
 
-    override fun saveArticle(article: ArticleData) {
+    override fun saveArticle(article: ArticleDetailData) {
 
     }
 

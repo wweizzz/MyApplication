@@ -17,7 +17,7 @@ package com.example.william.my.basic.basic_repository.data
 
 import android.content.Context
 import androidx.room.Room
-import com.example.william.my.basic.basic_repository.api.NetworkApi2
+import com.example.william.my.basic.basic_repository.api.ArticleApi
 import com.example.william.my.basic.basic_repository.data.source.ArticleDataSource
 import com.example.william.my.basic.basic_repository.data.source.ArticleRepository
 import com.example.william.my.basic.basic_repository.data.source.DefaultArticleRepository
@@ -32,7 +32,7 @@ object ServiceLocator {
     private val lock = Any()
 
     @Volatile
-    private var articleApi: NetworkApi2? = null
+    private var articleApi: ArticleApi? = null
 
     @Volatile
     private var articleDatabase: ArticleDatabase? = null
@@ -40,7 +40,7 @@ object ServiceLocator {
     @Volatile
     private var articleRepository: ArticleRepository? = null
 
-    fun provideArticleApi(): NetworkApi2 {
+    fun provideArticleApi(): ArticleApi {
         synchronized(this) {
             return articleApi ?: createApi()
         }
@@ -58,8 +58,8 @@ object ServiceLocator {
         }
     }
 
-    private fun createApi(): NetworkApi2 {
-        return RetrofitHelper.buildApi(NetworkApi2::class.java)
+    private fun createApi(): ArticleApi {
+        return RetrofitHelper.buildApi(ArticleApi::class.java)
     }
 
     private fun createArticleLocalDataSource(context: Context): ArticleDataSource {

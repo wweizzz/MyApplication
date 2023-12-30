@@ -1,8 +1,8 @@
 package com.example.william.my.module.sample.repo
 
-import com.example.william.my.basic.basic_module.bean.UserBean
-import com.example.william.my.basic.basic_repository.api.NetworkApi2
-import com.example.william.my.basic.basic_repository.data.NetworkResult
+import com.example.william.my.basic.basic_repo.api.NetworkApi
+import com.example.william.my.basic.basic_repo.bean.UserBean
+import com.example.william.my.basic.basic_repo.data.NetworkResult
 import com.example.william.my.core.retrofit.helper.RetrofitHelper
 import com.example.william.my.core.retrofit.response.RetrofitResponse
 import com.example.william.my.module.sample.utils.ThreadUtils
@@ -17,7 +17,7 @@ import kotlinx.coroutines.withContext
  */
 class CoroutinesRepository(private val defaultDispatcher: CoroutineDispatcher) {
 
-    private val api = RetrofitHelper.buildApi(NetworkApi2::class.java)
+    private val api = RetrofitHelper.buildApi(NetworkApi::class.java)
 
     suspend fun login(
         username: String,
@@ -32,5 +32,9 @@ class CoroutinesRepository(private val defaultDispatcher: CoroutineDispatcher) {
             // Blocking network request code
             NetworkResult.Success(api.loginSuspend(username, password))
         }
+    }
+
+    companion object {
+        private val TAG = CoroutinesRepository::class.java.simpleName
     }
 }

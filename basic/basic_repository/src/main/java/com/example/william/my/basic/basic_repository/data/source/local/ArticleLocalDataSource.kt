@@ -16,7 +16,7 @@
 package com.example.william.my.basic.basic_repository.data.source.local
 
 import androidx.lifecycle.LiveData
-import com.example.william.my.basic.basic_repository.bean.ArticleData
+import com.example.william.my.basic.basic_repository.bean.ArticleDetailData
 import com.example.william.my.basic.basic_repository.bean.ArticleListData
 import com.example.william.my.basic.basic_repository.data.NetworkResult
 import com.example.william.my.basic.basic_repository.data.source.ArticleDataSource
@@ -54,7 +54,7 @@ class ArticleLocalDataSource(
         TODO("Not yet implemented")
     }
 
-    override suspend fun getArticleResult(page: Int): NetworkResult<List<ArticleData>> {
+    override suspend fun getArticleResult(page: Int): NetworkResult<List<ArticleDetailData>> {
         return withContext(ioDispatcher) {
             try {
                 val articles = articleDao.getArticles()
@@ -65,11 +65,11 @@ class ArticleLocalDataSource(
         }
     }
 
-    override fun saveArticles(articles: List<ArticleData>) {
+    override fun saveArticles(articles: List<ArticleDetailData>) {
         TODO("Not yet implemented")
     }
 
-    override fun saveArticle(article: ArticleData) {
+    override fun saveArticle(article: ArticleDetailData) {
         TODO("Not yet implemented")
     }
 

@@ -8,7 +8,7 @@ import android.os.IBinder
 import android.os.Looper
 import android.os.Message
 import android.os.Messenger
-import com.example.william.my.module.demo.activity3.MessengerActivity
+import com.example.william.my.module.demo.activity4.MessengerActivity
 import java.lang.ref.WeakReference
 
 class MyMessageService : Service() {

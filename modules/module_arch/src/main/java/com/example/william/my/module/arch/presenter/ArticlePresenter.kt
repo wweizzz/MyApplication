@@ -15,7 +15,7 @@
  */
 package com.example.william.my.module.arch.presenter
 
-import com.example.william.my.basic.basic_repository.bean.Article
+import com.example.william.my.basic.basic_repository.bean.ArticleDetailData
 import com.example.william.my.basic.basic_repository.data.source.ArticleRepository
 import com.example.william.my.module.arch.contract.ArticleContract
 import com.example.william.my.module.arch.fragment.MvpFragment
@@ -33,8 +33,8 @@ class ArticlePresenter(
     override fun loadArticle(page: Int) {
         repository.getArticle(page, object : ArticleRepository.LoadArticleCallback {
 
-            override fun onArticleLoaded(article: List<Article>) {
-                view.showArticle(article)
+            override fun onArticleLoaded(articles: List<ArticleDetailData>) {
+                view.showArticle(articles)
             }
 
             override fun onDataNotAvailable() {

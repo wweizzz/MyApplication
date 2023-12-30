@@ -3,8 +3,8 @@ package com.example.william.my.module.sample.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.example.william.my.basic.basic_module.bean.UserBean
-import com.example.william.my.basic.basic_repository.data.NetworkResult
+import com.example.william.my.basic.basic_repo.bean.UserBean
+import com.example.william.my.basic.basic_repo.data.NetworkResult
 import com.example.william.my.core.retrofit.response.RetrofitResponse
 import com.example.william.my.module.sample.repo.FlowRepository
 import com.example.william.my.module.sample.utils.ThreadUtils

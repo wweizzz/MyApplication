@@ -18,7 +18,7 @@ package com.example.william.my.module.arch.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.william.my.basic.basic_repository.bean.ArticleData
+import com.example.william.my.basic.basic_repository.bean.ArticleListData
 import com.example.william.my.basic.basic_repository.data.source.ArticleRepository
 import com.example.william.my.core.retrofit.callback.RetrofitLiveDataCallback
 import com.example.william.my.core.retrofit.exception.ExceptionHandler
@@ -28,22 +28,22 @@ import io.reactivex.rxjava3.observers.DisposableSingleObserver
 
 class ArticleLiveDataViewModel(private val repository: ArticleRepository) : ViewModel() {
 
-    private val _article = MutableLiveData<RetrofitResponse<ArticleData>>()
-    val article: LiveData<RetrofitResponse<ArticleData>>
-        get() = _article
+    private val _articleResponse = MutableLiveData<RetrofitResponse<ArticleListData>>()
+    val articleResponse: LiveData<RetrofitResponse<ArticleListData>>
+        get() = _articleResponse
 
     fun loadArticle(page: Int) {
         repository.getArticleLiveData(page) {
-            _article.postValue(it)
+            _articleResponse.postValue(it)
         }
     }
 
     fun loadArticle2(page: Int) {
         repository.getArticleSingle(page)
-            .subscribe(object : RetrofitLiveDataCallback<ArticleData>() {
-                override fun onPostValue(value: RetrofitResponse<ArticleData>) {
+            .subscribe(object : RetrofitLiveDataCallback<ArticleListData>() {
+                override fun onPostValue(value: RetrofitResponse<ArticleListData>) {
                     super.onPostValue(value)
-                    _article.postValue(value)
+                    _articleResponse.postValue(value)
                 }
             })
     }
@@ -52,14 +52,15 @@ class ArticleLiveDataViewModel(private val repository: ArticleRepository) : View
 
     fun loadArticle3(page: Int) {
         articleUseCase.setPage(page)
-        articleUseCase.execute(object : DisposableSingleObserver<RetrofitResponse<ArticleData>>() {
-            override fun onSuccess(response: RetrofitResponse<ArticleData>) {
-                _article.postValue(response)
+        articleUseCase.execute(object :
+            DisposableSingleObserver<RetrofitResponse<ArticleListData>>() {
+            override fun onSuccess(response: RetrofitResponse<ArticleListData>) {
+                _articleResponse.postValue(response)
             }
 
             override fun onError(e: Throwable) {
                 val exception = ExceptionHandler.handleException(e)
-                _article.postValue(RetrofitResponse.error(exception.message))
+                _articleResponse.postValue(RetrofitResponse.error(exception.message))
             }
         })
     }

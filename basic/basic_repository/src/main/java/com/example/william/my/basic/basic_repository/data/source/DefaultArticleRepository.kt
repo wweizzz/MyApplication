@@ -16,7 +16,7 @@
 package com.example.william.my.basic.basic_repository.data.source
 
 import androidx.lifecycle.LiveData
-import com.example.william.my.basic.basic_repository.bean.ArticleData
+import com.example.william.my.basic.basic_repository.bean.ArticleDetailData
 import com.example.william.my.basic.basic_repository.bean.ArticleListData
 import com.example.william.my.basic.basic_repository.data.NetworkResult
 import com.example.william.my.core.retrofit.response.RetrofitResponse
@@ -35,7 +35,7 @@ class DefaultArticleRepository(
 
     override fun getArticle(page: Int, callback: ArticleRepository.LoadArticleCallback) {
         articlesRemoteDataSource.getArticle(page, object : ArticleDataSource.LoadArticleCallback {
-            override fun onArticleLoaded(articles: List<ArticleData>) {
+            override fun onArticleLoaded(articles: List<ArticleDetailData>) {
                 callback.onArticleLoaded(articles)
             }
 
@@ -81,7 +81,7 @@ class DefaultArticleRepository(
     override suspend fun getArticleResult(
         page: Int,
         forceUpdate: Boolean
-    ): NetworkResult<List<ArticleData>> {
+    ): NetworkResult<List<ArticleDetailData>> {
         // Set app as busy while this function executes.
         if (forceUpdate) {
             try {

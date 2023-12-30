@@ -10,7 +10,4 @@ android {
 
 dependencies {
     implementation(project(":basic:basic_lib"))
-
-    api(project(":libs:lib_okhttp"))
-    api(project(":libs:lib_retrofit"))
 }

@@ -20,27 +20,16 @@ android {
         // Custom test runner to set up Hilt dependency graph
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        //vectorDrawables {
-        //    useSupportLibrary = true
-        //}
+        vectorDrawables {
+            useSupportLibrary = true
+        }
 
-        buildTypes {
-            debug {
-                applicationIdSuffix = NiaBuildType.DEBUG.applicationIdSuffix
-            }
-            getByName("release") {
-                isMinifyEnabled = true
-                applicationIdSuffix = NiaBuildType.RELEASE.applicationIdSuffix
-                proguardFiles(
-                    getDefaultProguardFile("proguard-android-optimize.txt"),
-                    "proguard-rules.pro"
-                )
-
-                // To publish on the Play store a private signing key is required, but to allow anyone
-                // who clones the code to sign and run the release variant, use the debug signing key.
-                // TODO: Abstract the signing configuration to a separate file to avoid hardcoding this.
-                signingConfig = signingConfigs.getByName("debug")
-            }
+        ndk {
+            // armeabi：万金油架构平台（占用率：0%）
+            // armeabi-v7a：曾经主流的架构平台（占用率：10%）
+            // arm64-v8a：目前主流架构平台（占用率：90%）
+            //abiFilters 'armeabi-v7a', 'arm64-v8a' // , 'x86', 'x86_64'
+            abiFilters.addAll(arrayOf("armeabi-v7a", "arm64-v8a", "x86", "x86_64"))
         }
 
         applicationVariants.all {
@@ -53,28 +42,39 @@ android {
             }
         }
 
-        //packaging {
-        //    resources {
-        //        excludes.add("/META-INF/{AL2.0,LGPL2.1}")
-        //    }
-        //}
-
-        //testOptions {
-        //    unitTests {
-        //        isIncludeAndroidResources = true
-        //    }
-        //}
-
-        //ndk {
-        //    // armeabi：万金油架构平台（占用率：0%）
-        //    // armeabi-v7a：曾经主流的架构平台（占用率：10%）
-        //    // arm64-v8a：目前主流架构平台（占用率：90%）
-        //    //abiFilters 'armeabi-v7a', 'arm64-v8a' // , 'x86', 'x86_64'
-        //    abiFilters.addAll(arrayOf("armeabi-v7a", "arm64-v8a", "x86", "x86_64"))
-        //}
-
         addManifestPlaceholders(mutableMapOf("APP_NAME" to "My Application")) // 配置主包的应用名称
     }
+
+    buildTypes {
+        debug {
+            applicationIdSuffix = NiaBuildType.DEBUG.applicationIdSuffix
+        }
+        getByName("release") {
+            isMinifyEnabled = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+            applicationIdSuffix = NiaBuildType.RELEASE.applicationIdSuffix
+
+            // To publish on the Play store a private signing key is required, but to allow anyone
+            // who clones the code to sign and run the release variant, use the debug signing key.
+            // TODO: Abstract the signing configuration to a separate file to avoid hardcoding this.
+            signingConfig = signingConfigs.getByName("debug")
+        }
+    }
+
+    //packaging {
+    //    resources {
+    //        excludes.add("/META-INF/{AL2.0,LGPL2.1}")
+    //    }
+    //}
+
+    //testOptions {
+    //    unitTests {
+    //        isIncludeAndroidResources = true
+    //    }
+    //}
 }
 
 dependencies {

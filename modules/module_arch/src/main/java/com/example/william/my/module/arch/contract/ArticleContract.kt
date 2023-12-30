@@ -15,7 +15,7 @@
  */
 package com.example.william.my.module.arch.contract
 
-import com.example.william.my.basic.basic_repository.bean.Article
+import com.example.william.my.basic.basic_repository.bean.ArticleDetailData
 import com.example.william.my.lib.presenter.IBasePresenter
 import com.example.william.my.lib.view.IBaseView
 
@@ -26,7 +26,7 @@ interface ArticleContract {
 
     interface View : IBaseView<Presenter> {
 
-        fun showArticle(article: List<Article>)
+        fun showArticle(articles: List<ArticleDetailData>)
 
         fun showNoArticle()
     }

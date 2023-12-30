@@ -14,35 +14,23 @@
         <activity android:name=".activity.ViewPagerActivity2" />
         <activity android:name=".activity.WebViewActivity" />
 
-        <activity android:name=".activity2.FragmentViewPagerActivity" />
-        <activity android:name=".activity2.RecyclerViewNestedActivity" />
+        <activity android:name=".activity4.AsyncTaskActivity" />
+        <activity android:name=".activity4.BroadcastActivity" />
+        <activity android:name=".activity4.HandlerThreadActivity" />
+        <activity android:name=".activity4.JobSchedulerActivity" />
+        <activity android:name=".activity4.MessengerActivity" />
+        <activity android:name=".activity2.NotificationActivity" />
+        <activity android:name=".activity2.PermissionActivity" />
+        <activity android:name=".activity4.ServiceActivity" />
 
-        <activity android:name=".activity3.AsyncTaskActivity" />
-        <activity android:name=".activity3.BroadcastActivity" />
-        <activity android:name=".activity3.HandlerThreadActivity" />
-        <activity android:name=".activity3.JobSchedulerActivity" />
-        <activity android:name=".activity3.MessengerActivity" />
-        <activity android:name=".activity3.NotificationActivity" />
-        <activity android:name=".activity3.PermissionActivity" />
-        <activity android:name=".activity3.ServiceActivity" />
-
-        <activity android:name=".activity4.AnimatorActivity" />
-        <activity android:name=".activity4.CropActivity" />
-        <activity android:name=".activity4.FloatWindowActivity" />
-        <activity android:name=".activity4.HookActivity" />
-        <activity android:name=".activity4.TransitionFirstActivity" />
-        <activity android:name=".activity4.TransitionSecondActivity" />
-        <activity android:name=".activity4.TurntableActivity" />
-        <activity android:name=".activity4.TypefaceActivity" />
-
-        <activity android:name=".activity5.AlertDialogActivity" />
-        <activity android:name=".activity5.BlurViewActivity" />
-        <activity android:name=".activity5.InfiniteImageActivity" />
-        <activity android:name=".activity5.MarqueeViewActivity" />
-        <activity android:name=".activity5.Sensor3DActivity" />
-        <activity android:name=".activity5.SpinnerActivity" />
-        <activity android:name=".activity5.TitleBarActivity" />
-        <activity android:name=".activity5.VerifyCodeActivity" />
+        <activity android:name=".activity2.AnimatorActivity" />
+        <activity android:name=".activity3.CropActivity" />
+        <activity android:name=".activity3.FloatWindowActivity" />
+        <activity android:name=".activity3.HookActivity" />
+        <activity android:name=".activity2.TransitionFirstActivity" />
+        <activity android:name=".activity2.TransitionSecondActivity" />
+        <activity android:name=".activity3.TurntableActivity" />
+        <activity android:name=".activity2.TypefaceActivity" />
 
         <service android:name=".service.MyAIDLService" />
         <service android:name=".service.MyForegroundService" />

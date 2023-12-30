@@ -5,7 +5,7 @@ import com.airbnb.mvrx.MavericksView
 import com.airbnb.mvrx.fragmentViewModel
 import com.chad.library.adapter4.BaseQuickAdapter
 import com.chad.library.adapter4.viewholder.QuickViewHolder
-import com.example.william.my.basic.basic_repository.bean.Article
+import com.example.william.my.basic.basic_repository.bean.ArticleDetailData
 import com.example.william.my.lib.fragment.BaseRecyclerFragment
 import com.example.william.my.module.arch.adapter.ArticleAdapter
 
@@ -13,17 +13,18 @@ import com.example.william.my.module.arch.adapter.ArticleAdapter
  * Mavericks
  * https://airbnb.io/mavericks/
  */
-class MavericksFragment(override val lifecycle: Lifecycle) : BaseRecyclerFragment<Article>(),
+class MavericksFragment(override val lifecycle: Lifecycle) :
+    BaseRecyclerFragment<ArticleDetailData>(),
     MavericksView {
 
     private val viewModel: ArticleViewModel by fragmentViewModel()
 
-    override fun initRecyclerAdapter(): BaseQuickAdapter<Article, QuickViewHolder> {
+    override fun initRecyclerAdapter(): BaseQuickAdapter<ArticleDetailData, QuickViewHolder> {
         return ArticleAdapter(arrayListOf())
     }
 
     override fun observeViewModel() {
-        viewModel.onAsync(ArticleState::articleData, deliveryMode = uniqueOnly("error"),
+        viewModel.onAsync(ArticleState::articleResponse, deliveryMode = uniqueOnly("error"),
             onFail = {
                 onDataFail()
             },
