@@ -25,19 +25,16 @@ class BannerActivity : BaseVBActivity<OpenActivityBannerBinding?>() {
     }
 
     private fun initBanner() {
-        mBinding.banner.setAdapter(object : BannerImageAdapter<Int?>(listOf()) {
+
+        mBinding.banner.setAdapter(object :
+            BannerImageAdapter<String>(arrayListOf("1", "2", "3", "4")) {
             override fun onBindView(
-                holder: BannerImageHolder?,
-                data: Int?,
-                position: Int,
-                size: Int
+                holder: BannerImageHolder, data: String, position: Int, size: Int
             ) {
-                data?.let {
-                    holder?.imageView?.setImageResource(it)
-                }
+                holder.imageView?.setImageResource(com.example.william.my.basic.basic_module.R.drawable.ic_launcher)
             }
         })
-            .addBannerLifecycleObserver(this)
-            .indicator = CircleIndicator(this)
+            .setIndicator(CircleIndicator(this))
+            .addBannerLifecycleObserver(this) // 添加生命周期观察者
     }
 }

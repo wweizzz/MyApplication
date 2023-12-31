@@ -149,7 +149,11 @@ public class IosAlertItemDialog {
             }
 
             textView.setText(alertItems.get(index).name);
-            textView.setTextColor(ContextCompat.getColor(context, alertItems.get(index).color));
+            try {
+                textView.setTextColor(ContextCompat.getColor(context, alertItems.get(index).color));
+            } catch (Exception ignored) {
+
+            }
             textView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -178,11 +182,12 @@ public class IosAlertItemDialog {
     public static class AlertItem {
 
         private final String name;
-        private int color = R.color.colorAlertMessage;
+        private final int color;
         private final OnItemClickListener itemClickListener;
 
         public AlertItem(String name, OnItemClickListener itemClickListener) {
             this.name = name;
+            this.color = R.color.colorAlertMessage;
             this.itemClickListener = itemClickListener;
         }
 

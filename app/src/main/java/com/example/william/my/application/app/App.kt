@@ -1,5 +1,6 @@
 package com.example.william.my.application.app
 
+import com.example.william.my.basic.basic_lib.MyLibEventBusIndex
 import com.example.william.my.basic.basic_module.app.ModuleApp
 import com.example.william.my.lib.app.BaseApp
 import com.example.william.my.lib.eventbus.EventBusHelper
@@ -7,11 +8,13 @@ import com.example.william.my.lib.utils.CrashUtils
 import com.example.william.my.lib.utils.FileSDCardUtil
 import com.example.william.my.lib.utils.Utils
 import com.example.william.my.module.arch.app.ArchApp
+import com.example.william.my.module.database.app.DatabaseApp
 import com.example.william.my.module.demo.app.DemoApp
 import com.example.william.my.module.flutter.app.FlutterApp
 import com.example.william.my.module.libraries.app.LibrariesApp
 import com.example.william.my.module.network.app.NetworkApp
 import com.example.william.my.module.opensource.app.OpensourceApp
+import com.example.william.my.modules.module_libraries.MyLibrariesEventBusIndex
 
 /**
  * gradlew :app:dependencies 查询app依赖
@@ -41,7 +44,7 @@ class App : BaseApp() {
 
         registerAppInit(ArchApp::class.java)
 
-//        registerAppInit(DatabaseApp::class.java)
+        registerAppInit(DatabaseApp::class.java)
     }
 
     private fun initCrash() {
@@ -54,8 +57,8 @@ class App : BaseApp() {
 
     private fun initEventBus() {
         EventBusHelper
-            //.addIndex(MyLibraryEventBusIndex())
-            //.addIndex(MyLibrariesEventBusIndex())
+            .addIndex(MyLibEventBusIndex())
+            .addIndex(MyLibrariesEventBusIndex())
             .init()
     }
 }

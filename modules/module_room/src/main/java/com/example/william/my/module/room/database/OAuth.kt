@@ -13,16 +13,21 @@ data class OAuth(
     /**
      * 唯一标识
      */
-    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") var id: Long = 0,
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "id")
+    var id: Long = 0,
+
     /**
      * Token
      */
-    @ColumnInfo(name = "RefreshToken") var refreshToken: String = System.currentTimeMillis()
-        .toString(),
+    @ColumnInfo(name = "RefreshToken")
+    var refreshToken: String = System.currentTimeMillis().toString(),
+
     /**
      * 过期时长
      */
-    @ColumnInfo(name = "Expires") var expires: Long = 60 * 60 * 24
+    @ColumnInfo(name = "Expires")
+    var expires: Long = 60 * 60 * 24
 ) {
 
     /**

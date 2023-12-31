@@ -13,8 +13,6 @@ android {
 dependencies {
     implementation(project(":basic:basic_lib"))
     implementation(project(":basic:basic_module"))
-
-    implementation(libs.google.gson)
 }
 
 //https://github.com/greenrobot/greenDAO/issues/1110

@@ -19,10 +19,17 @@ import kotlinx.coroutines.launch
 
 object FlowEventBus {
 
-    lateinit var application: Application
+    private lateinit var app: Application
 
-    fun init(application: Application) {
-        FlowEventBus.application = application
+    fun getApp(): Application {
+        if (!this::app.isInitialized) {
+            throw Exception("")
+        }
+        return app
+    }
+
+    fun init(app: Application) {
+        FlowEventBus.app = app
     }
 
 //_______________________________________

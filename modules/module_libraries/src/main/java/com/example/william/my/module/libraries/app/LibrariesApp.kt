@@ -7,6 +7,7 @@ class LibrariesApp : BaseAppInit() {
 
     override fun init() {
         super.init()
-        FlowEventBus.application = app
+
+        FlowEventBus.init(app)
     }
 }

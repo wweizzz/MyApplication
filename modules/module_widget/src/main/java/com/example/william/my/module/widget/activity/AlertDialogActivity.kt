@@ -41,7 +41,12 @@ class AlertDialogActivity : BasicRecyclerActivity() {
                     .setCanceledOnTouchOutside(false)
                     .addAlertItem("ITEM 1") { }
                     .addAlertItem("ITEM 2") { }
-                    .addAlertItem("ITEM 3", 0) { }
+                    .addAlertItem(
+                        "ITEM 3",
+                        com.example.william.my.basic.basic_module.R.color.colorPrimary
+                    ) {
+
+                    }
                     .show()
             }
 

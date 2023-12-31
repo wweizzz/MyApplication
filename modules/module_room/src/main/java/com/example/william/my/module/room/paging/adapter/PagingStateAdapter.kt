@@ -6,8 +6,8 @@ import androidx.core.content.ContextCompat
 import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.william.my.module.sample.R
-import com.example.william.my.module.sample.databinding.SampleItemRecyclerBinding
+import com.example.william.my.module.room.R
+import com.example.william.my.module.room.databinding.SampleItemRecyclerBinding
 
 class PagingStateAdapter(private val retry: () -> Unit) :
     LoadStateAdapter<PagingStateAdapter.ViewHolder>() {

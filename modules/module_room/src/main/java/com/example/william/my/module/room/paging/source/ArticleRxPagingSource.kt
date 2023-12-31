@@ -2,24 +2,24 @@ package com.example.william.my.module.room.paging.source
 
 import androidx.paging.PagingState
 import androidx.paging.rxjava3.RxPagingSource
-import com.example.william.my.basic.basic_repository.api.NetworkApi
-import com.example.william.my.basic.basic_repository.bean.Article
-import com.example.william.my.basic.basic_repository.bean.ArticleData
+import com.example.william.my.basic.basic_repository.api.ArticleApi
+import com.example.william.my.basic.basic_repository.bean.ArticleListData
+import com.example.william.my.basic.basic_repository.bean.ArticleDetailData
 import com.example.william.my.basic.basic_repository.data.source.ArticleRepository
 import com.example.william.my.core.retrofit.response.RetrofitResponse
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
 
 class ArticleRxPagingSource(
-    private val networkApi: NetworkApi,
+    private val networkApi: ArticleApi,
     private val articleRepository: ArticleRepository
 ) :
-    RxPagingSource<Int, Article>() {
+    RxPagingSource<Int, ArticleDetailData>() {
 
     /**
      * getArticleSingle
      */
-    override fun loadSingle(params: LoadParams<Int>): Single<LoadResult<Int, Article>> {
+    override fun loadSingle(params: LoadParams<Int>): Single<LoadResult<Int, ArticleDetailData>> {
         // Start refresh at page 1 if undefined.
         val nextPageNumber = params.key ?: 0
 
@@ -34,7 +34,7 @@ class ArticleRxPagingSource(
             }
     }
 
-    private fun toLoadResult(response: RetrofitResponse<ArticleData>): LoadResult<Int, Article> {
+    private fun toLoadResult(response: RetrofitResponse<ArticleListData>): LoadResult<Int, ArticleDetailData> {
         return LoadResult.Page(
             response.data!!.datas,
             null,  // Only paging forward.
@@ -44,7 +44,7 @@ class ArticleRxPagingSource(
         )
     }
 
-    override fun getRefreshKey(state: PagingState<Int, Article>): Int? {
+    override fun getRefreshKey(state: PagingState<Int, ArticleDetailData>): Int? {
         // Try to find the page key of the closest page to anchorPosition, from
         // either the prevKey or the nextKey, but you need to handle nullability
         // here:

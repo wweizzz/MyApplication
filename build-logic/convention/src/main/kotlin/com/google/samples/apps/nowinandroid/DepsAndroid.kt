@@ -25,13 +25,14 @@ import org.gradle.kotlin.dsl.dependencies
 internal fun Project.configureDepsAndroid() {
     dependencies {
 
-        //
         add("implementation", libs.findLibrary("coroutines").get())
+
+        add("implementation", libs.findLibrary("google.gson").get())
+
         add("implementation", libs.findLibrary("androidx.core.ktx").get())
         add("implementation", libs.findLibrary("androidx.activity.ktx").get())
         add("implementation", libs.findLibrary("androidx.fragment.ktx").get())
 
-        //
         add("implementation", libs.findLibrary("androidx.appCompat").get())
         add("implementation", libs.findLibrary("androidx.appCompat").get())
         add("implementation", libs.findLibrary("androidx.constraintLayout").get())
@@ -43,7 +44,6 @@ internal fun Project.configureDepsAndroid() {
         add("implementation", libs.findLibrary("smartrefresh.header").get())
         add("implementation", libs.findLibrary("smartrefresh.footer").get())
 
-        //
         add("testImplementation", libs.findLibrary("junit").get())
         add("androidTestImplementation", libs.findLibrary("androidx-test-ext").get())
         add("androidTestImplementation", libs.findLibrary("androidx-test-espresso").get())
@@ -66,7 +66,7 @@ internal fun Project.configureFeatureAndroid() {
         add("implementation", project(":modules:module_sample"))
         add("implementation", project(":modules:module_arch"))
 
-        //add("implementation", project(":modules:module_room"))
-        //add("implementation", project(":modules:module_database"))
+        add("implementation", project(":modules:module_room"))
+        add("implementation", project(":modules:module_database"))
     }
 }

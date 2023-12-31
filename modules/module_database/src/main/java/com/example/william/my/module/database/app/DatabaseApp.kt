@@ -10,6 +10,6 @@ class DatabaseApp : BaseAppInit() {
         super.init()
 
         Greendao.init(app)
-        //ObjectBox.init(app)
+        ObjectBox.init(app)
     }
 }

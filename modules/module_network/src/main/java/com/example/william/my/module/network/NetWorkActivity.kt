@@ -13,14 +13,26 @@ class NetWorkActivity : RouterRecyclerActivity() {
         routerItems.add(
             RouterItem("CoilActivity", ARouterPath.Network.Coil)
         )
+
+        routerItems.add(
+            RouterItem("", "")
+        )
         routerItems.add(
             RouterItem("HttpURLActivity", ARouterPath.Network.HttpURL)
+        )
+
+        routerItems.add(
+            RouterItem("", "")
         )
         routerItems.add(
             RouterItem("VolleyActivity", ARouterPath.Network.Volley)
         )
         routerItems.add(
             RouterItem("VolleyHelperActivity", ARouterPath.Network.VolleyHelper)
+        )
+
+        routerItems.add(
+            RouterItem("", "")
         )
         routerItems.add(
             RouterItem("OkHttpActivity", ARouterPath.Network.OkHttp)
@@ -30,6 +42,10 @@ class NetWorkActivity : RouterRecyclerActivity() {
         )
         routerItems.add(
             RouterItem("OkHttpDownloadActivity", ARouterPath.Network.OkHttpDownload)
+        )
+
+        routerItems.add(
+            RouterItem("", "")
         )
         routerItems.add(
             RouterItem("RetrofitActivity", ARouterPath.Network.Retrofit)
@@ -55,11 +71,19 @@ class NetWorkActivity : RouterRecyclerActivity() {
         routerItems.add(
             RouterItem("RxDownloadActivity", ARouterPath.Network.RxDownload)
         )
+
+        routerItems.add(
+            RouterItem("", "")
+        )
         routerItems.add(
             RouterItem("WebSocketActivity", ARouterPath.Network.WebSocket)
         )
         routerItems.add(
             RouterItem("WebSocketUtilsActivity", ARouterPath.Network.WebSocketUtils)
+        )
+
+        routerItems.add(
+            RouterItem("", "")
         )
         routerItems.add(
             RouterItem("NanoActivity", ARouterPath.Network.Nano)

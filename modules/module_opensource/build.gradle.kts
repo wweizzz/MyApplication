@@ -12,22 +12,20 @@ dependencies {
     implementation(project(":basic:basic_lib"))
     implementation(project(":basic:basic_module"))
 
-    implementation(libs.badge)
     implementation(libs.banner)
     implementation(libs.citypicker)
     implementation(libs.countdownview)
     implementation(libs.easyfloat)
     implementation(libs.tablayout)
-    implementation(libs.lottie)
     implementation(libs.photoview)
-
-    implementation(libs.google.gson)
     implementation(libs.pickerview)
-
     implementation(libs.popwindow)
     implementation(libs.shadowlayout)
-    implementation(libs.svgaPlayer)
     implementation(libs.swipelayout)
+
+    implementation(libs.pag)
+    implementation(libs.lottie)
+    implementation(libs.svgaPlayer)
 
     implementation(libs.mmkv)
     implementation(libs.permission)

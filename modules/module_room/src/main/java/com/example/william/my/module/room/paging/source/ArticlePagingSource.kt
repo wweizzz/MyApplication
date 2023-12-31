@@ -2,20 +2,20 @@ package com.example.william.my.module.room.paging.source
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.example.william.my.basic.basic_repository.api.NetworkApi
-import com.example.william.my.basic.basic_repository.bean.Article
+import com.example.william.my.basic.basic_repository.api.ArticleApi
+import com.example.william.my.basic.basic_repository.bean.ArticleDetailData
 import com.example.william.my.basic.basic_repository.data.source.ArticleRepository
 
 class ArticlePagingSource(
-    private val networkApi: NetworkApi,
+    private val networkApi: ArticleApi,
     private val articleRepository: ArticleRepository
 ) :
-    PagingSource<Int, Article>() {
+    PagingSource<Int, ArticleDetailData>() {
 
     /**
      * getArticleContinuation
      */
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Article> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, ArticleDetailData> {
         return try {
             // 如果未定义，从0开始刷新
             // Start refresh at page 0 if undefined.
@@ -36,7 +36,7 @@ class ArticlePagingSource(
         }
     }
 
-    override fun getRefreshKey(state: PagingState<Int, Article>): Int? {
+    override fun getRefreshKey(state: PagingState<Int, ArticleDetailData>): Int? {
         // Try to find the page key of the closest page to anchorPosition, from
         // either the prevKey or the nextKey, but you need to handle nullability
         // here:

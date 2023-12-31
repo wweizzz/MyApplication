@@ -91,5 +91,5 @@ include(":modules:module_network")
 include(":modules:module_sample")
 include(":modules:module_arch")
 
-//include(":modules:module_room")
-//include(":modules:module_database")
+include(":modules:module_room")
+include(":modules:module_database")

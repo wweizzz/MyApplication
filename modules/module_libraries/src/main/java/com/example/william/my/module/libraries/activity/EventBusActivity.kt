@@ -18,18 +18,21 @@ class EventBusActivity : BasicRecyclerActivity() {
 
     override fun buildList(): ArrayList<String> {
         return arrayListOf(
-            "register",
+            "registerEventBus",
             "postEventBus",
             "postStickyEventBus",
 
-            "RxEventBus",
+            "",
+            "observeRxEventBus",
             "postRxEventBus",
             "postStickyRxEventBus",
 
+            "",
             "observeLiveEvent",
             "postLiveEvent",
             "postStickyLiveEvent",
 
+            "",
             "observeFlowEvent",
             "postFlowEvent",
             "postStickyFlowEvent",
@@ -40,56 +43,52 @@ class EventBusActivity : BasicRecyclerActivity() {
         super.onRecyclerClick(position, string)
         when (position) {
             0 -> {
-                if (!EventBusHelper.isRegistered(this@EventBusActivity)) {
-                    EventBusHelper.register(this@EventBusActivity)
-                } else {
-                    EventBusHelper.unregister(this@EventBusActivity)
-                }
+                registerEventBus()
             }
 
             1 -> {
-                EventBusHelper.postEvent(GlobalEvent("send GlobalEvent by Activity"))
+                EventBusHelper.postEvent(GlobalEvent("send EventBus by Activity"))
             }
 
             2 -> {
-                EventBusHelper.postStickyEvent(StickyEvent("send StickyEvent by Activity"))
-            }
-
-            3 -> {
-                observeRxBusEvent()
+                EventBusHelper.postStickyEvent(StickyEvent("send EventBus Sticky by Activity"))
             }
 
             4 -> {
-                RxEventBus.postEvent(GlobalEvent("send GlobalEvent by Activity"))
+                observeRxBusEvent()
             }
 
             5 -> {
-                RxEventBus.postStickyEvent(StickyEvent("send StickyEvent by Activity"))
+                RxEventBus.postEvent(GlobalEvent("send RxEventBus by Activity"))
             }
 
             6 -> {
-                observeLiveEventBus()
-            }
-
-            7 -> {
-                LiveEventBus.postEvent(this, GlobalEvent("send GlobalEvent by Activity"))
+                RxEventBus.postStickyEvent(StickyEvent("send RxEventBus Sticky by Activity"))
             }
 
             8 -> {
-                LiveEventBus.postEvent(this, StickyEvent("send StickyEvent by Activity"))
+                observeLiveEventBus()
             }
 
-
             9 -> {
-                observeFlowEventBus()
+                LiveEventBus.postEvent(this, GlobalEvent("send LiveEventBus by Activity"))
             }
 
             10 -> {
-                FlowEventBus.postEvent(GlobalEvent("send GlobalEvent by Activity"))
+                LiveEventBus.postEvent(this, StickyEvent("send LiveEventBus Sticky by Activity"))
             }
 
-            11 -> {
-                FlowEventBus.postEvent(StickyEvent("send StickyEvent by Activity"))
+
+            12 -> {
+                observeFlowEventBus()
+            }
+
+            13 -> {
+                FlowEventBus.postEvent(GlobalEvent("send FlowEventBus by Activity"))
+            }
+
+            14 -> {
+                FlowEventBus.postEvent(StickyEvent("send FlowEventBus Sticky by Activity"))
             }
         }
     }
@@ -104,18 +103,25 @@ class EventBusActivity : BasicRecyclerActivity() {
         showMessage(event.message)
     }
 
+    private fun registerEventBus() {
+        if (!EventBusHelper.isRegistered(this@EventBusActivity)) {
+            EventBusHelper.register(this@EventBusActivity)
+            showMessage("register EventBus")
+        } else {
+            EventBusHelper.unregister(this@EventBusActivity)
+            showMessage("unregister EventBus")
+        }
+    }
+
     private fun observeRxBusEvent() {
-        val globalDisposable = RxEventBus
-            .observeEvent(GlobalEvent::class.java)
-            .subscribe {
+        val globalDisposable = RxEventBus.observeEvent(GlobalEvent::class.java).subscribe {
                 showMessage(it.message)
             }
 
-        val stickyDisposable = RxEventBus
-            .observeEvent(StickyEvent::class.java)
-            .subscribe {
+        val stickyDisposable = RxEventBus.observeEvent(StickyEvent::class.java).subscribe {
                 showMessage(it.message)
             }
+        showMessage("observe RxBusEvent")
     }
 
     private fun observeLiveEventBus() {
@@ -125,8 +131,12 @@ class EventBusActivity : BasicRecyclerActivity() {
         LiveEventBus.observeEvent<StickyEvent>(this, isSticky = true) {
             showMessage(it.message)
         }
+        showMessage("observe LiveEventBus")
     }
 
+    /**
+     * TODO
+     */
     private fun observeFlowEventBus() {
         FlowEventBus.observeEvent<GlobalEvent>(this) {
             showMessage(it.message)
@@ -134,5 +144,6 @@ class EventBusActivity : BasicRecyclerActivity() {
         FlowEventBus.observeEvent<StickyEvent>(this, isSticky = true) {
             showMessage(it.message)
         }
+        showMessage("observe FlowEventBus")
     }
 }

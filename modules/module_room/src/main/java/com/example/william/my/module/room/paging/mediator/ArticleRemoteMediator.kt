@@ -5,9 +5,10 @@ import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
-import com.example.william.my.basic.basic_repository.api.NetworkApi
-import com.example.william.my.basic.basic_repository.bean.Article
-import com.example.william.my.basic.basic_repository.bean.RemoteKey
+import com.example.william.my.basic.basic_repository.api.ArticleApi
+import com.example.william.my.basic.basic_repository.bean.ArticleDetailData
+import com.example.william.my.basic.basic_repository.bean.ArticleListData
+import com.example.william.my.basic.basic_repository.bean.RemoteKeyData
 import com.example.william.my.basic.basic_repository.data.source.ArticleRepository
 import com.example.william.my.basic.basic_repository.database.ArticleDatabase
 import com.example.william.my.lib.utils.Utils
@@ -18,9 +19,9 @@ import java.util.concurrent.TimeUnit
 @OptIn(ExperimentalPagingApi::class)
 class ArticleRemoteMediator(
     private val database: ArticleDatabase,
-    private val networkApi: NetworkApi,
+    private val networkApi: ArticleApi,
     private val repository: ArticleRepository
-) : RemoteMediator<Int, Article>() {
+) : RemoteMediator<Int, ArticleDetailData>() {
 
     private val articleDao = database.articleDao()
     private val remoteKeyDao = database.remoteKeyDao()
@@ -43,7 +44,7 @@ class ArticleRemoteMediator(
 
     override suspend fun load(
         loadType: LoadType,
-        state: PagingState<Int, Article>
+        state: PagingState<Int, ArticleDetailData>
     ): MediatorResult {
         return try {
             // 网络负载方法采用可选的String参数。
@@ -136,7 +137,7 @@ class ArticleRemoteMediator(
 
                 // 更新查询的 RemoteKey。
                 // Update RemoteKey for this query.
-                remoteKeyDao.insertKey(RemoteKey(tag, nextPage))
+                remoteKeyDao.insertKey(RemoteKeyData(tag, nextPage))
 
                 // 将新用户插入数据库，这将使当前的 PagingData 无效，从而允许 Paging 在数据库中显示更新。
                 // Insert new users into database, which invalidates the

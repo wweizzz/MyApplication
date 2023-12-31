@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.LottieActivity">
+    tools:context=".activity2.LottieActivity">
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottie"

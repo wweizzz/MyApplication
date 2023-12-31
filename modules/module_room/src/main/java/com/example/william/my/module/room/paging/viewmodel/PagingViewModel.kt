@@ -11,8 +11,9 @@ import androidx.paging.cachedIn
 import androidx.paging.liveData
 import androidx.paging.rxjava3.cachedIn
 import androidx.paging.rxjava3.flowable
-import com.example.william.my.basic.basic_repository.api.NetworkApi
-import com.example.william.my.basic.basic_repository.bean.Article
+import com.example.william.my.basic.basic_repository.api.ArticleApi
+import com.example.william.my.basic.basic_repository.bean.ArticleDetailData
+import com.example.william.my.basic.basic_repository.bean.ArticleListData
 import com.example.william.my.basic.basic_repository.data.source.ArticleRepository
 import com.example.william.my.basic.basic_repository.database.ArticleDatabase
 import com.example.william.my.module.room.paging.mediator.ArticleRemoteMediator
@@ -22,7 +23,7 @@ import kotlinx.coroutines.flow.Flow
 
 class PagingViewModel(
     private val database: ArticleDatabase,
-    private val networkApi: NetworkApi,
+    private val networkApi: ArticleApi,
     private val articleRepository: ArticleRepository
 ) : ViewModel() {
 
@@ -31,7 +32,7 @@ class PagingViewModel(
      * database
      */
     @OptIn(ExperimentalPagingApi::class)
-    val articles: Flow<PagingData<Article>> =
+    val articles: Flow<PagingData<ArticleDetailData>> =
         Pager(
             config = PagingConfig(pageSize = 20),
             pagingSourceFactory = {
@@ -46,7 +47,7 @@ class PagingViewModel(
      * Paging
      * .flow
      */
-    val articleFlow: Flow<PagingData<Article>> = Pager(
+    val articleFlow: Flow<PagingData<ArticleDetailData>> = Pager(
         config = PagingConfig(pageSize = 20),
     ) {
         ArticlePagingSource(networkApi, articleRepository)
@@ -56,7 +57,7 @@ class PagingViewModel(
      * Paging
      * .flowable
      */
-    val articleFlowable: Flowable<PagingData<Article>> = Pager(
+    val articleFlowable: Flowable<PagingData<ArticleDetailData>> = Pager(
         config = PagingConfig(pageSize = 20)
     ) {
         ArticlePagingSource(networkApi, articleRepository)
@@ -66,7 +67,7 @@ class PagingViewModel(
      * Paging
      * .liveData
      */
-    val articleLiveData: LiveData<PagingData<Article>> = Pager(
+    val articleLiveData: LiveData<PagingData<ArticleDetailData>> = Pager(
         config = PagingConfig(pageSize = 20)
     ) {
         ArticlePagingSource(networkApi, articleRepository)

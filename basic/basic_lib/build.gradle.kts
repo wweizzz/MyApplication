@@ -9,5 +9,6 @@ android {
 }
 
 dependencies {
+    implementation(libs.google.material)
     implementation(libs.rxlifecycle)
 }

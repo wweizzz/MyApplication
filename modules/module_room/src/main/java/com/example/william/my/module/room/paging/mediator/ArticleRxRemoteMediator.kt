@@ -4,9 +4,10 @@ import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.rxjava3.RxRemoteMediator
-import com.example.william.my.basic.basic_repository.api.NetworkApi
-import com.example.william.my.basic.basic_repository.bean.Article
-import com.example.william.my.basic.basic_repository.bean.RemoteKey
+import com.example.william.my.basic.basic_repository.api.ArticleApi
+import com.example.william.my.basic.basic_repository.bean.ArticleDetailData
+import com.example.william.my.basic.basic_repository.bean.ArticleListData
+import com.example.william.my.basic.basic_repository.bean.RemoteKeyData
 import com.example.william.my.basic.basic_repository.data.source.ArticleRepository
 import com.example.william.my.basic.basic_repository.database.ArticleDatabase
 import io.reactivex.rxjava3.core.Single
@@ -15,31 +16,30 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 import retrofit2.HttpException
 import java.io.IOException
 
-
 @OptIn(ExperimentalPagingApi::class)
 class RxRemoteMediator(
     private val database: ArticleDatabase,
-    private val networkApi: NetworkApi,
+    private val networkApi: ArticleApi,
     private val repository: ArticleRepository
-) : RxRemoteMediator<Int, Article>() {
+) : RxRemoteMediator<Int, ArticleDetailData>() {
 
     private val articleDao = database.articleDao()
     private val remoteKeyDao = database.remoteKeyDao()
 
     override fun loadSingle(
         loadType: LoadType,
-        state: PagingState<Int, Article>
+        state: PagingState<Int, ArticleDetailData>
     ): Single<MediatorResult> {
         // The network load method takes an optional String parameter. For every page
         // after the first, pass the String token returned from the previous page to
         // let it continue from where it left off. For REFRESH, pass null to load the
         // first page.
-        var remoteKeySingle: Single<RemoteKey>? = null
+        var remoteKeySingle: Single<RemoteKeyData>? = null
         remoteKeySingle = when (loadType) {
             LoadType.REFRESH -> {
                 // Initial load should use null as the page key, so you can return null
                 // directly.
-                Single.just(RemoteKey(tag, null))
+                Single.just(RemoteKeyData(tag, null))
             }
 
             LoadType.PREPEND -> {
@@ -56,7 +56,7 @@ class RxRemoteMediator(
         }
         return remoteKeySingle
             .subscribeOn(Schedulers.io())
-            .flatMap(Function<RemoteKey, Single<MediatorResult>> { (_, nextPageKey): RemoteKey ->
+            .flatMap(Function<RemoteKeyData, Single<MediatorResult>> { (_, nextPageKey): RemoteKeyData ->
                 // You must explicitly check if the page key is null when appending,
                 // since null is only valid for initial load. If you receive null
                 // for APPEND, that means you have reached the end of pagination and

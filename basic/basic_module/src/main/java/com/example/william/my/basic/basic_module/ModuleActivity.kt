@@ -40,6 +40,10 @@ class ModuleActivity : RouterRecyclerActivity() {
         routerItems.add(RouterItem("NetworkActivity", ARouterPath.Network.Main))
         routerItems.add(RouterItem("SampleActivity", ARouterPath.Sample.Main))
         routerItems.add(RouterItem("ArchActivity", ARouterPath.Arch.Main))
+
+        routerItems.add(RouterItem("", ""))
+        routerItems.add(RouterItem("RoomActivity", ARouterPath.Room.Main))
+        routerItems.add(RouterItem("DatabaseActivity", ARouterPath.Database.Main))
         return routerItems
     }
 

@@ -80,6 +80,6 @@ abstract class BaseVBDialogFragment<VB : ViewBinding?>(
         params.width = WindowManager.LayoutParams.WRAP_CONTENT
         params.height = WindowManager.LayoutParams.WRAP_CONTENT
         params.gravity = Gravity.CENTER
-        params.dimAmount = 0.6f
+        params.dimAmount = 0.4f
     }
 }

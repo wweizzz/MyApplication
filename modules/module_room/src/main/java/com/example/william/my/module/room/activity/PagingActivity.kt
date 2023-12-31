@@ -12,7 +12,7 @@ import com.example.william.my.basic.basic_module.router.path.ARouterPath
 import com.example.william.my.basic.basic_repository.data.ServiceLocator
 import com.example.william.my.lib.activity.BaseVBActivity
 import com.example.william.my.lib.utils.Utils
-import com.example.william.my.module.sample.databinding.SampleActivityPagingBinding
+import com.example.william.my.module.room.databinding.SampleActivityPagingBinding
 import com.example.william.my.module.room.paging.adapter.PagingAdapter
 import com.example.william.my.module.room.paging.adapter.PagingStateAdapter
 import com.example.william.my.module.room.paging.viewmodel.PagingViewModel
@@ -21,15 +21,14 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-
 /**
  * Paging
  * https://developer.android.google.cn/topic/libraries/architecture/paging/v3-overview
  */
-@Route(path = ARouterPath.Sample.Paging)
+@Route(path = ARouterPath.Room.Paging)
 class PagingActivity : BaseVBActivity<SampleActivityPagingBinding>() {
 
-    private val mViewModel: com.example.william.my.module.room.paging.viewmodel.PagingViewModel by viewModels {
+    private val mViewModel: PagingViewModel by viewModels {
         object : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 val database =
@@ -39,7 +38,7 @@ class PagingActivity : BaseVBActivity<SampleActivityPagingBinding>() {
                 val repository =
                     ServiceLocator.provideArticleRepository(application)
                 @Suppress("UNCHECKED_CAST")
-                return com.example.william.my.module.room.paging.viewmodel.PagingViewModel(
+                return PagingViewModel(
                     database,
                     networkApi,
                     repository
@@ -48,7 +47,7 @@ class PagingActivity : BaseVBActivity<SampleActivityPagingBinding>() {
         }
     }
 
-    private lateinit var mAdapter: com.example.william.my.module.room.paging.adapter.PagingAdapter
+    private lateinit var mAdapter: PagingAdapter
 
     override fun getViewBinding(): SampleActivityPagingBinding {
         return SampleActivityPagingBinding.inflate(layoutInflater)
@@ -62,7 +61,7 @@ class PagingActivity : BaseVBActivity<SampleActivityPagingBinding>() {
 
     private fun initPaging() {
         mAdapter =
-            com.example.william.my.module.room.paging.adapter.PagingAdapter(com.example.william.my.module.room.paging.adapter.PagingAdapter.PagingComparator())
+            PagingAdapter(PagingAdapter.PagingComparator())
 
         initArticles(mViewModel, mAdapter)
 
@@ -77,16 +76,16 @@ class PagingActivity : BaseVBActivity<SampleActivityPagingBinding>() {
 
         //呈现加载状态
         mAdapter.withLoadStateHeaderAndFooter(
-            header = com.example.william.my.module.room.paging.adapter.PagingStateAdapter(mAdapter::retry),
-            footer = com.example.william.my.module.room.paging.adapter.PagingStateAdapter(mAdapter::retry)
+            header = PagingStateAdapter(mAdapter::retry),
+            footer = PagingStateAdapter(mAdapter::retry)
         )
 
         mBinding.pagingRecycleView.adapter = mAdapter
     }
 
     private fun initArticles(
-        viewModel: com.example.william.my.module.room.paging.viewmodel.PagingViewModel,
-        adapter: com.example.william.my.module.room.paging.adapter.PagingAdapter
+        viewModel: PagingViewModel,
+        adapter: PagingAdapter
     ) {
         lifecycleScope.launch {
             viewModel.articles.collectLatest { pagingData ->
@@ -96,8 +95,8 @@ class PagingActivity : BaseVBActivity<SampleActivityPagingBinding>() {
     }
 
     private fun initArticleFlow(
-        viewModel: com.example.william.my.module.room.paging.viewmodel.PagingViewModel,
-        adapter: com.example.william.my.module.room.paging.adapter.PagingAdapter
+        viewModel: PagingViewModel,
+        adapter: PagingAdapter
     ) {
         lifecycleScope.launch {
             viewModel.articleFlow.collectLatest { pagingData ->
@@ -107,8 +106,8 @@ class PagingActivity : BaseVBActivity<SampleActivityPagingBinding>() {
     }
 
     private fun initArticleFlowable(
-        viewModel: com.example.william.my.module.room.paging.viewmodel.PagingViewModel,
-        adapter: com.example.william.my.module.room.paging.adapter.PagingAdapter
+        viewModel: PagingViewModel,
+        adapter: PagingAdapter
     ) {
         viewModel.articleFlowable
             .subscribeOn(Schedulers.io())
@@ -120,8 +119,8 @@ class PagingActivity : BaseVBActivity<SampleActivityPagingBinding>() {
     }
 
     private fun initArticleLiveData(
-        viewModel: com.example.william.my.module.room.paging.viewmodel.PagingViewModel,
-        adapter: com.example.william.my.module.room.paging.adapter.PagingAdapter
+        viewModel: PagingViewModel,
+        adapter: PagingAdapter
     ) {
         viewModel.articleLiveData.observe(this@PagingActivity) { pagingData ->
             lifecycleScope.launch {

@@ -9,18 +9,19 @@
         <activity android:name=".activity.CountdownActivity" />
         <activity android:name=".activity.EasyFloatActivity" />
         <activity android:name=".activity.FlycoTabLayoutActivity" />
-        <activity android:name=".activity.LottieActivity" />
         <activity android:name=".activity.PhotoViewActivity" />
         <activity android:name=".activity.PickerViewActivity" />
+        <activity android:name=".activity.PictureSelectorActivity" />
         <activity android:name=".activity.PopWindowActivity" />
         <activity android:name=".activity.ShadowLayoutActivity" />
-        <activity android:name=".activity.SvgaPlayerActivity" />
         <activity android:name=".activity.SwipeLayoutActivity" />
 
-        <activity android:name=".activity2.MMKVActivity" />
-        <activity android:name="com.example.william.my.module.database.activity.GreenDaoActivity" />
-        <activity android:name="com.example.william.my.module.database.activity.ObjectBoxActivity" />
-        <activity android:name=".activity2.PermissionXActivity" />
+        <activity android:name=".activity2.PagActivity" />
+        <activity android:name=".activity2.LottieActivity" />
+        <activity android:name=".activity2.SvgaPlayerActivity" />
+
+        <activity android:name=".activity3.MMKVActivity" />
+        <activity android:name=".activity3.PermissionXActivity" />
 
         <activity android:name=".oaid.OAIDActivity" />
     </application>

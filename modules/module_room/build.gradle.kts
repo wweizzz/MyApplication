@@ -22,13 +22,14 @@ android {
 dependencies {
     implementation(project(":basic:basic_lib"))
     implementation(project(":basic:basic_module"))
+    implementation(project(":basic:basic_repository"))
 
     //Room
-    //implementation(libs.androidx.room.runtime)
-    //implementation(libs.androidx.room.ktx)
-    //implementation(libs.androidx.room.rxjava3)
-    //implementation(libs.androidx.room.paging)
-    //kapt(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    implementation(libs.androidx.room.rxjava3)
+    implementation(libs.androidx.room.paging)
+    kapt(libs.androidx.room.compiler)
 
     //paging
     implementation(libs.autodispose)

@@ -36,11 +36,11 @@ class PopWindowActivity : BasicResponseActivity() {
             .size(
                 resources.getDimensionPixelOffset(R.dimen.basics_btn_width),
                 resources.getDimensionPixelOffset(R.dimen.basics_btn_height)
-            )
+            ) //设置显示的大小，不设置就默认包裹内容
             .setFocusable(true) //是否获取焦点，默认为ture
             .setOutsideTouchable(true) //是否PopupWindow以外触摸dismiss
-            .create()
-            .showAtLocation(mBinding.basicsResponse, Gravity.BOTTOM, 0, 0)
+            .create() //创建PopupWindow
+            .showAsDropDown(mBinding.basicsResponse, Gravity.BOTTOM, 0, 0) //显示PopupWindow
     }
 
     private fun handleLogic(binding: BasicsLayoutResponseBinding) {

@@ -24,11 +24,14 @@ androidxRecyclerView = "1.3.0"
 androidxViewPager2 = "1.0.0"
 
 androidxLifecycle = "2.6.2"
-androidxPaging = "3.1.1"
-androidxDataStore = "1.0.0"
-androidxWork = "2.8.1"
+androidxNavigation = "2.6.0"
+
 androidxRoom = "2.5.2"
-androidxNavigation = "2.5.3"
+androidxPaging = "3.1.1"
+
+androidxDataStore = "1.0.0"
+androidxWork = "2.9.0"
+
 androidxHilt = "2.44"
 # ##################################################################################################
 mmkv = "1.3.2"
@@ -63,7 +66,6 @@ pag = "4.3.33"
 lottie = "5.2.0"
 svgaPlayer = "2.6.1"
 # ##################################################################################################
-badge = "1.1.3"
 banner = "2.2.2"
 citypicker = "2.0.3"
 countdownview = "2.1.6"
@@ -84,7 +86,7 @@ gradlePluginAndroid = "7.4.2"
 gradlePluginKotlin = "1.8.10"
 gradlePluginProtobuf = "0.9.4"
 gradlePluginGreenDao = "3.3.1"
-gradlePluginObjectBox = "3.7.0"
+gradlePluginObjectBox = "3.7.1"
 gradlePluginHilt = "2.44"
 androidx-test-ext-junit = "1.1.5"
 # ##################################################################################################
@@ -119,10 +121,10 @@ androidx-recyclerView = { group = "androidx.recyclerview", name = "recyclerview"
 androidx-viewPager2 = { group = "androidx.viewpager2", name = "viewpager2", version.ref = "androidxViewPager2" }
 # ##################################################################################################
 # https://developer.android.google.cn/jetpack/androidx/releases/lifecycle
-# ViewModel
-androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "androidxLifecycle" }
 # LiveData
 androidx-lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "androidxLifecycle" }
+# ViewModel
+androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "androidxLifecycle" }
 # optional - ProcessLifecycleOwner provides a lifecycle for the whole application process
 androidx-lifecycle-process = { group = "androidx.lifecycle", name = "lifecycle-process", version.ref = "androidxLifecycle" }
 # https://android-dot-google-developers.gonglchuangl.net/topic/libraries/architecture/paging/v3-overview
@@ -222,8 +224,6 @@ lottie = { group = "com.airbnb.android", name = "lottie", version.ref = "lottie"
 # https://github.com/svga/SVGAPlayer-Android
 svgaPlayer = { group = "com.github.yyued", name = "SVGAPlayer-Android", version.ref = "svgaPlayer" }
 # ##################################################################################################
-# https://github.com/qstumn/BadgeView
-badge = { group = "q.rorbin", name = "badgeview", version.ref = "badge" }
 # https://github.com/youth5201314/banner
 banner = { group = "io.github.youth5201314", name = "banner", version.ref = "banner" }
 # https://github.com/zaaach/CityPicker

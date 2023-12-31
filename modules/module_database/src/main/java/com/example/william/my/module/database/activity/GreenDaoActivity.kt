@@ -4,17 +4,19 @@ import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.activity.BasicResponseActivity
 import com.example.william.my.basic.basic_module.router.path.ARouterPath
-import com.example.william.my.module.database.greendao.dao.NoteDao
+import com.example.william.my.module.database.greendao.Greendao
+import com.example.william.my.module.database.greendao.GreendaoNote
+import com.example.william.my.module.database.greendao.dao.GreendaoNoteDao
 import com.google.gson.Gson
 
 /**
  * https://greenrobot.org/greendao/features
  * https://github.com/greenrobot/greenDAO
  */
-@Route(path = ARouterPath.Opensource.GreenDao)
+@Route(path = ARouterPath.Database.GreenDao)
 class GreenDaoActivity : BasicResponseActivity() {
 
-    private lateinit var noteDao: NoteDao
+    private lateinit var noteDao: GreendaoNoteDao
 
     override fun initView() {
         super.initView()
@@ -25,7 +27,7 @@ class GreenDaoActivity : BasicResponseActivity() {
     }
 
     private fun initDao() {
-        noteDao = com.example.william.my.module.database.greendao.Greendao.daoSession.noteDao
+        noteDao = Greendao.daoSession.greendaoNoteDao
     }
 
     override fun onResponseClick(view: View) {
@@ -36,17 +38,16 @@ class GreenDaoActivity : BasicResponseActivity() {
     }
 
     private fun addNote() {
-        val note = com.example.william.my.module.database.greendao.Note("GreenDao")
+        val note = GreendaoNote("GreenDao")
         noteDao.insert(note)
     }
 
     private fun showNote() {
-        val notes: List<com.example.william.my.module.database.greendao.Note> =
-            noteDao.queryBuilder().list()
+        val notes: List<GreendaoNote> = noteDao.queryBuilder().list()
         showResponse(listToString(notes))
     }
 
-    private fun listToString(list: List<com.example.william.my.module.database.greendao.Note>): String {
+    private fun listToString(list: List<GreendaoNote>): String {
         return if (list.isNotEmpty()) {
             val stringBuilder = StringBuilder()
             for (i in list.indices) {

@@ -7,7 +7,7 @@
     <include
         android:id="@+id/dialog"
         layout="@layout/basics_layout_response"
-        android:layout_width="320dp"
+        android:layout_width="300dp"
         android:layout_height="200dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

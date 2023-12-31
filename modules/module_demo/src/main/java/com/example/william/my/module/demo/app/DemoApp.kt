@@ -8,6 +8,6 @@ class DemoApp : BaseAppInit() {
     override fun init() {
         super.init()
 
-        HookTrack.init(app)
+        //HookTrack.init(app)
     }
 }
