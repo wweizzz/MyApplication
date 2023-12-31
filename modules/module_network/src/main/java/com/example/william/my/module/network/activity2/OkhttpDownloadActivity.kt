@@ -5,7 +5,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.example.william.my.basic.basic_module.activity.BasicResponseActivity
 import com.example.william.my.basic.basic_module.base.Constants
-import com.example.william.my.basic.basic_module.router.path.ARouterPath
+import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.example.william.my.basic.basic_module.router.service.FileIOUtilsService
 import com.example.william.my.core.okhttp.helper.OkHttpHelper
 import com.example.william.my.core.okhttp.interceptor.InterceptorProgress
@@ -22,7 +22,7 @@ import java.io.File
  * https://square.github.io/okhttp
  * https://github.com/square/okhttp
  */
-@Route(path = ARouterPath.Network.OkHttpDownload)
+@Route(path = RouterPath.Network.OkHttpDownload)
 class OkhttpDownloadActivity : BasicResponseActivity() {
 
     override fun onResponseClick(view: View) {
@@ -64,7 +64,7 @@ class OkhttpDownloadActivity : BasicResponseActivity() {
 
                     response.body?.let {
                         val fileIOUtils =
-                            ARouter.getInstance().build(ARouterPath.Service.FileIOUtilsService)
+                            ARouter.getInstance().build(RouterPath.Service.FileIOUtilsService)
                                 .navigation() as FileIOUtilsService
                         val file =
                             File(getExternalFilesDir("okhttp")?.absolutePath + File.separator + "okhttp.apk")

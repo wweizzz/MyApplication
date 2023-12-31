@@ -6,9 +6,9 @@ import android.os.Message
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.activity.BasicResponseActivity
-import com.example.william.my.basic.basic_module.router.path.ARouterPath
+import com.example.william.my.basic.basic_module.router.path.RouterPath
 
-@Route(path = ARouterPath.Demo.HandlerThread)
+@Route(path = RouterPath.Demo.HandlerThread)
 class HandlerThreadActivity : BasicResponseActivity() {
 
     private var mHandler: Handler? = null

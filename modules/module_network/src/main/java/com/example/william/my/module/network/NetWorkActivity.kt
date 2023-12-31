@@ -3,96 +3,96 @@ package com.example.william.my.module.network
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.router.activity.RouterRecyclerActivity
 import com.example.william.my.basic.basic_module.router.item.RouterItem
-import com.example.william.my.basic.basic_module.router.path.ARouterPath
+import com.example.william.my.basic.basic_module.router.path.RouterPath
 
-@Route(path = ARouterPath.Network.Main)
+@Route(path = RouterPath.Network.Main)
 class NetWorkActivity : RouterRecyclerActivity() {
 
     override fun buildRouter(): ArrayList<RouterItem> {
         val routerItems: ArrayList<RouterItem> = arrayListOf()
         routerItems.add(
-            RouterItem("CoilActivity", ARouterPath.Network.Coil)
+            RouterItem("CoilActivity", RouterPath.Network.Coil)
         )
 
         routerItems.add(
             RouterItem("", "")
         )
         routerItems.add(
-            RouterItem("HttpURLActivity", ARouterPath.Network.HttpURL)
+            RouterItem("HttpURLActivity", RouterPath.Network.HttpURL)
         )
 
         routerItems.add(
             RouterItem("", "")
         )
         routerItems.add(
-            RouterItem("VolleyActivity", ARouterPath.Network.Volley)
+            RouterItem("VolleyActivity", RouterPath.Network.Volley)
         )
         routerItems.add(
-            RouterItem("VolleyHelperActivity", ARouterPath.Network.VolleyHelper)
-        )
-
-        routerItems.add(
-            RouterItem("", "")
-        )
-        routerItems.add(
-            RouterItem("OkHttpActivity", ARouterPath.Network.OkHttp)
-        )
-        routerItems.add(
-            RouterItem("OkHttpHelperActivity", ARouterPath.Network.OkHttpHelper)
-        )
-        routerItems.add(
-            RouterItem("OkHttpDownloadActivity", ARouterPath.Network.OkHttpDownload)
+            RouterItem("VolleyHelperActivity", RouterPath.Network.VolleyHelper)
         )
 
         routerItems.add(
             RouterItem("", "")
         )
         routerItems.add(
-            RouterItem("RetrofitActivity", ARouterPath.Network.Retrofit)
+            RouterItem("OkHttpActivity", RouterPath.Network.OkHttp)
         )
         routerItems.add(
-            RouterItem("RetrofitHelperActivity", ARouterPath.Network.RetrofitHelper)
+            RouterItem("OkHttpHelperActivity", RouterPath.Network.OkHttpHelper)
         )
         routerItems.add(
-            RouterItem("RetrofitDownloadActivity", ARouterPath.Network.RetrofitDownload)
-        )
-        routerItems.add(
-            RouterItem("RetrofitRxJavaActivity", ARouterPath.Network.RetrofitRxJava)
-        )
-        routerItems.add(
-            RouterItem("RetrofitRxJavaHelperActivity", ARouterPath.Network.RetrofitRxJavaHelper)
-        )
-        routerItems.add(
-            RouterItem("RetrofitRxJavaDownloadActivity", ARouterPath.Network.RetrofitRxJavaDownload)
-        )
-        routerItems.add(
-            RouterItem("RxRetrofitActivity", ARouterPath.Network.RxRetrofit)
-        )
-        routerItems.add(
-            RouterItem("RxDownloadActivity", ARouterPath.Network.RxDownload)
+            RouterItem("OkHttpDownloadActivity", RouterPath.Network.OkHttpDownload)
         )
 
         routerItems.add(
             RouterItem("", "")
         )
         routerItems.add(
-            RouterItem("WebSocketActivity", ARouterPath.Network.WebSocket)
+            RouterItem("RetrofitActivity", RouterPath.Network.Retrofit)
         )
         routerItems.add(
-            RouterItem("WebSocketUtilsActivity", ARouterPath.Network.WebSocketUtils)
+            RouterItem("RetrofitHelperActivity", RouterPath.Network.RetrofitHelper)
+        )
+        routerItems.add(
+            RouterItem("RetrofitDownloadActivity", RouterPath.Network.RetrofitDownload)
+        )
+        routerItems.add(
+            RouterItem("RetrofitRxJavaActivity", RouterPath.Network.RetrofitRxJava)
+        )
+        routerItems.add(
+            RouterItem("RetrofitRxJavaHelperActivity", RouterPath.Network.RetrofitRxJavaHelper)
+        )
+        routerItems.add(
+            RouterItem("RetrofitRxJavaDownloadActivity", RouterPath.Network.RetrofitRxJavaDownload)
+        )
+        routerItems.add(
+            RouterItem("RxRetrofitActivity", RouterPath.Network.RxRetrofit)
+        )
+        routerItems.add(
+            RouterItem("RxDownloadActivity", RouterPath.Network.RxDownload)
         )
 
         routerItems.add(
             RouterItem("", "")
         )
         routerItems.add(
-            RouterItem("NanoActivity", ARouterPath.Network.Nano)
+            RouterItem("WebSocketActivity", RouterPath.Network.WebSocket)
         )
         routerItems.add(
-            RouterItem("NettyActivity", ARouterPath.Network.Netty)
+            RouterItem("WebSocketUtilsActivity", RouterPath.Network.WebSocketUtils)
+        )
+
+        routerItems.add(
+            RouterItem("", "")
         )
         routerItems.add(
-            RouterItem("SocketActivity", ARouterPath.Network.Socket)
+            RouterItem("NanoActivity", RouterPath.Network.Nano)
+        )
+        routerItems.add(
+            RouterItem("NettyActivity", RouterPath.Network.Netty)
+        )
+        routerItems.add(
+            RouterItem("SocketActivity", RouterPath.Network.Socket)
         )
         return routerItems
     }

@@ -4,7 +4,7 @@ import android.view.View
 import androidx.lifecycle.lifecycleScope
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.activity.BasicResponseActivity
-import com.example.william.my.basic.basic_module.router.path.ARouterPath
+import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.example.william.my.module.room.database.OAuth
 import com.example.william.my.module.room.database.OAuthDao
 import com.example.william.my.module.room.database.OAuthDataBase
@@ -16,7 +16,7 @@ import java.util.concurrent.Executors
  * Room
  * https://developer.android.google.cn/jetpack/androidx/releases/room
  */
-@Route(path = ARouterPath.Room.Room)
+@Route(path = RouterPath.Room.Room)
 class RoomActivity : BasicResponseActivity() {
 
     private val mOAuthDao: OAuthDao by lazy {

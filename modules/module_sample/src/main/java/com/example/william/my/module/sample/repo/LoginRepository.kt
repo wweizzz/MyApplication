@@ -1,8 +1,8 @@
 package com.example.william.my.module.sample.repo
 
 import com.example.william.my.basic.basic_module.base.Constants
-import com.example.william.my.basic.basic_repo.bean.LoginBean
-import com.example.william.my.basic.basic_repo.data.NetworkResult
+import com.example.william.my.basic.basic_data.bean.LoginBean
+import com.example.william.my.basic.basic_data.data.NetworkResult
 import com.example.william.my.module.sample.utils.ThreadUtils
 import com.google.gson.Gson
 import kotlinx.coroutines.CoroutineDispatcher

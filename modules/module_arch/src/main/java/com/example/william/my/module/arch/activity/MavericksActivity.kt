@@ -2,7 +2,7 @@ package com.example.william.my.module.arch.activity
 
 import androidx.fragment.app.Fragment
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.example.william.my.basic.basic_module.router.path.ARouterPath
+import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.example.william.my.lib.activity.BaseFragmentActivity
 import com.example.william.my.module.arch.mavericks.article.MavericksFragment
 
@@ -10,7 +10,7 @@ import com.example.william.my.module.arch.mavericks.article.MavericksFragment
  * Mavericks
  * https://airbnb.io/mavericks/
  */
-@Route(path = ARouterPath.Arch.Mavericks)
+@Route(path = RouterPath.Arch.Mavericks)
 class MavericksActivity : BaseFragmentActivity() {
 
     override fun setFragment(): Fragment {

@@ -8,7 +8,7 @@ import androidx.paging.LoadState
 import autodispose2.AutoDispose
 import autodispose2.androidx.lifecycle.AndroidLifecycleScopeProvider
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.example.william.my.basic.basic_module.router.path.ARouterPath
+import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.example.william.my.basic.basic_repository.data.ServiceLocator
 import com.example.william.my.lib.activity.BaseVBActivity
 import com.example.william.my.lib.utils.Utils
@@ -25,7 +25,7 @@ import kotlinx.coroutines.launch
  * Paging
  * https://developer.android.google.cn/topic/libraries/architecture/paging/v3-overview
  */
-@Route(path = ARouterPath.Room.Paging)
+@Route(path = RouterPath.Room.Paging)
 class PagingActivity : BaseVBActivity<SampleActivityPagingBinding>() {
 
     private val mViewModel: PagingViewModel by viewModels {

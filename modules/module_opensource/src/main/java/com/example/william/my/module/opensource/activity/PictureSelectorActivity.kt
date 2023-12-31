@@ -1,14 +1,14 @@
 package com.example.william.my.module.opensource.activity
 
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.example.william.my.basic.basic_module.router.path.ARouterPath
+import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.example.william.my.lib.activity.BaseVBActivity
 import com.example.william.my.module.opensource.databinding.OpenActivityPictureSelectorBinding
 
 /**
  * https://github.com/LuckSiege/PictureSelector
  */
-@Route(path = ARouterPath.Opensource.PictureSelector)
+@Route(path = RouterPath.Opensource.PictureSelector)
 class PictureSelectorActivity : BaseVBActivity<OpenActivityPictureSelectorBinding>() {
 
     override fun getViewBinding(): OpenActivityPictureSelectorBinding {
@@ -17,6 +17,5 @@ class PictureSelectorActivity : BaseVBActivity<OpenActivityPictureSelectorBindin
 
     override fun initView() {
         super.initView()
-
     }
 }

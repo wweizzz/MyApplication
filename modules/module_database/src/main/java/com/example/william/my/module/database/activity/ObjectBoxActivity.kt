@@ -3,7 +3,7 @@ package com.example.william.my.module.database.activity
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.activity.BasicResponseActivity
-import com.example.william.my.basic.basic_module.router.path.ARouterPath
+import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.example.william.my.module.database.objectbox.ObjectBox
 import com.example.william.my.module.database.objectbox.ObjectBoxNote
 import com.google.gson.Gson
@@ -13,7 +13,7 @@ import io.objectbox.Box
  * https://objectbox.io/
  * https://github.com/objectbox/objectbox-java
  */
-@Route(path = ARouterPath.Database.ObjectBox)
+@Route(path = RouterPath.Database.ObjectBox)
 class ObjectBoxActivity : BasicResponseActivity() {
 
     private lateinit var notesBox: Box<ObjectBoxNote>

@@ -3,14 +3,14 @@ package com.example.william.my.module.opensource.activity
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.activity.BasicResponseActivity
-import com.example.william.my.basic.basic_module.router.path.ARouterPath
+import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.example.william.my.module.opensource.R
 import com.lzf.easyfloat.EasyFloat
 
 /**
  * https://github.com/princekin-f/EasyFloat
  */
-@Route(path = ARouterPath.Opensource.EasyFloat)
+@Route(path = RouterPath.Opensource.EasyFloat)
 class EasyFloatActivity : BasicResponseActivity() {
 
     override fun onResponseClick(view: View) {

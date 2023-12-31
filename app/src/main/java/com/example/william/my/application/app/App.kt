@@ -34,17 +34,15 @@ class App : BaseApp() {
 
         registerAppInit(FlutterApp::class.java)
 
-        registerAppInit(DemoApp::class.java)
+        registerAppInit(OpensourceApp::class.java)
+        registerAppInit(DatabaseApp::class.java)
 
+        registerAppInit(DemoApp::class.java)
         registerAppInit(LibrariesApp::class.java)
 
-        registerAppInit(OpensourceApp::class.java)
-
         registerAppInit(NetworkApp::class.java)
-
+        
         registerAppInit(ArchApp::class.java)
-
-        registerAppInit(DatabaseApp::class.java)
     }
 
     private fun initCrash() {

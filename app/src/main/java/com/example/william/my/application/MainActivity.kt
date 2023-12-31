@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import com.alibaba.android.arouter.launcher.ARouter
 import com.example.william.my.basic.basic_module.router.navigation.LoginNavigationImpl
-import com.example.william.my.basic.basic_module.router.path.ARouterPath
+import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.example.william.my.lib.activity.BaseActivity
 
 /**
@@ -64,7 +64,7 @@ class MainActivity : BaseActivity() {
         //setContentView(R.layout.activity_main)
 
         ARouter.getInstance()
-            .build(ARouterPath.Module_Main)
+            .build(RouterPath.Module_Main)
             .withTransition(R.anim.basic_anim_slide_in_left, R.anim.basic_anim_slide_out_right)
             .withString("param_key", "param_value")
             .navigation(this, LoginNavigationImpl())

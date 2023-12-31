@@ -3,7 +3,7 @@ package com.example.william.my.module.opensource.activity2
 import android.net.http.HttpResponseCache
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.base.Constants
-import com.example.william.my.basic.basic_module.router.path.ARouterPath
+import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.example.william.my.lib.activity.BaseVBActivity
 import com.example.william.my.module.opensource.databinding.OpenActivitySvgaBinding
 import com.opensource.svgaplayer.SVGADrawable
@@ -15,7 +15,7 @@ import java.net.URL
 /**
  * https://github.com/svga/SVGAPlayer-Android
  */
-@Route(path = ARouterPath.Opensource.SVGAPlayer)
+@Route(path = RouterPath.Opensource.SVGAPlayer)
 class SvgaPlayerActivity : BaseVBActivity<OpenActivitySvgaBinding>() {
 
     override fun getViewBinding(): OpenActivitySvgaBinding {

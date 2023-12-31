@@ -16,7 +16,7 @@ import android.view.WindowManager
 import android.view.animation.LinearInterpolator
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.activity.BasicResponseActivity
-import com.example.william.my.basic.basic_module.router.path.ARouterPath
+import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.example.william.my.lib.utils.Utils
 import com.example.william.my.module.demo.R
 import kotlin.math.abs
@@ -24,7 +24,7 @@ import kotlin.math.abs
 /**
  * 悬浮窗
  */
-@Route(path = ARouterPath.Demo.FloatWindow)
+@Route(path = RouterPath.Demo.FloatWindow)
 class FloatWindowActivity : BasicResponseActivity() {
 
     private var mFloatWindow: View? = null

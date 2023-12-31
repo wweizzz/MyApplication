@@ -3,7 +3,7 @@ package com.example.william.my.module.network.activity4
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.activity.BasicResponseActivity
-import com.example.william.my.basic.basic_module.router.path.ARouterPath
+import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.example.william.my.module.network.netty.NettyService
 import com.example.william.my.module.network.netty.client.NettyClient
 import com.example.william.my.module.network.netty.server.NettyServer
@@ -13,7 +13,7 @@ import java.util.concurrent.Executors
 /**
  * https://github.com/netty/netty/
  */
-@Route(path = ARouterPath.Network.Netty)
+@Route(path = RouterPath.Network.Netty)
 class NettyActivity : BasicResponseActivity() {
 
     override fun initView() {

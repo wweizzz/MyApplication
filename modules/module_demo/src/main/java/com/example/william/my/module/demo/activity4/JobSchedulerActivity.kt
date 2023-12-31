@@ -12,12 +12,12 @@ import android.os.PersistableBundle
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.activity.BasicResponseActivity
-import com.example.william.my.basic.basic_module.router.path.ARouterPath
+import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.example.william.my.lib.utils.Utils
 import com.example.william.my.module.demo.service.MyJobSchedulerService
 import java.lang.ref.WeakReference
 
-@Route(path = ARouterPath.Demo.JobScheduler)
+@Route(path = RouterPath.Demo.JobScheduler)
 class JobSchedulerActivity : BasicResponseActivity() {
 
     private var mServiceComponent: ComponentName? = null

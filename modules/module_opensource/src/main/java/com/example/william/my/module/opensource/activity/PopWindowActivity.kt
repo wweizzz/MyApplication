@@ -7,14 +7,14 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.R
 import com.example.william.my.basic.basic_module.activity.BasicResponseActivity
 import com.example.william.my.basic.basic_module.databinding.BasicsLayoutResponseBinding
-import com.example.william.my.basic.basic_module.router.path.ARouterPath
+import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.example.william.my.lib.utils.Utils
 import com.example.zhouwei.library.CustomPopWindow
 
 /**
  * https://github.com/pinguo-zhouwei/CustomPopwindow
  */
-@Route(path = ARouterPath.Opensource.PopWindow)
+@Route(path = RouterPath.Opensource.PopWindow)
 class PopWindowActivity : BasicResponseActivity() {
 
     override fun onResponseClick(view: View) {

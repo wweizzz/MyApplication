@@ -9,13 +9,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.example.william.my.basic.basic_module.router.path.ARouterPath
+import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.example.william.my.lib.activity.BaseVBActivity
 import com.example.william.my.module.demo.R
 import com.example.william.my.module.demo.adapter.RecyclerAdapter
 import com.example.william.my.module.demo.databinding.DemoActivityRecyclerViewBinding
 
-@Route(path = ARouterPath.Demo.RecyclerView)
+@Route(path = RouterPath.Demo.RecyclerView)
 class RecyclerViewActivity : BaseVBActivity<DemoActivityRecyclerViewBinding>(),
     RecyclerAdapter.OnItemClickListener {
 
@@ -68,10 +68,7 @@ class RecyclerViewActivity : BaseVBActivity<DemoActivityRecyclerViewBinding>(),
         //pagerSnapHelper.attachToRecyclerView(mBinding.recycleView);
 
         val mController = LayoutAnimationController(
-            AnimationUtils.loadAnimation(
-                this,
-                R.anim.demo_anim_recycler_item_left
-            )
+            AnimationUtils.loadAnimation(this, R.anim.demo_anim_recycler_item_left)
         )
 
         //显示顺序：ORDER_NORMAL 顺序，ORDER_REVERSE 倒序，ORDER_RANDOM 随机

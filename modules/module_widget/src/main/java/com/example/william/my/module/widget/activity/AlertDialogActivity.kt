@@ -4,12 +4,12 @@ import android.view.Gravity
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.activity.BasicRecyclerActivity
-import com.example.william.my.basic.basic_module.router.path.ARouterPath
+import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.example.william.my.core.widget.alertdialog.IosAlertDialog
 import com.example.william.my.core.widget.alertdialog.IosAlertItemDialog
 import com.example.william.my.module.widget.dialog.MyBottomSheetDialog
 
-@Route(path = ARouterPath.Widget.AlertDialog)
+@Route(path = RouterPath.Widget.AlertDialog)
 class AlertDialogActivity : BasicRecyclerActivity() {
 
     override fun buildList(): ArrayList<String> {

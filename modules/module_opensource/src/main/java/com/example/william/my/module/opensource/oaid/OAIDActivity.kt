@@ -2,14 +2,14 @@ package com.example.william.my.module.opensource.oaid
 
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.bun.miitmdid.core.MdidSdkHelper
-import com.example.william.my.basic.basic_module.router.path.ARouterPath
+import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.example.william.my.lib.activity.BaseVBActivity
 import com.example.william.my.module.opensource.databinding.OpenActivityOaidBinding
 import com.example.william.my.module.opensource.oaid.DemoHelper.AppIdsUpdater
 import com.example.william.my.module.opensource.oaid.utils.CertUtil
 import com.example.william.my.module.opensource.oaid.utils.SystemInfoUtil
 
-@Route(path = ARouterPath.Opensource.OAID)
+@Route(path = RouterPath.Opensource.OAID)
 class OAIDActivity : BaseVBActivity<OpenActivityOaidBinding?>(), AppIdsUpdater {
 
     override fun getViewBinding(): OpenActivityOaidBinding {

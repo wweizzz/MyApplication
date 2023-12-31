@@ -9,12 +9,12 @@ import androidx.core.content.ContextCompat
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.R
 import com.example.william.my.basic.basic_module.activity.BasicRecyclerActivity
-import com.example.william.my.basic.basic_module.router.path.ARouterPath
+import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.example.william.my.module.demo.dialog.MyCreateDialogDialog
 import com.example.william.my.module.demo.dialog.MyCreateViewDialog
 import java.util.Calendar
 
-@Route(path = ARouterPath.Demo.Dialog)
+@Route(path = RouterPath.Demo.Dialog)
 class DialogActivity : BasicRecyclerActivity() {
 
     override fun buildList(): ArrayList<String> {

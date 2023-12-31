@@ -2,7 +2,7 @@ package com.example.william.my.module.libraries.activity
 
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.base.Constants
-import com.example.william.my.basic.basic_module.router.path.ARouterPath
+import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.example.william.my.core.ninepatch.NinePatchHelper
 import com.example.william.my.lib.activity.BaseVBActivity
 import com.example.william.my.module.libraries.databinding.LibsActivityNinepatchBinding
@@ -15,7 +15,7 @@ import com.example.william.my.module.libraries.databinding.LibsActivityNinepatch
  * Show bad patches：在编辑区域显示不好的图片拉伸的区域
  * Show content：在预览区域显示图片的内容区域
  */
-@Route(path = ARouterPath.Libraries.NinePatch)
+@Route(path = RouterPath.Libraries.NinePatch)
 class NinePatchActivity : BaseVBActivity<LibsActivityNinepatchBinding>() {
 
     override fun getViewBinding(): LibsActivityNinepatchBinding {

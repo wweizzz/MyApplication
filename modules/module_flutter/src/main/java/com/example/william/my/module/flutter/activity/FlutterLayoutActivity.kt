@@ -2,14 +2,14 @@ package com.example.william.my.module.flutter.activity
 
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.activity.BasicRecyclerActivity
-import com.example.william.my.basic.basic_module.router.path.ARouterPath
+import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.idlefish.flutterboost.FlutterBoost
 import com.idlefish.flutterboost.FlutterBoostRouteOptions
 
 /**
  * 布局类组件用于控制子组件在父容器中的排列和位置，并且决定它们的大小.
  */
-@Route(path = ARouterPath.Flutter.Layout)
+@Route(path = RouterPath.Flutter.Layout)
 class FlutterLayoutActivity : BasicRecyclerActivity() {
 
     override fun buildList(): ArrayList<String> {

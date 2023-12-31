@@ -3,7 +3,7 @@ package com.example.william.my.module.network.activity2
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.activity.BasicRecyclerActivity
 import com.example.william.my.basic.basic_module.base.Constants
-import com.example.william.my.basic.basic_module.router.path.ARouterPath
+import com.example.william.my.basic.basic_module.router.path.RouterPath
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.FormBody
@@ -19,7 +19,7 @@ import okio.IOException
  * https://square.github.io/okhttp
  * https://github.com/square/okhttp
  */
-@Route(path = ARouterPath.Network.OkHttp)
+@Route(path = RouterPath.Network.OkHttp)
 class OkHttpActivity : BasicRecyclerActivity() {
 
     override fun buildList(): ArrayList<String> {

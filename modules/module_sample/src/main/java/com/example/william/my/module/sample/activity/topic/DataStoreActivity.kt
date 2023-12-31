@@ -4,7 +4,7 @@ import android.view.View
 import androidx.lifecycle.lifecycleScope
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.activity.BasicResponseActivity
-import com.example.william.my.basic.basic_module.router.path.ARouterPath
+import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.example.william.my.module.sample.datastore.ExamplePreferenceDataStore
 import com.example.william.my.module.sample.datastore.ExampleProtoDataStore
 import kotlinx.coroutines.Dispatchers
@@ -18,7 +18,7 @@ import kotlinx.coroutines.runBlocking
  * Preferences DataStore：不需要预先定义，但是不支持类型安全
  * Proto DataStore：需要预先使用protocol buffers定义数据，但是类型安全
  */
-@Route(path = ARouterPath.Sample.DataStore)
+@Route(path = RouterPath.Sample.DataStore)
 class DataStoreActivity : BasicResponseActivity() {
 
     private val preDataStore = ExamplePreferenceDataStore(this)

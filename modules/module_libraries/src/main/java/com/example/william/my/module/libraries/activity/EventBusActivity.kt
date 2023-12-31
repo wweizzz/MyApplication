@@ -2,7 +2,7 @@ package com.example.william.my.module.libraries.activity
 
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.activity.BasicRecyclerActivity
-import com.example.william.my.basic.basic_module.router.path.ARouterPath
+import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.example.william.my.core.eventbus.flow.FlowEventBus
 import com.example.william.my.core.eventbus.livedata.LiveEventBus
 import com.example.william.my.core.eventbus.rxjava.RxEventBus
@@ -13,7 +13,7 @@ import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 
 
-@Route(path = ARouterPath.Libraries.EventBus)
+@Route(path = RouterPath.Libraries.EventBus)
 class EventBusActivity : BasicRecyclerActivity() {
 
     override fun buildList(): ArrayList<String> {

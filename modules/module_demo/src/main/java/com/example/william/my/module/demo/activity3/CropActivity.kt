@@ -11,12 +11,12 @@ import androidx.core.content.FileProvider
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.example.william.my.basic.basic_module.activity.BasicImageActivity
-import com.example.william.my.basic.basic_module.router.path.ARouterPath
+import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.example.william.my.basic.basic_module.router.service.ImageUtilsService
 import java.io.File
 
 @Suppress("deprecation")
-@Route(path = ARouterPath.Demo.Crop)
+@Route(path = RouterPath.Demo.Crop)
 class CropActivity : BasicImageActivity() {
 
     private val mItems = arrayOf("图库", "拍照", "拍照")
@@ -50,11 +50,7 @@ class CropActivity : BasicImageActivity() {
                     val file =
                         File(externalCacheDir.toString() + File.separator + System.currentTimeMillis() + ".jpg")
                     sourceUri =
-                        FileProvider.getUriForFile(
-                            this@CropActivity,
-                            "$packageName.fileProvider",
-                            file
-                        )
+                        FileProvider.getUriForFile(this@CropActivity, "$packageName.fileProvider", file)
                     takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, sourceUri)
                     startActivityForResult(takePictureIntent, ACTION_IMAGE_CAPTURE_FUll)
                 }
@@ -71,7 +67,7 @@ class CropActivity : BasicImageActivity() {
                     val file =
                         File(externalCacheDir.toString() + File.separator + System.currentTimeMillis() + ".jpg")
                     val destination = Uri.fromFile(file)
-                    toCrop(source, destination)
+                    toCropFromUri(source, destination)
                 }
 
                 ACTION_IMAGE_CAPTURE -> if (data != null && data.extras != null) {
@@ -80,14 +76,14 @@ class CropActivity : BasicImageActivity() {
                     val file =
                         File(externalCacheDir.toString() + File.separator + System.currentTimeMillis() + ".jpg")
                     val destination = Uri.fromFile(file)
-                    toCrop(source, destination)
+                    toCropFromUri(source, destination)
                 }
 
                 ACTION_IMAGE_CAPTURE_FUll -> if (sourceUri != null) {
                     val file =
                         File(externalCacheDir.toString() + File.separator + System.currentTimeMillis() + ".jpg")
                     val destination = Uri.fromFile(file)
-                    toCrop(sourceUri, destination)
+                    toCropFromUri(sourceUri, destination)
                 }
 
                 ACTION_CROP ->                     /*
@@ -112,7 +108,7 @@ class CropActivity : BasicImageActivity() {
         }
     }
 
-    private fun toCrop(source: Uri?, destination: Uri) {
+    private fun toCropFromUri(source: Uri?, destination: Uri) {
         val intent = Intent("com.android.camera.action.CROP")
         intent.setDataAndType(source, "image/*")
 
@@ -146,7 +142,7 @@ class CropActivity : BasicImageActivity() {
     private fun saveBitmap2Uri(bitmap: Bitmap?): Uri {
         val file =
             File(externalCacheDir.toString() + File.separator + System.currentTimeMillis() + ".jpg")
-        val service = ARouter.getInstance().build(ARouterPath.Service.ImageUtilsService)
+        val service = ARouter.getInstance().build(RouterPath.Service.ImageUtilsService)
             .navigation() as ImageUtilsService
         val successful = service.save(bitmap!!, file, Bitmap.CompressFormat.JPEG)
         return FileProvider.getUriForFile(this@CropActivity, "$packageName.fileProvider", file)

@@ -2,14 +2,14 @@ package com.example.william.my.module.flutter.activity
 
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.activity.BasicRecyclerActivity
-import com.example.william.my.basic.basic_module.router.path.ARouterPath
+import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.idlefish.flutterboost.FlutterBoost
 import com.idlefish.flutterboost.FlutterBoostRouteOptions
 
 /**
  * 状态管理
  */
-@Route(path = ARouterPath.Flutter.State)
+@Route(path = RouterPath.Flutter.State)
 class FlutterStateActivity : BasicRecyclerActivity() {
 
     override fun buildList(): ArrayList<String> {

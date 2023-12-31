@@ -2,12 +2,12 @@ package com.example.william.my.module.widget.activity2
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.example.william.my.basic.basic_module.router.path.ARouterPath
+import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.example.william.my.lib.activity.BaseVBActivity
 import com.example.william.my.module.widget.adapter.RecyclerNestedAdapter
 import com.example.william.my.module.widget.databinding.DemoActivityRecyclerNestedBinding
 
-@Route(path = ARouterPath.Widget.RecyclerViewNested)
+@Route(path = RouterPath.Widget.RecyclerViewNested)
 class RecyclerViewNestedActivity : BaseVBActivity<DemoActivityRecyclerNestedBinding>() {
 
     override fun getViewBinding(): DemoActivityRecyclerNestedBinding {

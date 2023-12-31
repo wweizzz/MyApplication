@@ -16,9 +16,9 @@ import androidx.core.content.ContextCompat
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.R
 import com.example.william.my.basic.basic_module.activity.BasicImageActivity
-import com.example.william.my.basic.basic_module.router.path.ARouterPath
+import com.example.william.my.basic.basic_module.router.path.RouterPath
 
-@Route(path = ARouterPath.Demo.Animator)
+@Route(path = RouterPath.Demo.Animator)
 class AnimatorActivity : BasicImageActivity() {
 
     private var index = -1

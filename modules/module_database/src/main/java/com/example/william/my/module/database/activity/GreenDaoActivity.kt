@@ -3,7 +3,7 @@ package com.example.william.my.module.database.activity
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.activity.BasicResponseActivity
-import com.example.william.my.basic.basic_module.router.path.ARouterPath
+import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.example.william.my.module.database.greendao.Greendao
 import com.example.william.my.module.database.greendao.GreendaoNote
 import com.example.william.my.module.database.greendao.dao.GreendaoNoteDao
@@ -13,7 +13,7 @@ import com.google.gson.Gson
  * https://greenrobot.org/greendao/features
  * https://github.com/greenrobot/greenDAO
  */
-@Route(path = ARouterPath.Database.GreenDao)
+@Route(path = RouterPath.Database.GreenDao)
 class GreenDaoActivity : BasicResponseActivity() {
 
     private lateinit var noteDao: GreendaoNoteDao

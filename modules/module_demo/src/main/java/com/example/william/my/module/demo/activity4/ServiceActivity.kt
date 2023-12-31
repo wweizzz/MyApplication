@@ -8,7 +8,7 @@ import android.os.IBinder
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.activity.BasicResponseActivity
-import com.example.william.my.basic.basic_module.router.path.ARouterPath
+import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.example.william.my.module.demo.service.MyAIDLService
 import com.example.william.my.module.demo.service.MyAIDLService.XBinder
 import com.example.william.my.module.demo.service.MyForegroundService
@@ -16,7 +16,7 @@ import com.example.william.my.module.demo.service.MyForegroundService
 /**
  * Service
  */
-@Route(path = ARouterPath.Demo.Service)
+@Route(path = RouterPath.Demo.Service)
 class ServiceActivity : BasicResponseActivity() {
 
     private var mServiceConnection: ServiceConnection? = null

@@ -11,14 +11,14 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.activity.BasicResponseActivity
-import com.example.william.my.basic.basic_module.router.path.ARouterPath
+import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.example.william.my.lib.utils.Utils
 
 
 /**
  * ActivityResultContracts
  */
-@Route(path = ARouterPath.Sample.ActivityResultContract)
+@Route(path = RouterPath.Sample.ActivityResultContract)
 class ActivityResultActivity : BasicResponseActivity() {
 
     override fun onResponseClick(view: View) {

@@ -6,7 +6,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.example.william.my.basic.basic_module.fragment.PrimaryDarkFragment
 import com.example.william.my.basic.basic_module.fragment.PrimaryFragment
-import com.example.william.my.basic.basic_module.router.path.ARouterPath
+import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.example.william.my.lib.activity.BaseVBActivity
 import com.example.william.my.module.demo.adapter.ViewPagerAdapter2
 import com.example.william.my.module.demo.adapter.ViewPagerFragmentAdapter2
@@ -16,7 +16,7 @@ import com.example.william.my.module.demo.databinding.DemoActivityViewPager2Bind
  * Pages must fill the whole ViewPager2 (use match_parent)
  * ViewPager2内的view布局必须是math_parent，否则会报错
  */
-@Route(path = ARouterPath.Demo.ViewPager2)
+@Route(path = RouterPath.Demo.ViewPager2)
 class ViewPagerActivity2 : BaseVBActivity<DemoActivityViewPager2Binding>() {
 
     override fun getViewBinding(): DemoActivityViewPager2Binding {
@@ -39,11 +39,11 @@ class ViewPagerActivity2 : BaseVBActivity<DemoActivityViewPager2Binding>() {
 
     private val mARouterFragments: ArrayList<Fragment> = arrayListOf(
         ARouter.getInstance().build(
-            ARouterPath.Fragment.FragmentPrimary
+            RouterPath.Fragment.FragmentPrimary
         ).navigation() as Fragment,
-        ARouter.getInstance().build(ARouterPath.Fragment.FragmentPrimaryDark)
+        ARouter.getInstance().build(RouterPath.Fragment.FragmentPrimaryDark)
             .navigation() as Fragment,
-        ARouter.getInstance().build(ARouterPath.Fragment.FragmentPrimaryDark)
+        ARouter.getInstance().build(RouterPath.Fragment.FragmentPrimaryDark)
             .navigation() as Fragment
     )
 

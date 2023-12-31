@@ -6,13 +6,13 @@ import androidx.core.content.ContextCompat
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.R
 import com.example.william.my.basic.basic_module.activity.BasicImageActivity
-import com.example.william.my.basic.basic_module.router.path.ARouterPath
+import com.example.william.my.basic.basic_module.router.path.RouterPath
 import java.util.Random
 
 /**
  * 图片旋转动画之转盘功能
  */
-@Route(path = ARouterPath.Demo.Turntable)
+@Route(path = RouterPath.Demo.Turntable)
 class TurntableActivity : BasicImageActivity() {
 
     private var startDegree = 0 //初始角度

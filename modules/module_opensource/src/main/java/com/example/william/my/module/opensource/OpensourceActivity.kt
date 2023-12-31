@@ -3,35 +3,35 @@ package com.example.william.my.module.opensource
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.router.activity.RouterRecyclerActivity
 import com.example.william.my.basic.basic_module.router.item.RouterItem
-import com.example.william.my.basic.basic_module.router.path.ARouterPath
+import com.example.william.my.basic.basic_module.router.path.RouterPath
 
-@Route(path = ARouterPath.Opensource.Main)
+@Route(path = RouterPath.Opensource.Main)
 class OpensourceActivity : RouterRecyclerActivity() {
 
     override fun buildRouter(): ArrayList<RouterItem> {
         val routerItems: ArrayList<RouterItem> = arrayListOf()
-        routerItems.add(RouterItem("Banner", ARouterPath.Opensource.Banner))
-        routerItems.add(RouterItem("CityPicker", ARouterPath.Opensource.CityPicker))
-        routerItems.add(RouterItem("CountdownView", ARouterPath.Opensource.CountdownView))
-        routerItems.add(RouterItem("EasyFloat", ARouterPath.Opensource.EasyFloat))
-        routerItems.add(RouterItem("FlycoTabLayout", ARouterPath.Opensource.FlycoTabLayout))
-        routerItems.add(RouterItem("PhotoView", ARouterPath.Opensource.PhotoView))
-        routerItems.add(RouterItem("PickerView", ARouterPath.Opensource.PickerView))
-        routerItems.add(RouterItem("PictureSelector", ARouterPath.Opensource.PictureSelector))
-        routerItems.add(RouterItem("PopWindow", ARouterPath.Opensource.PopWindow))
-        routerItems.add(RouterItem("ShadowLayout", ARouterPath.Opensource.ShadowLayout))
-        routerItems.add(RouterItem("SwipeLayout", ARouterPath.Opensource.SwipeLayout))
+        routerItems.add(RouterItem("Banner", RouterPath.Opensource.Banner))
+        routerItems.add(RouterItem("CityPicker", RouterPath.Opensource.CityPicker))
+        routerItems.add(RouterItem("CountdownView", RouterPath.Opensource.CountdownView))
+        routerItems.add(RouterItem("EasyFloat", RouterPath.Opensource.EasyFloat))
+        routerItems.add(RouterItem("FlycoTabLayout", RouterPath.Opensource.FlycoTabLayout))
+        routerItems.add(RouterItem("PhotoView", RouterPath.Opensource.PhotoView))
+        routerItems.add(RouterItem("PickerView", RouterPath.Opensource.PickerView))
+        routerItems.add(RouterItem("PictureSelector", RouterPath.Opensource.PictureSelector))
+        routerItems.add(RouterItem("PopWindow", RouterPath.Opensource.PopWindow))
+        routerItems.add(RouterItem("ShadowLayout", RouterPath.Opensource.ShadowLayout))
+        routerItems.add(RouterItem("SwipeLayout", RouterPath.Opensource.SwipeLayout))
 
         routerItems.add(RouterItem(" ", ""))
-        routerItems.add(RouterItem("Pag", ARouterPath.Opensource.Pag))
-        routerItems.add(RouterItem("Lottie", ARouterPath.Opensource.Lottie))
-        routerItems.add(RouterItem("SVGAPlayer", ARouterPath.Opensource.SVGAPlayer))
+        routerItems.add(RouterItem("Pag", RouterPath.Opensource.Pag))
+        routerItems.add(RouterItem("Lottie", RouterPath.Opensource.Lottie))
+        routerItems.add(RouterItem("SVGAPlayer", RouterPath.Opensource.SVGAPlayer))
 
         routerItems.add(RouterItem(" ", ""))
-        routerItems.add(RouterItem("MMKV", ARouterPath.Opensource.MMKV))
-        routerItems.add(RouterItem("PermissionX", ARouterPath.Opensource.PermissionX))
+        routerItems.add(RouterItem("MMKV", RouterPath.Opensource.MMKV))
+        routerItems.add(RouterItem("PermissionX", RouterPath.Opensource.PermissionX))
         routerItems.add(RouterItem(" ", ""))
-        routerItems.add(RouterItem("OAID", ARouterPath.Opensource.OAID))
+        routerItems.add(RouterItem("OAID", RouterPath.Opensource.OAID))
         return routerItems
     }
 }

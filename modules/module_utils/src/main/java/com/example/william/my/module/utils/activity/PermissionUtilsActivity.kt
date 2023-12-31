@@ -6,14 +6,14 @@ import com.blankj.utilcode.constant.PermissionConstants
 import com.blankj.utilcode.util.PermissionUtils
 import com.blankj.utilcode.util.SnackbarUtils
 import com.example.william.my.basic.basic_module.activity.BasicRecyclerActivity
-import com.example.william.my.basic.basic_module.router.path.ARouterPath
+import com.example.william.my.basic.basic_module.router.path.RouterPath
 
 /**
  * 当 targetSdkVersion >= 30时，
  * 如果要申请 ACCESS_BACKGROUND_LOCATION 权限，则需要先申请 ACCESS_FINE_LOCATION 权限或者 ACCESS_COARSE_LOCATION
  * 如果 ACCESS_BACKGROUND_LOCATION 权限跟 ACCESS_FINE_LOCATION 权限或者 ACCESS_COARSE_LOCATION 权限一起申请，则不会弹出权限申请对话框，如果还有其他权限一起申请，则会导致所有权限申请都不会弹窗。
  */
-@Route(path = ARouterPath.Utils.PermissionUtils)
+@Route(path = RouterPath.Utils.PermissionUtils)
 class PermissionUtilsActivity : BasicRecyclerActivity() {
 
     override fun buildList(): ArrayList<String> {

@@ -1,7 +1,7 @@
 package com.example.william.my.module.demo.activity
 
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.example.william.my.basic.basic_module.router.path.ARouterPath
+import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.example.william.my.lib.activity.BaseVBActivity
 import com.example.william.my.module.demo.adapter.RecyclerAdapter
 import com.example.william.my.module.demo.databinding.DemoActivityFlexBoxBinding
@@ -9,7 +9,7 @@ import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
 
-@Route(path = ARouterPath.Demo.FlexBox)
+@Route(path = RouterPath.Demo.FlexBox)
 
 class FlexBoxActivity : BaseVBActivity<DemoActivityFlexBoxBinding>() {
 
@@ -33,7 +33,6 @@ class FlexBoxActivity : BaseVBActivity<DemoActivityFlexBoxBinding>() {
         manager.flexWrap = FlexWrap.WRAP //是否换行
 
         mBinding.flexboxRecycleView.layoutManager = manager
-        mBinding.flexboxRecycleView.clipToPadding = false
         mBinding.flexboxRecycleView.adapter = RecyclerAdapter(mData)
     }
 }

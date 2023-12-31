@@ -2,17 +2,15 @@ package com.example.william.my.module.opensource.activity3
 
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.activity.BasicResponseActivity
-import com.example.william.my.basic.basic_module.router.path.ARouterPath
+import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.example.william.my.lib.utils.Utils
 import com.tencent.mmkv.MMKV
-
 
 /**
  * https://github.com/Tencent/MMKV/wiki/android_tutorial_cn
  */
-@Route(path = ARouterPath.Opensource.MMKV)
+@Route(path = RouterPath.Opensource.MMKV)
 class MMKVActivity : BasicResponseActivity() {
-
 
     override fun initView() {
         super.initView()
@@ -46,9 +44,10 @@ class MMKVActivity : BasicResponseActivity() {
         kv.encode("string", "Hello from mmkv")
         println("string: " + kv.decodeString("string"))
 
-        val bytes =
+        kv.encode(
+            "bytes",
             byteArrayOf('m'.code.toByte(), 'm'.code.toByte(), 'k'.code.toByte(), 'v'.code.toByte())
-        kv.encode("bytes", bytes)
+        )
         println("bytes: " + kv.decodeBytes("bytes").toString())
     }
 }

@@ -11,7 +11,7 @@ import com.android.volley.toolbox.HurlStack
 import com.android.volley.toolbox.JsonObjectRequest
 import com.example.william.my.basic.basic_module.activity.BasicRecyclerActivity
 import com.example.william.my.basic.basic_module.base.Constants
-import com.example.william.my.basic.basic_module.router.path.ARouterPath
+import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.example.william.my.core.volley.StringRequest2
 import org.json.JSONObject
 
@@ -19,7 +19,7 @@ import org.json.JSONObject
  * https://github.com/google/volley
  * https://developer.android.google.cn/training/volley
  */
-@Route(path = ARouterPath.Network.Volley)
+@Route(path = RouterPath.Network.Volley)
 class VolleyActivity : BasicRecyclerActivity() {
 
     private var stringRequest: StringRequest2? = null // Assume this exists.

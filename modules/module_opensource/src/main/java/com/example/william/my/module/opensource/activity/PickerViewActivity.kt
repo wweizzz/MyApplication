@@ -4,14 +4,14 @@ import android.R
 import android.graphics.Color
 import android.view.Gravity
 import android.view.View
-import android.widget.FrameLayout
+import android.widget.FrameLayout.LayoutParams
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.bigkoo.pickerview.builder.OptionsPickerBuilder
 import com.bigkoo.pickerview.builder.TimePickerBuilder
 import com.bigkoo.pickerview.view.OptionsPickerView
 import com.example.william.my.basic.basic_module.activity.BasicResponseActivity
-import com.example.william.my.basic.basic_module.router.path.ARouterPath
+import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.example.william.my.basic.basic_module.router.service.ResourceUtilsService
 import com.example.william.my.lib.utils.Utils.show
 import com.example.william.my.module.opensource.data.ProvinceData
@@ -29,7 +29,7 @@ import java.util.Locale
  *
  * https://github.com/Bigkoo/Android-PickerView
  */
-@Route(path = ARouterPath.Opensource.PickerView)
+@Route(path = RouterPath.Opensource.PickerView)
 class PickerViewActivity : BasicResponseActivity() {
 
     private var isLoaded = false
@@ -76,7 +76,8 @@ class PickerViewActivity : BasicResponseActivity() {
          * 注意：assets 目录下的Json文件仅供参考，实际使用可自行替换文件
          * 关键逻辑在于循环体
          */
-        val service = ARouter.getInstance().build(ARouterPath.Service.ResourceUtilsService)
+        val service = ARouter.getInstance()
+            .build(RouterPath.Service.ResourceUtilsService)
             .navigation() as ResourceUtilsService
         val jsonData = service.getAssets("province.json") //获取assets目录下的json文件数据
 
@@ -200,22 +201,17 @@ class PickerViewActivity : BasicResponseActivity() {
             .isDialog(true) //是否显示为对话框样式
             .build()
         //dialog底部显示
-        val mDialog = pvTime.dialog
-        if (mDialog != null) {
-            val params = FrameLayout.LayoutParams(
-                FrameLayout.LayoutParams.MATCH_PARENT,
-                FrameLayout.LayoutParams.WRAP_CONTENT,
-                Gravity.BOTTOM
-            )
-            params.leftMargin = 0
-            params.rightMargin = 0
-            pvTime.dialogContainerLayout.layoutParams = params
-            val dialogWindow = mDialog.window
-            if (dialogWindow != null) {
-                dialogWindow.setWindowAnimations(com.bigkoo.pickerview.R.style.picker_view_slide_anim) //修改动画样式
-                dialogWindow.setGravity(Gravity.BOTTOM) //改成Bottom,底部显示
+        pvTime.dialog?.let {
+            val layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
+            layoutParams.gravity = Gravity.BOTTOM
+            layoutParams.leftMargin = 0
+            layoutParams.rightMargin = 0
+            pvTime.dialogContainerLayout.layoutParams = layoutParams
+            it.window?.let {
+                it.setWindowAnimations(com.bigkoo.pickerview.R.style.picker_view_slide_anim) //修改动画样式
+                it.setGravity(Gravity.BOTTOM) //改成Bottom,底部显示
             }
+            pvTime.show()
         }
-        pvTime.show()
     }
 }

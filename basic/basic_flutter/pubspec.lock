@@ -210,11 +210,11 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "4.4.0"
-      resolved-ref: d8fd7454b775d91710e30166a62e4810b1695fcf
+      ref: "5.0.1"
+      resolved-ref: fcda0545c490a086f8fe9665b23fa5bdc8adacfc
       url: "https://github.com/alibaba/flutter_boost.git"
     source: git
-    version: "4.4.0"
+    version: "5.0.1"
   flutter_lints:
     dependency: "direct dev"
     description:

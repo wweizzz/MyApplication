@@ -5,7 +5,7 @@ import androidx.viewpager.widget.ViewPager
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.fragment.PrimaryDarkFragment
 import com.example.william.my.basic.basic_module.fragment.PrimaryFragment
-import com.example.william.my.basic.basic_module.router.path.ARouterPath
+import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.example.william.my.lib.activity.BaseVBActivity
 import com.example.william.my.module.opensource.databinding.OpenActivityFlycoTabLayoutBinding
 import com.example.william.my.module.opensource.entity.TabEntity
@@ -15,7 +15,7 @@ import com.flyco.tablayout.listener.OnTabSelectListener
 /**
  * https://github.com/H07000223/FlycoTabLayout
  */
-@Route(path = ARouterPath.Opensource.FlycoTabLayout)
+@Route(path = RouterPath.Opensource.FlycoTabLayout)
 class FlycoTabLayoutActivity : BaseVBActivity<OpenActivityFlycoTabLayoutBinding>() {
 
     override fun getViewBinding(): OpenActivityFlycoTabLayoutBinding {

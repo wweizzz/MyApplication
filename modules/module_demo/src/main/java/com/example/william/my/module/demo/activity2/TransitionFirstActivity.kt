@@ -4,7 +4,7 @@ import android.app.ActivityOptions
 import android.content.Intent
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.example.william.my.basic.basic_module.router.path.ARouterPath
+import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.example.william.my.lib.activity.BaseVBActivity
 import com.example.william.my.module.demo.R
 import com.example.william.my.module.demo.databinding.DemoActivityTransitionFirstBinding
@@ -12,7 +12,7 @@ import com.example.william.my.module.demo.databinding.DemoActivityTransitionFirs
 /**
  * 视图过度动画
  */
-@Route(path = ARouterPath.Demo.Transition)
+@Route(path = RouterPath.Demo.Transition)
 class TransitionFirstActivity : BaseVBActivity<DemoActivityTransitionFirstBinding>(),
     View.OnClickListener {
 

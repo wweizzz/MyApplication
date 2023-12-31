@@ -3,8 +3,8 @@ package com.example.william.my.module.network.activity2
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.activity.BasicRecyclerActivity
 import com.example.william.my.basic.basic_module.base.Constants
-import com.example.william.my.basic.basic_module.router.path.ARouterPath
-import com.example.william.my.basic.basic_repo.api.NetworkApi
+import com.example.william.my.basic.basic_module.router.path.RouterPath
+import com.example.william.my.basic.basic_data.api.NetworkApi
 import com.example.william.my.core.retrofit.helper.RetrofitHelper
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -16,7 +16,7 @@ import retrofit2.Retrofit
  * https://square.github.io/retrofit
  * https://github.com/square/retrofit
  */
-@Route(path = ARouterPath.Network.RetrofitHelper)
+@Route(path = RouterPath.Network.RetrofitHelper)
 class RetrofitHelperActivity : BasicRecyclerActivity() {
 
     override fun buildList(): ArrayList<String> {

@@ -3,7 +3,7 @@ package com.example.william.my.module.network.activity2
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.activity.BasicRecyclerActivity
 import com.example.william.my.basic.basic_module.base.Constants
-import com.example.william.my.basic.basic_module.router.path.ARouterPath
+import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.example.william.my.lib.utils.AppExecutorsHelper
 import java.io.BufferedReader
 import java.io.IOException
@@ -29,7 +29,7 @@ import java.net.URL
  * FileReader & FileWriter 字符文件流
  * FileInputStream & FileOutputStream 字节文件流
  */
-@Route(path = ARouterPath.Network.HttpURL)
+@Route(path = RouterPath.Network.HttpURL)
 class HttpURLActivity : BasicRecyclerActivity() {
 
     override fun buildList(): ArrayList<String> {

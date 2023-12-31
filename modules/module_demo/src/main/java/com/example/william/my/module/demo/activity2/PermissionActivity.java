@@ -10,7 +10,7 @@ import androidx.core.content.ContextCompat;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.example.william.my.basic.basic_module.activity.BasicResponseActivity;
-import com.example.william.my.basic.basic_module.router.path.ARouterPath;
+import com.example.william.my.basic.basic_module.router.path.RouterPath;
 import com.example.william.my.lib.utils.Utils;
 
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ import java.util.List;
 /**
  * 权限申请
  */
-@Route(path = ARouterPath.Demo.Permission)
+@Route(path = RouterPath.Demo.Permission)
 public class PermissionActivity extends BasicResponseActivity {
 
     private final String[] permissions = new String[]{

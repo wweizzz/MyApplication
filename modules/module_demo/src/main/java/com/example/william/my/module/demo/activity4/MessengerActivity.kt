@@ -12,11 +12,11 @@ import android.os.Messenger
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.activity.BasicResponseActivity
-import com.example.william.my.basic.basic_module.router.path.ARouterPath
+import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.example.william.my.module.demo.service.MyMessageService
 import java.lang.ref.WeakReference
 
-@Route(path = ARouterPath.Demo.Messenger)
+@Route(path = RouterPath.Demo.Messenger)
 class MessengerActivity : BasicResponseActivity() {
 
     //serviceMessenger表示的是Service端的Messenger，其内部指向了MyService的ServiceHandler实例

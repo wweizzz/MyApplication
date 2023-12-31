@@ -4,13 +4,13 @@ import android.os.AsyncTask
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.activity.BasicResponseActivity
-import com.example.william.my.basic.basic_module.router.path.ARouterPath
+import com.example.william.my.basic.basic_module.router.path.RouterPath
 import java.lang.ref.WeakReference
 
 /**
  * AsyncTask
  */
-@Route(path = ARouterPath.Demo.AsyncTask)
+@Route(path = RouterPath.Demo.AsyncTask)
 class AsyncTaskActivity : BasicResponseActivity() {
 
     private var mAsyncTask: MyAsyncTask? = null

@@ -5,14 +5,14 @@ import androidx.fragment.app.Fragment
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.fragment.PrimaryDarkFragment
 import com.example.william.my.basic.basic_module.fragment.PrimaryFragment
-import com.example.william.my.basic.basic_module.router.path.ARouterPath
+import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.example.william.my.lib.activity.BaseVBActivity
 import com.example.william.my.module.demo.adapter.ViewPagerFragmentAdapter
 import com.example.william.my.module.demo.databinding.DemoActivityAppBarBinding
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 
-@Route(path = ARouterPath.Demo.Appbar)
+@Route(path = RouterPath.Demo.Appbar)
 class AppBarActivity : BaseVBActivity<DemoActivityAppBarBinding>() {
 
     override fun getViewBinding(): DemoActivityAppBarBinding {

@@ -4,7 +4,7 @@ import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.activity.BasicResponseActivity
 import com.example.william.my.basic.basic_module.base.Constants
-import com.example.william.my.basic.basic_module.router.path.ARouterPath
+import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.google.gson.Gson
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -13,7 +13,7 @@ import okhttp3.WebSocket
 import okhttp3.WebSocketListener
 import okio.ByteString
 
-@Route(path = ARouterPath.Network.WebSocket)
+@Route(path = RouterPath.Network.WebSocket)
 class WebSocketActivity : BasicResponseActivity() {
 
     private val mOkHttpClient: OkHttpClient = OkHttpClient()
