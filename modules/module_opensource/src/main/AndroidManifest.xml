@@ -3,7 +3,6 @@
 
     <application>
         <activity android:name=".OpensourceActivity" />
-        <activity android:name=".activity.BadgeViewActivity" />
         <activity android:name=".activity.BannerActivity" />
         <activity android:name=".activity.CityPickerActivity" />
         <activity android:name=".activity.CountdownActivity" />

@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.william.my.module.demo.cache.RecyclerCacheExtension
 import com.example.william.my.module.demo.databinding.DemoItemRecyclerViewBinding
 
-class RecyclerAdapter(private val mData: List<String>?) :
+class RecyclerAdapter(private val data: List<String>?) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val mCaches: RecyclerCacheExtension = RecyclerCacheExtension()
@@ -30,17 +30,9 @@ class RecyclerAdapter(private val mData: List<String>?) :
         }
 
         val binding = (holder as ViewHolder).binding
-        mData?.let { data ->
+        data?.let { data ->
             binding.itemTextView.text = data[position]
         }
-    }
-
-    override fun getItemId(position: Int): Long {
-        return position.toLong()
-    }
-
-    override fun getItemCount(): Int {
-        return mData?.size ?: 0
     }
 
     override fun onBindViewHolder(
@@ -57,6 +49,14 @@ class RecyclerAdapter(private val mData: List<String>?) :
             (holder as ViewHolder).binding.itemTextView.text =
                 payload
         }
+    }
+
+    override fun getItemId(position: Int): Long {
+        return position.toLong()
+    }
+
+    override fun getItemCount(): Int {
+        return data?.size ?: 0
     }
 
     class ViewHolder(val binding: DemoItemRecyclerViewBinding) :

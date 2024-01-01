@@ -8,7 +8,7 @@ import com.daimajia.swipe.adapters.RecyclerSwipeAdapter
 import com.example.william.my.module.opensource.R
 import com.example.william.my.module.opensource.databinding.OpenItemSwipeBinding
 
-class SwipeRecyclerAdapter(private var mData: List<String>?) :
+class SwipeRecyclerAdapter(private var data: List<String>?) :
     RecyclerSwipeAdapter<SwipeRecyclerAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -23,15 +23,18 @@ class SwipeRecyclerAdapter(private var mData: List<String>?) :
         if (viewHolder.itemView is SwipeLayout) {
             mItemManger.bindView(viewHolder.itemView, i)
         }
+
         viewHolder.binding.itemSwipeButton.setOnClickListener {
             mItemManger.closeItem(i)
             mItemManger.closeAllItems()
         }
-        viewHolder.binding.itemSwipeTextView.text = mData!![i]
+        data?.let {
+            viewHolder.binding.itemSwipeTextView.text = it[i]
+        }
     }
 
     override fun getItemCount(): Int {
-        return if (mData == null) 0 else mData!!.size
+        return data?.size ?: 0
     }
 
     override fun getSwipeLayoutResourceId(position: Int): Int {

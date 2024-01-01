@@ -1,11 +1,5 @@
 <resources>
-    <dimen name="basics_btn_width">320dp</dimen>
-    <dimen name="basics_btn_height">48dp</dimen>
-
-    <dimen name="basics_image_width">300dp</dimen>
-    <dimen name="basics_image_height">400dp</dimen>
-
-    <dimen name="basics_padding">8dp</dimen>
-    <dimen name="basics_radius">16dp</dimen>
-
+    <dimen name="basics_btn_320">320dp</dimen>
+    <dimen name="basics_btn_200">200dp</dimen>
+    <dimen name="basics_btn_48">48dp</dimen>
 </resources>

@@ -34,8 +34,8 @@ class PopWindowActivity : BasicResponseActivity() {
         CustomPopWindow.PopupWindowBuilder(this)
             .setView(binding.root)
             .size(
-                resources.getDimensionPixelOffset(R.dimen.basics_btn_width),
-                resources.getDimensionPixelOffset(R.dimen.basics_btn_height)
+                resources.getDimensionPixelOffset(R.dimen.basics_btn_320),
+                resources.getDimensionPixelOffset(R.dimen.basics_btn_48)
             ) //设置显示的大小，不设置就默认包裹内容
             .setFocusable(true) //是否获取焦点，默认为ture
             .setOutsideTouchable(true) //是否PopupWindow以外触摸dismiss

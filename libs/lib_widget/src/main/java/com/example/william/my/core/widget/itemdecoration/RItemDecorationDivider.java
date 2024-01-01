@@ -1,4 +1,4 @@
-package com.example.william.my.core.widget.decoration;
+package com.example.william.my.core.widget.itemdecoration;
 
 import android.content.Context;
 import android.graphics.Canvas;

@@ -19,6 +19,7 @@ dependencies {
     implementation(libs.tablayout)
     implementation(libs.photoview)
     implementation(libs.pickerview)
+    implementation(libs.pictureselector)
     implementation(libs.popwindow)
     implementation(libs.shadowlayout)
     implementation(libs.swipelayout)
@@ -30,6 +31,8 @@ dependencies {
     implementation(libs.mmkv)
     implementation(libs.permission)
     //implementation(libs.loadsir)
+
+    implementation(libs.glide)
 
     implementation(files("lib/oaid_sdk_2.1.0.aar"))
 }

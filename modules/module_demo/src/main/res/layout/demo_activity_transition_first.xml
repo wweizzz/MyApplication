@@ -8,8 +8,8 @@
 
     <Button
         android:id="@+id/transition_explode"
-        android:layout_width="@dimen/basics_btn_width"
-        android:layout_height="@dimen/basics_btn_height"
+        android:layout_width="@dimen/basics_btn_320"
+        android:layout_height="@dimen/basics_btn_48"
         app:layout_constraintBottom_toTopOf="@+id/transition_slide"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,8 +18,8 @@
 
     <Button
         android:id="@+id/transition_slide"
-        android:layout_width="@dimen/basics_btn_width"
-        android:layout_height="@dimen/basics_btn_height"
+        android:layout_width="@dimen/basics_btn_320"
+        android:layout_height="@dimen/basics_btn_48"
         app:layout_constraintBottom_toTopOf="@+id/transition_fade"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,8 +27,8 @@
 
     <Button
         android:id="@+id/transition_fade"
-        android:layout_width="@dimen/basics_btn_width"
-        android:layout_height="@dimen/basics_btn_height"
+        android:layout_width="@dimen/basics_btn_320"
+        android:layout_height="@dimen/basics_btn_48"
         app:layout_constraintBottom_toTopOf="@+id/transition_share"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,8 +36,8 @@
 
     <Button
         android:id="@+id/transition_share"
-        android:layout_width="@dimen/basics_btn_width"
-        android:layout_height="@dimen/basics_btn_height"
+        android:layout_width="@dimen/basics_btn_320"
+        android:layout_height="@dimen/basics_btn_48"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
