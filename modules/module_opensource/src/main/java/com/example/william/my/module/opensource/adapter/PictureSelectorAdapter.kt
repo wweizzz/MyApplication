@@ -28,14 +28,19 @@ class PictureSelectorAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val binding = (holder as ViewHolder).binding
-        //少于MaxSize张，显示继续添加的图标
         if (getItemViewType(position) == TYPE_CAMERA) {
             binding.itemIvDel.visibility = View.INVISIBLE
-            binding.itemIvPic.setImageResource(R.drawable.ic_add_image)
+            binding.itemIvPic.setImageResource(R.drawable.ic_launcher)
             binding.itemIvPic.setOnClickListener {
                 mItemClickListener?.openPicture()
             }
         } else {
+            if (mItemClickListener != null) {
+                binding.root.setOnClickListener { v: View ->
+                    mItemClickListener?.onItemClick(v, holder.absoluteAdapterPosition)
+                }
+            }
+
             binding.itemIvDel.visibility = View.VISIBLE
             binding.itemIvDel.setOnClickListener {
                 delete(holder.absoluteAdapterPosition)
@@ -53,12 +58,6 @@ class PictureSelectorAdapter(
                     .centerCrop()
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .into(binding.itemIvPic)
-            }
-
-            if (mItemClickListener != null) {
-                binding.root.setOnClickListener { v: View ->
-                    mItemClickListener?.onItemClick(v, holder.absoluteAdapterPosition)
-                }
             }
         }
     }
