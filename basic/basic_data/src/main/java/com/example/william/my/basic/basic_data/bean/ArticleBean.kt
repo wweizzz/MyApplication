@@ -3,10 +3,10 @@ package com.example.william.my.basic.basic_data.bean
 import com.example.william.my.core.okhttp.data.BaseData
 
 data class ArticleListBean(
-    var curPage: Int = 0, var datas: List<ArticleBean> = arrayListOf()
+    var curPage: Int = 0, var datas: List<ArticleDetailBean> = arrayListOf()
 ) : BaseData()
 
-data class ArticleBean(
+data class ArticleDetailBean(
     var id: String = "",
     var title: String = "",
     var link: String = "",

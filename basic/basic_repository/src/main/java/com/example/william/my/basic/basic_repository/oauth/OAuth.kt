@@ -1,4 +1,4 @@
-package com.example.william.my.module.room.database
+package com.example.william.my.basic.basic_repository.oauth
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

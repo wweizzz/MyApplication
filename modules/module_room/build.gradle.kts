@@ -2,21 +2,11 @@
 plugins {
     alias(libs.plugins.nowinandroid.android.library)
     alias(libs.plugins.nowinandroid.android.arouter)
-    alias(libs.plugins.nowinandroid.android.room)
+    alias(libs.plugins.nowinandroid.android.eventbus)
 }
 
 android {
     namespace = "com.example.william.my.module.room"
-    //defaultConfig {
-    //    javaCompileOptions {
-    //        annotationProcessorOptions {
-    //            arguments += mapOf(
-    //                "room.schemaLocation" to "$projectDir/schemas",
-    //                "room.incremental" to "true"
-    //            )
-    //        }
-    //    }
-    //}
 }
 
 dependencies {

@@ -1,4 +1,4 @@
-package com.example.william.my.module.room.database
+package com.example.william.my.basic.basic_repository.oauth
 
 import android.content.Context
 import androidx.room.Database
@@ -9,7 +9,11 @@ import androidx.room.RoomDatabase
  * exportSchema = false 或者
  * arg("room.schemaLocation", "$projectDir/schemas")
  */
-@Database(entities = [OAuth::class], version = 1, exportSchema = false)
+@Database(
+    entities = [OAuth::class],
+    version = 1,
+    exportSchema = false,
+)
 abstract class OAuthDataBase : RoomDatabase() {
 
     companion object {

@@ -5,9 +5,9 @@ import androidx.lifecycle.lifecycleScope
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.activity.BasicResponseActivity
 import com.example.william.my.basic.basic_module.router.path.RouterPath
-import com.example.william.my.module.room.database.OAuth
-import com.example.william.my.module.room.database.OAuthDao
-import com.example.william.my.module.room.database.OAuthDataBase
+import com.example.william.my.basic.basic_repository.oauth.OAuth
+import com.example.william.my.basic.basic_repository.oauth.OAuthDao
+import com.example.william.my.basic.basic_repository.oauth.OAuthDataBase
 import com.google.gson.Gson
 import kotlinx.coroutines.launch
 import java.util.concurrent.Executors
