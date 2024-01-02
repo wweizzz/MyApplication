@@ -14,6 +14,6 @@ import com.example.william.my.module.arch.mavericks.article.MavericksFragment
 class MavericksActivity : BaseFragmentActivity() {
 
     override fun setFragment(): Fragment {
-        return MavericksFragment(lifecycle)
+        return MavericksFragment()
     }
 }

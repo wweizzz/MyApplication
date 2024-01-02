@@ -1,6 +1,5 @@
 package com.example.william.my.module.arch.mavericks.article
 
-import androidx.lifecycle.Lifecycle
 import com.airbnb.mvrx.MavericksView
 import com.airbnb.mvrx.fragmentViewModel
 import com.chad.library.adapter4.BaseQuickAdapter
@@ -13,9 +12,7 @@ import com.example.william.my.module.arch.adapter.ArticleAdapter
  * Mavericks
  * https://airbnb.io/mavericks/
  */
-class MavericksFragment(override val lifecycle: Lifecycle) :
-    BaseRecyclerFragment<ArticleDetailData>(),
-    MavericksView {
+class MavericksFragment : BaseRecyclerFragment<ArticleDetailData>(), MavericksView {
 
     private val viewModel: ArticleViewModel by fragmentViewModel()
 
