@@ -12,10 +12,6 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.example.william.my.lib.activity.BaseVBActivity
-import com.example.william.my.lib.recyclerview.itemdecoration.RItemDecorationBottom
-import com.example.william.my.lib.recyclerview.itemdecoration.RItemDecorationEndBottom
-import com.example.william.my.lib.recyclerview.itemdecoration.RItemDecorationSpacing
-import com.example.william.my.lib.recyclerview.itemdecoration.RItemDecorationTop
 import com.example.william.my.lib.recyclerview.layoutmanager.FullyGridLayoutManager
 import com.example.william.my.module.demo.R
 import com.example.william.my.module.demo.adapter.RecyclerAdapter
@@ -66,37 +62,37 @@ class RecyclerViewActivity : BaseVBActivity<DemoActivityRecyclerViewBinding>(),
         mBinding.recycleView.itemAnimator = DefaultItemAnimator()
 
         //设置分割线
-//        mBinding.recycleView.addItemDecoration(
-//            RItemDecorationDivider(this, dp2px(8f))
-//        )
+        //mBinding.recycleView.addItemDecoration(
+        //    RItemDecorationDivider(this, dp2px(8f))
+        //)
 
-//        mBinding.recycleView.addItemDecoration(
-//            RItemDecorationTop(dp2px(8f))
-//        )
+        //mBinding.recycleView.addItemDecoration(
+        //    RItemDecorationTop(dp2px(8f))
+        //)
 
-//        mBinding.recycleView.addItemDecoration(
-//            RItemDecorationBottom(dp2px(8f), true)
-//        )
+        //mBinding.recycleView.addItemDecoration(
+        //    RItemDecorationBottom(dp2px(8f), true)
+        //)
 
-//        mBinding.recycleView.addItemDecoration(
-//            RItemDecorationBottom(dp2px(8f), false)
-//        )
+        //mBinding.recycleView.addItemDecoration(
+        //    RItemDecorationBottom(dp2px(8f), false)
+        //)
 
-//        mBinding.recycleView.addItemDecoration(
-//            RItemDecorationEndBottom(dp2px(8f), true)
-//        )
+        //mBinding.recycleView.addItemDecoration(
+        //    RItemDecorationEndBottom(dp2px(8f), true)
+        //)
 
-//        mBinding.recycleView.addItemDecoration(
-//            RItemDecorationEndBottom(dp2px(8f), false)
-//        )
+        //mBinding.recycleView.addItemDecoration(
+        //    RItemDecorationEndBottom(dp2px(8f), false)
+        //)
 
-//        mBinding.recycleView.addItemDecoration(
-//            RItemDecorationSpacing(dp2px(8f), true)
-//        )
+        //mBinding.recycleView.addItemDecoration(
+        //    RItemDecorationSpacing(dp2px(8f), true)
+        //)
 
-//        mBinding.recycleView.addItemDecoration(
-//            RItemDecorationSpacing(dp2px(8f), false)
-//        )
+        //mBinding.recycleView.addItemDecoration(
+        //    RItemDecorationSpacing(dp2px(8f), false)
+        //)
 
         /*
          * LinearSnapHelper,PagerSnapHelper 使RecyclerView 像ViewPager一样的效果，每次只能滑动一页

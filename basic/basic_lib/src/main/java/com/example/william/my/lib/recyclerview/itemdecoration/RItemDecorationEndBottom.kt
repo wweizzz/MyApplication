@@ -2,7 +2,6 @@ package com.example.william.my.lib.recyclerview.itemdecoration
 
 import android.graphics.Canvas
 import android.graphics.Rect
-import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,7 +12,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
  */
 class RItemDecorationEndBottom(
     private val space: Int,
-    private val includeBottom: Boolean = false, // 是否包含底部
+    private val includeEndBottom: Boolean = false, // 是否包含底部
 ) : RecyclerView.ItemDecoration() {
 
     override fun getItemOffsets(
@@ -29,9 +28,7 @@ class RItemDecorationEndBottom(
         val column = position % spanCount // 第几个
         val row = position / spanCount // 第几行
 
-        Log.e("TAG", "column" + column.toString())
-
-        if (includeBottom) {
+        if (includeEndBottom) {
             outRect.right = space
             outRect.bottom = space
         } else {
