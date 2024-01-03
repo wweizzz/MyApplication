@@ -11,8 +11,8 @@
 
     <ImageView
         android:id="@+id/item_iv_del"
-        android:layout_width="@dimen/basics_btn_48"
-        android:layout_height="@dimen/basics_btn_48"
+        android:layout_width="@dimen/basics_btn_24"
+        android:layout_height="@dimen/basics_btn_24"
         android:layout_alignTop="@id/item_iv_pic"
         android:layout_alignEnd="@id/item_iv_pic"
         android:src="@drawable/ic_launcher"

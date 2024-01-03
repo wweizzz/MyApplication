@@ -46,8 +46,7 @@ class RecyclerAdapter(private val data: List<String>?) :
         } else {
             val payload = payloads[0] as String
             //((ViewHolder) holder).textView.setText(payload);
-            (holder as ViewHolder).binding.itemTextView.text =
-                payload
+            (holder as ViewHolder).binding.itemTextView.text = payload
         }
     }
 

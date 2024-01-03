@@ -1,5 +1,6 @@
 package com.example.william.my.module.demo.activity
 
+import android.content.res.Resources
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.view.animation.LayoutAnimationController
@@ -11,10 +12,18 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.example.william.my.lib.activity.BaseVBActivity
+import com.example.william.my.lib.recyclerview.itemdecoration.RItemDecorationBottom
+import com.example.william.my.lib.recyclerview.itemdecoration.RItemDecorationEndBottom
+import com.example.william.my.lib.recyclerview.itemdecoration.RItemDecorationSpacing
+import com.example.william.my.lib.recyclerview.itemdecoration.RItemDecorationTop
+import com.example.william.my.lib.recyclerview.layoutmanager.FullyGridLayoutManager
 import com.example.william.my.module.demo.R
 import com.example.william.my.module.demo.adapter.RecyclerAdapter
 import com.example.william.my.module.demo.databinding.DemoActivityRecyclerViewBinding
 
+/**
+ * LayoutManager -> Adapter -> ItemDecoration -> OnScrollListener
+ */
 @Route(path = RouterPath.Demo.RecyclerView)
 class RecyclerViewActivity : BaseVBActivity<DemoActivityRecyclerViewBinding>(),
     RecyclerAdapter.OnItemClickListener {
@@ -38,7 +47,7 @@ class RecyclerViewActivity : BaseVBActivity<DemoActivityRecyclerViewBinding>(),
         mLinearLayoutManager.orientation = RecyclerView.VERTICAL
 
         //网格布局管理器
-        val mGridLayoutManager = GridLayoutManager(this, 1)
+        val mGridLayoutManager = GridLayoutManager(this, 4)
         mGridLayoutManager.orientation = RecyclerView.VERTICAL
 
         //瀑布流布局管理
@@ -47,14 +56,47 @@ class RecyclerViewActivity : BaseVBActivity<DemoActivityRecyclerViewBinding>(),
         mStaggeredGridLayoutManager.gapStrategy =
             StaggeredGridLayoutManager.GAP_HANDLING_NONE
 
+        //充满屏幕的网格布局
+        val mFullyGridLayoutManager = FullyGridLayoutManager(this, 4)
+        mFullyGridLayoutManager.orientation = RecyclerView.VERTICAL
+
         //设置布局管理器
-        mBinding.recycleView.layoutManager = mStaggeredGridLayoutManager
+        mBinding.recycleView.layoutManager = mFullyGridLayoutManager
         //设置item添加和移除的动画
         mBinding.recycleView.itemAnimator = DefaultItemAnimator()
 
         //设置分割线
-        //mBinding.recycleView.addItemDecoration(new RItemDecorationTop())
-        //mBinding.recycleView.addItemDecoration(new RItemDecorationDivider(this))
+//        mBinding.recycleView.addItemDecoration(
+//            RItemDecorationDivider(this, dp2px(8f))
+//        )
+
+//        mBinding.recycleView.addItemDecoration(
+//            RItemDecorationTop(dp2px(8f))
+//        )
+
+//        mBinding.recycleView.addItemDecoration(
+//            RItemDecorationBottom(dp2px(8f), true)
+//        )
+
+//        mBinding.recycleView.addItemDecoration(
+//            RItemDecorationBottom(dp2px(8f), false)
+//        )
+
+//        mBinding.recycleView.addItemDecoration(
+//            RItemDecorationEndBottom(dp2px(8f), true)
+//        )
+
+//        mBinding.recycleView.addItemDecoration(
+//            RItemDecorationEndBottom(dp2px(8f), false)
+//        )
+
+//        mBinding.recycleView.addItemDecoration(
+//            RItemDecorationSpacing(dp2px(8f), true)
+//        )
+
+//        mBinding.recycleView.addItemDecoration(
+//            RItemDecorationSpacing(dp2px(8f), false)
+//        )
 
         /*
          * LinearSnapHelper,PagerSnapHelper 使RecyclerView 像ViewPager一样的效果，每次只能滑动一页
@@ -98,5 +140,10 @@ class RecyclerViewActivity : BaseVBActivity<DemoActivityRecyclerViewBinding>(),
 
     override fun onItemClick(adapter: RecyclerAdapter, view: View, position: Int) {
         adapter.notifyItemChanged(position, "payload")
+    }
+
+    fun dp2px(dpValue: Float): Int {
+        val scale = Resources.getSystem().displayMetrics.density
+        return (dpValue * scale + 0.5f).toInt()
     }
 }

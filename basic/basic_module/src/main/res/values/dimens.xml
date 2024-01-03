@@ -2,4 +2,5 @@
     <dimen name="basics_btn_320">320dp</dimen>
     <dimen name="basics_btn_200">200dp</dimen>
     <dimen name="basics_btn_48">48dp</dimen>
+    <dimen name="basics_btn_24">24dp</dimen>
 </resources>

@@ -56,7 +56,6 @@ class PictureSelectorAdapter(
                         }
                     )
                     .centerCrop()
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .into(binding.itemIvPic)
             }
         }

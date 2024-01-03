@@ -14,6 +14,7 @@ import com.scwang.smart.refresh.layout.listener.OnRefreshLoadMoreListener
 
 /**
  * https://github.com/CymChad/BaseRecyclerViewAdapterHelper
+ * LayoutManager -> Adapter -> ItemDecoration -> OnScrollListener
  */
 abstract class BaseRecyclerFragment<T : Any> : BaseVBFragment<BaseFragmentRecyclerViewBinding>(),
     BaseQuickAdapter.OnItemClickListener<T>, BaseQuickAdapter.OnItemChildClickListener<T>,
@@ -21,9 +22,10 @@ abstract class BaseRecyclerFragment<T : Any> : BaseVBFragment<BaseFragmentRecycl
 
     protected var page: Int = 0
 
-    protected var adapter: BaseQuickAdapter<T, QuickViewHolder>? = null
-    protected var multiAdapter: BaseMultiItemAdapter<T>? = null
-    protected var manager: RecyclerView.LayoutManager? = null
+    protected var mLayoutManager: RecyclerView.LayoutManager? = null
+
+    protected var mRecyclerAdapter: BaseQuickAdapter<T, QuickViewHolder>? = null
+    protected var mRecyclerMultiItemAdapter: BaseMultiItemAdapter<T>? = null
 
     override fun getViewBinding(): BaseFragmentRecyclerViewBinding {
         return BaseFragmentRecyclerViewBinding.inflate(layoutInflater)
@@ -41,25 +43,28 @@ abstract class BaseRecyclerFragment<T : Any> : BaseVBFragment<BaseFragmentRecycl
         mBinding.smartRefresh.setEnableLoadMore(canLoadMore())
         mBinding.smartRefresh.setOnRefreshLoadMoreListener(this)
 
-        scrollListener().forEach {
-            mBinding.recyclerView.addOnScrollListener(it)
+        mLayoutManager = initRecyclerManager()
+        mLayoutManager.let {
+            mBinding.recyclerView.layoutManager = it
         }
+
+        mRecyclerAdapter = initRecyclerAdapter()
+        mRecyclerAdapter?.let {
+            it.setOnItemClickListener(this)
+            mBinding.recyclerView.adapter = it
+        }
+
+        mRecyclerMultiItemAdapter = initRecyclerMultiItemAdapter()
+        mRecyclerMultiItemAdapter?.let {
+            it.setOnItemClickListener(this)
+            mBinding.recyclerView.adapter = it
+        }
+
         itemDecorations().forEach {
             mBinding.recyclerView.addItemDecoration(it)
         }
-        adapter = initRecyclerAdapter()
-        adapter?.let {
-            it.setOnItemClickListener(this)
-            mBinding.recyclerView.adapter = it
-        }
-        multiAdapter = initRecyclerMultiAdapter()
-        multiAdapter?.let {
-            it.setOnItemClickListener(this)
-            mBinding.recyclerView.adapter = it
-        }
-        manager = initRecyclerManager()
-        manager.let {
-            mBinding.recyclerView.layoutManager = it
+        scrollListener().forEach {
+            mBinding.recyclerView.addOnScrollListener(it)
         }
     }
 
@@ -71,24 +76,24 @@ abstract class BaseRecyclerFragment<T : Any> : BaseVBFragment<BaseFragmentRecycl
         return true
     }
 
-    open fun scrollListener(): List<RecyclerView.OnScrollListener> {
-        return arrayListOf()
-    }
-
-    open fun itemDecorations(): List<RecyclerView.ItemDecoration> {
-        return arrayListOf()
+    open fun initRecyclerManager(): RecyclerView.LayoutManager {
+        return LinearLayoutManager(activity)
     }
 
     open fun initRecyclerAdapter(): BaseQuickAdapter<T, QuickViewHolder>? {
         return null
     }
 
-    open fun initRecyclerMultiAdapter(): BaseMultiItemAdapter<T>? {
+    open fun initRecyclerMultiItemAdapter(): BaseMultiItemAdapter<T>? {
         return null
     }
 
-    open fun initRecyclerManager(): RecyclerView.LayoutManager {
-        return LinearLayoutManager(activity)
+    open fun scrollListener(): List<RecyclerView.OnScrollListener> {
+        return arrayListOf()
+    }
+
+    open fun itemDecorations(): List<RecyclerView.ItemDecoration> {
+        return arrayListOf()
     }
 
     open fun initRecyclerData(savedInstanceState: Bundle?) {}
@@ -112,11 +117,11 @@ abstract class BaseRecyclerFragment<T : Any> : BaseVBFragment<BaseFragmentRecycl
             mBinding.smartRefresh.setEnableLoadMore(false)
         } else {
             if (page == 0) {
-                adapter?.submitList(list)
-                multiAdapter?.submitList(list)
+                mRecyclerAdapter?.submitList(list)
+                mRecyclerMultiItemAdapter?.submitList(list)
             } else {
-                adapter?.addAll(list)
-                multiAdapter?.addAll(list)
+                mRecyclerAdapter?.addAll(list)
+                mRecyclerMultiItemAdapter?.addAll(list)
             }
             mBinding.smartRefresh.setEnableLoadMore(canLoadMore())
         }

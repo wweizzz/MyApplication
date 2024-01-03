@@ -13,7 +13,4 @@
     <color name="colorProgress">#3700B3</color>
     <color name="colorProgressBg">#6200EE</color>
     <color name="colorProgressText">#666666</color>
-
-    <!--RecyclerView.ItemDecoration-->
-    <color name="colorDivider">#CCCCCC</color>
 </resources>
