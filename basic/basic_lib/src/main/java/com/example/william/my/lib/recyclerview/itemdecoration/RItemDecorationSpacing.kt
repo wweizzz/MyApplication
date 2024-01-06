@@ -7,13 +7,14 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 
-
 /**
  * GridLayoutManager间距
  */
 class RItemDecorationSpacing(
     private val spacing: Int,
-    private val includeEdge: Boolean = false, // 是否包含边缘
+    private val startEnd: Int = 0,
+    private var bottom: Int = 0,
+    private var includeBottom: Boolean = false,
 ) : RecyclerView.ItemDecoration() {
 
     override fun getItemOffsets(
@@ -26,20 +27,21 @@ class RItemDecorationSpacing(
         val column = position % spanCount // 第几个
         val row = position / spanCount // 第几行
 
-        if (includeEdge) {
-            outRect.left = spacing - column * spacing / spanCount
-            outRect.right = (column + 1) * spacing / spanCount
+        if (column == 0) {
+            outRect.left = startEnd
         } else {
-            outRect.left = column * spacing / spanCount
-            outRect.right = spacing - (column + 1) * spacing / spanCount
+            outRect.left = spacing
         }
-        if (includeEdge && position < spanCount) {
-            outRect.top = spacing
+        if (column == spanCount - 1) {
+            outRect.right = startEnd
+        } else {
+            outRect.right = spacing
         }
-        if (includeEdge) {
-            outRect.bottom = spacing
+
+        if (includeBottom) {
+            outRect.bottom = if (bottom == 0) spacing else bottom
         } else if (row != itemCount / spanCount - 1) {
-            outRect.bottom = spacing
+            outRect.bottom = if (bottom == 0) spacing else bottom
         }
     }
 

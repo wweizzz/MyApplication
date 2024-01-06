@@ -25,7 +25,7 @@ class RItemDecorationBottom(
         val spanCount = getSpanCount(parent)
 
         val position = parent.getChildAdapterPosition(view)
-        val row = position / spanCount
+        val row = position / spanCount // 第几行
 
         if (includeBottom) {
             outRect.bottom = space

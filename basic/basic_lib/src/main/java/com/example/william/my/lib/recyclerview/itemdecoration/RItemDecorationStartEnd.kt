@@ -8,11 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 
 /**
- * RecyclerView 右下间距(每行)
+ * RecyclerView 左右边距
  */
-class RItemDecorationEndBottom(
+class RItemDecorationStartEnd(
     private val space: Int,
-    private val includeEndBottom: Boolean = false, // 是否包含底部
 ) : RecyclerView.ItemDecoration() {
 
     override fun getItemOffsets(
@@ -21,23 +20,16 @@ class RItemDecorationEndBottom(
         parent: RecyclerView,
         state: RecyclerView.State
     ) {
-        val itemCount = getItemCount(parent)
         val spanCount = getSpanCount(parent)
 
         val position = parent.getChildAdapterPosition(view)
         val column = position % spanCount // 第几个
-        val row = position / spanCount // 第几行
 
-        if (includeEndBottom) {
+        if (column == 0) {
+            outRect.left = space
+        }
+        if (column == spanCount - 1) {
             outRect.right = space
-            outRect.bottom = space
-        } else {
-            if (column != spanCount - 1) {
-                outRect.right = space
-            }
-            if (row != itemCount / spanCount - 1) {
-                outRect.bottom = space
-            }
         }
     }
 
@@ -53,10 +45,6 @@ class RItemDecorationEndBottom(
      */
     override fun onDrawOver(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
         super.onDrawOver(c, parent, state)
-    }
-
-    private fun getItemCount(parent: RecyclerView): Int {
-        return parent.layoutManager?.itemCount ?: 0
     }
 
     private fun getSpanCount(parent: RecyclerView): Int {
