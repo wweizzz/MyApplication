@@ -7,7 +7,7 @@
     <TextView
         android:id="@+id/item_marquee_primary"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/basics_btn_48"
+        android:layout_height="@dimen/basics_dimen_48"
         android:background="@color/colorPrimary"
         android:gravity="center_vertical"
         android:paddingEnd="16dp"
@@ -16,7 +16,7 @@
     <TextView
         android:id="@+id/item_marquee_accent"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/basics_btn_48"
+        android:layout_height="@dimen/basics_dimen_48"
         android:background="@color/colorPrimaryDark"
         android:gravity="center_vertical"
         android:paddingEnd="16dp"

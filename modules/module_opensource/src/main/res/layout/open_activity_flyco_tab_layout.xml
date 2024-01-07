@@ -10,7 +10,7 @@
     <com.flyco.tablayout.SlidingTabLayout
         android:id="@+id/sliding_tab"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/basics_btn_48"
+        android:layout_height="@dimen/basics_dimen_48"
         android:background="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,7 +19,7 @@
     <com.flyco.tablayout.CommonTabLayout
         android:id="@+id/common_tab"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/basics_btn_48"
+        android:layout_height="@dimen/basics_dimen_48"
         android:background="@color/colorPrimaryDark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -1,6 +1,7 @@
 package com.example.william.my.lib.recyclerview.layoutmanager
 
 import android.content.Context
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
@@ -12,80 +13,92 @@ import androidx.recyclerview.widget.RecyclerView
 class FullyGridLayoutManager(
     context: Context?,
     spanCount: Int = 1,
-) :
-    GridLayoutManager(context, spanCount) {
+) : GridLayoutManager(context, spanCount) {
+
+    private val tag = this.javaClass.simpleName
 
     private val mMeasuredDimension = IntArray(2)
     private val mRecyclerViewState = RecyclerView.State()
 
     override fun onMeasure(
-        recycler: RecyclerView.Recycler,
-        state: RecyclerView.State,
-        widthSpec: Int,
-        heightSpec: Int
+        recycler: RecyclerView.Recycler, state: RecyclerView.State, widthSpec: Int, heightSpec: Int
     ) {
-        val widthMode = View.MeasureSpec.getMode(widthSpec)
-        val heightMode = View.MeasureSpec.getMode(heightSpec)
         val widthSize = View.MeasureSpec.getSize(widthSpec)
         val heightSize = View.MeasureSpec.getSize(heightSpec)
         var width = 0
         var height = 0
         val count = itemCount
         val span = spanCount
-        for (i in 0 until count) {
+        for (position in 0 until count) {
             measureScrapChild(
-                recycler, i,
-                View.MeasureSpec.makeMeasureSpec(i, View.MeasureSpec.UNSPECIFIED),
-                View.MeasureSpec.makeMeasureSpec(i, View.MeasureSpec.UNSPECIFIED),
+                recycler,
+                position,
+                View.MeasureSpec.makeMeasureSpec(position, View.MeasureSpec.UNSPECIFIED),
+                View.MeasureSpec.makeMeasureSpec(position, View.MeasureSpec.UNSPECIFIED),
                 mMeasuredDimension
             )
             if (orientation == HORIZONTAL) {
-                if (i % span == 0) {
+                if (position % span == 0) {
                     width += mMeasuredDimension[0]
                 }
-                if (i == 0) {
+                if (position == 0) {
                     height = mMeasuredDimension[1]
                 }
             } else {
-                if (i % span == 0) {
+                if (position % span == 0) {
                     height += mMeasuredDimension[1]
                 }
-                if (i == 0) {
+                if (position == 0) {
                     width = mMeasuredDimension[0]
                 }
             }
         }
+        val widthMode = View.MeasureSpec.getMode(widthSpec)
+        val heightMode = View.MeasureSpec.getMode(heightSpec)
         when (widthMode) {
-            View.MeasureSpec.EXACTLY -> width = widthSize
-            View.MeasureSpec.AT_MOST, View.MeasureSpec.UNSPECIFIED -> {}
+            View.MeasureSpec.EXACTLY -> {
+                width = widthSize
+            }
+
+            View.MeasureSpec.AT_MOST, View.MeasureSpec.UNSPECIFIED -> {
+
+            }
         }
         when (heightMode) {
-            View.MeasureSpec.EXACTLY -> height = heightSize
-            View.MeasureSpec.AT_MOST, View.MeasureSpec.UNSPECIFIED -> {}
+            View.MeasureSpec.EXACTLY -> {
+                height = heightSize
+            }
+
+            View.MeasureSpec.AT_MOST, View.MeasureSpec.UNSPECIFIED -> {
+
+            }
         }
         setMeasuredDimension(width, height)
     }
 
     private fun measureScrapChild(
-        recycler: RecyclerView.Recycler, position: Int, widthSpec: Int,
-        heightSpec: Int, measuredDimension: IntArray
+        recycler: RecyclerView.Recycler,
+        position: Int,
+        widthSpec: Int,
+        heightSpec: Int,
+        measuredDimension: IntArray
     ) {
         val itemCount = mRecyclerViewState.itemCount
         if (position < itemCount) {
             try {
                 val view = recycler.getViewForPosition(0)
-                val p = view.layoutParams as RecyclerView.LayoutParams
+                val params = view.layoutParams as RecyclerView.LayoutParams
                 val childWidthSpec = ViewGroup.getChildMeasureSpec(
-                    widthSpec,
-                    paddingLeft + paddingRight, p.width
+                    widthSpec, paddingLeft + paddingRight, params.width
                 )
                 val childHeightSpec = ViewGroup.getChildMeasureSpec(
-                    heightSpec,
-                    paddingTop + paddingBottom, p.height
+                    heightSpec, paddingTop + paddingBottom, params.height
                 )
                 view.measure(childWidthSpec, childHeightSpec)
-                measuredDimension[0] = view.measuredWidth + p.leftMargin + p.rightMargin
-                measuredDimension[1] = view.measuredHeight + p.bottomMargin + p.topMargin
+                measuredDimension[0] = view.measuredWidth + params.leftMargin + params.rightMargin
+                measuredDimension[1] = view.measuredHeight + params.bottomMargin + params.topMargin
+                Log.e(tag, "measuredDimension[0] : " + measuredDimension[0].toString())
+                Log.e(tag, "measuredDimension[1] : " + measuredDimension[1].toString())
                 recycler.recycleView(view)
             } catch (e: Exception) {
                 e.printStackTrace()

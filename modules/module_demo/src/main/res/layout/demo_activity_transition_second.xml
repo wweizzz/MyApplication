@@ -8,8 +8,8 @@
 
     <Button
         android:id="@+id/transition_share"
-        android:layout_width="@dimen/basics_btn_320"
-        android:layout_height="@dimen/basics_btn_48"
+        android:layout_width="@dimen/basics_dimen_320"
+        android:layout_height="@dimen/basics_dimen_48"
         android:transitionName="shareTransition"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

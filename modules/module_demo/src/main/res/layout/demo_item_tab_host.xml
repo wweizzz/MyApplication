@@ -8,6 +8,6 @@
     <TextView
         android:id="@+id/item_tab_text"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/basics_btn_48"
+        android:layout_height="@dimen/basics_dimen_48"
         android:gravity="center" />
 </LinearLayout>
