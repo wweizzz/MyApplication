@@ -41,7 +41,7 @@ class App : BaseApp() {
         registerAppInit(LibrariesApp::class.java)
 
         registerAppInit(NetworkApp::class.java)
-        
+
         registerAppInit(ArchApp::class.java)
     }
 

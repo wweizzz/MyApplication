@@ -50,7 +50,11 @@ class CropActivity : BasicImageActivity() {
                     val file =
                         File(externalCacheDir.toString() + File.separator + System.currentTimeMillis() + ".jpg")
                     sourceUri =
-                        FileProvider.getUriForFile(this@CropActivity, "$packageName.fileProvider", file)
+                        FileProvider.getUriForFile(
+                            this@CropActivity,
+                            "$packageName.fileProvider",
+                            file
+                        )
                     takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, sourceUri)
                     startActivityForResult(takePictureIntent, ACTION_IMAGE_CAPTURE_FUll)
                 }

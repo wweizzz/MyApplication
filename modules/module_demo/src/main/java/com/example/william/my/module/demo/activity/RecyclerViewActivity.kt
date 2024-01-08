@@ -13,7 +13,6 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.example.william.my.lib.activity.BaseVBActivity
 import com.example.william.my.lib.recyclerview.itemdecoration.RItemDecorationSpacing
-import com.example.william.my.lib.recyclerview.layoutmanager.FullyGridLayoutManager
 import com.example.william.my.module.demo.R
 import com.example.william.my.module.demo.adapter.RecyclerAdapter
 import com.example.william.my.module.demo.databinding.DemoActivityRecyclerViewBinding
@@ -54,11 +53,11 @@ class RecyclerViewActivity : BaseVBActivity<DemoActivityRecyclerViewBinding>(),
             StaggeredGridLayoutManager.GAP_HANDLING_NONE
 
         //充满屏幕的网格布局
-        val mFullyGridLayoutManager = FullyGridLayoutManager(this, 4)
-        mFullyGridLayoutManager.orientation = RecyclerView.VERTICAL
+        //val mFullyGridLayoutManager = FullyGridLayoutManager(this, 4)
+        //mFullyGridLayoutManager.orientation = RecyclerView.VERTICAL
 
         //设置布局管理器
-        mBinding.recycleView.layoutManager = mFullyGridLayoutManager
+        mBinding.recycleView.layoutManager = mGridLayoutManager
         //设置item添加和移除的动画
         mBinding.recycleView.itemAnimator = DefaultItemAnimator()
 
@@ -96,7 +95,7 @@ class RecyclerViewActivity : BaseVBActivity<DemoActivityRecyclerViewBinding>(),
         //)
 
         mBinding.recycleView.addItemDecoration(
-            RItemDecorationSpacing(dp2px(10f), startEnd = dp2px(18f), bottom = dp2px(14f))
+            RItemDecorationSpacing(spacing = dp2px(20f), bottom = dp2px(48f))
         )
 
         /*

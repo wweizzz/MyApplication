@@ -29,6 +29,7 @@ class FullyGridLayoutManager(
         var height = 0
         val count = itemCount
         val span = spanCount
+        Log.e("TAG", " count $count span $span")
         for (position in 0 until count) {
             measureScrapChild(
                 recycler,
@@ -60,7 +61,11 @@ class FullyGridLayoutManager(
                 width = widthSize
             }
 
-            View.MeasureSpec.AT_MOST, View.MeasureSpec.UNSPECIFIED -> {
+            View.MeasureSpec.AT_MOST -> {
+
+            }
+
+            View.MeasureSpec.UNSPECIFIED -> {
 
             }
         }
@@ -69,7 +74,11 @@ class FullyGridLayoutManager(
                 height = heightSize
             }
 
-            View.MeasureSpec.AT_MOST, View.MeasureSpec.UNSPECIFIED -> {
+            View.MeasureSpec.AT_MOST -> {
+
+            }
+
+            View.MeasureSpec.UNSPECIFIED -> {
 
             }
         }
@@ -83,13 +92,16 @@ class FullyGridLayoutManager(
         heightSpec: Int,
         measuredDimension: IntArray
     ) {
-        val itemCount = mRecyclerViewState.itemCount
         if (position < itemCount) {
             try {
                 val view = recycler.getViewForPosition(0)
                 val params = view.layoutParams as RecyclerView.LayoutParams
                 val childWidthSpec = ViewGroup.getChildMeasureSpec(
                     widthSpec, paddingLeft + paddingRight, params.width
+                )
+                Log.e(
+                    "TAG",
+                    " widthSpec " + widthSpec + " params.width " + params.width + " childWidthSpec " + childWidthSpec
                 )
                 val childHeightSpec = ViewGroup.getChildMeasureSpec(
                     heightSpec, paddingTop + paddingBottom, params.height

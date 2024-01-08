@@ -23,7 +23,7 @@ class RItemDecorationStartEnd(
         val spanCount = getSpanCount(parent)
 
         val position = parent.getChildAdapterPosition(view)
-        val column = position % spanCount // 第几个
+        val column = position % spanCount // 第几列
 
         if (column == 0) {
             outRect.left = space

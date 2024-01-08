@@ -9,10 +9,11 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 
 /**
  * GridLayoutManager间距
+ * 需要确保每个item分到的偏移量（offsize）相同
  */
 class RItemDecorationSpacing(
-    private val spacing: Int,
-    private val startEnd: Int = 0,
+    private var spacing: Int,
+    private var includeEdge: Boolean = false,
     private var bottom: Int = 0,
     private var includeBottom: Boolean = false,
 ) : RecyclerView.ItemDecoration() {
@@ -24,18 +25,15 @@ class RItemDecorationSpacing(
         val spanCount = getSpanCount(parent)
 
         val position = parent.getChildAdapterPosition(view)
-        val column = position % spanCount // 第几个
-        val row = position / spanCount // 第几行
+        val column = position % spanCount // 第几列
+        val row = position / spanCount  // 第几行
 
-        if (column == 0) {
-            outRect.left = startEnd
+        if (includeEdge) {
+            outRect.left = spacing - spacing / spanCount * column
+            outRect.right = spacing / spanCount * (column + 1)
         } else {
-            outRect.left = spacing
-        }
-        if (column == spanCount - 1) {
-            outRect.right = startEnd
-        } else {
-            outRect.right = spacing
+            outRect.left = spacing / spanCount * column
+            outRect.right = spacing - spacing / spanCount * (column + 1)
         }
 
         if (includeBottom) {
