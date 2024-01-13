@@ -14,6 +14,7 @@ import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.example.william.my.lib.activity.BaseVBActivity
 import com.example.william.my.module.demo.R
 import com.example.william.my.module.demo.databinding.DemoActivityFragment1Binding
+import com.example.william.my.module.demo.utils.FragmentUtils
 
 @Route(path = RouterPath.Demo.Fragment1)
 class FragmentActivity1 : BaseVBActivity<DemoActivityFragment1Binding>(),
@@ -22,8 +23,6 @@ class FragmentActivity1 : BaseVBActivity<DemoActivityFragment1Binding>(),
     override fun getViewBinding(): DemoActivityFragment1Binding {
         return DemoActivityFragment1Binding.inflate(layoutInflater)
     }
-
-    private var mTransaction: FragmentTransaction? = null
 
     private val mTitles: ArrayList<String> = arrayListOf(
         "primary1",
@@ -68,31 +67,10 @@ class FragmentActivity1 : BaseVBActivity<DemoActivityFragment1Binding>(),
     }
 
     private fun initFragment(savedInstanceState: Bundle?) {
-        mTransaction = supportFragmentManager.beginTransaction()
-        if (savedInstanceState != null) {
-            for (i in mFragments.indices) {
-                mFragments[i] = supportFragmentManager.findFragmentByTag(mTitles[i])!!
-            }
-        } else {
-            removeAllFragments()
-            for (i in mFragments.indices) {
-                mTransaction?.add(R.id.frameLayout, mFragments[i], mTitles[i])
-                if (isNewWay) {
-                    if (i == 0) {
-                        mTransaction?.setMaxLifecycle(mFragments[i], Lifecycle.State.RESUMED)
-                    } else {
-                        mTransaction?.setMaxLifecycle(mFragments[i], Lifecycle.State.STARTED)
-                    }
-                }
-            }
-            mTransaction?.commit()
-        }
-    }
-
-    private fun removeAllFragments() {
-        for (fragment in supportFragmentManager.fragments) {
-            mTransaction?.remove(fragment)?.commit()
-        }
+        FragmentUtils.initFragment(
+            savedInstanceState, supportFragmentManager,
+            R.id.frameLayout, mFragments, mTitles
+        )
     }
 
     override fun onClick(v: View) {
@@ -111,21 +89,6 @@ class FragmentActivity1 : BaseVBActivity<DemoActivityFragment1Binding>(),
     }
 
     private fun switchFragment(position: Int) {
-        mTransaction = supportFragmentManager.beginTransaction()
-        mTransaction?.show(mFragments[position])
-
-        if (isNewWay) {
-            mTransaction?.setMaxLifecycle(mFragments[position], Lifecycle.State.RESUMED)
-        }
-
-        for (fragment in mFragments) {
-            if (fragment !== mFragments[position]) {
-                mTransaction?.hide(fragment)
-                if (isNewWay) {
-                    mTransaction?.setMaxLifecycle(fragment, Lifecycle.State.STARTED)
-                }
-            }
-        }
-        mTransaction?.commitAllowingStateLoss()
+        FragmentUtils.switchFragment(supportFragmentManager, mFragments, position)
     }
 }

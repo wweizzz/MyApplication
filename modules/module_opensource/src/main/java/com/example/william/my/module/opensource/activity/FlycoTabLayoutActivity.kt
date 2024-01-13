@@ -8,9 +8,7 @@ import com.example.william.my.basic.basic_module.fragment.PrimaryFragment
 import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.example.william.my.lib.activity.BaseVBActivity
 import com.example.william.my.module.opensource.databinding.OpenActivityFlycoTabLayoutBinding
-import com.example.william.my.module.opensource.entity.TabEntity
-import com.flyco.tablayout.listener.CustomTabEntity
-import com.flyco.tablayout.listener.OnTabSelectListener
+import com.example.william.my.module.opensource.utils.TabLayoutUtils
 
 /**
  * https://github.com/H07000223/FlycoTabLayout
@@ -23,8 +21,6 @@ class FlycoTabLayoutActivity : BaseVBActivity<OpenActivityFlycoTabLayoutBinding>
     }
 
     private var mTitles: ArrayList<String> = arrayListOf()
-
-    private var mTitleTabs: ArrayList<CustomTabEntity> = arrayListOf()
 
     private val mFragments: ArrayList<Fragment> = arrayListOf(
         PrimaryFragment(),
@@ -42,36 +38,23 @@ class FlycoTabLayoutActivity : BaseVBActivity<OpenActivityFlycoTabLayoutBinding>
 
     private fun intTitles() {
         mTitles = arrayListOf("primary1", "primaryDark1", "primary2", "primaryDark2")
-        for (i in mTitles.indices) {
-            mTitleTabs.add(TabEntity(mTitles[i]))
-        }
     }
 
     private fun initTabLayout() {
-        mBinding.commonTab.setTabData(mTitleTabs)
-        mBinding.commonTab.setOnTabSelectListener(
-            object : OnTabSelectListener {
-                override fun onTabSelect(position: Int) {
-                    mBinding.viewPager.currentItem = position
-                }
-
-                override fun onTabReselect(position: Int) {
-
-                }
-            })
-
-        mBinding.slidingTab.setViewPager(
-            mBinding.viewPager, mTitles.toTypedArray(), this, mFragments
+        TabLayoutUtils.initSlidingTab(
+            mBinding.slidingTab, mBinding.viewPager,
+            mTitles, this, mFragments
         )
-        mBinding.slidingTab.setOnTabSelectListener(object : OnTabSelectListener {
-            override fun onTabSelect(position: Int) {
+        TabLayoutUtils.initCommonTabLayout(
+            mBinding.commonTab, mBinding.viewPager,
+            mTitles
+        )
 
-            }
+        TabLayoutUtils.initSegmentTabLayout(
+            mBinding.segmentTab, mBinding.viewPager,
+            mTitles
+        )
 
-            override fun onTabReselect(position: Int) {
-
-            }
-        })
         mBinding.viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrolled(
                 position: Int,
@@ -83,6 +66,7 @@ class FlycoTabLayoutActivity : BaseVBActivity<OpenActivityFlycoTabLayoutBinding>
 
             override fun onPageSelected(position: Int) {
                 mBinding.commonTab.currentTab = position
+                mBinding.segmentTab.currentTab = position
             }
 
             override fun onPageScrollStateChanged(state: Int) {
