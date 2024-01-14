@@ -37,9 +37,9 @@ class RItemDecorationSpacing(
         }
 
         if (includeBottom) {
-            outRect.bottom = if (bottom == 0) spacing else bottom
-        } else if (row != itemCount / spanCount - 1) {
-            outRect.bottom = if (bottom == 0) spacing else bottom
+            outRect.bottom = bottom
+        } else if (row != itemCount / spanCount) {
+            outRect.bottom = bottom
         }
     }
 

@@ -12,7 +12,11 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.example.william.my.lib.activity.BaseVBActivity
+import com.example.william.my.lib.recyclerview.itemdecoration.RItemDecorationBottom
+import com.example.william.my.lib.recyclerview.itemdecoration.RItemDecorationDivider
 import com.example.william.my.lib.recyclerview.itemdecoration.RItemDecorationSpacing
+import com.example.william.my.lib.recyclerview.itemdecoration.RItemDecorationStartEnd
+import com.example.william.my.lib.recyclerview.itemdecoration.RItemDecorationTop
 import com.example.william.my.module.demo.R
 import com.example.william.my.module.demo.adapter.RecyclerAdapter
 import com.example.william.my.module.demo.databinding.DemoActivityRecyclerViewBinding
@@ -82,18 +86,6 @@ class RecyclerViewActivity : BaseVBActivity<DemoActivityRecyclerViewBinding>(),
         //    RItemDecorationBottom(dp2px(8f), false)
         //)
 
-        //mBinding.recycleView.addItemDecoration(
-        //    RItemDecorationEndBottom(dp2px(8f), true)
-        //)
-
-        //mBinding.recycleView.addItemDecoration(
-        //    RItemDecorationEndBottom(dp2px(8f), false)
-        //)
-
-        //mBinding.recycleView.addItemDecoration(
-        //    RItemDecorationSpacing(dp2px(8f), true)
-        //)
-
         mBinding.recycleView.addItemDecoration(
             RItemDecorationSpacing(spacing = dp2px(20f), bottom = dp2px(48f))
         )
@@ -121,7 +113,7 @@ class RecyclerViewActivity : BaseVBActivity<DemoActivityRecyclerViewBinding>(),
         mBinding.recycleView.layoutAnimation = mController
 
         val mData: MutableList<String> = ArrayList()
-        for (i in 1..60) {
+        for (i in 1..59) {
             mData.add("POSITION $i")
         }
 

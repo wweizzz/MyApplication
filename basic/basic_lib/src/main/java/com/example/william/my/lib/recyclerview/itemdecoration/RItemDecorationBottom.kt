@@ -29,7 +29,7 @@ class RItemDecorationBottom(
 
         if (includeBottom) {
             outRect.bottom = space
-        } else if (row != itemCount / spanCount - 1) {
+        } else if (row != itemCount / spanCount) {
             outRect.bottom = space
         }
     }
