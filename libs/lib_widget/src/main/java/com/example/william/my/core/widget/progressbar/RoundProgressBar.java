@@ -1,4 +1,4 @@
-package com.example.william.my.core.widget.spinner.progressbar;
+package com.example.william.my.core.widget.progressbar;
 
 import android.content.Context;
 import android.content.res.TypedArray;
