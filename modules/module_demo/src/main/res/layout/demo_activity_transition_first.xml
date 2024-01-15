@@ -8,7 +8,7 @@
 
     <Button
         android:id="@+id/transition_explode"
-        android:layout_width="@dimen/basics_dimen_320"
+        android:layout_width="@dimen/basics_dimen_width_320"
         android:layout_height="@dimen/basics_dimen_48"
         app:layout_constraintBottom_toTopOf="@+id/transition_slide"
         app:layout_constraintEnd_toEndOf="parent"
@@ -18,7 +18,7 @@
 
     <Button
         android:id="@+id/transition_slide"
-        android:layout_width="@dimen/basics_dimen_320"
+        android:layout_width="@dimen/basics_dimen_width_320"
         android:layout_height="@dimen/basics_dimen_48"
         app:layout_constraintBottom_toTopOf="@+id/transition_fade"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,7 +27,7 @@
 
     <Button
         android:id="@+id/transition_fade"
-        android:layout_width="@dimen/basics_dimen_320"
+        android:layout_width="@dimen/basics_dimen_width_320"
         android:layout_height="@dimen/basics_dimen_48"
         app:layout_constraintBottom_toTopOf="@+id/transition_share"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,7 +36,7 @@
 
     <Button
         android:id="@+id/transition_share"
-        android:layout_width="@dimen/basics_dimen_320"
+        android:layout_width="@dimen/basics_dimen_width_320"
         android:layout_height="@dimen/basics_dimen_48"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

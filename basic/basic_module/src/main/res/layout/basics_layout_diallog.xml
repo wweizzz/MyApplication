@@ -7,8 +7,8 @@
     <include
         android:id="@+id/dialog"
         layout="@layout/basics_layout_response"
-        android:layout_width="@dimen/basics_dimen_320"
-        android:layout_height="@dimen/basics_dimen_200"
+        android:layout_width="@dimen/basics_dimen_width_320"
+        android:layout_height="@dimen/basics_dimen_height_200"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -7,7 +7,7 @@
     <TextView
         android:id="@+id/basics_response"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="@dimen/basics_dimen_height_200"
         android:background="@color/white"
         android:gravity="center"
         android:text="Hello World!"

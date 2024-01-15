@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.chad.library.adapter4.BaseMultiItemAdapter
 import com.chad.library.adapter4.BaseQuickAdapter
+import com.chad.library.adapter4.QuickAdapterHelper
 import com.chad.library.adapter4.viewholder.QuickViewHolder
 import com.example.william.my.lib.databinding.BaseFragmentRecyclerViewBinding
 import com.scwang.smart.refresh.layout.api.RefreshLayout
@@ -24,8 +25,10 @@ abstract class BaseRecyclerFragment<T : Any> : BaseVBFragment<BaseFragmentRecycl
 
     protected var mLayoutManager: RecyclerView.LayoutManager? = null
 
-    protected var mRecyclerAdapter: BaseQuickAdapter<T, QuickViewHolder>? = null
-    protected var mRecyclerMultiItemAdapter: BaseMultiItemAdapter<T>? = null
+    protected var mAdapter: BaseQuickAdapter<T, QuickViewHolder>? = null
+    protected var mMultiItemAdapter: BaseMultiItemAdapter<T>? = null
+
+    protected lateinit var mAdapterHelper: QuickAdapterHelper
 
     override fun getViewBinding(): BaseFragmentRecyclerViewBinding {
         return BaseFragmentRecyclerViewBinding.inflate(layoutInflater)
@@ -48,17 +51,19 @@ abstract class BaseRecyclerFragment<T : Any> : BaseVBFragment<BaseFragmentRecycl
             mBinding.recyclerView.layoutManager = it
         }
 
-        mRecyclerAdapter = initRecyclerAdapter()
-        mRecyclerAdapter?.let {
+        mAdapter = initRecyclerAdapter()
+        mAdapter?.let {
             it.setOnItemClickListener(this)
-            mBinding.recyclerView.adapter = it
+            mAdapterHelper = QuickAdapterHelper.Builder(it).build()
         }
 
-        mRecyclerMultiItemAdapter = initRecyclerMultiItemAdapter()
-        mRecyclerMultiItemAdapter?.let {
+        mMultiItemAdapter = initRecyclerMultiItemAdapter()
+        mMultiItemAdapter?.let {
             it.setOnItemClickListener(this)
-            mBinding.recyclerView.adapter = it
+            mAdapterHelper = QuickAdapterHelper.Builder(it).build()
         }
+
+        mBinding.recyclerView.adapter = mAdapterHelper.adapter
 
         itemDecorations().forEach {
             mBinding.recyclerView.addItemDecoration(it)
@@ -117,11 +122,12 @@ abstract class BaseRecyclerFragment<T : Any> : BaseVBFragment<BaseFragmentRecycl
             mBinding.smartRefresh.setEnableLoadMore(false)
         } else {
             if (page == 0) {
-                mRecyclerAdapter?.submitList(list)
-                mRecyclerMultiItemAdapter?.submitList(list)
+
+                mAdapter?.submitList(list)
+                mMultiItemAdapter?.submitList(list)
             } else {
-                mRecyclerAdapter?.addAll(list)
-                mRecyclerMultiItemAdapter?.addAll(list)
+                mAdapter?.addAll(list)
+                mMultiItemAdapter?.addAll(list)
             }
             mBinding.smartRefresh.setEnableLoadMore(canLoadMore())
         }
