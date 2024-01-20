@@ -6,10 +6,10 @@ import com.example.william.my.core.okhttp.config.OkHttpConfig
 object HttpLog {
 
     fun debug(msg: String) {
-        Log.d(OkHttpConfig.logTag, msg)
+        Log.d(OkHttpConfig.getLogTag(), msg)
     }
 
     fun error(msg: String) {
-        Log.e(OkHttpConfig.logTag, msg)
+        Log.e(OkHttpConfig.getLogTag(), msg)
     }
 }

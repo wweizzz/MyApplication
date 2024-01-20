@@ -40,7 +40,7 @@ class CoroutinesViewModel(private val repository: CoroutinesRepository) : ViewMo
 
             // 执行网络请求 并 挂起，直至请求完成
             // Make the network call and suspend execution until it finishes
-            val result: NetworkResult<RetrofitResponse<UserBean>> =
+            val result: NetworkResult<RetrofitResponse<UserBean?>> =
                 try {
                     repository.login(username, password)
                 } catch (e: Exception) {
@@ -54,7 +54,7 @@ class CoroutinesViewModel(private val repository: CoroutinesRepository) : ViewMo
                     _login.postValue("加载中……")
                 }
 
-                is NetworkResult.Success<RetrofitResponse<UserBean>> -> {
+                is NetworkResult.Success<RetrofitResponse<UserBean?>> -> {
                     _login.postValue(Gson().toJson(result.data))
                 }
 

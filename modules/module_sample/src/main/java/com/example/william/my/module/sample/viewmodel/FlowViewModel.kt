@@ -27,10 +27,10 @@ class FlowViewModel(private val repository: FlowRepository) : ViewModel() {
 
     // Backing property to avoid state updates from other classes
     private val _uiState =
-        MutableStateFlow<NetworkResult<RetrofitResponse<UserBean>>>(NetworkResult.Loading)
+        MutableStateFlow<NetworkResult<RetrofitResponse<UserBean?>>>(NetworkResult.Loading)
 
     // The UI collects from this StateFlow to get its state updates
-    val uiState: StateFlow<NetworkResult<RetrofitResponse<UserBean>>> = _uiState
+    val uiState: StateFlow<NetworkResult<RetrofitResponse<UserBean?>>> = _uiState
 
     /**
      * 3. 从数据流中进行收集
@@ -43,7 +43,7 @@ class FlowViewModel(private val repository: FlowRepository) : ViewModel() {
             //打印线程
             ThreadUtils.isMainThread("FlowViewModel login")
 
-            val flow: Flow<RetrofitResponse<UserBean>> =
+            val flow: Flow<RetrofitResponse<UserBean?>> =
                 repository.login(username, password)
 
             // 使用 collect 触发流并消耗其元素
@@ -60,10 +60,10 @@ class FlowViewModel(private val repository: FlowRepository) : ViewModel() {
                 .onCompletion {
                     // 请求完成
                 }
-                .collect { article ->
+                .collect { response ->
                     // 更新视图
                     // Update View with the latest favorite news
-                    _uiState.value = NetworkResult.Success(article)
+                    _uiState.value = NetworkResult.Success(response)
                 }
         }
     }

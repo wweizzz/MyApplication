@@ -10,16 +10,16 @@ import java.lang.reflect.ParameterizedType
 
 abstract class BaseVMActivity<VB : ViewBinding?, VM : BaseViewModel> : BaseVBActivity<VB>() {
 
-    private var _model: VM? = null
-    protected val mViewModel get() = _model!!
+    private var _viewModel: VM? = null
+    protected val mViewModel get() = _viewModel!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
 
     override fun initViewModel() {
-        _model = viewModel()
-        lifecycle.addObserver(_model!!)
+        _viewModel = viewModel()
+        lifecycle.addObserver(mViewModel)
     }
 
     private fun viewModel(): VM? {
@@ -37,21 +37,20 @@ abstract class BaseVMActivity<VB : ViewBinding?, VM : BaseViewModel> : BaseVBAct
         return null
     }
 
-    override fun onDestroy() {
-        _model = null
-        super.onDestroy()
+    override fun observeViewModel() {
+        super.observeViewModel()
+
+        _viewModel!!.error.observe(this) { throwable ->
+            onError(throwable)
+        }
     }
 
     fun onError(throwable: Throwable) {
         Log.e(tag, throwable.message.toString())
     }
 
-
-    override fun observeViewModel() {
-        super.observeViewModel()
-
-        _model!!.errorLiveData.observe(this) { throwable ->
-            onError(throwable)
-        }
+    override fun onDestroy() {
+        _viewModel = null
+        super.onDestroy()
     }
 }

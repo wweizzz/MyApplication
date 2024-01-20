@@ -1,8 +1,5 @@
 package com.example.william.my.core.retrofit.helper
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import com.example.william.my.core.retrofit.callback.RetrofitLiveDataCallback
 import com.example.william.my.core.retrofit.config.RetrofitConfig
 import com.example.william.my.core.retrofit.function.HttpResultFunction
 import com.example.william.my.core.retrofit.function.ServerResultFunction
@@ -23,32 +20,32 @@ object RetrofitHelper {
         return mRetrofit ?: createRetrofit()
     }
 
-    fun baseUrl(basUrl: String): RetrofitHelper {
-        RetrofitConfig.baseUrl = basUrl
+    fun baseUrl(url: String): RetrofitHelper {
+        RetrofitConfig.Builder().setBaseUrl(url)
         return this@RetrofitHelper
     }
 
     fun client(client: OkHttpClient): RetrofitHelper {
-        RetrofitConfig.client = client
+        RetrofitConfig.Builder().setOkHttpClient(client)
         return this@RetrofitHelper
     }
 
-    fun converter(converter: Converter.Factory): RetrofitHelper {
-        RetrofitConfig.converter = converter
+    fun converter(factory: Converter.Factory): RetrofitHelper {
+        RetrofitConfig.Builder().setConverterFactory(factory)
         return this@RetrofitHelper
     }
 
-    fun callAdapter(callAdapter: CallAdapter.Factory): RetrofitHelper {
-        RetrofitConfig.callAdapter = callAdapter
+    fun callAdapter(factory: CallAdapter.Factory): RetrofitHelper {
+        RetrofitConfig.Builder().setCallAdapterFactory(factory)
         return this@RetrofitHelper
     }
 
     private fun createRetrofit(): Retrofit {
         val retrofit = Retrofit.Builder()
-            .baseUrl(RetrofitConfig.baseUrl)
-            .client(RetrofitConfig.client)
-            .addConverterFactory(RetrofitConfig.converter)
-            .addCallAdapterFactory(RetrofitConfig.callAdapter)
+            .baseUrl(RetrofitConfig.getBaseUrl())
+            .client(RetrofitConfig.getOkHttpClient())
+            .addConverterFactory(RetrofitConfig.getConverterFactory())
+            .addCallAdapterFactory(RetrofitConfig.getCallAdapterFactory())
             .build()
         mRetrofit = retrofit
         return retrofit
@@ -58,48 +55,11 @@ object RetrofitHelper {
         return retrofit.create(api)
     }
 
-    fun getBaseUrl(url: String): String {
-        var tempUrl = url
-        var head = ""
-        var index = tempUrl.indexOf("://")
-        if (index != -1) {
-            head = tempUrl.substring(0, index + 3)
-            tempUrl = tempUrl.substring(index + 3)
-        }
-        index = tempUrl.indexOf("/")
-        if (index != -1) {
-            tempUrl = tempUrl.substring(0, index + 1)
-        }
-        return head + tempUrl
-    }
-
-    fun <T : Any> buildSingle(single: Single<RetrofitResponse<T>>): Single<RetrofitResponse<T>> {
+    fun <T : Any> buildSingle(single: Single<RetrofitResponse<T?>>): Single<RetrofitResponse<T?>> {
         return single
             .map(ServerResultFunction())
             .onErrorResumeNext(HttpResultFunction())
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-    }
-
-    fun <T : Any> buildLiveData(single: Single<RetrofitResponse<T>>): LiveData<RetrofitResponse<T>> {
-        val liveData: MutableLiveData<RetrofitResponse<T>> = MutableLiveData()
-        buildSingle(single)
-            .subscribe(object : RetrofitLiveDataCallback<T>() {
-                override fun onPostValue(value: RetrofitResponse<T>) {
-                    liveData.postValue(value)
-                }
-            })
-        return liveData
-    }
-
-    fun <T : Any> buildLiveData(
-        single: Single<RetrofitResponse<T>>, postValue: (RetrofitResponse<T>) -> Unit
-    ) {
-        buildSingle(single)
-            .subscribe(object : RetrofitLiveDataCallback<T>() {
-                override fun onPostValue(value: RetrofitResponse<T>) {
-                    postValue(value)
-                }
-            })
     }
 }

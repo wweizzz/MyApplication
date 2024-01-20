@@ -43,24 +43,24 @@ class RetrofitRxJavaHelperActivity : BasicRecyclerActivity() {
         val api: NetworkApi = RetrofitHelper.buildApi(NetworkApi::class.java, retrofit)
 
         // 调用网络接口中的方法获取 Observable 对象
-        val single: Single<RetrofitResponse<UserBean>> =
+        val single: Single<RetrofitResponse<UserBean?>> =
             api.loginSingle(Constants.Value_Username, Constants.Value_Password)
 
         // 创建 异常管理与线程切换的 Observable 对象
-        val retrofitSingle: Single<RetrofitResponse<UserBean>> =
+        val retrofitSingle: Single<RetrofitResponse<UserBean?>> =
             RetrofitHelper.buildSingle(single)
 
         // 进行网络请求
-        retrofitSingle.subscribe(object : RetrofitResponseCallback<UserBean>() {
+        retrofitSingle.subscribe(object : RetrofitResponseCallback<UserBean?>() {
             override fun onLoading() {
                 super.onLoading()
                 val netSuccess = "onLoading: "
                 showMessage(netSuccess)
             }
 
-            override fun onResponse(response: UserBean) {
+            override fun onResponse(response: UserBean?) {
                 super.onResponse(response)
-                val netSuccess = "onResponse: " + response.string()
+                val netSuccess = "onResponse: " + response?.string()
                 showMessage(netSuccess)
             }
 

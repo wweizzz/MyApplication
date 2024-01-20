@@ -40,7 +40,7 @@ class PopWindowActivity : BasicResponseActivity() {
             .setFocusable(true) //是否获取焦点，默认为ture
             .setOutsideTouchable(true) //是否PopupWindow以外触摸dismiss
             .create() //创建PopupWindow
-            .showAsDropDown(mBinding.basicsResponse, Gravity.BOTTOM, 0, 0) //显示PopupWindow
+            .showAsDropDown(mBinding.basicsResponse, 0, 0) //显示PopupWindow
     }
 
     private fun handleLogic(binding: BasicsLayoutResponseBinding) {

@@ -49,15 +49,15 @@ class RetrofitRxJavaActivity : BasicRecyclerActivity() {
         val api: NetworkApi = retrofit.create(NetworkApi::class.java)
 
         // （4）调用网络接口中的方法获取 Observable 对象
-        val single: Single<RetrofitResponse<UserBean>> =
+        val single: Single<RetrofitResponse<UserBean?>> =
             api.loginSingle(Constants.Value_Username, Constants.Value_Password)
 
         // （5）进行网络请求
         single
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : DisposableSingleObserver<RetrofitResponse<UserBean>>() {
-                override fun onSuccess(response: RetrofitResponse<UserBean>) {
+            .subscribe(object : DisposableSingleObserver<RetrofitResponse<UserBean?>>() {
+                override fun onSuccess(response: RetrofitResponse<UserBean?>) {
                     val netSuccess = "onResponse: " + response.string()
                     showMessage(netSuccess)
                 }

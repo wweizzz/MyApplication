@@ -27,7 +27,7 @@ class FlowRepository(private val defaultDispatcher: CoroutineDispatcher) {
     /**
      * 1. 创建数据流
      */
-    private fun createFlow(username: String, password: String): Flow<RetrofitResponse<UserBean>> {
+    private fun createFlow(username: String, password: String): Flow<RetrofitResponse<UserBean?>> {
         return flow {
             //打印线程
             ThreadUtils.isMainThread("FlowRepository login")
@@ -45,7 +45,7 @@ class FlowRepository(private val defaultDispatcher: CoroutineDispatcher) {
      * These operations are lazy and don't trigger the flow.
      * They just transform the current value emitted by the flow at that point in time.
      */
-    fun login(username: String, password: String): Flow<RetrofitResponse<UserBean>> {
+    fun login(username: String, password: String): Flow<RetrofitResponse<UserBean?>> {
         return createFlow(username, password)
             // 在默认调度程序上执行
             // Executes on the default dispatcher

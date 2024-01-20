@@ -15,13 +15,7 @@ abstract class BaseVMFragment<VB : ViewBinding?, VM : BaseViewModel>(layout: Int
 
     override fun initViewModel() {
         _viewModel = viewModel()
-        lifecycle.addObserver(_viewModel!!)
-    }
-
-    override fun observeViewModel() {
-        _viewModel!!.errorLiveData.observe(requireActivity()) { throwable ->
-            onError(throwable)
-        }
+        lifecycle.addObserver(mViewModel)
     }
 
     private fun viewModel(): VM? {
@@ -39,12 +33,18 @@ abstract class BaseVMFragment<VB : ViewBinding?, VM : BaseViewModel>(layout: Int
         return null
     }
 
-    override fun onDestroy() {
-        _viewModel = null
-        super.onDestroy()
+    override fun observeViewModel() {
+        _viewModel!!.error.observe(requireActivity()) { throwable ->
+            onError(throwable)
+        }
     }
 
     protected fun onError(throwable: Throwable) {
         Log.e(tag, throwable.message.toString())
+    }
+
+    override fun onDestroy() {
+        _viewModel = null
+        super.onDestroy()
     }
 }

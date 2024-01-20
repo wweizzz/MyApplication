@@ -1,12 +1,11 @@
 package com.example.william.my.core.retrofit
 
-import com.example.william.my.core.okhttp.config.MediaType
+import com.example.william.my.core.okhttp.media.MediaType
 import com.example.william.my.core.retrofit.api.Api
 import com.example.william.my.core.retrofit.builder.RetrofitBuilder
 import com.example.william.my.core.retrofit.function.HttpResultFunction
 import com.example.william.my.core.retrofit.function.RxRetrofitFunction
 import com.example.william.my.core.retrofit.helper.RetrofitHelper
-import com.example.william.my.core.retrofit.helper.RetrofitHelper.getBaseUrl
 import com.example.william.my.core.retrofit.method.Method
 import com.example.william.my.core.retrofit.response.RetrofitResponse
 import com.google.gson.JsonElement
@@ -16,7 +15,6 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 
-
 /**
  * Http请求类
  */
@@ -24,7 +22,6 @@ class RxRetrofit<T>(private val builder: RetrofitBuilder<T>) {
 
     private fun buildApi(): Api {
         return RetrofitHelper
-            .baseUrl(getBaseUrl(builder.getApi()))
             .retrofit()
             .create(Api::class.java)
     }
@@ -45,7 +42,10 @@ class RxRetrofit<T>(private val builder: RetrofitBuilder<T>) {
                     } else {
                         val body: RequestBody =
                             builder.getBodyString()
-                                ?.toRequestBody(if (builder.isJson()) MediaType.MEDIA_TYPE_JSON else MediaType.MEDIA_TYPE_FORM)
+                                ?.toRequestBody(
+                                    if (builder.isJson()) MediaType.MEDIA_TYPE_JSON
+                                    else MediaType.MEDIA_TYPE_FORM
+                                )
                                 ?: builder.getBodyForm()!!.build()
                         buildApi().post(builder.getApi(), builder.getHeader(), body)
                     }

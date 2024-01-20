@@ -31,7 +31,7 @@ interface NetworkApi {
     fun loginSingle(
         @Query(Constants.Key_Username) username: String,
         @Query(Constants.Key_Password) password: String
-    ): Single<RetrofitResponse<UserBean>>
+    ): Single<RetrofitResponse<UserBean?>>
 
     /**
      * RetrofitDownloadActivity
@@ -45,7 +45,7 @@ interface NetworkApi {
     suspend fun loginSuspend(
         @Query(Constants.Key_Username) username: String,
         @Query(Constants.Key_Password) password: String
-    ): RetrofitResponse<UserBean>
+    ): RetrofitResponse<UserBean?>
 
     //@GET(Constants.Url_Article_List)
     //fun getArticleSingle(

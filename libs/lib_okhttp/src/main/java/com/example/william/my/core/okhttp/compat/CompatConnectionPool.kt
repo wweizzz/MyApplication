@@ -12,8 +12,8 @@ object CompatConnectionPool {
         //自定义连接池最大空闲连接数和等待时间大小，否则默认最大5个空闲连接
         builder.connectionPool(
             ConnectionPool(
-                OkHttpConfig.maxIdleConnections,
-                OkHttpConfig.keepAliveDuration,
+                OkHttpConfig.getMaxIdleConnections(),
+                OkHttpConfig.getKeepAliveDuration(),
                 TimeUnit.MINUTES
             )
         )

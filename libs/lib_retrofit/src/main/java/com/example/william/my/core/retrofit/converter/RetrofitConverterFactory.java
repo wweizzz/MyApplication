@@ -39,7 +39,7 @@ public class RetrofitConverterFactory extends Converter.Factory {
     //@SuppressWarnings("ConstantConditions") // Guarding public API nullability.
     public static RetrofitConverterFactory create(Gson gson) {
         if (gson == null) throw new NullPointerException("gson == null");
-        return new RetrofitConverterFactory(gson, RetrofitConfig.INSTANCE.getErrorCode(), RetrofitConfig.INSTANCE.getErrorMsg());
+        return new RetrofitConverterFactory(gson, RetrofitConfig.INSTANCE.getErrorCode(), RetrofitConfig.INSTANCE.getErrorMessage());
     }
 
     public static RetrofitConverterFactory create(String code, String msg) {

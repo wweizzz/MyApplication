@@ -3,7 +3,7 @@ package com.example.william.my.core.retrofit.builder
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import com.example.william.my.core.okhttp.body.RequestProgressBody
-import com.example.william.my.core.okhttp.config.MediaType
+import com.example.william.my.core.okhttp.media.MediaType
 import com.example.william.my.core.okhttp.listener.RequestProgressListener
 import com.example.william.my.core.retrofit.RxRetrofit
 import com.example.william.my.core.retrofit.method.Method

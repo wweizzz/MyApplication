@@ -7,6 +7,5 @@ class NetworkApp : BaseAppInit() {
 
     override fun init() {
         super.init()
-        OkHttpConfig.app = app
     }
 }

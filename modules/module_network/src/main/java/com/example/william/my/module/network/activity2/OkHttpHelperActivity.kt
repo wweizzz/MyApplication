@@ -51,8 +51,8 @@ class OkHttpHelperActivity : BasicRecyclerActivity() {
 
         // 创建 RequestBody 对象
         val requestBody: RequestBody = OkHttpHelper.requestBodyBuilder()
-            .add(Constants.Key_Username, Constants.Value_Username)
-            .add(Constants.Key_Password, Constants.Value_Password)
+            .addForm(Constants.Key_Username, Constants.Value_Username)
+            .addForm(Constants.Key_Password, Constants.Value_Password)
             .buildForm()
 
         // 创建 Request 对象
@@ -89,8 +89,8 @@ class OkHttpHelperActivity : BasicRecyclerActivity() {
 
         // 创建 RequestBody 对象
         val requestBody: RequestBody = OkHttpHelper.requestBodyBuilder()
-            .addParam(Constants.Key_Username, Constants.Value_Username)
-            .addParam(Constants.Key_Password, Constants.Value_Password)
+            .addMultipart(Constants.Key_Username, Constants.Value_Username)
+            .addMultipart(Constants.Key_Password, Constants.Value_Password)
             .buildMultipart()
 
         // 创建 Request 对象

@@ -1,4 +1,4 @@
-package com.example.william.my.core.okhttp.config
+package com.example.william.my.core.okhttp.media
 
 import okhttp3.MediaType.Companion.toMediaType
 

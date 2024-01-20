@@ -14,13 +14,13 @@ object CompatCookieJar {
         builder.cookieJar(buildCookieJar())
     }
 
-    fun cookieJar2(builder: OkHttpClient.Builder) {
-        OkHttpConfig.app?.let { app ->
-            builder.addInterceptor(InterceptorCookie(app))
-        } ?: {
-            HttpLog.error("context == null. cookie 缓存未启用.")
-        }
-    }
+    //fun cookieJar2(builder: OkHttpClient.Builder) {
+    //    OkHttpConfig.app?.let { app ->
+    //        builder.addInterceptor(InterceptorCookie(app))
+    //    } ?: {
+    //        HttpLog.error("context == null. cookie 缓存未启用.")
+    //    }
+    //}
 
     private fun buildCookieJar(): CookieJar {
 

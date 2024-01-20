@@ -28,7 +28,8 @@ abstract class SingleObserverUseCase<ReturnType : Any> {
         mScheduledExecutor = scheduledExecutor
     }
 
-    protected abstract fun buildUseCaseObservable(): Single<ReturnType>
+    abstract fun buildUseCaseObservable(): Single<ReturnType>
+
     fun execute(observer: DisposableSingleObserver<ReturnType>) {
         disposable = buildUseCaseObservable()
             .subscribeOn(mBackgroundExecutor)

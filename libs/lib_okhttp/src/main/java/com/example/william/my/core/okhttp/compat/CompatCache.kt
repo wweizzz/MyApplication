@@ -14,10 +14,10 @@ object CompatCache {
     fun setCache(
         builder: OkHttpClient.Builder
     ) {
-        OkHttpConfig.app?.let { app ->
+        OkHttpConfig.getApp()?.let { app ->
             val cacheFile: File =
-                OkHttpConfig.cacheFile ?: File(getCacheDir(app), OkHttpConfig.cacheDirName)
-            builder.cache(Cache(cacheFile, OkHttpConfig.cacheDirSize))
+                OkHttpConfig.getCacheDir() ?: File(getCacheDir(app), OkHttpConfig.getCacheDirName())
+            builder.cache(Cache(cacheFile, OkHttpConfig.getCacheDirSize()))
             builder.addNetworkInterceptor(InterceptorCache(app))
         } ?: {
             HttpLog.error("context == null. 缓存未启用.")

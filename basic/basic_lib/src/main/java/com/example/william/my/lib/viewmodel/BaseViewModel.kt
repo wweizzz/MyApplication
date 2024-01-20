@@ -6,6 +6,6 @@ import androidx.lifecycle.ViewModel
 
 abstract class BaseViewModel : ViewModel(), DefaultLifecycleObserver {
 
-    var errorLiveData: MutableLiveData<Throwable> = MutableLiveData()
+    var error: MutableLiveData<Throwable> = MutableLiveData()
 
 }
