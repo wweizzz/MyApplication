@@ -34,7 +34,7 @@ class MvvmFragment : BaseRecyclerFragment<ArticleDetailData>() {
 
     override fun queryData() {
         super.queryData()
-        viewModel.loadArticle(page)
+        viewModel.loadArticle(mPage)
     }
 
     private fun obtainViewModel(): ArticleLiveDataViewModel =

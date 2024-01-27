@@ -3,6 +3,7 @@ package com.example.william.my.lib.fragment
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.chad.library.adapter4.BaseMultiItemAdapter
@@ -21,7 +22,8 @@ abstract class BaseRecyclerFragment<T : Any> : BaseVBFragment<BaseFragmentRecycl
     BaseQuickAdapter.OnItemClickListener<T>, BaseQuickAdapter.OnItemChildClickListener<T>,
     OnRefreshLoadMoreListener {
 
-    protected var page: Int = 0
+    protected var mPage: Int = 0
+    protected var mPageSize: Int = 20
 
     protected var mLayoutManager: RecyclerView.LayoutManager? = null
 
@@ -68,8 +70,23 @@ abstract class BaseRecyclerFragment<T : Any> : BaseVBFragment<BaseFragmentRecycl
         itemDecorations().forEach {
             mBinding.recyclerView.addItemDecoration(it)
         }
+
         scrollListener().forEach {
             mBinding.recyclerView.addOnScrollListener(it)
+        }
+
+        if (emptyView() != null) {
+            mAdapter?.isStateViewEnable = true
+            mMultiItemAdapter?.isStateViewEnable = true
+            mAdapter?.stateView = emptyView()
+            mMultiItemAdapter?.stateView = emptyView()
+        }
+
+        if (emptyResId() != 0) {
+            mAdapter?.isStateViewEnable = true
+            mMultiItemAdapter?.isStateViewEnable = true
+            mAdapter?.setStateViewLayout(requireContext(), emptyResId())
+            mMultiItemAdapter?.setStateViewLayout(requireContext(), emptyResId())
         }
     }
 
@@ -101,6 +118,14 @@ abstract class BaseRecyclerFragment<T : Any> : BaseVBFragment<BaseFragmentRecycl
         return arrayListOf()
     }
 
+    open fun emptyView(): View? {
+        return null
+    }
+
+    open fun emptyResId(): Int {
+        return 0
+    }
+
     open fun initRecyclerData(savedInstanceState: Bundle?) {}
 
     open fun queryData() {}
@@ -118,17 +143,19 @@ abstract class BaseRecyclerFragment<T : Any> : BaseVBFragment<BaseFragmentRecycl
     }
 
     fun onDataSuccess(list: List<T>?) {
-        if (list.isNullOrEmpty()) {
+        val newList = list ?: emptyList()
+
+        if (mPage == 1) {
+            mAdapter?.submitList(newList)
+            mMultiItemAdapter?.submitList(newList)
+        } else {
+            mAdapter?.addAll(newList)
+            mMultiItemAdapter?.addAll(newList)
+        }
+
+        if (newList.size < mPageSize) {
             mBinding.smartRefresh.setEnableLoadMore(false)
         } else {
-            if (page == 0) {
-
-                mAdapter?.submitList(list)
-                mMultiItemAdapter?.submitList(list)
-            } else {
-                mAdapter?.addAll(list)
-                mMultiItemAdapter?.addAll(list)
-            }
             mBinding.smartRefresh.setEnableLoadMore(canLoadMore())
         }
     }
@@ -142,13 +169,13 @@ abstract class BaseRecyclerFragment<T : Any> : BaseVBFragment<BaseFragmentRecycl
     }
 
     override fun onRefresh(refreshLayout: RefreshLayout) {
-        page = 0
+        mPage = 0
         queryData()
         mBinding.smartRefresh.finishRefresh(1000)
     }
 
     override fun onLoadMore(refreshLayout: RefreshLayout) {
-        page++
+        mPage++
         queryData()
         mBinding.smartRefresh.finishLoadMore(1000)
     }

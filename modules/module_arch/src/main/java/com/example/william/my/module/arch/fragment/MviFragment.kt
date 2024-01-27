@@ -56,7 +56,7 @@ class MviFragment : BaseRecyclerFragment<ArticleDetailData>() {
     override fun queryData() {
         super.queryData()
         lifecycleScope.launch {
-            viewModel.intent.send(ArticleIntent.LoadArticleIntent(page))
+            viewModel.intent.send(ArticleIntent.LoadArticleIntent(mPage))
         }
     }
 

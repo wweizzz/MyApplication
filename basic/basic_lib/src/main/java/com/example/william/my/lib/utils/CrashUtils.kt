@@ -61,8 +61,7 @@ object CrashUtils {
         }
         Thread.setDefaultUncaughtExceptionHandler(
             getUncaughtExceptionHandler(
-                dirPath,
-                onCrashListener
+                dirPath, onCrashListener
             )
         )
     }
@@ -123,24 +122,23 @@ object CrashUtils {
         }
 
         private fun append2Host(host: MutableMap<String, String>, extra: Map<String, String>?) {
-            if (extra == null || extra.isEmpty()) {
-                return
-            }
-            for ((key, value) in extra) {
-                append2Host(host, key, value)
+            extra?.let {
+                for ((key, value) in it) {
+                    append2Host(host, key, value)
+                }
             }
         }
 
         private fun append2Host(host: MutableMap<String, String>, key: String, value: String) {
-            var key = key
-            if (TextUtils.isEmpty(key) || TextUtils.isEmpty(value)) {
+            var tempKey = key
+            if (TextUtils.isEmpty(tempKey) || TextUtils.isEmpty(value)) {
                 return
             }
-            val delta = 19 - key.length // 19 is length of "Device Manufacturer"
+            val delta = 19 - tempKey.length // 19 is length of "Device Manufacturer"
             if (delta > 0) {
-                key += "                   ".substring(0, delta)
+                tempKey += "                   ".substring(0, delta)
             }
-            host[key] = value
+            host[tempKey] = value
         }
 
         private val appended: String
@@ -163,11 +161,9 @@ object CrashUtils {
             sb.append("Device Model       : ").append(Build.MODEL).append("\n")
             sb.append("Android Version    : ").append(Build.VERSION.RELEASE).append("\n")
             sb.append("Android SDK        : ").append(Build.VERSION.SDK_INT).append("\n")
-            sb.append("App VersionName    : ")
-                .append(getAppVersionName(BaseApp.app.packageName))
+            sb.append("App VersionName    : ").append(getAppVersionName(BaseApp.app.packageName))
                 .append("\n")
-            sb.append("App VersionCode    : ")
-                .append(getAppVersionCode(BaseApp.app.packageName))
+            sb.append("App VersionCode    : ").append(getAppVersionCode(BaseApp.app.packageName))
                 .append("\n")
             sb.append(appended)
             return sb.append(border).append("\n").toString()
@@ -175,14 +171,14 @@ object CrashUtils {
     }
 
     fun getFullStackTrace(throwable: Throwable?): String {
-        var throwable = throwable
-        val throwableList: MutableList<Throwable> = ArrayList()
-        while (throwable != null && !throwableList.contains(throwable)) {
-            throwableList.add(throwable)
-            throwable = throwable.cause
+        val throwableList = arrayListOf<Throwable>()
+        throwable?.let {
+            while (!throwableList.contains(it)) {
+                throwableList.add(it)
+            }
         }
         val size = throwableList.size
-        val frames: MutableList<String> = ArrayList()
+        val frames = arrayListOf<String>()
         var nextTrace = getStackFrameList(throwableList[size - 1])
         var i = size
         while (--i >= 0) {

@@ -33,6 +33,15 @@ abstract class BaseVBDialogFragment<VB : ViewBinding?>(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        initDialog()
+        initView(view, savedInstanceState)
+
+        initViewModel()
+        observeViewModel()
+    }
+
+    private fun initDialog() {
         dialog?.let { dialog ->
             //解决Dialog内存泄漏
             //X，显示过后的Dialog在Activity回到后台再重新进入后会重新显示
@@ -50,13 +59,26 @@ abstract class BaseVBDialogFragment<VB : ViewBinding?>(
                 window.setBackgroundDrawableResource(android.R.color.transparent)
             }
         }
-        initView(view, savedInstanceState)
     }
 
     /**
      * 在此方法内初始化控件
      */
     open fun initView(view: View?, state: Bundle?) {
+
+    }
+
+    /**
+     * 在此方法内初始化ViewModel
+     */
+    open fun initViewModel() {
+
+    }
+
+    /**
+     * 在此方法内监听ViewModel
+     */
+    open fun observeViewModel() {
 
     }
 

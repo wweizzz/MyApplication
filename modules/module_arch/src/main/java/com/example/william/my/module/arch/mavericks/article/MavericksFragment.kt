@@ -35,7 +35,7 @@ class MavericksFragment : BaseRecyclerFragment<ArticleDetailData>(), MavericksVi
 
     override fun queryData() {
         super.queryData()
-        viewModel.loadArticle(page)
+        viewModel.loadArticle(mPage)
     }
 
     /**

@@ -260,6 +260,8 @@ gradlePlugin-greendao = { group = "org.greenrobot", name = "greendao-gradle-plug
 gradlePlugin-objectbox = { group = "io.objectbox", name = "objectbox-gradle-plugin", version.ref = "gradlePluginObjectBox" }
 androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-ext-junit" }
 
+gradlePlugin-room = { group = "androidx.room", name = "room-gradle-plugin", version.ref = "androidxRoom" }
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "gradlePluginAndroid" }
 android-library = { id = "com.android.library", version.ref = "gradlePluginAndroid" }
@@ -268,6 +270,7 @@ kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "gradlePluginKot
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "gradlePluginKotlin" }
 
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "gradlePluginHilt" }
+room = { id = "androidx.room", version.ref = "androidxRoom" }
 
 # Plugins defined by this project
 nowinandroid-android-application = { id = "nowinandroid.android.application", version = "unspecified" }

@@ -34,7 +34,7 @@ class MvpFragment : BaseRecyclerFragment<ArticleDetailData>(), ArticleContract.V
 
     override fun queryData() {
         super.queryData()
-        presenter.loadArticle(page)
+        presenter.loadArticle(mPage)
     }
 
     override fun showArticle(articles: List<ArticleDetailData>) {
