@@ -15,6 +15,11 @@ import com.example.william.my.lib.utils.Utils
  * Google library Version Querier
  * DeteKt
  * Alibaba Java Coding Guidelines
+ * <p>
+ * TODO：basic_room:module_room(room,paging)
+ *       basic_repository:module_arch
+ *       ViewModel hilt
+ *       delete:flutter_boost
  */
 @Route(path = RouterPath.Module_Main)
 class ModuleActivity : RouterRecyclerActivity() {

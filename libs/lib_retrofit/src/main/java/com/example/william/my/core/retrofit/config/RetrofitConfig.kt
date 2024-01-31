@@ -11,26 +11,17 @@ object RetrofitConfig {
 
     private var mBaseUrl = "http://host/"
 
-    private var mErrorCode: String = "code"
-
-    private var mErrorMessage: String = "message"
-
     private var mOkHttpClient: OkHttpClient = OkHttpHelper.client()
 
     private var mConverterFactory: Converter.Factory = RetrofitConverterFactory.create()
 
     private var mCallAdapterFactory: CallAdapter.Factory = RxJava3CallAdapterFactory.create()
 
+    const val mCode: String = "code" // SerializedName, An annotation argument must be a compile-time constant
+    const val mMessage: String = "message" // SerializedName, An annotation argument must be a compile-time constant
+
     fun getBaseUrl(): String {
         return mBaseUrl
-    }
-
-    fun getErrorCode(): String {
-        return mErrorCode
-    }
-
-    fun getErrorMessage(): String {
-        return mErrorMessage
     }
 
     fun getOkHttpClient(): OkHttpClient {
@@ -49,16 +40,6 @@ object RetrofitConfig {
 
         fun setBaseUrl(url: String): Builder {
             RetrofitConfig.mBaseUrl = url
-            return this
-        }
-
-        fun setErrorCode(code: String): Builder {
-            RetrofitConfig.mErrorCode = code
-            return this
-        }
-
-        fun setErrorMessage(message: String): Builder {
-            RetrofitConfig.mErrorMessage = message
             return this
         }
 
