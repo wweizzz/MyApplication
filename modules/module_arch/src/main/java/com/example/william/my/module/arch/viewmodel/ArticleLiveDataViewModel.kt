@@ -18,7 +18,7 @@ package com.example.william.my.module.arch.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.william.my.basic.basic_repository.bean.ArticleListData
+import com.example.william.my.basic.basic_data.ArticleListData
 import com.example.william.my.basic.basic_repository.data.source.ArticleRepository
 import com.example.william.my.core.retrofit.callback.RetrofitLiveDataCallback
 import com.example.william.my.core.retrofit.exception.ExceptionHandler

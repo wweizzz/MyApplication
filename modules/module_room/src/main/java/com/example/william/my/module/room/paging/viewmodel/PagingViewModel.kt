@@ -11,9 +11,8 @@ import androidx.paging.cachedIn
 import androidx.paging.liveData
 import androidx.paging.rxjava3.cachedIn
 import androidx.paging.rxjava3.flowable
-import com.example.william.my.basic.basic_repository.api.ArticleApi
+import com.example.william.my.basic.basic_data.api.ArticleApi
 import com.example.william.my.basic.basic_repository.bean.ArticleDetailData
-import com.example.william.my.basic.basic_repository.bean.ArticleListData
 import com.example.william.my.basic.basic_repository.data.source.ArticleRepository
 import com.example.william.my.basic.basic_repository.database.ArticleDatabase
 import com.example.william.my.module.room.paging.mediator.ArticleRemoteMediator

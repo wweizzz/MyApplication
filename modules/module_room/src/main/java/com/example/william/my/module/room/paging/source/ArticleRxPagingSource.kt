@@ -2,9 +2,9 @@ package com.example.william.my.module.room.paging.source
 
 import androidx.paging.PagingState
 import androidx.paging.rxjava3.RxPagingSource
-import com.example.william.my.basic.basic_repository.api.ArticleApi
-import com.example.william.my.basic.basic_repository.bean.ArticleListData
+import com.example.william.my.basic.basic_data.api.ArticleApi
 import com.example.william.my.basic.basic_repository.bean.ArticleDetailData
+import com.example.william.my.basic.basic_data.ArticleListData
 import com.example.william.my.basic.basic_repository.data.source.ArticleRepository
 import com.example.william.my.core.retrofit.response.RetrofitResponse
 import io.reactivex.rxjava3.core.Single

@@ -16,8 +16,9 @@
 package com.example.william.my.basic.basic_repository.data.source
 
 import androidx.lifecycle.LiveData
+import com.example.william.my.basic.basic_data.ArticleBase
 import com.example.william.my.basic.basic_repository.bean.ArticleDetailData
-import com.example.william.my.basic.basic_repository.bean.ArticleListData
+import com.example.william.my.basic.basic_data.ArticleListData
 import com.example.william.my.basic.basic_repository.data.NetworkResult
 import com.example.william.my.core.retrofit.response.RetrofitResponse
 import io.reactivex.rxjava3.core.Single
@@ -28,7 +29,7 @@ import io.reactivex.rxjava3.core.Single
 interface ArticleDataSource {
 
     interface LoadArticleCallback {
-        fun onArticleLoaded(articles: List<ArticleDetailData>)
+        fun onArticleLoaded(articles: List<ArticleBase>)
         fun onDataNotAvailable()
     }
 
@@ -42,11 +43,11 @@ interface ArticleDataSource {
 
     suspend fun getArticleSuspend(page: Int): RetrofitResponse<ArticleListData>
 
-    suspend fun getArticleResult(page: Int): NetworkResult<List<ArticleDetailData>>
+    suspend fun getArticleResult(page: Int): NetworkResult<List<ArticleBase>>
 
-    fun saveArticles(articles: List<ArticleDetailData>)
+    fun saveArticles(articles: List<ArticleBase>)
 
-    fun saveArticle(article: ArticleDetailData)
+    fun saveArticle(article: ArticleBase)
 
     suspend fun deleteAllArticles()
 }

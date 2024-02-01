@@ -13,6 +13,8 @@ dependencies {
     implementation(project(":basic:basic_lib"))
     implementation(project(":basic:basic_module"))
 
+    api(project(":basic:basic_data"))
+
     api(project(":libs:lib_okhttp"))
     api(project(":libs:lib_retrofit"))
 }

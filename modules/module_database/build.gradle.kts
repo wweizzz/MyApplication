@@ -17,12 +17,12 @@ dependencies {
 
 //https://github.com/greenrobot/greenDAO/issues/1110
 //tasks.matching {
-//    it.name.matches(Regex("compile\\w*Kotlin"))
+//    it.name.matches(Regex("\\w*compile\\w*Kotlin"))
 //}.configureEach {
 //    dependsOn("greendao")
 //}
 //tasks.configureEach { task ->
-//    if (task.name.matches("compile\\w*Kotlin")) {
+//    if (task.name.matches("\\w*compile\\w*Kotlin")) {
 //        task.dependsOn('greendao')
 //    }
 //}

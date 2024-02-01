@@ -1,8 +1,5 @@
 package com.example.william.my.core.okhttp.compat
 
-import com.example.william.my.core.okhttp.config.OkHttpConfig
-import com.example.william.my.core.okhttp.interceptor.InterceptorCookie
-import com.example.william.my.core.okhttp.utils.HttpLog
 import okhttp3.Cookie
 import okhttp3.CookieJar
 import okhttp3.HttpUrl

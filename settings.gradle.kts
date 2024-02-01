@@ -63,6 +63,7 @@ include(":basic:basic_lib")
 include(":basic:basic_module")
 
 include(":basic:basic_data")
+include(":basic:basic_repo")
 include(":basic:basic_repository")
 
 include(":libs:lib_okhttp")
@@ -82,7 +83,7 @@ include(":libs:lib_ninepatch")
 include(":modules:module_flutter")
 
 include(":modules:module_opensource")
-include(":modules:module_database")
+//include(":modules:module_database")
 include(":modules:module_utils")
 
 include(":modules:module_demo")
@@ -90,11 +91,12 @@ include(":modules:module_widget")
 include(":modules:module_libraries")
 
 //:basic:basic_data
-include(":modules:module_network")
+//include(":modules:module_network")
 //:basic:basic_data
-include(":modules:module_sample")
+//include(":modules:module_sample")
+
+//:basic:basic_repo
+//include(":modules:module_arch")
 
 //:basic:basic_repository
-include(":modules:module_arch")
-//:basic:basic_repository
-include(":modules:module_room")
+//include(":modules:module_room")

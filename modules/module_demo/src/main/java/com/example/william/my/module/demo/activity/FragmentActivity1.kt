@@ -5,8 +5,6 @@ import android.view.View
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
-import androidx.lifecycle.Lifecycle
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.fragment.PrimaryDarkFragment
 import com.example.william.my.basic.basic_module.fragment.PrimaryFragment

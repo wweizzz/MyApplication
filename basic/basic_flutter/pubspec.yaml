@@ -26,10 +26,10 @@ dependencies:
 
   # = = = = = = = = = = = = = = = = = = = =
   # https://pub.dev/packages/flutter_boost
-  flutter_boost:
-    git:
-      url: 'https://github.com/alibaba/flutter_boost.git'
-      ref: '5.0.1'
+  # flutter_boost:
+  #   git:
+  #     url: 'https://github.com/alibaba/flutter_boost.git'
+  #    ref: '5.0.1'
   # https://pub.dev/packages/provider
   provider: ^6.1.1
   # https://pub.dev/packages/get

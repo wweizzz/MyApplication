@@ -1,8 +1,8 @@
 package com.example.william.my.core.okhttp.builder
 
 import com.example.william.my.core.okhttp.body.RequestProgressBody
-import com.example.william.my.core.okhttp.media.MediaType
 import com.example.william.my.core.okhttp.listener.RequestProgressListener
+import com.example.william.my.core.okhttp.media.MediaType
 import okhttp3.FormBody
 import okhttp3.MultipartBody
 import okhttp3.RequestBody

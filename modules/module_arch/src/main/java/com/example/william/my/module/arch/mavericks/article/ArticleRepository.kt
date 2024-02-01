@@ -3,7 +3,7 @@ package com.example.william.my.module.arch.mavericks.article
 import com.airbnb.mvrx.BuildConfig
 import com.airbnb.mvrx.ExperimentalMavericksApi
 import com.airbnb.mvrx.MavericksRepository
-import com.example.william.my.basic.basic_repository.api.ArticleApi
+import com.example.william.my.basic.basic_data.api.ArticleApi
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 

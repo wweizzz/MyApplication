@@ -5,7 +5,6 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.fragment.PrimaryDarkFragment
 import com.example.william.my.basic.basic_module.fragment.PrimaryFragment

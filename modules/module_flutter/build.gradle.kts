@@ -14,5 +14,4 @@ dependencies {
     implementation(project(":basic:basic_module"))
 
     implementation(project(":flutter"))
-    implementation(project(":flutter_boost"))
 }

@@ -1,6 +1,5 @@
 package com.example.william.my.module.opensource.activity
 
-import android.view.Gravity
 import android.view.View
 import androidx.core.content.ContextCompat
 import com.alibaba.android.arouter.facade.annotation.Route

@@ -37,7 +37,18 @@ import com.example.william.my.basic.basic_repository.database.dao.RemoteKeyDao
 abstract class ArticleDatabase : RoomDatabase() {
 
     companion object {
-        fun create(
+
+        private const val DB_NAME = "Articles.db"
+
+        private var instance: ArticleDatabase? = null
+        fun getInstance(context: Context) =
+            instance ?: synchronized(this) {
+                instance ?: createDataBase(context).also {
+                    instance = it
+                }
+            }
+
+        private fun createDataBase(
             context: Context,
             inMemory: Boolean = false
         ): ArticleDatabase {
@@ -55,7 +66,7 @@ abstract class ArticleDatabase : RoomDatabase() {
                 // Real database using SQLite
                 Room.databaseBuilder(
                     context.applicationContext,
-                    ArticleDatabase::class.java, "Articles.db"
+                    ArticleDatabase::class.java, DB_NAME
                 ).build()
             }
             return result

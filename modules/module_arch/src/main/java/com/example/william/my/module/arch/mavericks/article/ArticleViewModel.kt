@@ -2,7 +2,7 @@ package com.example.william.my.module.arch.mavericks.article
 
 import com.airbnb.mvrx.Loading
 import com.airbnb.mvrx.MavericksViewModel
-import com.example.william.my.basic.basic_repository.api.ArticleApi
+import com.example.william.my.basic.basic_data.api.ArticleApi
 import com.example.william.my.core.retrofit.helper.RetrofitHelper
 import kotlinx.coroutines.Dispatchers
 

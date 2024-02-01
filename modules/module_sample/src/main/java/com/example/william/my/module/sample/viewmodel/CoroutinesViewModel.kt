@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.william.my.basic.basic_data.bean.UserBean
-import com.example.william.my.basic.basic_data.data.NetworkResult
 import com.example.william.my.core.retrofit.response.RetrofitResponse
+import com.example.william.my.module.sample.data.NetworkResult
 import com.example.william.my.module.sample.repo.CoroutinesRepository
 import com.example.william.my.module.sample.utils.ThreadUtils
 import com.google.gson.Gson

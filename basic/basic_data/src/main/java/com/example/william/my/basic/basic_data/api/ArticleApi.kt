@@ -1,7 +1,7 @@
-package com.example.william.my.basic.basic_repository.api
+package com.example.william.my.basic.basic_data.api
 
+import com.example.william.my.basic.basic_data.ArticleListData
 import com.example.william.my.basic.basic_module.base.Constants
-import com.example.william.my.basic.basic_repository.bean.ArticleListData
 import com.example.william.my.core.retrofit.response.RetrofitResponse
 import io.reactivex.rxjava3.core.Single
 import retrofit2.http.GET

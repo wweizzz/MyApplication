@@ -56,18 +56,18 @@ internal fun Project.configureFeatureAndroid() {
         add("implementation", project(":modules:module_flutter"))
 
         add("implementation", project(":modules:module_opensource"))
-        add("implementation", project(":modules:module_database"))
+        //add("implementation", project(":modules:module_database"))
         add("implementation", project(":modules:module_utils"))
 
         add("implementation", project(":modules:module_demo"))
         add("implementation", project(":modules:module_widget"))
         add("implementation", project(":modules:module_libraries"))
 
-        add("implementation", project(":modules:module_network"))
-        add("implementation", project(":modules:module_sample"))
+        //add("implementation", project(":modules:module_network"))
+        //add("implementation", project(":modules:module_sample"))
 
-        add("implementation", project(":modules:module_arch"))
-        add("implementation", project(":modules:module_room"))
+        //add("implementation", project(":modules:module_arch"))
+        //add("implementation", project(":modules:module_room"))
 
     }
 }

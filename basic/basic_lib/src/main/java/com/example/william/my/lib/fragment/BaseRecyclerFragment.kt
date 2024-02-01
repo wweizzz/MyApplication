@@ -3,7 +3,6 @@ package com.example.william.my.lib.fragment
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.chad.library.adapter4.BaseMultiItemAdapter

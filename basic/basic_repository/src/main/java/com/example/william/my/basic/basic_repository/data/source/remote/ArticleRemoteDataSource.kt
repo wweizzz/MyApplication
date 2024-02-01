@@ -17,9 +17,10 @@ package com.example.william.my.basic.basic_repository.data.source.remote
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.william.my.basic.basic_repository.api.ArticleApi
+import com.example.william.my.basic.basic_data.ArticleBase
+import com.example.william.my.basic.basic_data.api.ArticleApi
 import com.example.william.my.basic.basic_repository.bean.ArticleDetailData
-import com.example.william.my.basic.basic_repository.bean.ArticleListData
+import com.example.william.my.basic.basic_data.ArticleListData
 import com.example.william.my.basic.basic_repository.data.NetworkResult
 import com.example.william.my.basic.basic_repository.data.source.ArticleDataSource
 import com.example.william.my.core.retrofit.callback.RetrofitLiveDataCallback
@@ -100,7 +101,7 @@ object ArticleRemoteDataSource : ArticleDataSource {
         return articleApi.getArticleSuspend(page)
     }
 
-    override suspend fun getArticleResult(page: Int): NetworkResult<List<ArticleDetailData>> {
+    override suspend fun getArticleResult(page: Int): NetworkResult<List<ArticleBase>> {
         return try {
             val response = articleApi.getArticleSuspend(page)
             NetworkResult.Success(response.data!!.datas)
@@ -109,11 +110,11 @@ object ArticleRemoteDataSource : ArticleDataSource {
         }
     }
 
-    override fun saveArticles(articles: List<ArticleDetailData>) {
+    override fun saveArticles(articles: List<ArticleBase>) {
 
     }
 
-    override fun saveArticle(article: ArticleDetailData) {
+    override fun saveArticle(article: ArticleBase) {
 
     }
 

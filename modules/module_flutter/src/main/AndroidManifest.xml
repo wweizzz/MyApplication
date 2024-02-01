@@ -3,29 +3,12 @@
 
     <application>
         <activity android:name=".FlutterMainActivity" />
-        <activity android:name=".activity.FlutterLayoutActivity" />
-        <activity android:name=".activity.FlutterContainerActivity" />
-        <activity android:name=".activity.FlutterScrollActivity" />
-        <activity android:name=".activity.FlutterFunctionActivity" />
-        <activity android:name=".activity.FlutterHttpActivity" />
-        <activity android:name=".activity.FlutterStateActivity" />
-        <activity android:name=".activity.FlutterPackagesActivity" />
-        <activity android:name=".activity.FlutterOtherActivity" />
+
         <activity
             android:name="io.flutter.embedding.android.FlutterActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:hardwareAccelerated="true"
             android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name="com.idlefish.flutterboost.containers.FlutterBoostActivity"
-            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|layoutDirection|fontScale|screenLayout|density"
-            android:hardwareAccelerated="true"
-            android:theme="@style/Theme.AppCompat"
-            android:windowSoftInputMode="adjustResize" />
-
-        <meta-data
-            android:name="flutterEmbedding"
-            android:value="2" />
     </application>
 
 </manifest>

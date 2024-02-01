@@ -3,7 +3,7 @@ package com.example.william.my.module.arch.mavericks.article
 import com.airbnb.mvrx.Async
 import com.airbnb.mvrx.MavericksState
 import com.airbnb.mvrx.Uninitialized
-import com.example.william.my.basic.basic_repository.bean.ArticleListData
+import com.example.william.my.basic.basic_data.ArticleListData
 import com.example.william.my.core.retrofit.response.RetrofitResponse
 
 /**

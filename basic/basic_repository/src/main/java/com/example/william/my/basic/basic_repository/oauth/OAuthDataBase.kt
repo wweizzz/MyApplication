@@ -2,7 +2,7 @@ package com.example.william.my.basic.basic_repository.oauth
 
 import android.content.Context
 import androidx.room.Database
-import androidx.room.Room.databaseBuilder
+import androidx.room.Room
 import androidx.room.RoomDatabase
 
 /**
@@ -29,7 +29,7 @@ abstract class OAuthDataBase : RoomDatabase() {
             }
 
         private fun createDataBase(context: Context): OAuthDataBase {
-            return databaseBuilder(context, OAuthDataBase::class.java, DB_NAME)
+            return Room.databaseBuilder(context, OAuthDataBase::class.java, DB_NAME)
                 //是否允许在主线程进行查询
                 .allowMainThreadQueries()
                 //数据库创建和打开后的回调

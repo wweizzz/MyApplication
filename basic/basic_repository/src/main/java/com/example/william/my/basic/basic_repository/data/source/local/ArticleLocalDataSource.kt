@@ -16,8 +16,9 @@
 package com.example.william.my.basic.basic_repository.data.source.local
 
 import androidx.lifecycle.LiveData
+import com.example.william.my.basic.basic_data.ArticleBase
+import com.example.william.my.basic.basic_data.ArticleListData
 import com.example.william.my.basic.basic_repository.bean.ArticleDetailData
-import com.example.william.my.basic.basic_repository.bean.ArticleListData
 import com.example.william.my.basic.basic_repository.data.NetworkResult
 import com.example.william.my.basic.basic_repository.data.source.ArticleDataSource
 import com.example.william.my.basic.basic_repository.database.dao.ArticleDao
@@ -65,11 +66,11 @@ class ArticleLocalDataSource(
         }
     }
 
-    override fun saveArticles(articles: List<ArticleDetailData>) {
+    override fun saveArticles(articles: List<ArticleBase>) {
         TODO("Not yet implemented")
     }
 
-    override fun saveArticle(article: ArticleDetailData) {
+    override fun saveArticle(article: ArticleBase) {
         TODO("Not yet implemented")
     }
 

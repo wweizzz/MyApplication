@@ -6,7 +6,6 @@ import org.greenrobot.greendao.annotation.Index;
 import org.greenrobot.greendao.annotation.Keep;
 
 import java.util.Date;
-
 import org.greenrobot.greendao.annotation.Generated;
 
 /**

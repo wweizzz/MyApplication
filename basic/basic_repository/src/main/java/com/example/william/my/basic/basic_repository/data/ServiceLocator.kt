@@ -17,7 +17,7 @@ package com.example.william.my.basic.basic_repository.data
 
 import android.content.Context
 import androidx.room.Room
-import com.example.william.my.basic.basic_repository.api.ArticleApi
+import com.example.william.my.basic.basic_data.api.ArticleApi
 import com.example.william.my.basic.basic_repository.data.source.ArticleDataSource
 import com.example.william.my.basic.basic_repository.data.source.ArticleRepository
 import com.example.william.my.basic.basic_repository.data.source.DefaultArticleRepository
@@ -80,7 +80,10 @@ object ServiceLocator {
     ): ArticleDatabase {
         val result = if (inMemory) {
             // Use a faster in-memory database for tests
-            Room.inMemoryDatabaseBuilder(context.applicationContext, ArticleDatabase::class.java)
+            Room.inMemoryDatabaseBuilder(
+                context.applicationContext,
+                ArticleDatabase::class.java
+            )
                 .allowMainThreadQueries()
                 .build()
         } else {
