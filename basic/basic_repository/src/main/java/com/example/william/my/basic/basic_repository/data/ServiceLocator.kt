@@ -17,9 +17,9 @@ package com.example.william.my.basic.basic_repository.data
 
 import android.content.Context
 import androidx.room.Room
-import com.example.william.my.basic.basic_data.api.ArticleApi
-import com.example.william.my.basic.basic_repository.data.source.ArticleDataSource
-import com.example.william.my.basic.basic_repository.data.source.ArticleRepository
+import com.example.william.my.basic.basic_data.data.source.ArticleDataSource
+import com.example.william.my.basic.basic_data.data.source.ArticleRepository
+import com.example.william.my.basic.basic_repo.api.ArticleApi
 import com.example.william.my.basic.basic_repository.data.source.DefaultArticleRepository
 import com.example.william.my.basic.basic_repository.data.source.local.ArticleLocalDataSource
 import com.example.william.my.basic.basic_repository.data.source.remote.ArticleRemoteDataSource
@@ -32,7 +32,7 @@ object ServiceLocator {
     private val lock = Any()
 
     @Volatile
-    private var articleApi: ArticleApi? = null
+    private var articleApi: com.example.william.my.basic.basic_repo.api.ArticleApi? = null
 
     @Volatile
     private var articleDatabase: ArticleDatabase? = null
@@ -40,7 +40,7 @@ object ServiceLocator {
     @Volatile
     private var articleRepository: ArticleRepository? = null
 
-    fun provideArticleApi(): ArticleApi {
+    fun provideArticleApi(): com.example.william.my.basic.basic_repo.api.ArticleApi {
         synchronized(this) {
             return articleApi ?: createApi()
         }
@@ -58,8 +58,8 @@ object ServiceLocator {
         }
     }
 
-    private fun createApi(): ArticleApi {
-        return RetrofitHelper.buildApi(ArticleApi::class.java)
+    private fun createApi(): com.example.william.my.basic.basic_repo.api.ArticleApi {
+        return RetrofitHelper.buildApi(com.example.william.my.basic.basic_repo.api.ArticleApi::class.java)
     }
 
     private fun createArticleLocalDataSource(context: Context): ArticleDataSource {

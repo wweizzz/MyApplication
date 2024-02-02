@@ -16,10 +16,11 @@
 package com.example.william.my.basic.basic_repository.data.source
 
 import androidx.lifecycle.LiveData
-import com.example.william.my.basic.basic_data.ArticleBase
-import com.example.william.my.basic.basic_repository.bean.ArticleDetailData
-import com.example.william.my.basic.basic_data.ArticleListData
-import com.example.william.my.basic.basic_repository.data.NetworkResult
+import com.example.william.my.basic.basic_data.bean.ArticleBase
+import com.example.william.my.basic.basic_data.data.NetworkResult
+import com.example.william.my.basic.basic_data.data.source.ArticleDataSource
+import com.example.william.my.basic.basic_data.data.source.ArticleRepository
+import com.example.william.my.basic.basic_repository.bean.ArticleData
 import com.example.william.my.core.retrofit.response.RetrofitResponse
 import io.reactivex.rxjava3.core.Single
 import kotlinx.coroutines.CoroutineDispatcher
@@ -51,7 +52,7 @@ class DefaultArticleRepository(
      */
     override fun getArticleLiveData(
         page: Int,
-        postValue: (RetrofitResponse<ArticleListData>) -> Unit
+        postValue: (RetrofitResponse<ArticleData>) -> Unit
     ) {
         articlesRemoteDataSource.getArticleLiveData(page, postValue)
     }
@@ -59,7 +60,7 @@ class DefaultArticleRepository(
     /**
      * ArticleLiveDataViewModel
      */
-    override fun getArticleLiveData(page: Int): LiveData<RetrofitResponse<ArticleListData>> {
+    override fun getArticleLiveData(page: Int): LiveData<RetrofitResponse<ArticleData>> {
         return articlesRemoteDataSource.getArticleLiveData(page)
     }
 
@@ -67,7 +68,7 @@ class DefaultArticleRepository(
      * Single
      * ArticleLiveDataViewModel
      */
-    override fun getArticleSingle(page: Int): Single<RetrofitResponse<ArticleListData>> {
+    override fun getArticleSingle(page: Int): Single<RetrofitResponse<ArticleData>> {
         return articlesRemoteDataSource.getArticleSingle(page)
     }
 
@@ -75,7 +76,7 @@ class DefaultArticleRepository(
      * Continuation
      * ArticleStateFlowViewModel
      */
-    override suspend fun getArticleSuspend(page: Int): RetrofitResponse<ArticleListData> {
+    override suspend fun getArticleSuspend(page: Int): RetrofitResponse<ArticleData> {
         return articlesRemoteDataSource.getArticleSuspend(page)
     }
 

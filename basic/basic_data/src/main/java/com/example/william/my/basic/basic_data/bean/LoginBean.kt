@@ -5,3 +5,9 @@ import com.example.william.my.core.okhttp.data.BaseData
 data class LoginBean(
     var data: LoginUserBean
 ) : BaseData()
+
+class LoginUserBean(
+    var id: String = "",
+    var email: String = "",
+    var nickname: String = "",
+) : BaseData()

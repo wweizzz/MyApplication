@@ -8,7 +8,6 @@ import 'page/my_counter.dart';
 import 'state/bloc/observer/my_bloc_observer.dart';
 
 void main() {
-
   Bloc.observer = const AppBlocObserver();
 
   //runApp(const MyApp());

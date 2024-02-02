@@ -1,15 +1,17 @@
 package com.example.william.my.basic.basic_repository.bean
 
+import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.william.my.basic.basic_data.ArticleBase
-import com.example.william.my.core.okhttp.data.BaseData
+import com.example.william.my.basic.basic_data.bean.ArticleBase
+import kotlinx.parcelize.Parcelize
 
-//data class ArticleListData(
-//    var curPage: Int = 0,
-//    var datas: List<ArticleDetailData> = arrayListOf()
-//) : BaseData()
+@Parcelize
+data class ArticleData(
+    var curPage: Int = 0,
+    var datas: List<ArticleDetailData> = arrayListOf()
+) : Parcelable
 
 @Entity(tableName = "Articles")
 data class ArticleDetailData(
