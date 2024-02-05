@@ -7,6 +7,7 @@ import io.reactivex.rxjava3.core.Single
 import okhttp3.MultipartBody
 import okhttp3.ResponseBody
 import retrofit2.Call
+import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Multipart
 import retrofit2.http.POST
@@ -45,9 +46,22 @@ interface NetworkApi {
     /**
      * RetrofitUploadActivity
      */
+    @POST
+    fun uploadFile(@Url url: String, @Body body: MultipartBody): Call<ResponseBody>
+
+    /**
+     * RetrofitUploadActivity
+     */
     @Multipart
     @POST
     fun uploadFile(@Url url: String, @Part part: MultipartBody.Part): Call<ResponseBody>
+
+    /**
+     * RetrofitUploadActivity
+     */
+    @Multipart
+    @POST
+    fun uploadFiles(@Url url: String, @Part parts: List<MultipartBody.Part>): Call<ResponseBody>
 
     // =============================================================================================
 
