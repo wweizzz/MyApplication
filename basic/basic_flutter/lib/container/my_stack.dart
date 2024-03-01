@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 /// Stack
+/// 用于将子组件堆叠在一起，可以通过设置alignment属性来控制子组件的对齐方式。一般和Positioned配合使用。
 class MyStack extends StatelessWidget {
   const MyStack({super.key});
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../common/log.dart';
 
-///GestureDetector
+/// GestureDetector 手势检测
 class MyGestureDetector extends StatelessWidget {
   const MyGestureDetector({super.key});
 

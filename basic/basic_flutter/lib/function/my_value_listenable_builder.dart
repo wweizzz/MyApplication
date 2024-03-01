@@ -1,3 +1,4 @@
+import 'package:basic_flutter/common/log.dart';
 import 'package:flutter/material.dart';
 
 /// ValueListenableBuilder
@@ -25,9 +26,10 @@ class ValueListenableBuilderRoute extends StatefulWidget {
 }
 
 class _ValueListenableBuilderState extends State<ValueListenableBuilderRoute> {
+  // 定义一个ValueNotifier，当数字变化时会通知 ValueListenableBuilder
   final ValueNotifier<int> _counter = ValueNotifier<int>(0);
 
-  _incrementCounter(BuildContext context) {
+  void _incrementCounter() {
     _counter.value += 1;
   }
 
@@ -51,20 +53,20 @@ class _ValueListenableBuilderState extends State<ValueListenableBuilderRoute> {
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              child!,
+              const Text('You have pushed the button this many times:'),
               Text('$value'),
             ],
           );
         },
         valueListenable: _counter,
-        child: const Text('You have pushed the button this many times:'),
       ),
     );
   }
 
   Widget getFAB(context) {
     return FloatingActionButton(
-      onPressed: _incrementCounter(context),
+      // 点击后值 +1，触发 ValueListenableBuilder 重新构建
+      onPressed: () => _incrementCounter(),
       tooltip: 'increment',
       child: const Icon(Icons.add),
     );

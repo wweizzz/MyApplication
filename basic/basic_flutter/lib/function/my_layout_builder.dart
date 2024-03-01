@@ -1,6 +1,7 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 
+/// LayoutBuilder
 class MyLayoutBuilder extends StatelessWidget {
   const MyLayoutBuilder({super.key});
 
@@ -38,11 +39,10 @@ class LayoutBuilderRoute extends StatelessWidget {
   List<Widget> buildChildren() {
     return generateWordPairs()
         .take(12)
-        .map((word) =>
-        Padding(
-          padding: const EdgeInsets.all(10),
-          child: Text(word.asPascalCase),
-        ))
+        .map((word) => Padding(
+              padding: const EdgeInsets.all(10),
+              child: Text(word.asPascalCase),
+            ))
         .toList();
   }
 }

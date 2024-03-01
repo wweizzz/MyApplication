@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// ConstrainedBox，用于给子元素添加额外的约束
+/// ConstrainedBox 用于给子元素添加额外的约束
 class MyConstrainedBox extends StatelessWidget {
   const MyConstrainedBox({super.key});
 
@@ -25,19 +25,20 @@ class ConstrainedBoxRoute extends StatelessWidget {
   Widget build(BuildContext context) {
     return ConstrainedBox(
       constraints: boxConstraints(),
-      child: blueBox(),
+      child: buildChild(),
     );
   }
 
   /// 传递给子元素的约束信息
-  BoxConstraints boxConstraints() =>
-      const BoxConstraints(
+  BoxConstraints boxConstraints() => const BoxConstraints(
         minWidth: double.infinity, //宽度尽可能大
         minHeight: 50.0, //最小高度为50像素
       );
 
-  DecoratedBox blueBox() =>
-      const DecoratedBox(
-        decoration: BoxDecoration(color: Colors.blue),
-      );
+  Widget buildChild() {
+    return Padding(
+      padding: const EdgeInsets.all(8),
+      child: Image.asset('images/pic1.jpg', width: 100, height: 100),
+    );
+  }
 }

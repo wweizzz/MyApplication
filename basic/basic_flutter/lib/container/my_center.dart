@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-/// Center，继承自 Align，其中 alignment 值为 Alignment.center
+/// Center
+/// Center本身不是视图，是一种布局的描述
+/// Center继承自 Align，其中 alignment 值为 Alignment.center
 class MyCenter extends StatelessWidget {
   const MyCenter({super.key});
 
@@ -42,7 +44,7 @@ class CenterRoute1 extends StatelessWidget {
       child: Center(
         widthFactor: 1.2,
         heightFactor: 1.2,
-        child: Image.asset('images/pic1.jpg', width: 100, height: 100),
+        child: buildChild(),
       ),
     );
   }
@@ -58,8 +60,12 @@ class CenterRoute2 extends StatelessWidget {
       decoration: const BoxDecoration(color: Colors.blue),
       child: Center(
         heightFactor: 1.2,
-        child: Image.asset('images/pic2.jpg', width: 100, height: 100),
+        child: buildChild(),
       ),
     );
   }
+}
+
+Widget buildChild() {
+  return Image.asset('images/pic1.jpg', width: 100, height: 100);
 }

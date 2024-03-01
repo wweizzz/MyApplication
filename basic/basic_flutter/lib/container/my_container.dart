@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// 容器
+/// Container
 class MyContainer extends StatelessWidget {
   const MyContainer({super.key});
 
@@ -12,7 +12,7 @@ class MyContainer extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Flutter Container demo'),
         ),
-        body: const Center(child: ContainerRoute()),
+        body: const ContainerRoute(),
       ),
     );
   }
@@ -28,6 +28,7 @@ class ContainerRoute extends StatelessWidget {
 
   Widget getBody() {
     return Container(
+      padding: const EdgeInsets.all(16),
       margin: const EdgeInsets.only(top: 50.0, left: 120.0),
       constraints: const BoxConstraints.tightFor(width: 200.0, height: 100.0),
       transform: Matrix4.rotationZ(.2),
@@ -51,8 +52,6 @@ class ContainerRoute extends StatelessWidget {
   }
 
   Widget buildChild() {
-    return const Text(
-      "Container",
-    );
+    return const Text("Container");
   }
 }

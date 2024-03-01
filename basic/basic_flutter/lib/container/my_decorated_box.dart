@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// 装饰
+/// DecoratedBox 用于给子元素添加装饰
 class MyDecoratedBox extends StatelessWidget {
   const MyDecoratedBox({super.key});
 
@@ -47,9 +47,9 @@ class DecoratedBoxRoute extends StatelessWidget {
   }
 
   Widget buildChild() {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 100.0, vertical: 20.0),
-      child: Text("Padding"),
+    return Padding(
+      padding: const EdgeInsets.all(8),
+      child: Image.asset('images/pic1.jpg', width: 100, height: 100),
     );
   }
 }

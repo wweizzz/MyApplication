@@ -39,14 +39,15 @@ class AlignRoute1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 120.0,
-      width: 120.0,
-      color: Colors.blue,
-      child: Align(
-        alignment: Alignment.topLeft,
-        child: Image.asset('images/pic1.jpg', width: 100, height: 100),
-      ),
+    return DecoratedBox(
+      decoration: const BoxDecoration(color: Colors.blue),
+      child: SizedBox(
+          width: 120,
+          height: 120,
+          child: Align(
+            alignment: Alignment.topLeft,
+            child: buildChild(),
+          )),
     );
   }
 }
@@ -62,7 +63,7 @@ class AlignRoute2 extends StatelessWidget {
         widthFactor: 1.2,
         heightFactor: 1.2,
         alignment: Alignment.topLeft,
-        child: Image.asset('images/pic2.jpg', width: 100, height: 100),
+        child: buildChild(),
       ),
     );
   }
@@ -80,7 +81,7 @@ class AlignRoute3 extends StatelessWidget {
         widthFactor: 1.2,
         heightFactor: 1.2,
         alignment: const Alignment(0, 0),
-        child: Image.asset('images/pic3.jpg', width: 100, height: 100),
+        child: buildChild(),
       ),
     );
   }
@@ -98,8 +99,12 @@ class AlignRoute4 extends StatelessWidget {
         widthFactor: 1.2,
         heightFactor: 1.2,
         alignment: const FractionalOffset(0, 0),
-        child: Image.asset('images/pic4.jpg', width: 100, height: 100),
+        child: buildChild(),
       ),
     );
   }
+}
+
+Widget buildChild() {
+  return Image.asset('images/pic1.jpg', width: 100, height: 100);
 }

@@ -53,7 +53,7 @@ class _InheritedWidgetRouteState extends State<InheritedWidgetRoute> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text('You have pushed the button this many times:'),
-            ShareDataText(),
+            ShareDataText(), // 子widget中依赖ShareDataWidget
           ],
         ),
       ),
@@ -62,7 +62,7 @@ class _InheritedWidgetRouteState extends State<InheritedWidgetRoute> {
 
   Widget getFAB() {
     return FloatingActionButton(
-      onPressed: _incrementCounter,
+      onPressed: () => _incrementCounter(),
       tooltip: 'increment',
       child: const Icon(Icons.add),
     );

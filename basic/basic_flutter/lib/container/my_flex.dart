@@ -23,8 +23,8 @@ class FlexRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
+    return Flex(
+      direction: Axis.horizontal,
       children: [
         Expanded(
           flex: 2,

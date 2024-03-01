@@ -9,6 +9,7 @@ import android.view.WindowManager
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import androidx.viewbinding.ViewBinding
+import com.alibaba.android.arouter.launcher.ARouter
 
 /**
  * onAttach -> onCreateDialog -> onCreateView -> onViewCreated -> onStart
@@ -21,6 +22,20 @@ abstract class BaseVBDialogFragment<VB : ViewBinding?>(
     protected val mBinding get() = _binding!!
 
     protected abstract fun getViewBinding(): VB
+
+    /**
+     * 在Fragment中，IProvider会在Fragment的生命周期方法onCreateView中被初始化。
+     * 这是因为Fragment的onCreateView方法是在Fragment被创建并添加到视图层次结构中时被调用的。
+     * 因此，当ARouter导航到一个Fragment时，IProvider会被初始化并提供页面所需的数据。
+     * 然而，在DialogFragment中，IProvider并不会在DialogFragment的生命周期方法onCreateView中被初始化。
+     * 这是因为DialogFragment的onCreateView方法是在DialogFragment被创建并显示出来时被调用的。
+     * 因此，当ARouter导航到一个DialogFragment时，IProvider并不会被初始化，因为DialogFragment还没有被显示出来。
+     */
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        ARouter.getInstance().inject(this)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
