@@ -2,7 +2,7 @@ package com.example.william.my.module.network.activity2
 
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.android.volley.VolleyError
-import com.example.william.my.basic.basic_data.bean.LoginBean
+import com.example.william.my.basic.basic_data.bean.Login
 import com.example.william.my.basic.basic_module.activity.BasicRecyclerActivity
 import com.example.william.my.basic.basic_module.base.Constants
 import com.example.william.my.basic.basic_module.router.path.RouterPath
@@ -32,16 +32,16 @@ class VolleyHelperActivity : BasicRecyclerActivity() {
 
     private fun post() {
         VolleyHelper
-            .builder<LoginBean>()
+            .builder<Login>()
             .url(Constants.Url_Login)
-            .clazz(LoginBean::class.java)
+            .clazz(Login::class.java)
             .addParam(Constants.Key_Username, Constants.Value_Username)
             .addParam(Constants.Key_Password, Constants.Value_Password)
             .post()
             .build()
-            .enqueue(this, object : VolleyListener<LoginBean>() {
-                override fun onResponse(response: LoginBean?) {
-                    val netSuccess = "onResponse: ${response?.string()}"
+            .enqueue(this, object : VolleyListener<Login>() {
+                override fun onResponse(response: Login?) {
+                    val netSuccess = "onResponse: " + response?.string()
                     showMessage(netSuccess)
                 }
 

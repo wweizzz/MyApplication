@@ -63,7 +63,7 @@ class RxRetrofitActivity : BasicRecyclerActivity() {
             .setProvider(this)
             .buildSingle()
             .subscribe(object : RetrofitResponseCallback<JsonElement>() {
-                override fun onResponse(response: JsonElement) {
+                override fun onResponse(response: JsonElement?) {
                     super.onResponse(response)
                     val netSuccess = "onResponse: " + Gson().toJson(response)
                     showMessage(netSuccess)
@@ -86,7 +86,7 @@ class RxRetrofitActivity : BasicRecyclerActivity() {
             .setProvider(this)
             .buildSingle()
             .subscribe(object : RetrofitResponseCallback<JsonElement>() {
-                override fun onResponse(response: JsonElement) {
+                override fun onResponse(response: JsonElement?) {
                     super.onResponse(response)
                     val netSuccess = "onResponse: " + Gson().toJson(response)
                     showMessage(netSuccess)
@@ -109,9 +109,9 @@ class RxRetrofitActivity : BasicRecyclerActivity() {
             .setProvider(this)
             .buildSingle()
             .subscribe(object : RetrofitResponseCallback<JsonElement>() {
-                override fun onResponse(response: JsonElement) {
+                override fun onResponse(response: JsonElement?) {
                     super.onResponse(response)
-                    val netSuccess = "onResponse: " + Gson().toJson(response)
+                    val netSuccess = "onResponse: " + response?.string()
                     showMessage(netSuccess)
                 }
 
@@ -133,9 +133,9 @@ class RxRetrofitActivity : BasicRecyclerActivity() {
             .setProvider(this)
             .buildSingle()
             .subscribe(object : RetrofitResponseCallback<JsonElement>() {
-                override fun onResponse(response: JsonElement) {
+                override fun onResponse(response: JsonElement?) {
                     super.onResponse(response)
-                    val netSuccess = "onResponse: " + Gson().toJson(response)
+                    val netSuccess = "onResponse: " + response?.string()
                     showMessage(netSuccess)
                 }
 
@@ -159,9 +159,9 @@ class RxRetrofitActivity : BasicRecyclerActivity() {
             .setProvider(this)
             .buildSingle()
             .subscribe(object : RetrofitResponseCallback<JsonElement>() {
-                override fun onResponse(response: JsonElement) {
+                override fun onResponse(response: JsonElement?) {
                     super.onResponse(response)
-                    val netSuccess = "onResponse: " + Gson().toJson(response)
+                    val netSuccess = "onResponse: " + response?.string()
                     showMessage(netSuccess)
                 }
 
@@ -171,5 +171,10 @@ class RxRetrofitActivity : BasicRecyclerActivity() {
                     showMessage(netError)
                 }
             })
+    }
+
+
+    private fun JsonElement.string(): String {
+        return Gson().toJson(this)
     }
 }

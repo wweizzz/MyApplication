@@ -91,7 +91,8 @@ include(":modules:module_widget")
 include(":modules:module_libraries")
 
 //:basic:basic_data
-//include(":modules:module_network")
+include(":modules:module_network")
+
 //:basic:basic_data
 //include(":modules:module_sample")
 

@@ -2,7 +2,7 @@ package com.example.william.my.module.network.activity2
 
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_data.api.NetworkApi
-import com.example.william.my.basic.basic_data.bean.UserBean
+import com.example.william.my.basic.basic_data.bean.Login
 import com.example.william.my.basic.basic_module.activity.BasicRecyclerActivity
 import com.example.william.my.basic.basic_module.base.Constants
 import com.example.william.my.basic.basic_module.router.path.RouterPath
@@ -43,22 +43,22 @@ class RetrofitRxJavaHelperActivity : BasicRecyclerActivity() {
         val api: NetworkApi = RetrofitHelper.buildApi(NetworkApi::class.java, retrofit)
 
         // 调用网络接口中的方法获取 Observable 对象
-        val single: Single<RetrofitResponse<UserBean?>> =
+        val single: Single<RetrofitResponse<Login?>> =
             api.loginSingle(Constants.Value_Username, Constants.Value_Password)
 
         // 创建 异常管理与线程切换的 Observable 对象
-        val retrofitSingle: Single<RetrofitResponse<UserBean?>> =
+        val retrofitSingle: Single<RetrofitResponse<Login?>> =
             RetrofitHelper.buildSingle(single)
 
         // 进行网络请求
-        retrofitSingle.subscribe(object : RetrofitResponseCallback<UserBean?>() {
+        retrofitSingle.subscribe(object : RetrofitResponseCallback<Login?>() {
             override fun onLoading() {
                 super.onLoading()
                 val netSuccess = "onLoading: "
                 showMessage(netSuccess)
             }
 
-            override fun onResponse(response: UserBean?) {
+            override fun onResponse(response: Login?) {
                 super.onResponse(response)
                 val netSuccess = "onResponse: " + response?.string()
                 showMessage(netSuccess)

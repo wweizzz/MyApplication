@@ -48,11 +48,11 @@ class RetrofitResponse<T> : BaseBean {
     val isSuccess: Boolean
         get() = code == State.SUCCESS
 
-    fun string(): Any? {
+    fun string(): String? {
         return Gson().toJson(this)
     }
 
-    fun T.string(): Any? {
+    fun T.string(): String? {
         return Gson().toJson(this)
     }
 

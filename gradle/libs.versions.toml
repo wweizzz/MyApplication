@@ -84,7 +84,7 @@ androidxTestEspresso = "3.5.1"
 # ##################################################################################################
 # https://developer.android.google.cn/studio/releases/gradle-plugin
 # gradlePluginAndroid = "7.4.2"
-gradlePluginAndroid = "8.3.0"
+gradlePluginAndroid = "8.3.1"
 gradlePluginKotlin = "1.9.22"
 gradlePluginProtobuf = "0.9.4"
 gradlePluginGreenDao = "3.3.1"

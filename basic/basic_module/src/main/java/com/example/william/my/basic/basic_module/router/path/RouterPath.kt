@@ -144,6 +144,7 @@ object RouterPath {
         const val Retrofit = "${Network}/Retrofit"
         const val RetrofitHelper = "${Network}/RetrofitHelper"
         const val RetrofitDownload = "${Network}/RetrofitDownload"
+        const val RetrofitUpload = "${Network}/RetrofitUpload"
 
         const val RetrofitRxJava = "${Network}/RetrofitRxJava"
         const val RetrofitRxJavaHelper = "${Network}/RetrofitRxJavaHelper"

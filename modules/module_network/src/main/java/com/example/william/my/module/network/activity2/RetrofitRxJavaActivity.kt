@@ -2,7 +2,7 @@ package com.example.william.my.module.network.activity2
 
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_data.api.NetworkApi
-import com.example.william.my.basic.basic_data.bean.UserBean
+import com.example.william.my.basic.basic_data.bean.Login
 import com.example.william.my.basic.basic_module.activity.BasicRecyclerActivity
 import com.example.william.my.basic.basic_module.base.Constants
 import com.example.william.my.basic.basic_module.router.path.RouterPath
@@ -49,15 +49,15 @@ class RetrofitRxJavaActivity : BasicRecyclerActivity() {
         val api: NetworkApi = retrofit.create(NetworkApi::class.java)
 
         // （4）调用网络接口中的方法获取 Observable 对象
-        val single: Single<RetrofitResponse<UserBean?>> =
+        val single: Single<RetrofitResponse<Login?>> =
             api.loginSingle(Constants.Value_Username, Constants.Value_Password)
 
         // （5）进行网络请求
         single
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : DisposableSingleObserver<RetrofitResponse<UserBean?>>() {
-                override fun onSuccess(response: RetrofitResponse<UserBean?>) {
+            .subscribe(object : DisposableSingleObserver<RetrofitResponse<Login?>>() {
+                override fun onSuccess(response: RetrofitResponse<Login?>) {
                     val netSuccess = "onResponse: " + response.string()
                     showMessage(netSuccess)
                 }
