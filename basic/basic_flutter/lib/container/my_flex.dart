@@ -34,7 +34,7 @@ class FlexRoute extends StatelessWidget {
           flex: 1,
         ),
         Expanded(
-          flex: 3,
+          flex: 4,
           child: Image.asset('images/pic2.jpg'),
         ),
         const Spacer(

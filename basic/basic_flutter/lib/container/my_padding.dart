@@ -31,21 +31,21 @@ class PaddingRoute extends StatelessWidget {
     return Column(
       //显式指定对齐方式为左对齐，排除对齐干扰
       crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
         Padding(
           //上下左右各添加16像素补白
-          padding: const EdgeInsets.all(8),
+          padding: const EdgeInsets.all(20),
           child: buildChild(),
         ),
         Padding(
           //上边添加8像素补白
-          padding: const EdgeInsets.only(top: 8),
+          padding: const EdgeInsets.only(left: 20),
           child: buildChild(),
         ),
         Padding(
           //上下各添加8像素补白
-          padding: const EdgeInsets.symmetric(vertical: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: buildChild(),
         ),
         Padding(

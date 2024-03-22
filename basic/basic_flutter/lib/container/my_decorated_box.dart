@@ -48,7 +48,7 @@ class DecoratedBoxRoute extends StatelessWidget {
 
   Widget buildChild() {
     return Padding(
-      padding: const EdgeInsets.all(8),
+      padding: const EdgeInsets.all(20),
       child: Image.asset('images/pic1.jpg', width: 100, height: 100),
     );
   }

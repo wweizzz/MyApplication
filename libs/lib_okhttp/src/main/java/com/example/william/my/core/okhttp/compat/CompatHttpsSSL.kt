@@ -3,7 +3,12 @@ package com.example.william.my.core.okhttp.compat
 import android.annotation.SuppressLint
 import okhttp3.OkHttpClient
 import java.security.cert.X509Certificate
-import javax.net.ssl.*
+import javax.net.ssl.HostnameVerifier
+import javax.net.ssl.HttpsURLConnection
+import javax.net.ssl.SSLContext
+import javax.net.ssl.SSLSocketFactory
+import javax.net.ssl.TrustManager
+import javax.net.ssl.X509TrustManager
 
 object CompatHttpsSSL {
 

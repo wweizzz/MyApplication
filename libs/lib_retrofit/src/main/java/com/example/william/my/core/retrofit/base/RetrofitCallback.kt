@@ -13,7 +13,7 @@ interface RetrofitCallback<T> {
      *
      * @param response
      */
-    fun onResponse(response: T)
+    fun onResponse(response: T?)
 
     /**
      * onFailure

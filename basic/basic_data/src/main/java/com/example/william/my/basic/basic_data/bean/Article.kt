@@ -2,11 +2,12 @@ package com.example.william.my.basic.basic_data.bean
 
 import com.example.william.my.core.okhttp.data.BaseData
 
-data class ArticleListBean(
-    var curPage: Int = 0, var datas: List<ArticleDetailBean> = arrayListOf()
+data class ArticleBean(
+    var curPage: Int = 0,
+    var datas: List<ArticleDetail> = arrayListOf(),
 ) : BaseData()
 
-data class ArticleDetailBean(
+data class ArticleDetail(
     var id: String = "",
     var title: String = "",
     var link: String = "",

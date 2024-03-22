@@ -17,11 +17,11 @@ package com.example.william.my.basic.basic_repo.data.source.remote
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.william.my.basic.basic_data.bean.ArticleBase
 import com.example.william.my.basic.basic_data.data.NetworkResult
 import com.example.william.my.basic.basic_data.data.source.ArticleDataSource
 import com.example.william.my.basic.basic_repo.api.ArticleApi
-import com.example.william.my.basic.basic_repo.bean.ArticleBean
+import com.example.william.my.basic.basic_repo.bean.ArticleDetailBean
+import com.example.william.my.basic.basic_repo.bean.ArticleListBean
 import com.example.william.my.core.retrofit.callback.RetrofitLiveDataCallback
 import com.example.william.my.core.retrofit.callback.RetrofitResponseCallback
 import com.example.william.my.core.retrofit.exception.ApiException
@@ -33,22 +33,25 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
 
-object ArticleRemoteDataSource : ArticleDataSource {
+object ArticleRemoteDataSource : ArticleDataSource<ArticleListBean, ArticleDetailBean> {
 
     private var articleApi = RetrofitHelper.buildApi(ArticleApi::class.java)
 
-    override fun getArticle(page: Int, callback: ArticleDataSource.LoadArticleCallback) {
-        articleApi.getArticleSingle(page)
-            .onErrorResumeNext(HttpResultFunction())
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : RetrofitResponseCallback<ArticleBean>() {
-                override fun onResponse(response: ArticleBean) {
+    override fun getArticleCallback(
+        page: Int,
+        callback: ArticleDataSource.LoadArticleCallback<ArticleDetailBean>
+    ) {
+        articleApi.getArticleSingle(page).onErrorResumeNext(HttpResultFunction())
+            .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : RetrofitResponseCallback<ArticleListBean>() {
+                override fun onResponse(response: ArticleListBean?) {
                     super.onResponse(response)
-                    if (response.datas.isNotEmpty()) {
-                        callback.onArticleLoaded(response.datas)
-                    } else {
-                        callback.onDataNotAvailable()
+                    response?.run {
+                        if (datas.isNotEmpty()) {
+                            callback.onArticleLoaded(datas)
+                        } else {
+                            callback.onDataNotAvailable()
+                        }
                     }
                 }
 
@@ -61,52 +64,47 @@ object ArticleRemoteDataSource : ArticleDataSource {
 
     override fun getArticleLiveData(
         page: Int,
-        postValue: (RetrofitResponse<ArticleBean>) -> Unit
+        postValue: (RetrofitResponse<ArticleListBean>) -> Unit
     ) {
-        articleApi.getArticleSingle(page)
-            .map(ServerResultFunction())
-            .onErrorResumeNext(HttpResultFunction())
-            .subscribeOn(Schedulers.io())
+        articleApi.getArticleSingle(page).map(ServerResultFunction())
+            .onErrorResumeNext(HttpResultFunction()).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object :
-                RetrofitLiveDataCallback<ArticleBean>() {
-                override fun onPostValue(value: RetrofitResponse<ArticleBean>) {
+            .subscribe(object : RetrofitLiveDataCallback<ArticleListBean>() {
+                override fun onPostValue(value: RetrofitResponse<ArticleListBean>?) {
                     super.onPostValue(value)
-                    postValue(value)
+                    value?.let {
+                        postValue(it)
+                    }
                 }
             })
     }
 
-    override fun getArticleLiveData(page: Int): LiveData<RetrofitResponse<ArticleBean>> {
-        val liveData: MutableLiveData<RetrofitResponse<ArticleBean>> =
-            MutableLiveData()
-        articleApi.getArticleSingle(page)
-            .map(ServerResultFunction())
-            .onErrorResumeNext(HttpResultFunction())
-            .subscribeOn(Schedulers.io())
+    override fun getArticleSingle(page: Int): Single<RetrofitResponse<ArticleListBean>> {
+        return articleApi.getArticleSingle(page).onErrorResumeNext(HttpResultFunction())
+            .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+    }
+
+    override fun getArticleLiveData(page: Int): LiveData<RetrofitResponse<ArticleListBean>> {
+        val liveData = MutableLiveData<RetrofitResponse<ArticleListBean>>()
+        articleApi.getArticleSingle(page).map(ServerResultFunction())
+            .onErrorResumeNext(HttpResultFunction()).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object :
-                RetrofitLiveDataCallback<ArticleBean>() {
-                override fun onPostValue(value: RetrofitResponse<ArticleBean>) {
+            .subscribe(object : RetrofitLiveDataCallback<ArticleListBean>() {
+                override fun onPostValue(value: RetrofitResponse<ArticleListBean>?) {
                     super.onPostValue(value)
-                    liveData.postValue(value)
+                    value?.let {
+                        liveData.postValue(it)
+                    }
                 }
             })
         return liveData
     }
 
-    override fun getArticleSingle(page: Int): Single<RetrofitResponse<ArticleBean>> {
-        return articleApi.getArticleSingle(page)
-            .onErrorResumeNext(HttpResultFunction())
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-    }
-
-    override suspend fun getArticleSuspend(page: Int): RetrofitResponse<ArticleBean> {
+    override suspend fun getArticleSuspend(page: Int): RetrofitResponse<ArticleListBean> {
         return articleApi.getArticleSuspend(page)
     }
 
-    override suspend fun getArticleResult(page: Int): NetworkResult<List<ArticleBase>> {
+    override suspend fun getArticleResult(page: Int): NetworkResult<List<ArticleDetailBean>> {
         return try {
             val response = articleApi.getArticleSuspend(page)
             NetworkResult.Success(response.data!!.datas)
@@ -115,15 +113,16 @@ object ArticleRemoteDataSource : ArticleDataSource {
         }
     }
 
-    override fun saveArticles(articles: List<ArticleBase>) {
-
+    override suspend fun saveArticle(article: ArticleDetailBean) {
+        TODO("Not yet implemented")
     }
 
-    override fun saveArticle(article: ArticleBase) {
-
+    override suspend fun saveArticles(articles: List<ArticleDetailBean>) {
+        TODO("Not yet implemented")
     }
+
 
     override suspend fun deleteAllArticles() {
-        // NO-OP
+        TODO("Not yet implemented")
     }
 }

@@ -2,9 +2,10 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:isolate';
 
-import '../common/urls.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
+
+import '../common/urls.dart';
 
 ///Isolate
 class MyIsolate extends StatelessWidget {

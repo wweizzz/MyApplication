@@ -13,14 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.william.my.basic.basic_repository.data.source
+package com.example.william.my.basic.basic_repo.data
 
 import androidx.lifecycle.LiveData
 import com.example.william.my.basic.basic_data.data.NetworkResult
 import com.example.william.my.basic.basic_data.data.source.ArticleDataSource
 import com.example.william.my.basic.basic_data.data.source.ArticleRepository
-import com.example.william.my.basic.basic_repository.bean.ArticleDetailData
-import com.example.william.my.basic.basic_repository.bean.ArticleListData
+import com.example.william.my.basic.basic_repo.bean.ArticleDetailBean
+import com.example.william.my.basic.basic_repo.bean.ArticleListBean
+
 import com.example.william.my.core.retrofit.response.RetrofitResponse
 import io.reactivex.rxjava3.core.Single
 import kotlinx.coroutines.CoroutineDispatcher
@@ -30,18 +31,18 @@ import kotlinx.coroutines.Dispatchers
  * Default implementation of [ArticleRepository]. Single entry point for managing Articles' data.
  */
 class DefaultArticleRepository(
-    private val articlesRemoteDataSource: ArticleDataSource<ArticleListData, ArticleDetailData>,
-    private val articlesLocalDataSource: ArticleDataSource<ArticleListData, ArticleDetailData>?,
+    private val articlesRemoteDataSource: ArticleDataSource<ArticleListBean, ArticleDetailBean>,
+    private val articlesLocalDataSource: ArticleDataSource<ArticleListBean, ArticleDetailBean>?,
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
-) : ArticleRepository<ArticleListData, ArticleDetailData> {
+) : ArticleRepository<ArticleListBean, ArticleDetailBean> {
 
     override fun getArticle(
         page: Int,
-        callback: ArticleRepository.LoadArticleCallback<ArticleDetailData>
+        callback: ArticleRepository.LoadArticleCallback<ArticleDetailBean>
     ) {
         articlesRemoteDataSource.getArticleCallback(
-            page, object : ArticleDataSource.LoadArticleCallback<ArticleDetailData> {
-                override fun onArticleLoaded(articles: List<ArticleDetailData>) {
+            page, object : ArticleDataSource.LoadArticleCallback<ArticleDetailBean> {
+                override fun onArticleLoaded(articles: List<ArticleDetailBean>) {
                     callback.onArticleLoaded(articles)
                 }
 
@@ -56,7 +57,7 @@ class DefaultArticleRepository(
      */
     override fun getArticleLiveData(
         page: Int,
-        postValue: (RetrofitResponse<ArticleListData>) -> Unit
+        postValue: (RetrofitResponse<ArticleListBean>) -> Unit
     ) {
         articlesRemoteDataSource.getArticleLiveData(page, postValue)
     }
@@ -64,7 +65,7 @@ class DefaultArticleRepository(
     /**
      * ArticleLiveDataViewModel
      */
-    override fun getArticleLiveData(page: Int): LiveData<RetrofitResponse<ArticleListData>> {
+    override fun getArticleLiveData(page: Int): LiveData<RetrofitResponse<ArticleListBean>> {
         return articlesRemoteDataSource.getArticleLiveData(page)
     }
 
@@ -72,7 +73,7 @@ class DefaultArticleRepository(
      * Single
      * ArticleLiveDataViewModel
      */
-    override fun getArticleSingle(page: Int): Single<RetrofitResponse<ArticleListData>> {
+    override fun getArticleSingle(page: Int): Single<RetrofitResponse<ArticleListBean>> {
         return articlesRemoteDataSource.getArticleSingle(page)
     }
 
@@ -80,14 +81,14 @@ class DefaultArticleRepository(
      * Continuation
      * ArticleStateFlowViewModel
      */
-    override suspend fun getArticleSuspend(page: Int): RetrofitResponse<ArticleListData> {
+    override suspend fun getArticleSuspend(page: Int): RetrofitResponse<ArticleListBean> {
         return articlesRemoteDataSource.getArticleSuspend(page)
     }
 
     override suspend fun getArticleResult(
         page: Int,
         forceUpdate: Boolean
-    ): NetworkResult<List<ArticleDetailData>> {
+    ): NetworkResult<List<ArticleDetailBean>> {
         // Set app as busy while this function executes.
         if (forceUpdate) {
             try {
@@ -104,7 +105,7 @@ class DefaultArticleRepository(
         if (remoteArticles is NetworkResult.Success) {
             // Real apps might want to do a proper sync, deleting, modifying or adding each task.
             articlesLocalDataSource?.deleteAllArticles()
-            val articles = remoteArticles as NetworkResult.Success<List<ArticleDetailData>>
+            val articles = remoteArticles as NetworkResult.Success<List<ArticleDetailBean>>
             articlesLocalDataSource?.saveArticles(articles.data)
         } else if (remoteArticles is NetworkResult.Error) {
             val articles = remoteArticles as NetworkResult.Error

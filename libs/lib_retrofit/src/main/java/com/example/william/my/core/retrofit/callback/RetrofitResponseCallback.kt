@@ -8,13 +8,11 @@ import io.reactivex.rxjava3.observers.DisposableSingleObserver
 /**
  * 处理基本逻辑
  */
-open class RetrofitResponseCallback<T> : DisposableSingleObserver<RetrofitResponse<T>>(),
-    RetrofitCallback<T> {
+abstract class RetrofitResponseCallback<T> :
+    DisposableSingleObserver<RetrofitResponse<T>>(), RetrofitCallback<T> {
 
     override fun onSuccess(t: RetrofitResponse<T>) {
-        t.data?.let {
-            onResponse(it)
-        }
+        onResponse(t.data)
     }
 
     override fun onError(e: Throwable) {
@@ -29,7 +27,7 @@ open class RetrofitResponseCallback<T> : DisposableSingleObserver<RetrofitRespon
 
     }
 
-    override fun onResponse(response: T) {
+    override fun onResponse(response: T?) {
 
     }
 

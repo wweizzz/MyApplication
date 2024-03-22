@@ -2,7 +2,15 @@ package com.example.william.my.lib.utils
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.location.*
+import android.location.Address
+import android.location.Criteria
+import android.location.Geocoder
+import android.location.GnssStatus
+import android.location.GpsStatus
+import android.location.Location
+import android.location.LocationListener
+import android.location.LocationManager
+import android.location.LocationProvider
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -10,7 +18,7 @@ import android.os.Looper
 import android.util.Log
 import androidx.annotation.RequiresApi
 import com.example.william.my.lib.app.BaseApp
-import java.util.*
+import java.util.Locale
 
 @SuppressLint("MissingPermission")
 object LocationManagerUtils {

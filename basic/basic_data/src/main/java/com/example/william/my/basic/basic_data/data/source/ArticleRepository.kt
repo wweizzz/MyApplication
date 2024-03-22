@@ -16,8 +16,6 @@
 package com.example.william.my.basic.basic_data.data.source
 
 import androidx.lifecycle.LiveData
-import com.example.william.my.basic.basic_data.bean.ArticleBase
-import com.example.william.my.basic.basic_data.bean.ArticleDetailBase
 import com.example.william.my.basic.basic_data.data.NetworkResult
 import com.example.william.my.core.retrofit.response.RetrofitResponse
 import io.reactivex.rxjava3.core.Single
@@ -25,28 +23,26 @@ import io.reactivex.rxjava3.core.Single
 /**
  * Interface to the data layer.
  */
-interface ArticleRepository {
+interface ArticleRepository<Article, ArticleDetail> {
 
-    interface LoadArticleCallback {
-        fun onArticleLoaded(articles: List<ArticleDetailBase>)
+    interface LoadArticleCallback<ArticleDetail> {
+        fun onArticleLoaded(articles: List<ArticleDetail>)
         fun onDataNotAvailable()
     }
 
-    fun getArticle(page: Int, callback: LoadArticleCallback)
+    fun getArticle(page: Int, callback: LoadArticleCallback<ArticleDetail>)
 
     fun getArticleLiveData(
-        page: Int,
-        postValue: (RetrofitResponse<ArticleBase>) -> Unit
+        page: Int, postValue: (RetrofitResponse<Article>) -> Unit
     )
 
-    fun getArticleLiveData(page: Int): LiveData<RetrofitResponse<ArticleBase>>
+    fun getArticleLiveData(page: Int): LiveData<RetrofitResponse<Article>>
 
-    fun getArticleSingle(page: Int): Single<RetrofitResponse<ArticleBase>>
+    fun getArticleSingle(page: Int): Single<RetrofitResponse<Article>>
 
-    suspend fun getArticleSuspend(page: Int): RetrofitResponse<ArticleBase>
+    suspend fun getArticleSuspend(page: Int): RetrofitResponse<Article>
 
     suspend fun getArticleResult(
-        page: Int,
-        forceUpdate: Boolean = false
-    ): NetworkResult<List<ArticleDetailBase>>
+        page: Int, forceUpdate: Boolean = false
+    ): NetworkResult<List<ArticleDetail>>
 }

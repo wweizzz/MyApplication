@@ -9,8 +9,8 @@ import io.reactivex.rxjava3.observers.DisposableSingleObserver
  * 处理基本逻辑
  * 携带状态的 LiveData Callback
  */
-open class RetrofitLiveDataCallback<T> : DisposableSingleObserver<RetrofitResponse<T>>(),
-    RetrofitCallback<RetrofitResponse<T>> {
+abstract class RetrofitLiveDataCallback<T> :
+    DisposableSingleObserver<RetrofitResponse<T>>(), RetrofitCallback<RetrofitResponse<T>> {
 
     override fun onSuccess(t: RetrofitResponse<T>) {
         onResponse(t)
@@ -28,7 +28,7 @@ open class RetrofitLiveDataCallback<T> : DisposableSingleObserver<RetrofitRespon
         onPostValue(RetrofitResponse.loading())
     }
 
-    override fun onResponse(response: RetrofitResponse<T>) {
+    override fun onResponse(response: RetrofitResponse<T>?) {
         try {
             onPostValue(response)
         } catch (e: Exception) {
@@ -40,7 +40,7 @@ open class RetrofitLiveDataCallback<T> : DisposableSingleObserver<RetrofitRespon
         onPostValue(RetrofitResponse.error(e.message))
     }
 
-    open fun onPostValue(value: RetrofitResponse<T>) {
+    open fun onPostValue(value: RetrofitResponse<T>?) {
 
     }
 }

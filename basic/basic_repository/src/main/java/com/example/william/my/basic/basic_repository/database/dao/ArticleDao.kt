@@ -21,6 +21,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.example.william.my.basic.basic_repository.bean.ArticleDetailData
 
 /**
  * Data Access Object for the article table.

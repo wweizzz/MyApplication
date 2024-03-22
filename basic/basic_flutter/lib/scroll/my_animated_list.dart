@@ -1,5 +1,6 @@
-import '../common/log.dart';
 import 'package:flutter/material.dart';
+
+import '../common/log.dart';
 
 /// AnimatedList
 class MyAnimatedList extends StatelessWidget {

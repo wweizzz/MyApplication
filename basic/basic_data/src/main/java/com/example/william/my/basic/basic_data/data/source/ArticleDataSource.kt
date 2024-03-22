@@ -16,8 +16,6 @@
 package com.example.william.my.basic.basic_data.data.source
 
 import androidx.lifecycle.LiveData
-import com.example.william.my.basic.basic_data.bean.ArticleBase
-import com.example.william.my.basic.basic_data.bean.ArticleDetailBase
 import com.example.william.my.basic.basic_data.data.NetworkResult
 import com.example.william.my.core.retrofit.response.RetrofitResponse
 import io.reactivex.rxjava3.core.Single
@@ -25,31 +23,33 @@ import io.reactivex.rxjava3.core.Single
 /**
  * Main entry point for accessing tasks data.
  */
-interface ArticleDataSource {
+interface ArticleDataSource<Article, ArticleDetail> {
 
-    interface LoadArticleCallback {
-        fun onArticleLoaded(articles: List<ArticleDetailBase>)
+    interface LoadArticleCallback<ArticleDetail> {
+        fun onArticleLoaded(articles: List<ArticleDetail>)
         fun onDataNotAvailable()
     }
 
-    fun getArticle(page: Int, callback: LoadArticleCallback)
+    fun getArticleCallback(
+        page: Int, callback: LoadArticleCallback<ArticleDetail>
+    )
 
     fun getArticleLiveData(
         page: Int,
-        postValue: (RetrofitResponse<ArticleBase>) -> Unit
+        postValue: (RetrofitResponse<Article>) -> Unit
     )
 
-    fun getArticleLiveData(page: Int): LiveData<ArticleBase>
+    fun getArticleSingle(page: Int): Single<RetrofitResponse<Article>>
 
-    fun getArticleSingle(page: Int): Single<ArticleBase>
+    fun getArticleLiveData(page: Int): LiveData<RetrofitResponse<Article>>
 
-    suspend fun getArticleSuspend(page: Int): ArticleBase
+    suspend fun getArticleSuspend(page: Int): RetrofitResponse<Article>
 
-    suspend fun getArticleResult(page: Int): NetworkResult<List<ArticleDetailBase>>
+    suspend fun getArticleResult(page: Int): NetworkResult<List<ArticleDetail>>
 
-    fun saveArticles(articles: List<ArticleBase>)
+    suspend fun saveArticle(article: ArticleDetail)
 
-    fun saveArticle(article: ArticleBase)
+    suspend fun saveArticles(articles: List<ArticleDetail>)
 
     suspend fun deleteAllArticles()
 }

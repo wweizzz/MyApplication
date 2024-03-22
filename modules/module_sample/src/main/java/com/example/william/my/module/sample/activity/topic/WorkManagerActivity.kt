@@ -31,9 +31,9 @@ class WorkManagerActivity : BasicResponseActivity() {
 
     private lateinit var constraints: Constraints
 
-    private lateinit var oneTimeWorkRequest: OneTimeWorkRequest // 一次性工作
+    private lateinit var oneTimeWorkRequest: OneTimeWorkRequest
 
-    private lateinit var periodicWorkRequest: PeriodicWorkRequest // 定期工作，可以定义的最短重复间隔是 15 分钟
+    private lateinit var periodicWorkRequest: PeriodicWorkRequest
 
     override fun initView() {
         super.initView()
@@ -53,16 +53,16 @@ class WorkManagerActivity : BasicResponseActivity() {
     }
 
     private fun initWorkRequest() {
-        oneTimeWorkRequest = OneTimeWorkRequestBuilder<UploadWorker>()
+        oneTimeWorkRequest = OneTimeWorkRequestBuilder<UploadWorker>() // 一次性工作
             // Additional configuration
             .build()
 
-        periodicWorkRequest = PeriodicWorkRequestBuilder<UploadWorker>(1, TimeUnit.HOURS)
+        periodicWorkRequest = PeriodicWorkRequestBuilder<UploadWorker>(1, TimeUnit.HOURS) // 定期工作，可以定义的最短重复间隔是 15 分钟
             // Additional configuration
             .build()
 
-        val expeditedRequest =
-            OneTimeWorkRequestBuilder<ExpeditedWorker>().setExpedited(OutOfQuotaPolicy.RUN_AS_NON_EXPEDITED_WORK_REQUEST) // 执行加急工作
+        val expeditedRequest = OneTimeWorkRequestBuilder<ExpeditedWorker>()
+            .setExpedited(OutOfQuotaPolicy.RUN_AS_NON_EXPEDITED_WORK_REQUEST) // 执行加急工作
                 .build()
 
         val myWorkRequest = OneTimeWorkRequestBuilder<UploadWorker>()
