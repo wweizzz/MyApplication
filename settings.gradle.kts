@@ -93,11 +93,11 @@ include(":modules:module_libraries")
 //:basic:basic_data
 include(":modules:module_network")
 
-//:basic:basic_data
-//include(":modules:module_sample")
+//:basic:basic_repo
+include(":modules:module_sample")
 
 //:basic:basic_repo
 //include(":modules:module_arch")
 
 //:basic:basic_repository
-//include(":modules:module_room")
+include(":modules:module_room")

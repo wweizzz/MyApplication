@@ -32,11 +32,17 @@ class ArticleLocalDataSource(
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : ArticleDataSource<ArticleListData, ArticleDetailData> {
 
-    override fun getArticleCallback(page: Int, callback: ArticleDataSource.LoadArticleCallback) {
+    override fun getArticleCallback(
+        page: Int,
+        callback: ArticleDataSource.LoadArticleCallback<ArticleDetailData>
+    ) {
         TODO("Not yet implemented")
     }
 
-    override fun getArticleLiveData(page: Int, postValue: (RetrofitResponse<ArticleListData>) -> Unit) {
+    override fun getArticleLiveData(
+        page: Int,
+        postValue: (RetrofitResponse<ArticleListData>) -> Unit
+    ) {
         TODO("Not yet implemented")
     }
 

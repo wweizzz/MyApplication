@@ -65,10 +65,10 @@ internal fun Project.configureFeatureAndroid() {
 
         add("implementation", project(":modules:module_network"))
 
-        //add("implementation", project(":modules:module_sample"))
+        add("implementation", project(":modules:module_sample"))
 
         //add("implementation", project(":modules:module_arch"))
 
-        //add("implementation", project(":modules:module_room"))
+        add("implementation", project(":modules:module_room"))
     }
 }

@@ -2,13 +2,14 @@ package com.example.william.my.module.room.paging.source
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.example.william.my.basic.basic_data.api.ArticleApi
+import com.example.william.my.basic.basic_data.data.source.ArticleRepository
+import com.example.william.my.basic.basic_repository.api.ArticleApi
 import com.example.william.my.basic.basic_repository.bean.ArticleDetailData
-import com.example.william.my.basic.basic_repository.data.source.ArticleRepository
+import com.example.william.my.basic.basic_repository.bean.ArticleListData
 
 class ArticlePagingSource(
     private val networkApi: ArticleApi,
-    private val articleRepository: ArticleRepository
+    private val articleRepository: ArticleRepository<ArticleListData, ArticleDetailData>
 ) :
     PagingSource<Int, ArticleDetailData>() {
 

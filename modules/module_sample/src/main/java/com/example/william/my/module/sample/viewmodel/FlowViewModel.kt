@@ -3,7 +3,8 @@ package com.example.william.my.module.sample.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.example.william.my.basic.basic_data.bean.UserBean
+import com.example.william.my.basic.basic_data.bean.Login
+import com.example.william.my.basic.basic_data.bean.LoginUser
 import com.example.william.my.core.retrofit.response.RetrofitResponse
 import com.example.william.my.module.sample.data.NetworkResult
 import com.example.william.my.module.sample.repo.FlowRepository
@@ -27,10 +28,10 @@ class FlowViewModel(private val repository: FlowRepository) : ViewModel() {
 
     // Backing property to avoid state updates from other classes
     private val _uiState =
-        MutableStateFlow<NetworkResult<RetrofitResponse<UserBean?>>>(NetworkResult.Loading)
+        MutableStateFlow<NetworkResult<RetrofitResponse<Login?>>>(NetworkResult.Loading)
 
     // The UI collects from this StateFlow to get its state updates
-    val uiState: StateFlow<NetworkResult<RetrofitResponse<UserBean?>>> = _uiState
+    val uiState: StateFlow<NetworkResult<RetrofitResponse<Login?>>> = _uiState
 
     /**
      * 3. 从数据流中进行收集
@@ -43,7 +44,7 @@ class FlowViewModel(private val repository: FlowRepository) : ViewModel() {
             //打印线程
             ThreadUtils.isMainThread("FlowViewModel login")
 
-            val flow: Flow<RetrofitResponse<UserBean?>> =
+            val flow: Flow<RetrofitResponse<Login?>> =
                 repository.login(username, password)
 
             // 使用 collect 触发流并消耗其元素

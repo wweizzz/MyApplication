@@ -19,7 +19,10 @@ import android.content.Context
 import androidx.room.Room
 import com.example.william.my.basic.basic_data.data.source.ArticleDataSource
 import com.example.william.my.basic.basic_data.data.source.ArticleRepository
-import com.example.william.my.basic.basic_repo.api.ArticleApi
+
+import com.example.william.my.basic.basic_repository.api.ArticleApi
+import com.example.william.my.basic.basic_repository.bean.ArticleDetailData
+import com.example.william.my.basic.basic_repository.bean.ArticleListData
 import com.example.william.my.basic.basic_repository.data.source.DefaultArticleRepository
 import com.example.william.my.basic.basic_repository.data.source.local.ArticleLocalDataSource
 import com.example.william.my.basic.basic_repository.data.source.remote.ArticleRemoteDataSource
@@ -32,15 +35,15 @@ object ServiceLocator {
     private val lock = Any()
 
     @Volatile
-    private var articleApi: com.example.william.my.basic.basic_repo.api.ArticleApi? = null
+    private var articleApi: ArticleApi? = null
 
     @Volatile
     private var articleDatabase: ArticleDatabase? = null
 
     @Volatile
-    private var articleRepository: ArticleRepository? = null
+    private var articleRepository: ArticleRepository<ArticleListData, ArticleDetailData>? = null
 
-    fun provideArticleApi(): com.example.william.my.basic.basic_repo.api.ArticleApi {
+    fun provideArticleApi(): ArticleApi {
         synchronized(this) {
             return articleApi ?: createApi()
         }
@@ -52,24 +55,23 @@ object ServiceLocator {
         }
     }
 
-    fun provideArticleRepository(context: Context): ArticleRepository {
+    fun provideArticleRepository(context: Context): ArticleRepository<ArticleListData, ArticleDetailData> {
         synchronized(this) {
             return articleRepository ?: createArticleRepository(context)
         }
     }
 
-    private fun createApi(): com.example.william.my.basic.basic_repo.api.ArticleApi {
-        return RetrofitHelper.buildApi(com.example.william.my.basic.basic_repo.api.ArticleApi::class.java)
+    private fun createApi(): ArticleApi {
+        return RetrofitHelper.buildApi(ArticleApi::class.java)
     }
 
-    private fun createArticleLocalDataSource(context: Context): ArticleDataSource {
+    private fun createArticleLocalDataSource(context: Context): ArticleDataSource<ArticleListData, ArticleDetailData> {
         val database = articleDatabase ?: createDataBase(context)
         return ArticleLocalDataSource(database.articleDao())
     }
 
-    private fun createArticleRepository(context: Context): ArticleRepository {
-        val newRepo =
-            DefaultArticleRepository(ArticleRemoteDataSource, createArticleLocalDataSource(context))
+    private fun createArticleRepository(context: Context): ArticleRepository<ArticleListData, ArticleDetailData> {
+        val newRepo = DefaultArticleRepository(ArticleRemoteDataSource, createArticleLocalDataSource(context))
         articleRepository = newRepo
         return newRepo
     }

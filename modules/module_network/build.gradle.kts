@@ -21,6 +21,7 @@ dependencies {
     implementation(project(":basic:basic_data"))
 
     implementation(libs.coil)
+    implementation(libs.slf4j)
     implementation(libs.netty)
     implementation(libs.nanohttpd)
     implementation(libs.websocket)
@@ -29,6 +30,4 @@ dependencies {
     implementation(project(":libs:lib_retrofit"))
     implementation(project(":libs:lib_download"))
     implementation(project(":libs:lib_websocket"))
-
-    implementation("org.slf4j:slf4j-nop:2.0.7")
 }

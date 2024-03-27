@@ -23,7 +23,7 @@ import io.reactivex.rxjava3.core.Single
 /**
  * Interface to the data layer.
  */
-interface ArticleRepository<Article, ArticleDetail> {
+interface ArticleRepository<ArticleList, ArticleDetail> {
 
     interface LoadArticleCallback<ArticleDetail> {
         fun onArticleLoaded(articles: List<ArticleDetail>)
@@ -33,14 +33,14 @@ interface ArticleRepository<Article, ArticleDetail> {
     fun getArticle(page: Int, callback: LoadArticleCallback<ArticleDetail>)
 
     fun getArticleLiveData(
-        page: Int, postValue: (RetrofitResponse<Article>) -> Unit
+        page: Int, postValue: (RetrofitResponse<ArticleList>) -> Unit
     )
 
-    fun getArticleLiveData(page: Int): LiveData<RetrofitResponse<Article>>
+    fun getArticleLiveData(page: Int): LiveData<RetrofitResponse<ArticleList>>
 
-    fun getArticleSingle(page: Int): Single<RetrofitResponse<Article>>
+    fun getArticleSingle(page: Int): Single<RetrofitResponse<ArticleList>>
 
-    suspend fun getArticleSuspend(page: Int): RetrofitResponse<Article>
+    suspend fun getArticleSuspend(page: Int): RetrofitResponse<ArticleList>
 
     suspend fun getArticleResult(
         page: Int, forceUpdate: Boolean = false

@@ -5,10 +5,11 @@ import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
-import com.example.william.my.basic.basic_data.api.ArticleApi
+import com.example.william.my.basic.basic_data.data.source.ArticleRepository
+import com.example.william.my.basic.basic_repository.api.ArticleApi
 import com.example.william.my.basic.basic_repository.bean.ArticleDetailData
+import com.example.william.my.basic.basic_repository.bean.ArticleListData
 import com.example.william.my.basic.basic_repository.bean.RemoteKeyData
-import com.example.william.my.basic.basic_repository.data.source.ArticleRepository
 import com.example.william.my.basic.basic_repository.database.ArticleDatabase
 import com.example.william.my.lib.utils.Utils
 import retrofit2.HttpException
@@ -19,7 +20,7 @@ import java.util.concurrent.TimeUnit
 class ArticleRemoteMediator(
     private val database: ArticleDatabase,
     private val networkApi: ArticleApi,
-    private val repository: ArticleRepository
+    private val repository: ArticleRepository<ArticleListData, ArticleDetailData>
 ) : RemoteMediator<Int, ArticleDetailData>() {
 
     private val articleDao = database.articleDao()

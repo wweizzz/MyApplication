@@ -23,7 +23,7 @@ import io.reactivex.rxjava3.core.Single
 /**
  * Main entry point for accessing tasks data.
  */
-interface ArticleDataSource<Article, ArticleDetail> {
+interface ArticleDataSource<ArticleList, ArticleDetail> {
 
     interface LoadArticleCallback<ArticleDetail> {
         fun onArticleLoaded(articles: List<ArticleDetail>)
@@ -36,14 +36,14 @@ interface ArticleDataSource<Article, ArticleDetail> {
 
     fun getArticleLiveData(
         page: Int,
-        postValue: (RetrofitResponse<Article>) -> Unit
+        postValue: (RetrofitResponse<ArticleList>) -> Unit
     )
 
-    fun getArticleSingle(page: Int): Single<RetrofitResponse<Article>>
+    fun getArticleSingle(page: Int): Single<RetrofitResponse<ArticleList>>
 
-    fun getArticleLiveData(page: Int): LiveData<RetrofitResponse<Article>>
+    fun getArticleLiveData(page: Int): LiveData<RetrofitResponse<ArticleList>>
 
-    suspend fun getArticleSuspend(page: Int): RetrofitResponse<Article>
+    suspend fun getArticleSuspend(page: Int): RetrofitResponse<ArticleList>
 
     suspend fun getArticleResult(page: Int): NetworkResult<List<ArticleDetail>>
 

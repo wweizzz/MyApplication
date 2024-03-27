@@ -4,10 +4,11 @@ import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.rxjava3.RxRemoteMediator
-import com.example.william.my.basic.basic_data.api.ArticleApi
+import com.example.william.my.basic.basic_data.data.source.ArticleRepository
+import com.example.william.my.basic.basic_repository.api.ArticleApi
 import com.example.william.my.basic.basic_repository.bean.ArticleDetailData
+import com.example.william.my.basic.basic_repository.bean.ArticleListData
 import com.example.william.my.basic.basic_repository.bean.RemoteKeyData
-import com.example.william.my.basic.basic_repository.data.source.ArticleRepository
 import com.example.william.my.basic.basic_repository.database.ArticleDatabase
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.functions.Function
@@ -19,7 +20,7 @@ import java.io.IOException
 class RxRemoteMediator(
     private val database: ArticleDatabase,
     private val networkApi: ArticleApi,
-    private val repository: ArticleRepository
+    private val repository: ArticleRepository<ArticleListData, ArticleDetailData>
 ) : RxRemoteMediator<Int, ArticleDetailData>() {
 
     private val articleDao = database.articleDao()
