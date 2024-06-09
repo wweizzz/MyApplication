@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application>
+        <activity android:name=".activity.ComposeActivity" />
+        <activity android:name=".activity.LazyColumnActivity" />
+
+        <activity android:name=".activity.basic.TextActivity" />
+        <activity android:name=".activity.basic.ButtonActivity" />
+        <activity android:name=".activity.basic.ImageActivity" />
+        <activity android:name=".activity.basic.CanvasActivity" />
+        <activity android:name=".activity.basic.EffectActivity" />
+
+        <activity android:name=".activity.basic.ConstraintLayoutActivity" />
+        <activity android:name=".activity.basic.HorizontalPagerActivity" />
+
+        <activity android:name=".activity.basic.CompositionLocalActivity" />
+
+        <activity android:name=".activity.navigation.BackHandlerActivity" />
+        <activity android:name=".activity.navigation.NavHostActivity" />
+        <activity android:name=".activity.navigation.RememberActivity" />
+
+        <activity android:name=".activity.draggable.DraggableActivity" />
+        <activity android:name=".activity.draggable.DragGesturesActivity" />
+
+        <activity android:name=".activity.swipeable.AnchoredDraggableActivity" />
+
+        <activity android:name=".activity.dragging.GuaguaCardActivity" />
+    </application>
+
+</manifest>

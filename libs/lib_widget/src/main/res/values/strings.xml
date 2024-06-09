@@ -1,0 +1,7 @@
+<resources>
+    <string name="dialog_title">标题</string>
+    <string name="dialog_message">提示信息</string>
+    <string name="dialog_ok">确定</string>
+    <string name="dialog_cancel">取消</string>
+    <string name="loading_message">加载中……</string>
+</resources>

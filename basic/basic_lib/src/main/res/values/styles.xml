@@ -1,0 +1,59 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Basics_AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="Basics_FullScreenTheme" parent="Basics_AppTheme">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="Basics_TranslucentTheme" parent="Basics_AppTheme">
+        <!--不设置activity进入和退出动画样式-->
+        <item name="android:windowAnimationStyle">@null</item>
+        <!--设置状态栏的背景为半透明-->
+        <item name="android:windowTranslucentStatus">true</item>
+        <!--设置窗口的背景是否为半透明，设置透明背景必须要设置此项-->
+        <item name="android:windowIsTranslucent">true</item>
+        <!--设置窗口的背景为透明，设置透明背景必须要设置此项-->
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <style name="Basics_WindowAnimTheme_Slide" parent="Basics_AppTheme">
+        <item name="android:windowAnimationStyle">@style/Basics_Activity_Translate_Slide</item>
+    </style>
+
+    <style name="Basics_Activity_Translate_Slide" parent="@android:style/Animation.Translucent">
+        <item name="android:activityOpenEnterAnimation">@anim/basic_anim_slide_in_left</item>
+        <item name="android:activityOpenExitAnimation">@anim/basic_anim_slide_out_left</item>
+        <item name="android:activityCloseEnterAnimation">@anim/basic_anim_slide_in_right</item>
+        <item name="android:activityCloseExitAnimation">@anim/basic_anim_slide_out_right</item>
+    </style>
+
+    <style name="Basics_Dialog_Translate_Slide_Alpha" parent="@android:style/Animation.Translucent">
+        <item name="android:windowEnterAnimation">@anim/basic_anim_slide_alpha_in_top</item>
+        <item name="android:windowExitAnimation">@anim/basic_anim_slide_alpha_out_top</item>
+    </style>
+
+    <style name="Basics_ScrollViewStyle">
+        <!--下拉时顶部出现的半月形阴影效果-->
+        <item name="android:overScrollMode">never</item>
+        <!--滑出控件边界时的虚化的效果-->
+        <item name="android:fadingEdge">none</item>
+        <!--滚动条-->
+        <item name="android:scrollbars">none</item>
+    </style>
+</resources>

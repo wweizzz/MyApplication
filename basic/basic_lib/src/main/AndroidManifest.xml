@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- 读取系统日志 -->
+    <uses-permission
+        android:name="android.permission.READ_LOGS"
+        tools:ignore="ProtectedPermissions" />
+
+    <!-- 震动 -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <!-- 保持屏幕唤醒 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <!-- 音频捕获 -->
+    <uses-permission android:name="android.permission.AUDIO_CAPTURE" />
+    <!-- 视频捕获 -->
+    <uses-permission android:name="android.permission.VIDEO_CAPTURE" />
+    <!-- 修改音频设置 -->
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+
+    <!-- 允许应用程序访问有关网络的信息。 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+
+    <!--GROUP_CALENDAR-->
+    <!-- 允许应用程序读取用户的日历数据。 -->
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <!-- 允许应用程序写入用户的日历数据。。 -->
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+
+    <!--GROUP_CAMERA-->
+    <!-- 允许应用程序访问相机设备。 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <!--GROUP_CONTACTS-->
+    <!-- 允许应用程序读取用户联系人数据。 -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <!-- 允许应用程序写入用户的联系人数据。 -->
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <!-- 允许应用程序访问的帐户服务帐户列表。 -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+
+    <!--GROUP_LOCATION-->
+    <!-- 允许应用程序访问的精确位置。 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- 允许应用程序访问的大致位置。 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- Android 10.0 -->
+    <!--<uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />-->
+
+    <!--GROUP_MICROPHONE-->
+    <!-- 允许应用程序录制音频。 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <!--GROUP_PHONE-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_NUMBERS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_CALL_LOG" />
+    <uses-permission android:name="android.permission.WRITE_CALL_LOG" />
+    <uses-permission android:name="android.permission.ADD_VOICEMAIL" />
+    <uses-permission android:name="android.permission.USE_SIP" />
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+    <uses-permission android:name="android.permission.ANSWER_PHONE_CALLS" />
+
+    <!--GROUP_SENSORS-->
+    <!-- 允许应用程序使用传感器 -->
+    <uses-permission android:name="android.permission.BODY_SENSORS" />
+
+    <!--GROUP_SMS-->
+    <!-- 允许应用程序发送短信。 -->
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <!-- 允许应用程序接收短信。 -->
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <!-- 允许应用程序读取短信。 -->
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <!--允许应用程序接收WAP推送消息。-->
+    <uses-permission android:name="android.permission.RECEIVE_WAP_PUSH" />
+    <!--允许应用程序监控传入的MMS消息。-->
+    <uses-permission android:name="android.permission.RECEIVE_MMS" />
+
+    <!--GROUP_STORAGE-->
+    <!-- 允许应用程序从外部存储器读取。 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- 允许应用程序写入到外部存储器。 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <!--GROUP_ACTIVITY_RECOGNITION-->
+    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
+
+    <!-- Android 8.0 悬浮窗权限-->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <!-- Android 8.0 安装应用权限 -->
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+
+    <!-- Android 8.0 卸载应用权限-->
+    <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" />
+
+    <!-- Android 9.0 前台服务权限 -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+    <!-- Android 13 -->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
+
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <application
+        android:allowBackup="false"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:supportsRtl="true"
+        tools:ignore="UnusedAttribute">
+        <!--FileProvider-->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+        <provider
+            android:name=".provider.InitProvider"
+            android:authorities="${applicationId}.InitProvider"
+            android:exported="false"
+            android:initOrder="100" />
+        <!--Apache HTTP client-->
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+    </application>
+</manifest>

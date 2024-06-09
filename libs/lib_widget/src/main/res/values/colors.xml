@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorAlertTitle">#000000</color>
+    <color name="colorAlertMessage">#666666</color>
+    <color name="colorAlertLine">#CCCCCC</color>
+    <color name="colorAlertPressed">#CCCCCC</color>
+    <color name="colorAlertBackground">#FFFFFF</color>
+
+    <color name="colorLoadingText">#FFFFFF</color>
+    <color name="colorLoadingProgress">#FFFFFF</color>
+    <color name="colorLoadingBackground">#000000</color>
+
+    <color name="colorProgress">#3700B3</color>
+    <color name="colorProgressBg">#6200EE</color>
+    <color name="colorProgressText">#666666</color>
+</resources>

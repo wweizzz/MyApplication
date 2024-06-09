@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application>
+        <activity android:name=".ArchActivity" />
+        <activity android:name=".activity.MvpActivity" />
+        <activity android:name=".activity.MvvmActivity" />
+        <activity android:name=".activity.MviActivity" />
+        <activity android:name=".activity.mavericks.CounterActivity" />
+        <activity android:name=".activity.mavericks.MavericksActivity" />
+    </application>
+</manifest>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application>
+        <activity android:name=".WidgetActivity" />
+
+
+        <activity android:name=".activity2.FragmentViewPagerActivity" />
+        <activity android:name=".activity2.RecyclerViewNestedActivity" />
+
+        <activity android:name=".activity.AlertDialogActivity" />
+        <activity android:name=".activity.BlurViewActivity" />
+        <activity android:name=".activity.InfiniteImageActivity" />
+        <activity android:name=".activity.MarqueeViewActivity" />
+        <activity android:name=".activity.Sensor3DActivity" />
+        <activity android:name=".activity.SpinnerActivity" />
+        <activity android:name=".activity.TitleBarActivity" />
+        <activity android:name=".activity.VerifyCodeActivity" />
+
+    </application>
+</manifest>

@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option java_package = "com.example.william.my.module.sample.proto";
+option java_outer_classname = "SettingsProto";
+option java_multiple_files = true;
+
+message Settings {
+  int32 example_counter = 1;
+}

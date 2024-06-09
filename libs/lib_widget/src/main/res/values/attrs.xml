@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--IosAlertDialogStyle-->
+    <style name="IosAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <!--IosItemAlertDialogStyle-->
+    <style name="IosItemAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <!-- 无限滚动的图片 -->
+    <declare-styleable name="InfiniteImageView">
+        <attr name="speed" format="dimension" />
+        <attr name="direction">
+            <enum name="vertical" value="0" />
+            <enum name="horizontal" value="1" />
+        </attr>
+        <attr name="sort">
+            <enum name="asc" value="0" />
+            <enum name="desc" value="1" />
+        </attr>
+        <attr name="src" format="reference" />
+    </declare-styleable>
+
+    <!-- 圆形进度条 -->
+    <declare-styleable name="RoundProgressBar">
+        <attr name="roundProgressColor" format="color" />
+        <attr name="roundBackgroundColor" format="color" />
+        <attr name="roundWidth" format="dimension" />
+        <attr name="max" format="integer" />
+        <attr name="style">
+            <enum name="STROKE" value="0" />
+            <enum name="FILL" value="1" />
+        </attr>
+        <attr name="textColor" format="color" />
+        <attr name="textSize" format="dimension" />
+        <attr name="textDisplayable" format="boolean" />
+    </declare-styleable>
+
+    <!-- 裸眼3D效果 -->
+    <declare-styleable name="SensorLayout">
+        <attr name="AccelerateRatio" format="float" />
+    </declare-styleable>
+
+    <!-- 裸眼3D效果 -->
+    <declare-styleable name="Sensor3DView">
+        <attr name="foregroundAccelerateRatio" format="float" />
+        <attr name="backgroundAccelerateRatio" format="float" />
+        <attr name="midAccelerateRatio" format="float" />
+        <attr name="foregrounddrawable" format="reference" />
+        <attr name="backgrounddrawable" format="reference" />
+        <attr name="middrawable" format="reference" />
+    </declare-styleable>
+
+    <!-- 自定义验证码-->
+    <declare-styleable name="VerifyCodeView">
+        <!--输入框的数量-->
+        <attr name="code_number" format="integer" />
+        <!--单个验证码的宽度-->
+        <attr name="code_width" format="dimension|reference" />
+        <!-- 单个验证码的高度 -->
+        <attr name="code_height" format="dimension|reference" />
+        <!--输入框的间距-->
+        <attr name="code_margin" format="dimension|reference" />
+        <!--输入框文字大小-->
+        <attr name="code_size" format="dimension|reference" />
+        <!--输入框文字颜色-->
+        <attr name="code_color" format="color|reference" />
+        <!--输入框获取焦点时边框-->
+        <attr name="code_bg_focus" format="reference" />
+        <!--输入框没有焦点时边框-->
+        <attr name="code_bg_normal" format="reference" />
+    </declare-styleable>
+
+</resources>

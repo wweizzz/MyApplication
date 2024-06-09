@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application>
+        <activity android:name=".NetWorkActivity" />
+        <activity android:name=".activity.CoilActivity" />
+
+        <activity android:name=".activity2.HttpURLActivity" />
+
+        <activity android:name=".activity2.VolleyActivity" />
+        <activity android:name=".activity2.VolleyHelperActivity" />
+
+        <activity android:name=".activity2.OkHttpActivity" />
+        <activity android:name=".activity2.OkHttpHelperActivity" />
+
+        <activity android:name=".activity2.RetrofitActivity" />
+        <activity android:name=".activity2.RetrofitHelperActivity" />
+
+        <activity android:name=".activity2.RetrofitRxJavaActivity" />
+        <activity android:name=".activity2.RetrofitRxJavaHelperActivity" />
+
+        <activity android:name=".activity2.RxRetrofitActivity" />
+
+        <activity android:name=".activity3.OkhttpDownloadActivity" />
+        <activity android:name=".activity3.RetrofitDownloadActivity" />
+        <activity android:name=".activity3.RxDownloadActivity" />
+
+        <activity android:name=".activity4.WebSocketActivity" />
+        <activity android:name=".activity4.WebSocketUtilsActivity" />
+
+        <activity android:name=".activity5.NanoActivity" />
+        <activity android:name=".activity5.NettyActivity" />
+        <activity android:name=".activity5.SocketActivity" />
+
+        <service android:name=".nano.NanoService" />
+        <service android:name=".netty.NettyService" />
+        <service android:name=".socket.SocketService" />
+    </application>
+
+</manifest>

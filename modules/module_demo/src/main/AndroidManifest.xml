@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application>
+        <activity android:name=".DemoActivity" />
+        <activity android:name=".activity.AppBarActivity" />
+        <activity android:name=".activity.DialogActivity" />
+        <activity android:name=".activity.FlexBoxActivity" />
+        <activity android:name=".activity.FragmentActivity1" />
+        <activity android:name=".activity.FragmentActivity2" />
+        <activity android:name=".activity.FragmentTabHostActivity" />
+        <activity android:name=".activity.RecyclerViewActivity" />
+        <activity android:name=".activity.ViewFlipperActivity" />
+        <activity android:name=".activity.ViewPagerActivity" />
+        <activity android:name=".activity.ViewPagerActivity2" />
+        <activity android:name=".activity.WebViewActivity" />
+
+        <activity android:name=".activity4.AsyncTaskActivity" />
+        <activity android:name=".activity4.BroadcastActivity" />
+        <activity android:name=".activity4.HandlerThreadActivity" />
+        <activity android:name=".activity4.JobSchedulerActivity" />
+        <activity android:name=".activity4.MessengerActivity" />
+        <activity android:name=".activity2.NotificationActivity" />
+        <activity android:name=".activity2.PermissionActivity" />
+        <activity android:name=".activity4.ServiceActivity" />
+
+        <activity android:name=".activity2.AnimatorActivity" />
+        <activity android:name=".activity3.CropActivity" />
+        <activity android:name=".activity3.FloatWindowActivity" />
+        <activity android:name=".activity3.HookActivity" />
+        <activity android:name=".activity2.TransitionFirstActivity" />
+        <activity android:name=".activity2.TransitionSecondActivity" />
+        <activity android:name=".activity3.TurntableActivity" />
+        <activity android:name=".activity2.TypefaceActivity" />
+
+        <service android:name=".service.MyAIDLService" />
+        <service android:name=".service.MyForegroundService" />
+        <service android:name=".service.MyMessageService" />
+        <service
+            android:name=".service.MyJobSchedulerService"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+    </application>
+</manifest>

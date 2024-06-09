@@ -1,0 +1,7 @@
+setBinding(new Binding([gradle: this]))
+evaluate(new File(
+        settingsDir,
+        'basic/basic_flutter/.android/include_flutter.groovy'
+))
+include ':basic:basic_flutter'
+project(':basic:basic_flutter').projectDir = new File('../flutter_module')

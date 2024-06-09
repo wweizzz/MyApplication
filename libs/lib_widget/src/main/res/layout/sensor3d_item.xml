@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.example.william.my.core.widget.sensor3d.SensorLayout
+        android:id="@+id/sensorbackground"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:id="@+id/imgbackground"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:scaleX="1.3"
+            android:scaleY="1.2" />
+
+    </com.example.william.my.core.widget.sensor3d.SensorLayout>
+
+    <com.example.william.my.core.widget.sensor3d.SensorLayout
+        android:id="@+id/sensormid"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:id="@+id/imgmid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY" />
+    </com.example.william.my.core.widget.sensor3d.SensorLayout>
+
+    <com.example.william.my.core.widget.sensor3d.SensorLayout
+        android:id="@+id/sensorforeground"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:id="@+id/imgforeground"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY" />
+    </com.example.william.my.core.widget.sensor3d.SensorLayout>
+</FrameLayout>
