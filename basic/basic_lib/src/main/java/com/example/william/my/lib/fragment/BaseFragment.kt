@@ -35,6 +35,7 @@ open class BaseFragment(layout: Int = 0) : NewLazyFragment(layout) {
      * ViewPager2
      * 不执行此方法
      */
+    @Suppress("DEPRECATION")
     @Deprecated("Deprecated in Java")
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {
         super.setUserVisibleHint(isVisibleToUser)

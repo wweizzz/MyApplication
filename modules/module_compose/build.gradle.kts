@@ -19,11 +19,12 @@ dependencies {
     implementation(project(":basic:basic_lib"))
     implementation(project(":basic:basic_module"))
 
+//    implementation(libs.androidx.material)
 //    implementation(libs.androidx.material3)
 //    implementation(libs.androidx.activity.compose)
 //    implementation(libs.androidx.navigation.compose)
 //    implementation(libs.androidx.constraintlayout.compose)
-    
+
 //    implementation(platform(libs.androidx.compose.bom))
 //    androidTestImplementation(platform(libs.androidx.compose.bom))
 
@@ -33,6 +34,10 @@ dependencies {
 
 //    debugImplementation(libs.androidx.compose.ui.tooling)
 //    debugImplementation(libs.androidx.compose.ui.test.manifest)
+
+    implementation("com.google.accompanist:accompanist-pager:0.34.0")
+
+    implementation("io.github.loren-moon:composesmartrefresh:2.1.0")
 }
 
 //composeCompiler {

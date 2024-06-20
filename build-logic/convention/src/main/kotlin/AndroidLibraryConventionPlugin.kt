@@ -42,8 +42,8 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
                 defaultConfig.minSdk = 21
                 defaultConfig.targetSdk = 34
                 configureKotlinAndroid(this)
-                configureFlavors(this)
                 configureAndroidCompose(this)
+                configureFlavors(this)
             }
             extensions.configure<LibraryAndroidComponentsExtension> {
                 configurePrintApksTask(this)

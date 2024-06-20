@@ -53,6 +53,7 @@ abstract class LazyFragment(private val layout: Int = 0) : Fragment() {
     /**
      * ViewPager
      */
+    @Suppress("DEPRECATION")
     @Deprecated("Deprecated in Java")
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {
         super.setUserVisibleHint(isVisibleToUser)

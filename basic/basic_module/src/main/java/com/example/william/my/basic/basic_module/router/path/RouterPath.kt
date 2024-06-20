@@ -244,6 +244,8 @@ object RouterPath {
         const val AnchoredDraggable = "${Compose}/AnchoredDraggable"
 
         const val GuaguaCard = "${Compose}/GuaguaCard"
+
+        const val SmartRefresh = "${Compose}/SmartRefresh"
     }
 
     object Flutter {

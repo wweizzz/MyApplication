@@ -1,6 +1,5 @@
 package com.example.william.my.module.compose.activity
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -25,7 +24,6 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.example.william.my.basic.basic_module.router.item.RouterItem
 import com.example.william.my.basic.basic_module.router.path.RouterPath
-import com.example.william.my.module.compose.activity.dragging.GuaguaCardActivity
 
 @Route(path = RouterPath.Compose.Main)
 class LazyColumnActivity : ComponentActivity() {
@@ -62,6 +60,8 @@ class LazyColumnActivity : ComponentActivity() {
         routerItems.add(RouterItem("AnchoredDraggable", RouterPath.Compose.AnchoredDraggable))
 
         routerItems.add(RouterItem("GuaguaCard", RouterPath.Compose.GuaguaCard))
+
+        routerItems.add(RouterItem("SmartRefresh", RouterPath.Compose.SmartRefresh))
     }
 }
 

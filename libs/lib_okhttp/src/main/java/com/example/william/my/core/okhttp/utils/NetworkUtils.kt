@@ -4,6 +4,7 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 
+@Suppress("DEPRECATION")
 object NetworkUtils {
 
     fun isConnected(context: Context): Boolean {

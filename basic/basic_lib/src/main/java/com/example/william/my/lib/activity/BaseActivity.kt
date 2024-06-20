@@ -61,6 +61,7 @@ open class BaseActivity : AppCompatActivity() {
         return android.R.color.transparent
     }
 
+    @Suppress("DEPRECATION")
     @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)

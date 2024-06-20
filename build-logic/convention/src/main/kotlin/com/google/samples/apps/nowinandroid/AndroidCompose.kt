@@ -38,9 +38,13 @@ internal fun Project.configureAndroidCompose(
             add("implementation", platform(bom))
             add("androidTestImplementation", platform(bom))
 
+            add("implementation", libs.findLibrary("androidx-material").get())
             add("implementation", libs.findLibrary("androidx-material3").get())
+
             add("implementation", libs.findLibrary("androidx-activity-compose").get())
             add("implementation", libs.findLibrary("androidx-navigation-compose").get())
+
+            add("implementation", libs.findLibrary("androidx-livedata-compose").get())
             add("implementation", libs.findLibrary("androidx-constraintlayout-compose").get())
 
             add("implementation", libs.findLibrary("androidx-compose-ui").get())

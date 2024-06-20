@@ -1,4 +1,4 @@
-package com.example.william.my.module.compose.activity.navigation
+package com.example.william.my.module.compose.activity.navhost
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

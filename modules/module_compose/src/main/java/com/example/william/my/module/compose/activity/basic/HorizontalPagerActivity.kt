@@ -38,7 +38,13 @@ class HorizontalPagerActivity : ComponentActivity() {
     fun HorizontalPagerExample() {
         Box {
             val pagerState = rememberPagerState(pageCount = { 10 })
-            HorizontalPager(state = pagerState) { page ->
+
+
+            HorizontalPager(
+                state = pagerState,
+                // 禁用手势滑动
+                userScrollEnabled = true,
+            ) { page ->
                 // Our page content
                 Text(
                     text = "Page: $page",
