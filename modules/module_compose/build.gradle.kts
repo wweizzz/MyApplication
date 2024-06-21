@@ -37,7 +37,7 @@ dependencies {
 
     implementation("com.google.accompanist:accompanist-pager:0.34.0")
 
-    implementation("io.github.loren-moon:composesmartrefresh:2.1.0")
+    implementation(libs.smartrefresh.compose)
 }
 
 //composeCompiler {

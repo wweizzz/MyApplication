@@ -39,7 +39,6 @@ class HorizontalPagerActivity : ComponentActivity() {
         Box {
             val pagerState = rememberPagerState(pageCount = { 10 })
 
-
             HorizontalPager(
                 state = pagerState,
                 // 禁用手势滑动

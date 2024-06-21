@@ -45,13 +45,21 @@ class LazyColumnActivity : ComponentActivity() {
         routerItems.add(RouterItem("Button", RouterPath.Compose.Button))
         routerItems.add(RouterItem("Image", RouterPath.Compose.Image))
         routerItems.add(RouterItem("Canvas", RouterPath.Compose.Canvas))
+
         routerItems.add(RouterItem("ConstraintLayout", RouterPath.Compose.ConstraintLayout))
         routerItems.add(RouterItem("HorizontalPager", RouterPath.Compose.HorizontalPager))
 
         routerItems.add(RouterItem("CompositionLocal", RouterPath.Compose.CompositionLocal))
 
-        routerItems.add(RouterItem("NavHost", RouterPath.Compose.NavHost))
+        routerItems.add(RouterItem("GuaguaCard", RouterPath.Compose.GuaguaCard))
+
         routerItems.add(RouterItem("BackHandler", RouterPath.Compose.BackHandler))
+
+        routerItems.add(RouterItem("NavHost", RouterPath.Compose.NavHost))
+
+        routerItems.add(RouterItem("BottomNavigation", RouterPath.Compose.BottomNavigation))
+        routerItems.add(RouterItem("NavigationBar", RouterPath.Compose.NavigationBar))
+
         routerItems.add(RouterItem("Remember", RouterPath.Compose.Remember))
 
         routerItems.add(RouterItem("Draggable", RouterPath.Compose.Draggable))
@@ -59,9 +67,9 @@ class LazyColumnActivity : ComponentActivity() {
 
         routerItems.add(RouterItem("AnchoredDraggable", RouterPath.Compose.AnchoredDraggable))
 
-        routerItems.add(RouterItem("GuaguaCard", RouterPath.Compose.GuaguaCard))
-
         routerItems.add(RouterItem("SmartRefresh", RouterPath.Compose.SmartRefresh))
+
+        routerItems.add(RouterItem("ScrollableTab", RouterPath.Compose.ScrollableTab))
     }
 }
 

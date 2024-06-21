@@ -43,10 +43,10 @@ androidxHilt = "2.51.1"
 # https://developer.android.com/jetpack/androidx/releases/compose-kotlin?hl=zh-cn
 androidxComposeCompiler = "1.5.14"
 
-material = "1.6.8"
 androidxComposeBom = "2024.06.00"
-androidxLiveDataCompose = "1.1.1"
+androidxLiveDataCompose = "1.6.8"
 androidxConstraintLayoutCompose = "1.0.1"
+smartRefreshcCompose = "2.1.0"
 # ##################################################################################################
 mmkv = "1.3.2"
 utils = "1.31.1"
@@ -186,6 +186,8 @@ androidx-compose-ui-graphics = { group = "androidx.compose.ui", name = "ui-graph
 androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+
+smartrefresh-compose = { group = "io.github.loren-moon", name = "composesmartrefresh", version.ref = "smartRefreshcCompose" }
 # ##################################################################################################
 # https://github.com/Tencent/MMKV
 mmkv = { group = "com.tencent", name = "mmkv", version.ref = "mmkv" }

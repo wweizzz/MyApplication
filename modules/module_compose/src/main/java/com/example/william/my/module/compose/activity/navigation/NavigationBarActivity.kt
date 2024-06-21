@@ -18,7 +18,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.alibaba.android.arouter.facade.annotation.Route
+import com.example.william.my.basic.basic_module.router.path.RouterPath
 
+@Route(path = RouterPath.Compose.NavigationBar)
 class NavigationBarActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

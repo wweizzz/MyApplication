@@ -16,18 +16,25 @@
 
         <activity android:name=".activity.basic.CompositionLocalActivity" />
 
-        <activity android:name=".activity.backhandler.BackHandlerActivity" />
-        <activity android:name=".activity.navhost.NavHostActivity" />
-        <activity android:name=".activity.remember.RememberActivity" />
-
         <activity android:name=".activity.draggable.DraggableActivity" />
         <activity android:name=".activity.draggable.DragGesturesActivity" />
 
-        <activity android:name=".activity.swipeable.AnchoredDraggableActivity" />
-
         <activity android:name=".activity.dragging.GuaguaCardActivity" />
 
+        <activity android:name=".activity.backhandler.BackHandlerActivity" />
+
+        <activity android:name=".activity.navhost.NavHostActivity" />
+
+        <activity android:name=".activity.navigation.BottomNavigationActivity" />
+        <activity android:name=".activity.navigation.NavigationBarActivity" />
+
+        <activity android:name=".activity.remember.RememberActivity" />
+
+        <activity android:name=".activity.swipeable.AnchoredDraggableActivity" />
+
         <activity android:name=".activity.smartrefresh.SmartRefreshActivity" />
+
+        <activity android:name=".activity.tab.ScrollableTabActivity" />
     </application>
 
 </manifest>

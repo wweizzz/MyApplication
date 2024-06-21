@@ -229,23 +229,31 @@ object RouterPath {
         const val Button = "${Compose}/Button"
         const val Image = "${Compose}/Image"
         const val Canvas = "${Compose}/Canvas"
+
         const val ConstraintLayout = "${Compose}/ConstraintLayout"
         const val HorizontalPager = "${Compose}/HorizontalPager"
 
-        const val CompositionLocal = "${Compose}/CompositionLocal"
-
         const val BackHandler = "${Compose}/BackHandler"
-        const val NavHost = "${Compose}/NavHost"
-        const val Remember = "${Compose}/Remember"
+
+        const val CompositionLocal = "${Compose}/CompositionLocal"
 
         const val Draggable = "${Compose}/Draggable"
         const val DragGestures = "${Compose}/DragGestures"
 
-        const val AnchoredDraggable = "${Compose}/AnchoredDraggable"
-
         const val GuaguaCard = "${Compose}/GuaguaCard"
 
+        const val NavHost = "${Compose}/NavHost"
+
+        const val BottomNavigation = "${Compose}/BottomNavigation"
+        const val NavigationBar = "${Compose}/NavigationBar"
+
+        const val Remember = "${Compose}/Remember"
+
+        const val AnchoredDraggable = "${Compose}/AnchoredDraggable"
+
         const val SmartRefresh = "${Compose}/SmartRefresh"
+
+        const val ScrollableTab = "${Compose}/ScrollableTab"
     }
 
     object Flutter {
