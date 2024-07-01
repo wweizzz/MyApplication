@@ -1,4 +1,4 @@
-package com.example.william.my.module.compose.activity
+package com.example.william.my.module.compose
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -51,6 +51,8 @@ class LazyColumnActivity : ComponentActivity() {
 
         routerItems.add(RouterItem("CompositionLocal", RouterPath.Compose.CompositionLocal))
 
+        routerItems.add(RouterItem("CoordinatorLayout", RouterPath.Compose.CoordinatorLayout))
+
         routerItems.add(RouterItem("GuaguaCard", RouterPath.Compose.GuaguaCard))
 
         routerItems.add(RouterItem("BackHandler", RouterPath.Compose.BackHandler))
@@ -71,54 +73,55 @@ class LazyColumnActivity : ComponentActivity() {
 
         routerItems.add(RouterItem("ScrollableTab", RouterPath.Compose.ScrollableTab))
     }
-}
 
-@Composable
-fun LazyColumnExample(itemsList: List<RouterItem>) {
-    // 使用 rememberLazyListState 保存滚动的位置
-    val scrollState = rememberLazyListState()
 
-    LazyColumn(state = scrollState) {
-        items(itemsList) { item ->
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(6.dp)
-                    .height(48.dp)
-                    .background(color = Color.White)
-            ) {
-                LazyColumnItemExample(item) {
-                    try {
-                        ARouter.getInstance().build(item.mRouterPath).navigation()
-                    } catch (e: HandlerException) {
-                        e.printStackTrace()
+    @Composable
+    fun LazyColumnExample(itemsList: List<RouterItem>) {
+        // 使用 rememberLazyListState 保存滚动的位置
+        val scrollState = rememberLazyListState()
+
+        LazyColumn(state = scrollState) {
+            items(itemsList) { item ->
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(6.dp)
+                        .height(48.dp)
+                        .background(color = Color.White)
+                ) {
+                    LazyColumnItemExample(item) {
+                        try {
+                            ARouter.getInstance().build(item.mRouterPath).navigation()
+                        } catch (e: HandlerException) {
+                            e.printStackTrace()
+                        }
                     }
                 }
             }
         }
     }
-}
 
-@Composable
-fun LazyColumnItemExample(routerItem: RouterItem? = null, onClick: () -> Unit) {
-    Button(
-        onClick = onClick,
-        modifier = Modifier
-            .padding(6.dp)
-            .height(48.dp),
-        colors = ButtonDefaults.buttonColors(
-            containerColor = Color.White,
-            contentColor = Color.Black
-        ),
-        elevation = ButtonDefaults.buttonElevation(
-            defaultElevation = 6.dp,
-            pressedElevation = 6.dp
-        ),
-        border = BorderStroke(
-            width = 1.dp,
-            color = Color.Black,
-        )
-    ) {
-        Text(text = routerItem?.mRouterName ?: "")
+    @Composable
+    fun LazyColumnItemExample(routerItem: RouterItem? = null, onClick: () -> Unit) {
+        Button(
+            onClick = onClick,
+            modifier = Modifier
+                .padding(6.dp)
+                .height(48.dp),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color.White,
+                contentColor = Color.Black
+            ),
+            elevation = ButtonDefaults.buttonElevation(
+                defaultElevation = 6.dp,
+                pressedElevation = 6.dp
+            ),
+            border = BorderStroke(
+                width = 1.dp,
+                color = Color.Black,
+            )
+        ) {
+            Text(text = routerItem?.mRouterName ?: "")
+        }
     }
 }

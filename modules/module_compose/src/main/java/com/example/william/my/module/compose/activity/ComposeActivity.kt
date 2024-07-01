@@ -23,6 +23,7 @@ import com.example.william.my.module.compose.ui.theme.MyApplicationTheme
  */
 //@Route(path = RouterPath.Compose.Main)
 class ComposeActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -39,23 +40,23 @@ class ComposeActivity : ComponentActivity() {
             }
         }
     }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
+    @Composable
+    fun Greeting(name: String, modifier: Modifier = Modifier) {
 
-    Spacer(modifier = Modifier.height(48.dp))
+        Spacer(modifier = Modifier.height(48.dp))
 
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+        Text(
+            text = "Hello $name!",
+            modifier = modifier
+        )
+    }
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    MyApplicationTheme {
-        Greeting("Android")
+    @Preview(showBackground = true)
+    @Composable
+    fun GreetingPreview() {
+        MyApplicationTheme {
+            Greeting("Android")
+        }
     }
 }

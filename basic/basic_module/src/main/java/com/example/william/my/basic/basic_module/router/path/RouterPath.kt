@@ -237,6 +237,8 @@ object RouterPath {
 
         const val CompositionLocal = "${Compose}/CompositionLocal"
 
+        const val CoordinatorLayout = "${Compose}/CoordinatorLayout"
+
         const val Draggable = "${Compose}/Draggable"
         const val DragGestures = "${Compose}/DragGestures"
 
