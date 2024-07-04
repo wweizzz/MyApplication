@@ -25,7 +25,7 @@ class DemoActivity : RouterRecyclerActivity() {
         routerItems.add(RouterItem("Animator", RouterPath.Demo.Animator))
         routerItems.add(RouterItem("Notification", RouterPath.Demo.Notification))
         routerItems.add(RouterItem("Permission", RouterPath.Demo.Permission))
-        routerItems.add(RouterItem("Transition", RouterPath.Demo.Transition))
+        routerItems.add(RouterItem("Transition", RouterPath.Demo.TransitionFirst))
         routerItems.add(RouterItem("Typeface", RouterPath.Demo.Typeface))
 
         routerItems.add(RouterItem(" ", ""))

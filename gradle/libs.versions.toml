@@ -17,6 +17,7 @@ googleMaterial = "1.11.0"
 androidxCore = "1.13.1"
 androidxActivity = "1.9.0"
 androidxFragment = "1.6.2"
+androidxSplashscreen = "1.0.1"
 
 androidxAppCompat = "1.7.0"
 androidxConstraintLayout = "2.1.4"
@@ -132,6 +133,8 @@ androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = 
 androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "androidxActivity" }
 # https://developer.android.google.cn/jetpack/androidx/releases/fragment
 androidx-fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "androidxFragment" }
+# https://developer.android.google.cn/develop/ui/views/launch/splash-screen/migrate?hl=zh-cn
+androidx-core-splashscreen = { group = "androidx.core", name = "core-splashscreen", version.ref = "androidxSplashscreen" }
 # ##################################################################################################
 androidx-appCompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidxAppCompat" }
 androidx-constraintLayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "androidxConstraintLayout" }

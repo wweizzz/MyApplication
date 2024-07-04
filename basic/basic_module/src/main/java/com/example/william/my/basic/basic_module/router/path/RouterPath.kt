@@ -47,7 +47,8 @@ object RouterPath {
         const val Animator = "${Demo}/Animator"
         const val Notification = "${Demo}/Notification"
         const val Permission = "${Demo}/Permission"
-        const val Transition = "${Demo}/Transition"
+        const val TransitionFirst = "${Demo}/TransitionFirst"
+        const val TransitionSecond = "${Demo}/TransitionSecond"
         const val Typeface = "${Demo}/Typeface"
 
         const val Crop = "${Demo}/Crop"

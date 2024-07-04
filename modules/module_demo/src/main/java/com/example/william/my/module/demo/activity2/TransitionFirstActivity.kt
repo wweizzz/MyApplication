@@ -3,7 +3,10 @@ package com.example.william.my.module.demo.activity2
 import android.app.ActivityOptions
 import android.content.Intent
 import android.view.View
+import androidx.core.app.ActivityOptionsCompat
+import androidx.core.util.Pair
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.alibaba.android.arouter.launcher.ARouter
 import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.example.william.my.lib.activity.BaseVBActivity
 import com.example.william.my.module.demo.R
@@ -12,7 +15,7 @@ import com.example.william.my.module.demo.databinding.DemoActivityTransitionFirs
 /**
  * 视图过度动画
  */
-@Route(path = RouterPath.Demo.Transition)
+@Route(path = RouterPath.Demo.TransitionFirst)
 class TransitionFirstActivity : BaseVBActivity<DemoActivityTransitionFirstBinding>(),
     View.OnClickListener {
 
@@ -71,15 +74,26 @@ class TransitionFirstActivity : BaseVBActivity<DemoActivityTransitionFirstBindin
             }
 
             R.id.transition_share -> { //共享元素
-                mIntent?.putExtra("transition", "share")
+                //mIntent?.putExtra("transition", "share")
                 //将原先的跳转改成如下方式，注意这里面的第三个参数决定了ActivityTwo 布局中的android:transitionName的值，它们要保持一致
-                startActivity(
-                    mIntent,
-                    ActivityOptions.makeSceneTransitionAnimation(
-                        this@TransitionFirstActivity, mBinding.transitionShare, "shareTransition"
+                //startActivity(
+                //    mIntent,
+                //    ActivityOptions.makeSceneTransitionAnimation(
+                //        this@TransitionFirstActivity, mBinding.transitionShare, "shareTransition"
+                //    )
+                //        .toBundle()
+                //)
+                ARouter.getInstance()
+                    .build(RouterPath.Demo.TransitionSecond)
+                    .withString("transition", "share")
+                    .withOptionsCompat(
+                        ActivityOptionsCompat.makeSceneTransitionAnimation(
+                            this@TransitionFirstActivity,
+                            //mBinding.transitionShare, "shareTransition"
+                            Pair(mBinding.transitionShare, "shareTransition") // 多个共享元素
+                        )
                     )
-                        .toBundle()
-                )
+                    .navigation(this)
             }
         }
     }

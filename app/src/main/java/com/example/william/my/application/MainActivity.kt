@@ -1,8 +1,11 @@
 package com.example.william.my.application
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.splashscreen.SplashScreen
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.alibaba.android.arouter.launcher.ARouter
 import com.example.william.my.basic.basic_module.router.navigation.LoginNavigationImpl
 import com.example.william.my.basic.basic_module.router.path.RouterPath
@@ -49,6 +52,8 @@ import com.example.william.my.basic.basic_module.router.path.RouterPath
  */
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var mSplashScreen: SplashScreen
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -62,17 +67,38 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
-        //setContentView(R.layout.activity_main)
+        mSplashScreen = installSplashScreen()
+        setContentView(R.layout.activity_main)
 
-        ARouter.getInstance()
-            .build(RouterPath.Module_Main)
-            .withTransition(R.anim.basic_anim_slide_in_left, R.anim.basic_anim_slide_out_right)
-            .withString("param_key", "param_value")
-            .navigation(this, LoginNavigationImpl())
-        //.greenChannel()//使用绿色通道(跳过所有的拦截器)
-        //.navigation()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            splashScreen.setOnExitAnimationListener {
+                ARouter.getInstance()
+                    .build(RouterPath.Module_Main)
+                    .withTransition(
+                        R.anim.basic_anim_slide_in_left,
+                        R.anim.basic_anim_slide_out_right
+                    )
+                    .withString("param_key", "param_value")
+                    .navigation(this, LoginNavigationImpl())
+                //.greenChannel()//使用绿色通道(跳过所有的拦截器)
+                //.navigation()
 
-        finish()
+                finish()
+            }
+        } else {
+            ARouter.getInstance()
+                .build(RouterPath.Module_Main)
+                .withTransition(
+                    R.anim.basic_anim_slide_in_left,
+                    R.anim.basic_anim_slide_out_right
+                )
+                .withString("param_key", "param_value")
+                .navigation(this, LoginNavigationImpl())
+            //.greenChannel()//使用绿色通道(跳过所有的拦截器)
+            //.navigation()
+
+            finish()
+        }
     }
 
     /**

@@ -6,9 +6,12 @@ import android.transition.Fade
 import android.transition.Slide
 import android.view.View
 import android.view.Window
+import com.alibaba.android.arouter.facade.annotation.Route
+import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.example.william.my.lib.activity.BaseActivity
 import com.example.william.my.module.demo.R
 
+@Route(path = RouterPath.Demo.TransitionSecond)
 class TransitionSecondActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

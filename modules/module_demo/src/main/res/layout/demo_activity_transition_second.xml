@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.sample.TransitionSecondActivity">
+    tools:context=".activity2.TransitionSecondActivity">
 
     <Button
         android:id="@+id/transition_share"
