@@ -1,6 +1,6 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="Basics_AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Basics_AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -14,6 +14,13 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="SplashScreen" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
     <style name="Basics_FullScreenTheme" parent="Basics_AppTheme">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>
@@ -24,10 +31,10 @@
     <style name="Basics_TranslucentTheme" parent="Basics_AppTheme">
         <!--不设置activity进入和退出动画样式-->
         <item name="android:windowAnimationStyle">@null</item>
-        <!--设置状态栏的背景为半透明-->
-        <item name="android:windowTranslucentStatus">true</item>
         <!--设置窗口的背景是否为半透明，设置透明背景必须要设置此项-->
         <item name="android:windowIsTranslucent">true</item>
+        <!--设置状态栏的背景为半透明-->
+        <item name="android:windowTranslucentStatus">true</item>
         <!--设置窗口的背景为透明，设置透明背景必须要设置此项-->
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>

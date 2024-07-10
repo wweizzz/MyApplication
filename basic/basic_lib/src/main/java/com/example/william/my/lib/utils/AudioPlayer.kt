@@ -7,6 +7,7 @@ import android.os.Handler
 import android.os.Looper
 import android.text.TextUtils
 import android.util.Log
+import java.io.File
 
 /**
  * 复制腾讯im文件
@@ -26,16 +27,21 @@ object AudioPlayer {
 
     private var mPlayer: MediaPlayer? = null
 
+    var isRecorded: Boolean = false
+
     val isPlaying: Boolean
         get() = mPlayer != null && mPlayer?.isPlaying == true
 
     private val mHandler: Handler = Handler(Looper.getMainLooper())
 
+    //Record
+
     fun startRecord(context: Context, callback: Callback) {
         mRecordCallback = callback
         try {
             mAudioRecordPath =
-                context.applicationContext.externalCacheDir.toString() + "auto_" + System.currentTimeMillis() + ".m4a"
+                context.applicationContext.externalCacheDir.toString() + File.separator +
+                        "auto_" + System.currentTimeMillis() + ".m4a"
             mRecorder = MediaRecorder()
             mRecorder?.setAudioSource(MediaRecorder.AudioSource.MIC)
             // 使用mp4容器并且后缀改为.m4a，来兼容小程序的播放
@@ -67,6 +73,14 @@ object AudioPlayer {
         mRecorder?.release()
         mRecorder = null
     }
+
+    private fun onRecordCompleted(success: Boolean) {
+        mRecordCallback?.onCompletion(success)
+        mRecorder = null
+        isRecorded = false
+    }
+
+    //Play
 
     fun startPlay(filePath: String?, callback: Callback) {
         mAudioRecordPath = filePath
@@ -103,11 +117,6 @@ object AudioPlayer {
     private fun onPlayCompleted(success: Boolean) {
         mPlayCallback?.onCompletion(success)
         mPlayer = null
-    }
-
-    private fun onRecordCompleted(success: Boolean) {
-        mRecordCallback?.onCompletion(success)
-        mRecorder = null
     }
 
     // 语音长度如果是59s多，因为外部会/1000取整，会一直显示59'，所以这里对长度进行处理，达到四舍五入的效果
