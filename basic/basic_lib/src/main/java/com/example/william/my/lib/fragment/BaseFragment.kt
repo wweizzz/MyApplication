@@ -3,6 +3,7 @@ package com.example.william.my.lib.fragment
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import com.example.william.my.lib.eventbus.EventBusHelper
 
 /**
  * add show hide
@@ -90,6 +91,16 @@ open class BaseFragment(layout: Int = 0) : NewLazyFragment(layout) {
     override fun onResume() {
         super.onResume()
         showState("onResume")
+    }
+
+    override fun onStart() {
+        super.onStart()
+        EventBusHelper.register(this)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        EventBusHelper.unregister(this)
     }
 
     private fun showState(state: String) {

@@ -10,7 +10,6 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.example.william.my.core.imageloader.IImageLoader
-import com.example.william.my.core.imageloader.glide.ImageLoader.notNull
 import java.util.concurrent.ExecutionException
 
 /**
@@ -19,21 +18,21 @@ import java.util.concurrent.ExecutionException
  */
 object ImageLoader : IImageLoader {
 
-    override fun clear(context: Context?) {
+    override fun pauseRequests(context: Context?) {
         notNull(context) {
             Glide.with(context!!).pauseRequests()
+        }
+    }
+
+    override fun resumeRequests(context: Context?) {
+        notNull(context) {
+            Glide.with(context!!).resumeRequests()
         }
     }
 
     override fun clear(context: Context?, imageView: ImageView?) {
         notNull(context, imageView) {
             Glide.with(context!!).clear(imageView!!)
-        }
-    }
-
-    override fun resumeRequests(context: Context?) {
-        notNull(context) {
-            Glide.with(context!!).pauseRequests()
         }
     }
 

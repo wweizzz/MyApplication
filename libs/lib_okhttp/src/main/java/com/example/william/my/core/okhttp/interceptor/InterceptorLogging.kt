@@ -2,6 +2,7 @@ package com.example.william.my.core.okhttp.interceptor
 
 import com.example.william.my.core.okhttp.format.FormatPrinterImpl
 import com.example.william.my.core.okhttp.format.ParseUtils
+import com.example.william.my.core.okhttp.format.ParseUtils.isParseAble
 import okhttp3.Interceptor
 import okhttp3.Response
 import java.io.IOException
@@ -17,8 +18,7 @@ class InterceptorLogging : Interceptor {
 
         val request = chain.request()
 
-        val requestBody = request.body
-        if (requestBody != null && ParseUtils.isParseAble(requestBody.contentType())) {
+        if (request.body?.contentType().isParseAble()) {
             mPrinter.printJsonRequest(request, ParseUtils.parseRequest(request))
         } else {
             mPrinter.printFileRequest(request)
@@ -26,19 +26,20 @@ class InterceptorLogging : Interceptor {
 
         val startNs = System.nanoTime()
         val response: Response
+
         try {
             response = chain.proceed(request)
         } catch (e: Exception) {
             throw e
         }
+
         val tookMs = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - startNs)
 
-        val responseBody = response.body!!
-        if (ParseUtils.isParseAble(responseBody.contentType())) {
+        if (response.body?.contentType().isParseAble()) {
             mPrinter.printJsonResponse(
                 tookMs,
                 response,
-                responseBody.contentType(),
+                response.body?.contentType(),
                 ParseUtils.parseResponse(response)
             )
         } else {

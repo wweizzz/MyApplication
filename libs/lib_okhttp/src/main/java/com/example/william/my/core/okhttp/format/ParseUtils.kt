@@ -34,18 +34,16 @@ object ParseUtils {
      * application/json
      * application/x-www-form-urlencoded
      */
-    fun isParseAble(mediaType: MediaType?): Boolean {
-        return if (mediaType == null) {
+    fun MediaType?.isParseAble(): Boolean {
+        return if (this == null) {
             false
-        } else (isText(mediaType) || isPlain(mediaType)
-                || isXml(mediaType) || isHtml(mediaType)
-                || isJson(mediaType) || isForm(mediaType))
+        } else (isText(this) || isPlain(this)
+                || isXml(this) || isHtml(this)
+                || isJson(this) || isForm(this))
     }
 
-    private fun isText(mediaType: MediaType?): Boolean {
-        return if (mediaType == null) {
-            false
-        } else "text" == mediaType.type
+    fun isText(mediaType: MediaType?): Boolean {
+        return mediaType?.subtype?.lowercase(Locale.getDefault())?.contains("text") ?: false
     }
 
     fun isPlain(mediaType: MediaType?): Boolean {

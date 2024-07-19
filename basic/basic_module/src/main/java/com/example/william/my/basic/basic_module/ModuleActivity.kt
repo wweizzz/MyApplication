@@ -16,9 +16,10 @@ import com.example.william.my.lib.utils.Utils
  * DeteKt
  * Alibaba Java Coding Guidelines
  * <p>
- * TODO：
- *       Paging
- *       ViewModel hilt
+ *
+ * module名_ activity/fragment/dialog/layout/item_recycler_页面名_控件名
+ *
+ * module名_ shape/ic/bg/color/str_页面名_控件名_text/bg_selected/unselected
  */
 @Route(path = RouterPath.Module_Main)
 class ModuleActivity : RouterRecyclerActivity() {

@@ -8,11 +8,12 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.RawRes
 
 interface IImageLoader {
-    fun clear(context: Context?)
 
-    fun clear(context: Context?, imageView: ImageView?)
+    fun pauseRequests(context: Context?)
 
     fun resumeRequests(context: Context?)
+
+    fun clear(context: Context?, imageView: ImageView?)
 
     fun loadImage(
         context: Context?, imageView: ImageView?, @RawRes @DrawableRes resourceId: Int,
