@@ -45,6 +45,9 @@ object FormatPrinterImpl : FormatPrinter {
     private const val DEFAULT_LINE = "│ "
 
     private val ARMS = arrayOf("-A-", "-R-", "-M-", "-S-")
+
+    private val FILTERS = arrayListOf<String>()
+
     private val last: ThreadLocal<Int> = object : ThreadLocal<Int>() {
         override fun initialValue(): Int {
             return 0
@@ -62,12 +65,14 @@ object FormatPrinterImpl : FormatPrinter {
      * @param bodyString String
      */
     override fun printJsonRequest(request: Request, bodyString: String) {
-        val tag = "$TAG-Request"
-        Log.d(tag, REQUEST_UP_LINE)
-        logLines(tag, getUrl(request), false)
-        logLines(tag, getHeaders(request), true)
-        logLines(tag, getRequestBody(bodyString), true)
-        Log.d(tag, END_LINE)
+        if (shouldPrint(getUrl(request))) {
+            val tag = "$TAG-Request"
+            Log.d(tag, REQUEST_UP_LINE)
+            logLines(tag, getUrl(request), false)
+            logLines(tag, getHeaders(request), true)
+            logLines(tag, getRequestBody(bodyString), true)
+            Log.d(tag, END_LINE)
+        }
     }
 
     /**
@@ -93,12 +98,14 @@ object FormatPrinterImpl : FormatPrinter {
         mediaType: MediaType?,
         bodyString: String
     ) {
-        val tag = "$TAG-Response"
-        Log.d(tag, RESPONSE_UP_LINE)
-        logLines(tag, getUrl(response), false)
-        logLines(tag, getHeaders(response, tookMs), true)
-        logLines(tag, getResponseBody(mediaType, bodyString), true)
-        Log.d(tag, END_LINE)
+        if (shouldPrint(getUrl(response))) {
+            val tag = "$TAG-Response"
+            Log.d(tag, RESPONSE_UP_LINE)
+            logLines(tag, getUrl(response), false)
+            logLines(tag, getHeaders(response, tookMs), true)
+            logLines(tag, getResponseBody(mediaType, bodyString), true)
+            Log.d(tag, END_LINE)
+        }
     }
 
     /**
@@ -113,6 +120,14 @@ object FormatPrinterImpl : FormatPrinter {
         Log.d(tag, END_LINE)
     }
 
+    private fun shouldPrint(url: Array<String>): Boolean {
+        for (filter in FILTERS) {
+            if (url[0].endsWith(filter)) {
+                return false
+            }
+        }
+        return true
+    }
 
     /**
      * 对 `lines` 中的信息进行逐行打印

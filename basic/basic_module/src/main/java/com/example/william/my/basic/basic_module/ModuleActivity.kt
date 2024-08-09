@@ -16,10 +16,10 @@ import com.example.william.my.lib.utils.Utils
  * DeteKt
  * Alibaba Java Coding Guidelines
  * <p>
- *
- * module名_ activity/fragment/dialog/layout/item_recycler_页面名_控件名
- *
- * module名_ shape/ic/bg/color/str_页面名_控件名_text/bg_selected/unselected
+ * str：页面名_str_模块_描述
+ * color：页面名_color_模块_描述
+ * shape：模块名_页面名_color_模块_描述
+ * drawable：模块名_页面名_color_模块_描述
  */
 @Route(path = RouterPath.Module_Main)
 class ModuleActivity : RouterRecyclerActivity() {

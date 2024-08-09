@@ -10,6 +10,7 @@ import com.chad.library.adapter4.BaseQuickAdapter
 import com.chad.library.adapter4.QuickAdapterHelper
 import com.chad.library.adapter4.viewholder.QuickViewHolder
 import com.example.william.my.lib.databinding.BaseFragmentRecyclerViewBinding
+import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import com.scwang.smart.refresh.layout.api.RefreshLayout
 import com.scwang.smart.refresh.layout.listener.OnRefreshLoadMoreListener
 
@@ -86,6 +87,14 @@ abstract class BaseRecyclerFragment<T : Any> : BaseVBFragment<BaseFragmentRecycl
             mMultiItemAdapter?.isStateViewEnable = true
             mAdapter?.setStateViewLayout(requireContext(), emptyResId())
             mMultiItemAdapter?.setStateViewLayout(requireContext(), emptyResId())
+        }
+    }
+
+    fun setRecyclerViewMargin(start: Float, end: Float) {
+        mBinding.recyclerView.layoutParams.also {
+            val params = it as SmartRefreshLayout.LayoutParams
+            params.marginStart = AdaptScreenUtils.pt2Px(start)
+            params.marginEnd = AdaptScreenUtils.pt2Px(end)
         }
     }
 
