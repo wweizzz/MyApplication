@@ -11,6 +11,8 @@ object OkHttpConfig {
     private var mShowBasicLog = false
     private var mShowFormatLog = true
 
+    private var mShowFormatLogFilters: List<String> = arrayListOf()
+
     private var isConnectionPool = false
     private var mMaxIdleConnections = 5
     private var mKeepAliveDuration = 5L
@@ -42,6 +44,10 @@ object OkHttpConfig {
 
     fun isShowFormatLog(): Boolean {
         return mShowFormatLog
+    }
+
+    fun getShowFormatLogFilters(): List<String> {
+        return mShowFormatLogFilters
     }
 
     fun isConnectionPool(): Boolean {
@@ -102,6 +108,11 @@ object OkHttpConfig {
 
     open class Builder {
 
+        fun setApp(app: Application): Builder {
+            OkHttpConfig.app = app
+            return this
+        }
+
         fun setLogTag(tag: String): Builder {
             OkHttpConfig.mLogTag = tag
             return this
@@ -112,8 +123,9 @@ object OkHttpConfig {
             return this
         }
 
-        fun showFormatLog(show: Boolean): Builder {
+        fun showFormatLog(show: Boolean,filters: List<String>): Builder {
             OkHttpConfig.mShowFormatLog = show
+            OkHttpConfig.mShowFormatLogFilters = filters
             return this
         }
 

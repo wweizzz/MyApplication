@@ -12,6 +12,7 @@ abstract class RetrofitResponseCallback<T> :
     DisposableSingleObserver<RetrofitResponse<T>>(), RetrofitCallback<T> {
 
     override fun onSuccess(t: RetrofitResponse<T>) {
+        onToast(t.message)
         onResponse(t.data)
     }
 
@@ -24,6 +25,10 @@ abstract class RetrofitResponseCallback<T> :
     }
 
     override fun onLoading() {
+
+    }
+
+    override fun onToast(message: String?) {
 
     }
 

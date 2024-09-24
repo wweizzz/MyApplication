@@ -22,9 +22,9 @@ object CompatLogging {
         )
     }
 
-    fun setFormatLog(builder: OkHttpClient.Builder) {
+    fun setFormatLog(builder: OkHttpClient.Builder, filters: List<String>) {
         builder.addInterceptor(
-            InterceptorLogging()
+            InterceptorLogging(filters)
         )
     }
 }

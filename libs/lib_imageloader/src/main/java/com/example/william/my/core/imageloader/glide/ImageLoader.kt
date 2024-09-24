@@ -6,10 +6,13 @@ import android.graphics.drawable.Drawable
 import android.text.TextUtils
 import android.widget.ImageView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 import com.example.william.my.core.imageloader.IImageLoader
+import java.io.File
 import java.util.concurrent.ExecutionException
 
 /**
@@ -40,6 +43,7 @@ object ImageLoader : IImageLoader {
         notNull(context, imageView) {
             Glide.with(context!!)
                 .load(resourceId)
+                .apply(RequestOptions().diskCacheStrategy(DiskCacheStrategy.NONE))//禁用缓存功能
                 .into(imageView!!)
         }
     }
@@ -50,6 +54,7 @@ object ImageLoader : IImageLoader {
         notNull(context, imageView) {
             Glide.with(context!!)
                 .load(resourceId)
+                .apply(RequestOptions().diskCacheStrategy(DiskCacheStrategy.NONE))//禁用缓存功能
                 .transform(CircleCrop())
                 .into(imageView!!)
         }
@@ -61,6 +66,38 @@ object ImageLoader : IImageLoader {
         notNull(context, imageView) {
             Glide.with(context!!)
                 .load(resourceId)
+                .apply(RequestOptions().diskCacheStrategy(DiskCacheStrategy.NONE))//禁用缓存功能
+                .transform(CenterCrop(), RoundedCorners(radius))
+                .into(imageView!!)
+        }
+    }
+
+    override fun loadImage(context: Context?, imageView: ImageView?, file: File?) {
+        notNull(context, imageView) {
+            Glide.with(context!!)
+                .load(file)
+                .into(imageView!!)
+        }
+    }
+
+    override fun loadImageRound(context: Context?, imageView: ImageView?, file: File?) {
+        notNull(context, imageView) {
+            Glide.with(context!!)
+                .load(file)
+                .transform(CircleCrop())
+                .into(imageView!!)
+        }
+    }
+
+    override fun loadImageRadius(
+        context: Context?,
+        imageView: ImageView?,
+        file: File?,
+        radius: Int
+    ) {
+        notNull(context, imageView) {
+            Glide.with(context!!)
+                .load(file)
                 .transform(CenterCrop(), RoundedCorners(radius))
                 .into(imageView!!)
         }
@@ -76,34 +113,12 @@ object ImageLoader : IImageLoader {
         }
     }
 
-    override fun loadImage(
-        context: Context?, imageView: ImageView?, url: String?, errorResId: Int
-    ) {
-        notNull(context, imageView) {
-            Glide.with(context!!)
-                .load(url)
-                .into(imageView!!)
-        }
-    }
-
     override fun loadImageRound(
         context: Context?, imageView: ImageView?, url: String?
     ) {
         notNull(context, imageView) {
             Glide.with(context!!)
                 .load(url)
-                .transform(CircleCrop())
-                .into(imageView!!)
-        }
-    }
-
-    override fun loadImageRound(
-        context: Context?, imageView: ImageView?, url: String?, errorResId: Int
-    ) {
-        notNull(context, imageView) {
-            Glide.with(context!!)
-                .load(url)
-                .error(errorResId)
                 .transform(CircleCrop())
                 .into(imageView!!)
         }
@@ -120,18 +135,13 @@ object ImageLoader : IImageLoader {
         }
     }
 
-    override fun loadImageRadius(
-        context: Context?, imageView: ImageView?, url: String?, radius: Int, errorResId: Int
-    ) {
-        notNull(context, imageView) {
-            Glide.with(context!!)
-                .load(url)
-                .error(errorResId)
-                .transform(CenterCrop(), RoundedCorners(radius))
-                .into(imageView!!)
-        }
+    override fun loadGif(context: Context?, imageView: ImageView?, resourceId: Int) {
+
     }
 
+    override fun loadGif(context: Context?, imageView: ImageView?, url: String?) {
+
+    }
 
     override fun getImageDrawable(context: Context?, url: String?): Drawable? {
         if (TextUtils.isEmpty(url)) {
@@ -163,14 +173,6 @@ object ImageLoader : IImageLoader {
             }
         }
         return null
-    }
-
-    override fun loadGif(context: Context?, imageView: ImageView?, resourceId: Int) {
-
-    }
-
-    override fun loadGif(context: Context?, imageView: ImageView?, url: String?) {
-
     }
 
 }

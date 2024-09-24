@@ -16,7 +16,7 @@ googleMaterial = "1.11.0"
 # ##################################################################################################
 androidxCore = "1.13.1"
 androidxActivity = "1.9.0"
-androidxFragment = "1.6.2"
+androidxFragment = "1.7.1"
 androidxSplashscreen = "1.0.1"
 
 androidxAppCompat = "1.7.0"
@@ -100,7 +100,7 @@ androidxTestEspresso = "3.5.1"
 # ##################################################################################################
 # https://developer.android.google.cn/studio/releases/gradle-plugin
 # gradlePluginAndroid = "7.4.2"
-gradlePluginAndroid = "8.5.0"
+gradlePluginAndroid = "8.5.2"
 # gradlePluginKotlin = "1.9.24"
 gradlePluginKotlin = "2.0.0"
 gradlePluginProtobuf = "0.9.4"

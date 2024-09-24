@@ -9,9 +9,13 @@ import java.io.IOException
 import java.util.*
 import java.util.concurrent.TimeUnit
 
-class InterceptorLogging : Interceptor {
+class InterceptorLogging(filters: List<String>) : Interceptor {
 
     private val mPrinter = FormatPrinterImpl
+
+    init {
+        mPrinter.setFilters(filters)
+    }
 
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): Response {

@@ -9,6 +9,13 @@ interface RetrofitCallback<T> {
     fun onLoading()
 
     /**
+     * onToast
+     *
+     * @param message
+     */
+    fun onToast(message: String?)
+
+    /**
      * onResponse
      *
      * @param response

@@ -34,8 +34,8 @@ object OkHttpHelper {
         return this@OkHttpHelper
     }
 
-    fun showFormatLog(show: Boolean): OkHttpHelper {
-        OkHttpConfig.Builder().showFormatLog(show)
+    fun showFormatLog(show: Boolean, filters: List<String>): OkHttpHelper {
+        OkHttpConfig.Builder().showFormatLog(show, filters)
         return this@OkHttpHelper
     }
 
@@ -118,7 +118,7 @@ object OkHttpHelper {
             CompatLogging.setBasicLog(builder)
         }
         if (OkHttpConfig.isShowFormatLog()) {
-            CompatLogging.setFormatLog(builder)
+            CompatLogging.setFormatLog(builder, OkHttpConfig.getShowFormatLogFilters())
         }
 
         // 自定义连接池最大空闲连接数

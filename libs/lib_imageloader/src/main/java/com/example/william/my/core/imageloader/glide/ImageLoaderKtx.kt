@@ -6,10 +6,14 @@ import android.graphics.drawable.Drawable
 import android.text.TextUtils
 import android.widget.ImageView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 import com.example.william.my.core.imageloader.IImageLoaderKtx
+import com.example.william.my.core.imageloader.glide.ImageLoaderKtx.loadImage
+import java.io.File
 import java.util.concurrent.ExecutionException
 
 /**
@@ -44,6 +48,7 @@ object ImageLoaderKtx : IImageLoaderKtx {
         context?.let {
             Glide.with(it)
                 .load(resourceId)
+                .apply(RequestOptions().diskCacheStrategy(DiskCacheStrategy.NONE))//禁用缓存功能
                 .into(this)
         }
     }
@@ -54,6 +59,7 @@ object ImageLoaderKtx : IImageLoaderKtx {
         context?.let {
             Glide.with(it)
                 .load(resourceId)
+                .apply(RequestOptions().diskCacheStrategy(DiskCacheStrategy.NONE))//禁用缓存功能
                 .transform(CircleCrop())
                 .into(this)
         }
@@ -65,6 +71,37 @@ object ImageLoaderKtx : IImageLoaderKtx {
         context?.let {
             Glide.with(it)
                 .load(resourceId)
+                .apply(RequestOptions().diskCacheStrategy(DiskCacheStrategy.NONE))//禁用缓存功能
+                .transform(CenterCrop(), RoundedCorners(radius))
+                .into(this)
+        }
+    }
+
+    override fun ImageView.loadImage(context: Context?, file: File?) {
+        context?.let {
+            Glide.with(it)
+                .load(file)
+                .into(this)
+        }
+    }
+
+    override fun ImageView.loadImageRound(context: Context?, file: File?) {
+        context?.let {
+            Glide.with(it)
+                .load(file)
+                .transform(CircleCrop())
+                .into(this)
+        }
+    }
+
+    override fun ImageView.loadImageRadius(
+        context: Context?,
+        file: File?,
+        radius: Int
+    ) {
+        context?.let {
+            Glide.with(it)
+                .load(file)
                 .transform(CenterCrop(), RoundedCorners(radius))
                 .into(this)
         }
@@ -87,16 +124,6 @@ object ImageLoaderKtx : IImageLoaderKtx {
             Glide.with(it)
                 .load(url)
                 .transform(CircleCrop())
-                .into(this)
-        }
-    }
-
-    override fun ImageView.loadImage(
-        context: Context?, url: String?, errorResId: Int
-    ) {
-        context?.let {
-            Glide.with(it)
-                .load(url)
                 .into(this)
         }
     }
@@ -107,30 +134,6 @@ object ImageLoaderKtx : IImageLoaderKtx {
         context?.let {
             Glide.with(it)
                 .load(url)
-                .transform(CenterCrop(), RoundedCorners(radius))
-                .into(this)
-        }
-    }
-
-    override fun ImageView.loadImageRound(
-        context: Context?, url: String?, errorResId: Int
-    ) {
-        context?.let {
-            Glide.with(it)
-                .load(url)
-                .error(errorResId)
-                .transform(CircleCrop())
-                .into(this)
-        }
-    }
-
-    override fun ImageView.loadImageRadius(
-        context: Context?, url: String?, radius: Int, errorResId: Int
-    ) {
-        context?.let {
-            Glide.with(it)
-                .load(url)
-                .error(errorResId)
                 .transform(CenterCrop(), RoundedCorners(radius))
                 .into(this)
         }

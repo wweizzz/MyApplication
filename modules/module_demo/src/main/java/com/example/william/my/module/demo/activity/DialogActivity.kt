@@ -61,13 +61,14 @@ class DialogActivity : BasicRecyclerActivity() {
 
             3 -> {
                 val calendar = Calendar.getInstance()
-                val datePickerDialog =
-                    DatePickerDialog(
-                        this@DialogActivity, { _, _, _, _ -> },
-                        calendar[Calendar.YEAR],
-                        calendar[Calendar.MONTH],
-                        calendar[Calendar.DAY_OF_MONTH]
-                    )
+                val datePickerDialog = DatePickerDialog(
+                    this@DialogActivity, { view, year, month, dayOfMonth ->
+
+                    },
+                    calendar[Calendar.YEAR],
+                    calendar[Calendar.MONTH],
+                    calendar[Calendar.DAY_OF_MONTH]
+                )
                 //datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());//设置最大日期
                 datePickerDialog.show()
             }

@@ -46,7 +46,7 @@ object FormatPrinterImpl : FormatPrinter {
 
     private val ARMS = arrayOf("-A-", "-R-", "-M-", "-S-")
 
-    private val FILTERS = arrayListOf<String>()
+    private var mFilters: List<String> = arrayListOf()
 
     private val last: ThreadLocal<Int> = object : ThreadLocal<Int>() {
         override fun initialValue(): Int {
@@ -56,6 +56,13 @@ object FormatPrinterImpl : FormatPrinter {
 
     private fun isEmpty(line: String): Boolean {
         return TextUtils.isEmpty(line) || "\n" == line || "\t" == line || TextUtils.isEmpty(line.trim { it <= ' ' })
+    }
+
+    /**
+     * 设置过滤
+     */
+    fun setFilters(filters: List<String>) {
+        this.mFilters = filters
     }
 
     /**
@@ -121,7 +128,7 @@ object FormatPrinterImpl : FormatPrinter {
     }
 
     private fun shouldPrint(url: Array<String>): Boolean {
-        for (filter in FILTERS) {
+        for (filter in mFilters) {
             if (url[0].endsWith(filter)) {
                 return false
             }

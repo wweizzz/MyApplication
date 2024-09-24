@@ -28,6 +28,10 @@ abstract class RetrofitLiveDataCallback<T> :
         onPostValue(RetrofitResponse.loading())
     }
 
+    override fun onToast(message: String?) {
+
+    }
+
     override fun onResponse(response: RetrofitResponse<T>?) {
         try {
             onPostValue(response)

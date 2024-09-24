@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable
 import android.widget.ImageView
 import androidx.annotation.DrawableRes
 import androidx.annotation.RawRes
+import java.io.File
 
 interface IImageLoader {
 
@@ -29,30 +30,35 @@ interface IImageLoader {
     )
 
     fun loadImage(
-        context: Context?, imageView: ImageView?, url: String?,
+        context: Context?, imageView: ImageView?, file: File?,
+    )
+
+    fun loadImageRound(
+        context: Context?, imageView: ImageView?, file: File?,
+    )
+
+    fun loadImageRadius(
+        context: Context?, imageView: ImageView?, file: File?, radius: Int,
     )
 
     fun loadImage(
         context: Context?, imageView: ImageView?, url: String?,
-        @RawRes @DrawableRes errorResId: Int,
     )
 
     fun loadImageRound(
         context: Context?, imageView: ImageView?, url: String?,
     )
 
-    fun loadImageRound(
+    fun loadImageRadius(
+        context: Context?, imageView: ImageView?, url: String?, radius: Int,
+    )
+
+    fun loadGif(
+        context: Context?, imageView: ImageView?, resourceId: Int,
+    )
+
+    fun loadGif(
         context: Context?, imageView: ImageView?, url: String?,
-        @RawRes @DrawableRes errorResId: Int = 0,
-    )
-
-    fun loadImageRadius(
-        context: Context?, imageView: ImageView?, url: String?, radius: Int,
-    )
-
-    fun loadImageRadius(
-        context: Context?, imageView: ImageView?, url: String?, radius: Int,
-        @RawRes @DrawableRes errorResId: Int = 0,
     )
 
     fun getImageDrawable(
@@ -62,15 +68,6 @@ interface IImageLoader {
     fun getImageBitmap(
         context: Context?, url: String?
     ): Bitmap?
-
-
-    fun loadGif(
-        context: Context?, imageView: ImageView?, resourceId: Int,
-    )
-
-    fun loadGif(
-        context: Context?, imageView: ImageView?, url: String?,
-    )
 
     fun <R> notNull(vararg args: Any?, block: () -> R) =
         when (args.filterNotNull().size) {

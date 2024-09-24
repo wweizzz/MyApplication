@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable
 import android.widget.ImageView
 import androidx.annotation.DrawableRes
 import androidx.annotation.RawRes
+import java.io.File
 
 interface IImageLoaderKtx {
 
@@ -31,30 +32,27 @@ interface IImageLoaderKtx {
     )
 
     fun ImageView.loadImage(
-        context: Context?, url: String?,
+        context: Context?, file: File?,
     )
 
     fun ImageView.loadImageRound(
-        context: Context?, url: String?,
+        context: Context?, file: File?,
     )
 
     fun ImageView.loadImageRadius(
-        context: Context?, url: String?, radius: Int,
+        context: Context?, file: File?, radius: Int,
     )
 
     fun ImageView.loadImage(
         context: Context?, url: String?,
-        @RawRes @DrawableRes errorResId: Int,
     )
 
     fun ImageView.loadImageRound(
         context: Context?, url: String?,
-        @RawRes @DrawableRes errorResId: Int = 0,
     )
 
     fun ImageView.loadImageRadius(
         context: Context?, url: String?, radius: Int,
-        @RawRes @DrawableRes errorResId: Int = 0,
     )
 
     fun ImageView.loadGif(
