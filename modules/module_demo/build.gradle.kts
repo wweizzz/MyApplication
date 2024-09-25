@@ -13,6 +13,9 @@ dependencies {
     implementation(project(":basic:basic_lib"))
     implementation(project(":basic:basic_module"))
 
+    implementation(libs.pag)
     implementation(libs.google.flexBox)
     implementation(libs.google.material)
+
+    implementation(libs.utils)
 }
