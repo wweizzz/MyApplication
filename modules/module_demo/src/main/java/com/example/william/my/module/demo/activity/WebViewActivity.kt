@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.net.http.SslError
 import android.webkit.JavascriptInterface
 import android.webkit.SslErrorHandler
+import android.webkit.WebChromeClient
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
@@ -41,6 +42,8 @@ class WebViewActivity : BaseVBActivity<DemoActivityWebviewBinding>() {
         mBinding.webView.settings.builtInZoomControls = true
         //隐藏缩放按钮
         mBinding.webView.settings.displayZoomControls = false
+        //DOM Storage
+        mBinding.webView.settings.domStorageEnabled = true
         // 关闭file域访问，禁止file域对http域进行访问
         // setAllowFileAccessFromFileURLs&setAllowUniversalAccessFromFileURLs
         // Android 4.1版本之前这两个API默认是true，需要显式设置为false
@@ -83,6 +86,9 @@ class WebViewActivity : BaseVBActivity<DemoActivityWebviewBinding>() {
             override fun onPageFinished(view: WebView, url: String) {
                 super.onPageFinished(view, url)
             }
+        }
+        mBinding.webView.webChromeClient = object : WebChromeClient() {
+
         }
         mBinding.webView.addJavascriptInterface(object :
             WebViewInterface(object : WebViewJsCallback() {

@@ -115,6 +115,8 @@ object RouterPath {
 
         const val MMKV = "${Opensource}/MMKV"
         const val PermissionX = "${Opensource}/PermissionX"
+
+        const val RxJava = "${Opensource}/RxJava"
     }
 
     object Database {
@@ -133,6 +135,7 @@ object RouterPath {
         const val AdaptScreenUtils = "${Utils}/AdaptScreenUtils"
         const val FileIOUtils = "${Utils}/FileIOUtils"
         const val PermissionUtils = "${Utils}/PermissionUtils"
+        const val ThreadUtilsActivity = "${Utils}/ThreadUtilsActivity"
     }
 
     object Network {

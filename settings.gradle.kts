@@ -14,16 +14,14 @@ pluginManagement {
             name = "JitPack"
         }
         maven {
+            url = uri("https://tencent-tds-maven.pkg.coding.net/repository/shiply/repo")
+            name = "Shiply"
+        }
+        maven {
             url = uri("https://storage.flutter-io.cn/download.flutter.io")
             name = "Flutter"
         }
-        google {
-            content {
-                includeGroupByRegex("com\\.android.*")
-                includeGroupByRegex("com\\.google.*")
-                includeGroupByRegex("androidx.*")
-            }
-        }
+        google()
         mavenCentral()
         gradlePluginPortal()
     }
@@ -34,9 +32,9 @@ dependencyResolutionManagement {
      * PREFER_SETTINGS(false)--首选设置存储库
      * FAIL_ON_PROJECT_REPOS(false)--强制设置存储库
      */
-    //@Suppress("UnstableApiUsage")
+    @Suppress("UnstableApiUsage")
     repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
-    //@Suppress("UnstableApiUsage")
+    @Suppress("UnstableApiUsage")
     repositories {
         maven {
             url = uri("https://maven.aliyun.com/repository/google")

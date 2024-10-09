@@ -25,7 +25,7 @@ import org.gradle.kotlin.dsl.dependencies
 internal fun Project.configureDepsAndroid() {
     dependencies {
 
-        add("implementation", libs.findLibrary("coroutines").get())
+        add("implementation", libs.findLibrary("kotlinx.coroutines.android").get())
 
         add("implementation", libs.findLibrary("google.gson").get())
 
@@ -66,7 +66,6 @@ internal fun Project.configureFeatureAndroid() {
         add("implementation", project(":modules:module_room"))
         add("implementation", project(":modules:module_arch"))
 
-        //add("implementation", project(":modules:module_hilt"))
         add("implementation", project(":modules:module_compose"))
 
         add("implementation", project(":modules:module_flutter"))

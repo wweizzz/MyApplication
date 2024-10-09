@@ -6,5 +6,6 @@
         <activity android:name=".activity.AdaptScreenUtilsActivity" />
         <activity android:name=".activity.FileIOUtilsActivity" />
         <activity android:name=".activity.PermissionUtilsActivity" />
+        <activity android:name=".activity.ThreadUtilsActivity" />
     </application>
 </manifest>

@@ -30,6 +30,9 @@ class OpensourceActivity : RouterRecyclerActivity() {
         routerItems.add(RouterItem(" ", ""))
         routerItems.add(RouterItem("MMKV", RouterPath.Opensource.MMKV))
         routerItems.add(RouterItem("PermissionX", RouterPath.Opensource.PermissionX))
+
+        routerItems.add(RouterItem(" ", ""))
+        routerItems.add(RouterItem("RxJava", RouterPath.Opensource.RxJava))
         return routerItems
     }
 }

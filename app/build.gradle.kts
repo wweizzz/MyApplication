@@ -83,4 +83,5 @@ dependencies {
     implementation(project(":basic:basic_module"))
 
     implementation(libs.androidx.core.splashscreen)
+    implementation(libs.androidx.startup)
 }

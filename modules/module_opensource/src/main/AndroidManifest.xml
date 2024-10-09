@@ -21,6 +21,8 @@
 
         <activity android:name=".activity3.MMKVActivity" />
         <activity android:name=".activity3.PermissionXActivity" />
+
+        <activity android:name=".activity4.RxJavaActivity" />
     </application>
 
 </manifest>

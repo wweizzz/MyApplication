@@ -18,6 +18,9 @@ annotation class LibrariesInit
 @Retention(AnnotationRetention.BINARY)
 annotation class DatabaseInit
 
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class OpenInit
 
 @Qualifier
 @Retention(AnnotationRetention.BINARY)

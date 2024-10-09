@@ -7,15 +7,16 @@ targetSdk = "34"
 compileSdk = "34"
 # ##################################################################################################
 androidDesugarJdkLibs = "2.0.4"
-kotlinx = "1.8.1"
+kotlinxCoroutines = "1.9.0"
+
 googleGson = "2.10.1"
 googleGuava = "33.0.0-android"
-googleProtobuf = "4.26.0"
+googleProtobuf = "4.26.1"
 googleFlexbox = "3.0.0"
 googleMaterial = "1.11.0"
 # ##################################################################################################
 androidxCore = "1.13.1"
-androidxActivity = "1.9.0"
+androidxActivity = "1.9.2"
 androidxFragment = "1.7.1"
 androidxSplashscreen = "1.0.1"
 
@@ -24,14 +25,12 @@ androidxConstraintLayout = "2.1.4"
 androidxRecyclerView = "1.3.0"
 androidxViewPager2 = "1.0.0"
 
-androidxLifecycle = "2.8.2"
-androidxNavigation = "2.7.7"
-
-androidxRoom = "2.6.1"
+androidxLifecycle = "2.8.6"
 androidxPaging = "3.1.1"
-
 androidxDataStore = "1.0.0"
-androidxWork = "2.9.0"
+androidxWorkManager = "2.9.0"
+androidxNavigation = "2.8.0"
+androidxStartup = "1.1.1"
 
 # hilt对应kotlin版本
 # Hilt:2.40对应kotlin:1.6.0
@@ -39,17 +38,21 @@ androidxWork = "2.9.0"
 # Hilt:2.44对应kotlin:1.8.0
 # Hilt:2.48对应kotlin:1.9.0
 # Hilt:2.51对应kotlin:2.0.0
-androidxHilt = "2.51.1"
+# Hilt:2.52对应kotlin:2.0.20
+androidxHilt = "2.52"
+
+androidxRoom = "2.6.1"
 
 # https://developer.android.com/jetpack/androidx/releases/compose-kotlin?hl=zh-cn
 androidxComposeCompiler = "1.5.14"
 
-androidxComposeBom = "2024.06.00"
-androidxLiveDataCompose = "1.6.8"
+androidxComposeBom = "2024.09.00"
+androidxLiveDataCompose = "1.7.0"
 androidxConstraintLayoutCompose = "1.0.1"
 smartRefreshcCompose = "2.1.0"
 # ##################################################################################################
 mmkv = "1.3.2"
+upgrade = "2.2.0"
 utils = "1.31.1"
 permission = "1.7.1"
 immersionbar = "3.2.2"
@@ -61,18 +64,18 @@ mavericks = "3.0.8"
 # ##################################################################################################
 arouter = "1.5.2"
 eventbus = "3.3.1"
-rxjava = "3.1.6"
+rxjava = "3.1.8"
 rxandroid = "3.0.2"
 rxlifecycle = "4.0.2"
 autodispose = "2.1.1"
 greendao = "3.3.0"
 objectbox = "3.7.1"
 # ##################################################################################################
-coil = "2.6.0"
+coil = "2.7.0"
 glide = "4.15.1"
 volley = "1.2.1"
 okhttp = "4.12.0"
-retrofit = "2.9.0"
+retrofit = "2.11.0"
 slf4j = "2.0.12"
 netty = "4.1.65.Final"
 nanohttpd = "2.3.1"
@@ -99,21 +102,19 @@ androidxTestExt = "1.1.5"
 androidxTestEspresso = "3.5.1"
 # ##################################################################################################
 # https://developer.android.google.cn/studio/releases/gradle-plugin
-# gradlePluginAndroid = "7.4.2"
-gradlePluginAndroid = "8.5.2"
-# gradlePluginKotlin = "1.9.24"
-gradlePluginKotlin = "2.0.0"
+gradlePluginAndroid = "8.7.0"
+gradlePluginKotlin = "2.0.20"
 gradlePluginProtobuf = "0.9.4"
 gradlePluginArouter = "1.0.2"
 gradlePluginGreenDao = "3.3.1"
 gradlePluginObjectBox = "3.7.1"
-gradlePluginKsp = "2.0.0-1.0.21"
+gradlePluginKsp = "2.0.20-1.0.25"
 # ##################################################################################################
 [libraries]
 #
 android-desugarJdkLibs = { group = "com.android.tools", name = "desugar_jdk_libs", version.ref = "androidDesugarJdkLibs" }
 # https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-coroutines-android
-coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinx" }
+kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
 # ##################################################################################################
 # https://github.com/google/gson
 google-gson = { group = "com.google.code.gson", name = "gson", version.ref = "googleGson" }
@@ -141,7 +142,8 @@ androidx-constraintLayout = { group = "androidx.constraintlayout", name = "const
 androidx-recyclerView = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "androidxRecyclerView" }
 androidx-viewPager2 = { group = "androidx.viewpager2", name = "viewpager2", version.ref = "androidxViewPager2" }
 # ##################################################################################################
-# https://developer.android.google.cn/jetpack/androidx/releases/lifecycle
+# 架构组件 - 界面层库
+# https://developer.android.google.cn/topic/libraries/architecture/lifecycle
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "androidxLifecycle" }
 # LiveData
 androidx-lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "androidxLifecycle" }
@@ -149,30 +151,37 @@ androidx-lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecy
 androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "androidxLifecycle" }
 # optional - ProcessLifecycleOwner provides a lifecycle for the whole application process
 androidx-lifecycle-process = { group = "androidx.lifecycle", name = "lifecycle-process", version.ref = "androidxLifecycle" }
-# https://android-dot-google-developers.gonglchuangl.net/topic/libraries/architecture/paging/v3-overview
+# 架构组件 - 界面层库
+# https://developer.android.google.cn/topic/libraries/architecture/paging/v3-overview
 androidx-paging-runtime = { group = "androidx.paging", name = "paging-runtime", version.ref = "androidxPaging" }
 androidx-paging-rxjava3 = { group = "androidx.paging", name = "paging-rxjava3", version.ref = "androidxPaging" }
-# https://developer.android.google.cn/jetpack/androidx/releases/datastore
-# Preferences DataStore
+# 架构组件 - 数据层库
+# https://developer.android.google.cn/topic/libraries/architecture/datastore
 androidx-datastore-preferences-runtime = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "androidxDataStore" }
 androidx-datastore-preferences-rxjava3 = { group = "androidx.datastore", name = "datastore-preferences-rxjava3", version.ref = "androidxDataStore" }
-# Proto DataStore
 androidx-datastore-runtime = { group = "androidx.datastore", name = "datastore", version.ref = "androidxDataStore" }
 androidx-datastore-rxjava3 = { group = "androidx.datastore", name = "datastore-rxjava3", version.ref = "androidxDataStore" }
-# https://developer.android.google.cn/jetpack/androidx/releases/work
-androidx-work-ktx = { group = "androidx.work", name = "work-runtime-ktx", version.ref = "androidxWork" }
-# https://developer.android.google.cn/jetpack/androidx/releases/room
+# https://developer.android.google.cn/topic/libraries/architecture/workmanager
+androidx-workmanager-ktx = { group = "androidx.work", name = "work-runtime-ktx", version.ref = "androidxWorkManager" }
+# 应用导航
+# https://developer.android.google.cn/guide/navigation
+androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "androidxNavigation" }
+androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "androidxNavigation" }
+# 依赖项注入
+# https://developer.android.google.cn/training/dependency-injection/hilt-android
+androidx-hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "androidxHilt" }
+androidx-hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "androidxHilt" }
+# 应用启动
+# https://developer.android.google.cn/topic/libraries/app-startup
+androidx-startup = { group = "androidx.startup", name = "startup-runtime", version.ref = "androidxStartup" }
+
+# https://developer.android.com/training/data-storage/room
 androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "androidxRoom" }
 androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "androidxRoom" }
 androidx-room-rxjava3 = { group = "androidx.room", name = "room-rxjava3", version.ref = "androidxRoom" }
 androidx-room-paging = { group = "androidx.room", name = "room-paging", version.ref = "androidxRoom" }
 androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "androidxRoom" }
-# https://developer.android.google.cn/jetpack/androidx/releases/navigation
-androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "androidxNavigation" }
-androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "androidxNavigation" }
-# https://developer.android.google.cn/training/dependency-injection/hilt-android
-androidx-hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "androidxHilt" }
-androidx-hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "androidxHilt" }
+
 # Compose
 androidx-material = { group = "androidx.compose.material", name = "material" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
@@ -194,6 +203,9 @@ smartrefresh-compose = { group = "io.github.loren-moon", name = "composesmartref
 # ##################################################################################################
 # https://github.com/Tencent/MMKV
 mmkv = { group = "com.tencent", name = "mmkv", version.ref = "mmkv" }
+# https://github.com/BuglyDevTeam/BuglyBetaUploader
+upgrade = { module = "com.tencent.shiply:upgrade", version.ref = "upgrade" }
+upgrade-ui = { module = "com.tencent.shiply:upgrade-ui", version.ref = "upgrade" }
 # https://github.com/Blankj/AndroidUtilCode
 utils = { group = "com.blankj", name = "utilcodex", version.ref = "utils" }
 # https://github.com/guolindev/PermissionX
@@ -302,20 +314,23 @@ gradlePlugin-arouter = { group = "com.alibaba", name = "arouter-register", versi
 gradlePlugin-greendao = { group = "org.greenrobot", name = "greendao-gradle-plugin", version.ref = "gradlePluginGreenDao" }
 gradlePlugin-objectbox = { group = "io.objectbox", name = "objectbox-gradle-plugin", version.ref = "gradlePluginObjectBox" }
 
-gradlePlugin-hilt = { group = "com.google.dagger", name = "hilt-android-gradle-plugin", version.ref = "androidxHilt" }
 gradlePlugin-room = { group = "androidx.room", name = "room-gradle-plugin", version.ref = "androidxRoom" }
+gradlePlugin-hilt = { group = "com.google.dagger", name = "hilt-android-gradle-plugin", version.ref = "androidxHilt" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "gradlePluginAndroid" }
 android-library = { id = "com.android.library", version.ref = "gradlePluginAndroid" }
+
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "gradlePluginKotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "gradlePluginKotlin" }
+
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "gradlePluginKotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "gradlePluginKotlin" }
-ksp = { id = "com.google.devtools.ksp", version.ref = "gradlePluginKsp" }
 
-hilt = { id = "com.google.dagger.hilt.android", version.ref = "androidxHilt" }
 room = { id = "androidx.room", version.ref = "androidxRoom" }
+
+google-ksp = { id = "com.google.devtools.ksp", version.ref = "gradlePluginKsp" }
+google-hilt = { id = "com.google.dagger.hilt.android", version.ref = "androidxHilt" }
 
 # Plugins defined by this project
 nowinandroid-android-application = { id = "nowinandroid.android.application", version = "unspecified" }

@@ -8,6 +8,7 @@ import com.example.william.my.lib.hilt.qualifier.BaseInit
 import com.example.william.my.lib.hilt.qualifier.DatabaseInit
 import com.example.william.my.lib.hilt.qualifier.FlutterInit
 import com.example.william.my.lib.hilt.qualifier.LibrariesInit
+import com.example.william.my.lib.hilt.qualifier.OpenInit
 import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Inject
 
@@ -30,6 +31,10 @@ class AppHilt : Application() {
     @Inject
     lateinit var databaseInit: IAppInit
 
+    @OpenInit
+    @Inject
+    lateinit var openInit: IAppInit
+
     @ArchInit
     @Inject
     lateinit var archInit: IAppInit
@@ -41,11 +46,16 @@ class AppHilt : Application() {
 
     override fun onCreate() {
         super.onCreate()
+
         baseInit.init(this)
         appInit.init(this)
-        librariesInit.init(this)
-        databaseInit.init(this)
-        archInit.init(this)
-        flutterInit.init(this)
+
+        librariesInit.init(this) // FlowEventBus
+        databaseInit.init(this) // Greendao, ObjectBox
+
+        openInit.init(this) // Shiply
+        archInit.init(this) // Mavericks
+
+        flutterInit.init(this) // FlutterEngine
     }
 }

@@ -20,5 +20,5 @@ dependencies {
     implementation(libs.androidx.datastore.runtime)
     implementation(libs.androidx.datastore.preferences.runtime)
     //WorkManager
-    implementation(libs.androidx.work.ktx)
+    implementation(libs.androidx.workmanager.ktx)
 }
