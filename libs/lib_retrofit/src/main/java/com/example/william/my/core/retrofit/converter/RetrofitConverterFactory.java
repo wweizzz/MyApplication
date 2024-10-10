@@ -46,18 +46,18 @@ public class RetrofitConverterFactory extends Converter.Factory {
         return create(new Gson(), code, msg);
     }
 
-    public static RetrofitConverterFactory create(Gson gson, String errorCode, String errorMsg) {
+    public static RetrofitConverterFactory create(Gson gson, String code, String message) {
         if (gson == null) throw new NullPointerException("gson == null");
-        return new RetrofitConverterFactory(gson, errorCode, errorMsg);
+        return new RetrofitConverterFactory(gson, code, message);
     }
 
     private final Gson gson;
-    private final String code, msg;
+    private final String code, message;
 
-    private RetrofitConverterFactory(Gson gson, String code, String msg) {
+    private RetrofitConverterFactory(Gson gson, String code, String message) {
         this.gson = gson;
         this.code = code;
-        this.msg = msg;
+        this.message = message;
     }
 
     /**
@@ -66,7 +66,7 @@ public class RetrofitConverterFactory extends Converter.Factory {
     @Override
     public Converter<ResponseBody, ?> responseBodyConverter(@NonNull Type type, @NonNull Annotation[] annotations, @NonNull Retrofit retrofit) {
         TypeAdapter<?> adapter = gson.getAdapter(TypeToken.get(type));
-        return new RetrofitResponseBodyConverter<>(gson, adapter, code, msg);
+        return new RetrofitResponseBodyConverter<>(gson, adapter, code, message);
     }
 
     /**

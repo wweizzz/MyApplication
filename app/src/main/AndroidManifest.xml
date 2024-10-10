@@ -33,9 +33,12 @@
             tools:node="merge">
             <!-- This entry makes ExampleLoggerInitializer discoverable. -->
             <meta-data
-                android:name="com.example.william.my.application.initializer.StartupInitializer"
+                android:name="com.example.william.my.application.initializer.SyncInitializer"
                 android:value="androidx.startup"
-                tools:node="merge" />
+                tools:node="remove" />
+            <meta-data
+                android:name="com.example.william.my.application.initializer.StartupInitializer"
+                android:value="androidx.startup" />
         </provider>
     </application>
 

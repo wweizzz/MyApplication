@@ -21,7 +21,13 @@ pluginManagement {
             url = uri("https://storage.flutter-io.cn/download.flutter.io")
             name = "Flutter"
         }
-        google()
+        google {
+            content {
+                includeGroupByRegex("com\\.android.*")
+                includeGroupByRegex("com\\.google.*")
+                includeGroupByRegex("androidx.*")
+            }
+        }
         mavenCentral()
         gradlePluginPortal()
     }
