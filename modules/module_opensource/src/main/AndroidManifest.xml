@@ -19,6 +19,7 @@
         <activity android:name=".activity2.LottieActivity" />
         <activity android:name=".activity2.SvgaPlayerActivity" />
 
+        <activity android:name=".activity3.LoadSirActivity" />
         <activity android:name=".activity3.MMKVActivity" />
         <activity android:name=".activity3.PermissionXActivity" />
 

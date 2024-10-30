@@ -28,6 +28,7 @@ class OpensourceActivity : RouterRecyclerActivity() {
         routerItems.add(RouterItem("SVGAPlayer", RouterPath.Opensource.SVGAPlayer))
 
         routerItems.add(RouterItem(" ", ""))
+        routerItems.add(RouterItem("LoadSir", RouterPath.Opensource.LoadSir))
         routerItems.add(RouterItem("MMKV", RouterPath.Opensource.MMKV))
         routerItems.add(RouterItem("PermissionX", RouterPath.Opensource.PermissionX))
 

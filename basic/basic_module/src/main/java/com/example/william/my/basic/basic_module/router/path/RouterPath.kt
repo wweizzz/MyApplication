@@ -113,6 +113,7 @@ object RouterPath {
         const val Lottie = "${Opensource}/Lottie"
         const val SVGAPlayer = "${Opensource}/SVGAPlayer"
 
+        const val LoadSir = "${Opensource}/LoadSir"
         const val MMKV = "${Opensource}/MMKV"
         const val PermissionX = "${Opensource}/PermissionX"
 

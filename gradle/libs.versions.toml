@@ -27,7 +27,7 @@ androidxViewPager2 = "1.0.0"
 
 androidxLifecycle = "2.8.6"
 androidxPaging = "3.1.1"
-androidxDataStore = "1.0.0"
+androidxDataStore = "1.1.1"
 androidxWorkManager = "2.9.0"
 androidxNavigation = "2.8.0"
 androidxStartup = "1.1.1"
@@ -47,7 +47,7 @@ androidxRoom = "2.6.1"
 androidxComposeCompiler = "1.5.14"
 
 androidxComposeBom = "2024.09.00"
-androidxLiveDataCompose = "1.7.0"
+androidxLiveDataCompose = "1.7.1"
 androidxConstraintLayoutCompose = "1.0.1"
 smartRefreshcCompose = "2.1.0"
 # ##################################################################################################
@@ -98,11 +98,11 @@ shadowlayout = "3.3.2"
 swipelayout = "1.2.0"
 # ##################################################################################################
 junit = "4.13.2"
-androidxTestExt = "1.1.5"
+androidxTestExt = "1.2.1"
 androidxTestEspresso = "3.5.1"
 # ##################################################################################################
 # https://developer.android.google.cn/studio/releases/gradle-plugin
-gradlePluginAndroid = "8.7.0"
+gradlePluginAndroid = "8.7.1"
 gradlePluginKotlin = "2.0.20"
 gradlePluginProtobuf = "0.9.4"
 gradlePluginArouter = "1.0.2"

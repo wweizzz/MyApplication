@@ -28,15 +28,15 @@ class RxRetrofit<T>(private val builder: RetrofitBuilder<T>) {
 
     fun createResponse(): Single<RetrofitResponse<T>> {
         lateinit var response: Single<RetrofitResponse<T>>
-        lateinit var responseSingle: Single<RetrofitResponse<JsonElement>>
+        lateinit var responseJsonElement: Single<RetrofitResponse<JsonElement>>
         when (builder.getMethod()) {
             Method.GET -> {
-                responseSingle =
+                responseJsonElement =
                     buildApi().get(builder.getApi(), builder.getHeader(), builder.getParam())
             }
 
             Method.POST -> {
-                responseSingle =
+                responseJsonElement =
                     if (!builder.hasBody()) {
                         buildApi().post(builder.getApi(), builder.getHeader(), builder.getParam())
                     } else {
@@ -52,24 +52,26 @@ class RxRetrofit<T>(private val builder: RetrofitBuilder<T>) {
             }
 
             Method.PUT -> {
-                responseSingle =
+                responseJsonElement =
                     buildApi().put(builder.getApi(), builder.getHeader(), builder.getParam())
             }
 
             Method.DELETE -> {
-                responseSingle =
+                responseJsonElement =
                     buildApi().delete(builder.getApi(), builder.getHeader(), builder.getParam())
             }
         }
-        response = responseSingle
+        response = responseJsonElement
             .map(RxRetrofitFunction<T>())
             .onErrorResumeNext(HttpResultFunction())
 
         builder.getLifecycle()?.let { lifecycle ->
-            response = response.compose(lifecycle.bindToLifecycle())
+            response = response
+                .compose(lifecycle.bindToLifecycle())
         }
 
-        response = response.subscribeOn(Schedulers.io())
+        response = response
+            .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
         return response
     }

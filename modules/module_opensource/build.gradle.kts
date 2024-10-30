@@ -31,8 +31,11 @@ dependencies {
 
     implementation(libs.mmkv)
     implementation(libs.permission)
-    //implementation(libs.loadsir)
+    implementation(libs.loadsir)
 
+    implementation(libs.rxjava3)
+
+    //extra
     implementation(libs.glide)//pictureselector
 
     //implementation(libs.upgrade)
