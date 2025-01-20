@@ -44,7 +44,7 @@ dependencies {
     compileOnly(libs.gradlePlugin.objectbox)
 
     compileOnly(libs.gradlePlugin.hilt)
-    //compileOnly(libs.gradlePlugin.room)
+    compileOnly(libs.gradlePlugin.room)
 }
 
 gradlePlugin {

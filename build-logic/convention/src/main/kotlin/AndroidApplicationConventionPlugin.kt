@@ -36,9 +36,9 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                 apply("nowinandroid.android.lint")
             }
             extensions.configure<ApplicationExtension> {
-                compileSdk = 34
-                defaultConfig.minSdk = 21
-                defaultConfig.targetSdk = 34
+                compileSdk = 35
+                defaultConfig.minSdk = 24
+                defaultConfig.targetSdk = 35
                 configureKotlinAndroid(this)
                 configureFlavors(this)
             }

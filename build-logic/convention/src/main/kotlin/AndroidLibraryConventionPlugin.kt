@@ -38,9 +38,9 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
                 apply("nowinandroid.android.lint")
             }
             extensions.configure<LibraryExtension> {
-                compileSdk = 34
-                defaultConfig.minSdk = 21
-                defaultConfig.targetSdk = 34
+                compileSdk = 35
+                defaultConfig.minSdk = 24
+                defaultConfig.targetSdk = 35
                 configureKotlinAndroid(this)
                 configureAndroidCompose(this)
                 configureFlavors(this)
