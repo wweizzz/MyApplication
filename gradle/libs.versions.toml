@@ -21,7 +21,7 @@ androidxFragment = "1.7.1"
 androidxSplashscreen = "1.0.1"
 
 androidxAppCompat = "1.7.0"
-androidxConstraintLayout = "2.1.4"
+androidxConstraintLayout = "2.2.0"
 androidxRecyclerView = "1.3.0"
 androidxViewPager2 = "1.0.0"
 
@@ -39,19 +39,20 @@ androidxStartup = "1.1.1"
 # Hilt:2.48对应kotlin:1.9.0
 # Hilt:2.51对应kotlin:2.0.0
 # Hilt:2.52对应kotlin:2.0.20
-androidxHilt = "2.52"
+# Hilt:2.54对应kotlin:2.1.0
+androidxHilt = "2.54"
 
 androidxRoom = "2.6.1"
 
 # https://developer.android.com/jetpack/androidx/releases/compose-kotlin?hl=zh-cn
 androidxComposeCompiler = "1.5.14"
 
-androidxComposeBom = "2024.09.00"
+androidxComposeBom = "2024.12.01 "
 androidxLiveDataCompose = "1.7.1"
 androidxConstraintLayoutCompose = "1.0.1"
 smartRefreshcCompose = "2.1.0"
 # ##################################################################################################
-mmkv = "1.3.2"
+mmkv = "2.0.2"
 upgrade = "2.2.0"
 utils = "1.31.1"
 permission = "1.7.1"
@@ -99,16 +100,16 @@ swipelayout = "1.2.0"
 # ##################################################################################################
 junit = "4.13.2"
 androidxTestExt = "1.2.1"
-androidxTestEspresso = "3.5.1"
+androidxTestEspresso = "3.6.1"
 # ##################################################################################################
 # https://developer.android.google.cn/studio/releases/gradle-plugin
-gradlePluginAndroid = "8.7.1"
-gradlePluginKotlin = "2.0.20"
+gradlePluginAndroid = "8.8.0"
+gradlePluginKotlin = "2.1.0"
 gradlePluginProtobuf = "0.9.4"
 gradlePluginArouter = "1.0.2"
 gradlePluginGreenDao = "3.3.1"
 gradlePluginObjectBox = "3.7.1"
-gradlePluginKsp = "2.0.20-1.0.25"
+gradlePluginKsp = "2.1.0-1.0.29"
 # ##################################################################################################
 [libraries]
 #
