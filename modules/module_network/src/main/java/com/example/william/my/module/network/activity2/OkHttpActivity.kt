@@ -125,7 +125,8 @@ class OkHttpActivity : BasicRecyclerActivity() {
     }
 
     private fun postingMultipart(url: String, username: String, password: String) {
-        val multipartBody = MultipartBody.Builder().setType(MultipartBody.FORM)
+        val multipartBody = MultipartBody.Builder()
+            .setType(MultipartBody.FORM)
             .addFormDataPart(Constants.Key_Username, username)
             .addFormDataPart(Constants.Key_Password, password)
             .build()

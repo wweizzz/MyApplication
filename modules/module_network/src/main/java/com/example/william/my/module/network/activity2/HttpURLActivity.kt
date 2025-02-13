@@ -80,8 +80,8 @@ class HttpURLActivity : BasicRecyclerActivity() {
             // 6. 如果返回值正常，数据在网络中是以流的形式得到服务端返回的数据
             val response = StringBuilder()
             if (code == 200) {
-                val `is` = connection.inputStream
-                val reader = BufferedReader(InputStreamReader(`is`))
+                val inputStream = connection.inputStream
+                val reader = BufferedReader(InputStreamReader(inputStream))
                 var line: String?
                 while (reader.readLine().also { line = it } != null) {
                     response.append(line).append("\n")

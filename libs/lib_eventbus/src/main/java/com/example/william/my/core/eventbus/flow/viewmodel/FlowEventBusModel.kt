@@ -4,8 +4,8 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.whenStateAtLeast
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.Job
@@ -50,7 +50,7 @@ class FlowEventBusModel : ViewModel() {
         onReceived: (T) -> Unit
     ): Job {
         return lifecycleOwner.lifecycleScope.launch {
-            lifecycleOwner.lifecycle.whenStateAtLeast(minState) {
+            lifecycleOwner.lifecycle.repeatOnLifecycle(minState) {
                 getEventFlow(eventName, isSticky)
                     .collect { value ->
                         this.launch(dispatcher) {

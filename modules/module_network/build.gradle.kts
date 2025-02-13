@@ -30,4 +30,14 @@ dependencies {
     implementation(project(":libs:lib_retrofit"))
     implementation(project(":libs:lib_download"))
     implementation(project(":libs:lib_websocket"))
+
+    implementation(libs.ktor.client.core)
+    implementation(libs.ktor.client.android)
+    implementation(libs.ktor.client.cio)
+    implementation(libs.ktor.client.okhttp)
+    implementation(libs.ktor.client.logging)
+    implementation(libs.ktor.client.negotiation)
+
+    implementation(libs.ktor.serialization.gson)
+    implementation(libs.ktor.serialization.json)
 }

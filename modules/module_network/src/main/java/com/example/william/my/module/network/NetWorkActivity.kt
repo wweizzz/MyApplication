@@ -13,6 +13,9 @@ class NetWorkActivity : RouterRecyclerActivity() {
         routerItems.add(
             RouterItem("CoilActivity", RouterPath.Network.Coil)
         )
+        routerItems.add(
+            RouterItem("KtorActivity", RouterPath.Network.Ktor)
+        )
 
         routerItems.add(
             RouterItem("", "")

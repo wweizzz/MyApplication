@@ -145,6 +145,7 @@ object RouterPath {
         const val Main = "${Network}/Main"
 
         const val Coil = "${Network}/Coil"
+        const val Ktor = "${Network}/Ktor"
 
         const val HttpURL = "${Network}/HttpURL"
 
