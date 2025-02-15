@@ -3,13 +3,13 @@ versionCode = "100"
 versionName = "1.0.0" # X.Y.Z; X = Major, Y = minor, Z = Patch level
 # ##################################################################################################
 minSdk = "24"
-targetSdk = "34"
-compileSdk = "34"
+targetSdk = "35"
+compileSdk = "35"
 # ##################################################################################################
 androidDesugarJdkLibs = "2.1.4"
 kotlinxCoroutines = "1.10.1"
 
-googleGson = "2.10.1"
+googleGson = "2.11.0"
 googleGuava = "33.2.1-android"
 googleProtobuf = "4.29.2"
 googleFlexbox = "3.0.0"
@@ -112,6 +112,7 @@ gradlePluginArouter = "1.0.2"
 gradlePluginGreenDao = "3.3.1"
 gradlePluginObjectBox = "3.7.1"
 gradlePluginKsp = "2.1.0-1.0.29"
+junitVersion = "1.1.5"
 # ##################################################################################################
 [libraries]
 #
@@ -337,6 +338,7 @@ gradlePlugin-objectbox = { group = "io.objectbox", name = "objectbox-gradle-plug
 
 gradlePlugin-hilt = { group = "com.google.dagger", name = "hilt-android-gradle-plugin", version.ref = "androidxHilt" }
 gradlePlugin-room = { group = "androidx.room", name = "room-gradle-plugin", version.ref = "androidxRoom" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "gradlePluginAndroid" }

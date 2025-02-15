@@ -71,6 +71,7 @@ include(":basic:basic_module")
 include(":basic:basic_data")
 include(":basic:basic_repo")
 
+include(":libs:lib_ktor")
 include(":libs:lib_okhttp")
 include(":libs:lib_retrofit")
 
