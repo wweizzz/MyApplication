@@ -24,7 +24,7 @@ class InitProvider : ContentProvider() {
 
     override fun onCreate(): Boolean {
         // 这里可以初始化你需要的代码
-        Utils.d(tag, "init")
+        Utils.d(tag, "InitProvider init")
         return true
     }
 

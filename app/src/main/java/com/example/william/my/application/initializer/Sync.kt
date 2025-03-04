@@ -34,7 +34,7 @@ class StartupInitializer : Initializer<String> {
     private val tag = "StartupInitializer"
 
     override fun create(context: Context): String {
-        Log.e(tag, "init")
+        Log.e(tag, "StartupInitializer init")
         return "Startup Init"
     }
 

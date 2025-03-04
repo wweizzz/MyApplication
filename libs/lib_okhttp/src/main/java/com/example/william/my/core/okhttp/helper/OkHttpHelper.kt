@@ -9,6 +9,7 @@ import com.example.william.my.core.okhttp.compat.CompatHttpsSSL
 import com.example.william.my.core.okhttp.compat.CompatInterceptor
 import com.example.william.my.core.okhttp.compat.CompatLogging
 import com.example.william.my.core.okhttp.compat.CompatProxy
+import com.example.william.my.core.okhttp.compat.CompatRetry
 import com.example.william.my.core.okhttp.compat.CompatTimeout
 import com.example.william.my.core.okhttp.config.OkHttpConfig
 import okhttp3.Interceptor
@@ -24,18 +25,18 @@ object OkHttpHelper {
         return mOkHttpClient ?: createOkHttpClient()
     }
 
-    fun setLogTag(tag: String): OkHttpHelper {
-        OkHttpConfig.Builder().setLogTag(tag)
+    fun setTimeout(timeout: Long): OkHttpHelper {
+        OkHttpConfig.Builder().setTimeout(timeout)
         return this@OkHttpHelper
     }
 
-    fun showBasicLog(show: Boolean): OkHttpHelper {
-        OkHttpConfig.Builder().showBasicLog(show)
+    fun setRetry(retry: Boolean): OkHttpHelper {
+        OkHttpConfig.Builder().setRetry(retry)
         return this@OkHttpHelper
     }
 
-    fun showFormatLog(show: Boolean, filters: List<String>): OkHttpHelper {
-        OkHttpConfig.Builder().showFormatLog(show, filters)
+    fun setConnectionPool(isConnectionPool: Boolean): OkHttpHelper {
+        OkHttpConfig.Builder().setConnectionPool(isConnectionPool)
         return this@OkHttpHelper
     }
 
@@ -51,6 +52,16 @@ object OkHttpHelper {
 
     fun setCookieJar(cookieJar: Boolean): OkHttpHelper {
         OkHttpConfig.Builder().setCookieJar(cookieJar)
+        return this@OkHttpHelper
+    }
+
+    fun setIgnoreSSL(ignoreSSL: Boolean): OkHttpHelper {
+        OkHttpConfig.Builder().setIgnoreSSL(ignoreSSL)
+        return this@OkHttpHelper
+    }
+
+    fun setNoProxy(noProxy: Boolean): OkHttpHelper {
+        OkHttpConfig.Builder().setNoProxy(noProxy)
         return this@OkHttpHelper
     }
 
@@ -79,23 +90,18 @@ object OkHttpHelper {
         return this@OkHttpHelper
     }
 
-    fun setNoProxy(noProxy: Boolean): OkHttpHelper {
-        OkHttpConfig.Builder().setNoProxy(noProxy)
+    fun setLogTag(tag: String): OkHttpHelper {
+        OkHttpConfig.Builder().setLogTag(tag)
         return this@OkHttpHelper
     }
 
-    fun setIgnoreSSL(ignoreSSL: Boolean): OkHttpHelper {
-        OkHttpConfig.Builder().setIgnoreSSL(ignoreSSL)
+    fun showBasicLog(show: Boolean): OkHttpHelper {
+        OkHttpConfig.Builder().showBasicLog(show)
         return this@OkHttpHelper
     }
 
-    fun setRetry(retry: Boolean): OkHttpHelper {
-        OkHttpConfig.Builder().setRetry(retry)
-        return this@OkHttpHelper
-    }
-
-    fun setTimeout(timeout: Long): OkHttpHelper {
-        OkHttpConfig.Builder().setTimeout(timeout)
+    fun showFormatLog(show: Boolean, filters: List<String>): OkHttpHelper {
+        OkHttpConfig.Builder().showFormatLog(show, filters)
         return this@OkHttpHelper
     }
 
@@ -113,13 +119,11 @@ object OkHttpHelper {
     fun createBuilder(): OkHttpClient.Builder {
         val builder = OkHttpClient.Builder()
 
-        // 显示log
-        if (OkHttpConfig.isShowBasicLog()) {
-            CompatLogging.setBasicLog(builder)
-        }
-        if (OkHttpConfig.isShowFormatLog()) {
-            CompatLogging.setFormatLog(builder, OkHttpConfig.getShowFormatLogFilters())
-        }
+        // 设置超时时间
+        CompatTimeout.setTimeOut(builder)
+
+        // 设置重试机制
+        CompatRetry.setRetry(builder)
 
         // 自定义连接池最大空闲连接数
         if (OkHttpConfig.isConnectionPool()) {
@@ -131,9 +135,10 @@ object OkHttpHelper {
             CompatCookieJar.cookieJar(builder)
         }
 
-        // 设置缓存
-        if (OkHttpConfig.cache()) {
-            CompatCache.setCache(builder)
+        // 忽略https证书
+        if (OkHttpConfig.ignoreSSL()) {
+            CompatHttpsSSL.ignoreSSLForOkHttp(builder)
+            CompatHttpsSSL.ignoreSSLForHttpsURLConnection()
         }
 
         // 禁用代理
@@ -141,14 +146,20 @@ object OkHttpHelper {
             CompatProxy.noProxy(builder)
         }
 
-        // 忽略https证书
-        if (OkHttpConfig.ignoreSSL()) {
-            CompatHttpsSSL.ignoreSSLForOkHttp(builder)
-            CompatHttpsSSL.ignoreSSLForHttpsURLConnection()
+        // 设置缓存
+        if (OkHttpConfig.cache()) {
+            CompatCache.setCache(builder)
         }
 
-        // 设置超时时间
-        CompatTimeout.setTimeOut(builder)
+        // 显示log
+        if (OkHttpConfig.isShowBasicLog()) {
+            CompatLogging.setBasicLog(builder)
+        }
+
+        // 显示log
+        if (OkHttpConfig.isShowFormatLog()) {
+            CompatLogging.setFormatLog(builder, OkHttpConfig.getShowFormatLogFilters())
+        }
 
         // 添加拦截器
         CompatInterceptor.addInterceptor(builder)

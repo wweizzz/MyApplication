@@ -33,7 +33,7 @@ class OkHttpHelperActivity : BasicRecyclerActivity() {
         when (position) {
             0 -> {
                 AppExecutorsHelper.networkIO().execute {
-                    postingParam()
+                    postingForm()
                 }
             }
 
@@ -45,7 +45,10 @@ class OkHttpHelperActivity : BasicRecyclerActivity() {
         }
     }
 
-    private fun postingParam() {
+    /**
+     * FormBody
+     */
+    private fun postingForm() {
         // 创建 OkHttpClient 对象
         val client: OkHttpClient = OkHttpHelper.client()
 
@@ -83,6 +86,9 @@ class OkHttpHelperActivity : BasicRecyclerActivity() {
         })
     }
 
+    /**
+     * MultipartBody
+     */
     private fun postingMultipart() {
         // 创建 OkHttpClient 对象
         val client: OkHttpClient = OkHttpHelper.client()

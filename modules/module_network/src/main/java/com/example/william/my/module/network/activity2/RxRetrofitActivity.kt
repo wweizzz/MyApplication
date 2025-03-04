@@ -22,8 +22,7 @@ class RxRetrofitActivity : BasicRecyclerActivity() {
             "RxRetrofit Post",
             "RxRetrofit Post String",
             "RxRetrofit Post JsonString",
-            "RxRetrofit Post JsonObject1",
-            "RxRetrofit Post JsonObject2",
+            "RxRetrofit Post JsonObject",
         )
     }
 
@@ -43,11 +42,7 @@ class RxRetrofitActivity : BasicRecyclerActivity() {
             }
 
             3 -> {
-                postJsonObject1()
-            }
-
-            4 -> {
-                postJsonObject2()
+                postJsonObject()
             }
         }
     }
@@ -116,32 +111,11 @@ class RxRetrofitActivity : BasicRecyclerActivity() {
             })
     }
 
-    private fun postJsonObject1() {
-        val jsonObject = JSONObject(Constants.LoginJsonString)
-        RxRetrofit
-            .builder<JsonElement>()
-            .api(Constants.Url_Login)
-            .addJsonObject(jsonObject)
-            .post()
-            .setProvider(this)
-            .buildSingle()
-            .subscribe(object : RetrofitResponseCallback<JsonElement>() {
-                override fun onResponse(response: JsonElement?) {
-                    super.onResponse(response)
-                    showResponse(response?.toString())
-                }
-
-                override fun onFailure(e: ApiException) {
-                    super.onFailure(e)
-                    showMessage(e.message)
-                }
-            })
-    }
-
-    private fun postJsonObject2() {
+    private fun postJsonObject() {
         val jsonObject = JSONObject()
             .put(Constants.Key_Username, Constants.Value_Username)
             .put(Constants.Key_Password, Constants.Value_Password)
+
         RxRetrofit
             .builder<JsonElement>()
             .api(Constants.Url_Login)

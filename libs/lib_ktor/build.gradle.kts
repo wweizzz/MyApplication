@@ -7,13 +7,13 @@ android {
 }
 
 dependencies {
-    implementation(libs.ktor.client.core)
-    implementation(libs.ktor.client.android)
-    implementation(libs.ktor.client.cio)
-    implementation(libs.ktor.client.okhttp)
-    implementation(libs.ktor.client.logging)
-    implementation(libs.ktor.client.negotiation)
+    // 核心依赖
+    api(libs.ktor.client.core)
+    api(libs.ktor.client.okhttp)
+    api(libs.ktor.client.negotiation)
 
-    implementation(libs.ktor.serialization.gson)
-    implementation(libs.ktor.serialization.json)
+    // 功能模块
+    api(libs.ktor.client.logging)
+    api(libs.ktor.serialization.gson)
+    api(libs.ktor.serialization.json)
 }

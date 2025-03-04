@@ -105,14 +105,14 @@ androidxTestExt = "1.2.1"
 androidxTestEspresso = "3.6.1"
 # ##################################################################################################
 # https://developer.android.google.cn/studio/releases/gradle-plugin
-gradlePluginAndroid = "8.8.1"
+gradlePluginAndroid = "8.8.2"
 gradlePluginKotlin = "2.1.0"
 gradlePluginProtobuf = "0.9.4"
 gradlePluginArouter = "1.0.2"
 gradlePluginGreenDao = "3.3.1"
 gradlePluginObjectBox = "3.7.1"
 gradlePluginKsp = "2.1.0-1.0.29"
-junitVersion = "1.1.5"
+junitVersion = "1.2.1"
 # ##################################################################################################
 [libraries]
 #
@@ -265,11 +265,10 @@ coil-video = { group = "io.coil-kt", name = "coil-video", version.ref = "coil" }
 coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
 # https://ktor.io/
 ktor-client-core = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor" }
-ktor-client-android = { group = "io.ktor", name = "ktor-client-android", version.ref = "ktor" }
-ktor-client-cio = { group = "io.ktor", name = "ktor-client-cio", version.ref = "ktor" }
 ktor-client-okhttp = { group = "io.ktor", name = "ktor-client-okhttp", version.ref = "ktor" }
-ktor-client-logging = { group = "io.ktor", name = "ktor-client-logging", version.ref = "ktor" }
 ktor-client-negotiation = { group = "io.ktor", name = "ktor-client-content-negotiation", version.ref = "ktor" }
+
+ktor-client-logging = { group = "io.ktor", name = "ktor-client-logging", version.ref = "ktor" }
 ktor-serialization-gson = { group = "io.ktor", name = "ktor-serialization-gson", version.ref = "ktor" }
 ktor-serialization-json = { group = "io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ktor" }
 # https://github.com/bumptech/glide

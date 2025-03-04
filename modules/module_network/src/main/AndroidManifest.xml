@@ -5,6 +5,7 @@
         <activity android:name=".NetWorkActivity" />
         <activity android:name=".activity.CoilActivity" />
         <activity android:name=".activity.KtorActivity" />
+        <activity android:name=".activity.KtorUtilsActivity" />
 
         <activity android:name=".activity2.HttpURLActivity" />
 

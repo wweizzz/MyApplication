@@ -7,10 +7,6 @@ class ApiException(throwable: Throwable, var code: Int) : Exception(throwable) {
 
     override var message: String = ""
 
-    //fun string(): Any? {
-    //    return Gson().toJson(this)
-    //}
-
     object Error {
         /**
          * 未知错误
@@ -18,28 +14,28 @@ class ApiException(throwable: Throwable, var code: Int) : Exception(throwable) {
         const val UNKNOWN = 1000
 
         /**
-         * 协议出错
+         * 网络错误
          */
         const val HTTP_ERROR = 1001
+
+        /**
+         * 链接错误
+         */
+        const val CONNECT_ERROR = 1003
+
+        /**
+         * 连接超时
+         */
+        const val TIMEOUT_ERROR = 1004
+
+        /**
+         * 证书验证失败
+         */
+        const val SSL_ERROR = 1005
 
         /**
          * 解析错误
          */
         const val PARSE_ERROR = 1002
-
-        /**
-         * 网络错误
-         */
-        const val NETWORK_ERROR = 1003
-
-        /**
-         * 连接超时
-         */
-        const val CONNECT_ERROR = 1004
-
-        /**
-         * 证书出错
-         */
-        const val SSL_ERROR = 1005
     }
 }

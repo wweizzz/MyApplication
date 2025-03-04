@@ -16,6 +16,7 @@ import java.nio.charset.Charset
  * @param url URL of the request to make
  * @param clazz Relevant class object, for Gson's reflection
  * @param headers Map of request headers
+ * @param params Map of request parameters
  */
 class GsonRequest<T>(
     method: Int,

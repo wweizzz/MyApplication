@@ -16,6 +16,9 @@ class NetWorkActivity : RouterRecyclerActivity() {
         routerItems.add(
             RouterItem("KtorActivity", RouterPath.Network.Ktor)
         )
+        routerItems.add(
+            RouterItem("KtorUtilsActivity", RouterPath.Network.KtorUtils)
+        )
 
         routerItems.add(
             RouterItem("", "")

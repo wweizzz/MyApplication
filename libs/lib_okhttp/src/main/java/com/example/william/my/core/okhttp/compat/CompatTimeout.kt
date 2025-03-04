@@ -6,8 +6,6 @@ import java.util.concurrent.TimeUnit
 
 object CompatTimeout {
     fun setTimeOut(builder: OkHttpClient.Builder) {
-        //不允许失败重试
-        builder.retryOnConnectionFailure(OkHttpConfig.retry())
         //设置连接超时时间
         builder.connectTimeout(OkHttpConfig.getTimeout(), TimeUnit.SECONDS)
         //设置写的超时时间

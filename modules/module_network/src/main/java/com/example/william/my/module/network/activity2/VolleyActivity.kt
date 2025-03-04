@@ -3,17 +3,18 @@ package com.example.william.my.module.network.activity2
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.android.volley.Cache
 import com.android.volley.Network
-import com.android.volley.Request.Method
 import com.android.volley.RequestQueue
+import com.android.volley.Response
 import com.android.volley.toolbox.BasicNetwork
 import com.android.volley.toolbox.DiskBasedCache
 import com.android.volley.toolbox.HurlStack
 import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.StringRequest
 import com.example.william.my.basic.basic_module.activity.BasicRecyclerActivity
 import com.example.william.my.basic.basic_module.base.Constants
 import com.example.william.my.basic.basic_module.router.path.RouterPath
-import com.example.william.my.core.volley.StringRequest2
 import org.json.JSONObject
+
 
 /**
  * https://github.com/google/volley
@@ -22,16 +23,15 @@ import org.json.JSONObject
 @Route(path = RouterPath.Network.Volley)
 class VolleyActivity : BasicRecyclerActivity() {
 
-    private var stringRequest: StringRequest2? = null // Assume this exists.
+    private var stringRequest: StringRequest? = null // Assume this exists.
     private var jsonObjectRequest: JsonObjectRequest? = null // Assume this exists.
 
     private var requestQueue: RequestQueue? = null // Assume this exists.
 
     override fun buildList(): ArrayList<String> {
         return arrayListOf(
-            "Volley PostString",
-            "Volley PostJsonObject1",
-            "Volley PostJsonObject2",
+            "Volley postForm",
+            "Volley PostJson",
         )
     }
 
@@ -45,15 +45,11 @@ class VolleyActivity : BasicRecyclerActivity() {
         super.onRecyclerClick(position, string)
         when (position) {
             0 -> {
-                postString()
+                postForm(Constants.Value_Username, Constants.Value_Password)
             }
 
             1 -> {
-                postJsonObject1()
-            }
-
-            2 -> {
-                postJsonObject2()
+                postJsonObject(Constants.Value_Username, Constants.Value_Password)
             }
         }
     }
@@ -75,15 +71,26 @@ class VolleyActivity : BasicRecyclerActivity() {
         requestQueue?.start()
     }
 
-    private fun postString() {
+    private fun postForm(username: String, password: String) {
+        val params = mapOf(
+            Constants.Key_Username to username,
+            Constants.Key_Password to password
+        )
+
         // Request a string response from the provided URL.
         stringRequest =
-            StringRequest2(Method.POST, Constants.Url_Login, Constants.LoginString, { response ->
-                // Display the first 500 characters of the response string.
-                showResponse(response.toString())
-            }, {
-                showFailure(it.message)
-            })
+            object : StringRequest(Method.POST, Constants.Url_Login,
+                Response.Listener { response ->
+                    showResponse(response.toString())
+                },
+                Response.ErrorListener {
+                    showFailure(it.message)
+                }
+            ) {
+                override fun getParams(): Map<String, String> {
+                    return params
+                }
+            }
 
         // Set the tag on the request.
         stringRequest?.tag = tag
@@ -92,38 +99,24 @@ class VolleyActivity : BasicRecyclerActivity() {
         requestQueue?.add(stringRequest)
     }
 
-    private fun postJsonObject1() {
-        val jsonObject = JSONObject(Constants.LoginJsonString)
-
-        // Request a string response from the provided URL.
-        jsonObjectRequest =
-            JsonObjectRequest(Method.POST, Constants.Url_Login, jsonObject, { response ->
-                // Display the first 500 characters of the response string.
-                showResponse(response.toString())
-            }, {
-                showFailure(it.message)
-            })
-
-        // Set the tag on the request.
-        jsonObjectRequest?.tag = tag
-
-        // Add the request to the RequestQueue.
-        requestQueue?.add(jsonObjectRequest)
-    }
-
-    private fun postJsonObject2() {
+    private fun postJsonObject(username: String, password: String) {
         val jsonObject = JSONObject()
-            .put(Constants.Key_Username, Constants.Value_Username)
-            .put(Constants.Key_Password, Constants.Value_Password)
+            .put(Constants.Key_Username, username)
+            .put(Constants.Key_Password, password)
 
         // Request a string response from the provided URL.
         jsonObjectRequest =
-            JsonObjectRequest(Method.POST, Constants.Url_Login, jsonObject, { response ->
-                // Display the first 500 characters of the response string.
-                showResponse(response.toString())
-            }, {
-                showFailure(it.message)
-            })
+            object : JsonObjectRequest(Method.POST, Constants.Url_Login, jsonObject,
+                Response.Listener { response ->
+                    // Display the first 500 characters of the response string.
+                    showResponse(response.toString())
+                },
+                Response.ErrorListener {
+                    showFailure(it.message)
+                }
+            ) {
+
+            }
 
         // Set the tag on the request.
         jsonObjectRequest?.tag = tag

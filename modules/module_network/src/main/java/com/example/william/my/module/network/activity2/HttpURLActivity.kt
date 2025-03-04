@@ -5,11 +5,8 @@ import com.example.william.my.basic.basic_module.activity.BasicRecyclerActivity
 import com.example.william.my.basic.basic_module.base.Constants
 import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.example.william.my.lib.utils.AppExecutorsHelper
-import java.io.BufferedReader
-import java.io.IOException
-import java.io.InputStreamReader
-import java.net.HttpURLConnection
-import java.net.URL
+import com.example.william.my.module.network.utils.HttpURLUtils
+import org.json.JSONObject
 
 /**
  * setDoOutput() 和 setDoInput()：
@@ -34,7 +31,8 @@ class HttpURLActivity : BasicRecyclerActivity() {
 
     override fun buildList(): ArrayList<String> {
         return arrayListOf(
-            "HttpURLConnection",
+            "HttpURL postForm",
+            "HttpURL postJson",
         )
     }
 
@@ -42,58 +40,44 @@ class HttpURLActivity : BasicRecyclerActivity() {
         super.onRecyclerClick(position, string)
         when (position) {
             0 -> {
-                post()
-            }
-        }
-    }
-
-    private fun post() {
-        AppExecutorsHelper.networkIO().execute {
-            post(Constants.Url_Login, Constants.LoginString)
-        }
-    }
-
-    private fun post(urlString: String, params: String) {
-        try {
-            // 1. 获取访问地址URL
-            val url = URL(urlString)
-            // 2. 创建HttpURLConnection对象
-            val connection = url.openConnection() as HttpURLConnection
-            /* 3. 设置请求参数等 */
-            // 请求方式
-            connection.requestMethod = "POST"
-            // 超时时间
-            connection.connectTimeout = 3000
-            // 设置使用标准编码格式编码参数：名-值对
-            connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded")
-            // 建立连接
-            connection.connect()
-
-            /* 4. 处理输入输出 */
-            val outputStream = connection.outputStream
-            outputStream.write(params.toByteArray())
-            outputStream.flush()
-            outputStream.close()
-
-            // 5. 得到响应状态码的返回值 responseCode
-            val code = connection.responseCode
-            // 6. 如果返回值正常，数据在网络中是以流的形式得到服务端返回的数据
-            val response = StringBuilder()
-            if (code == 200) {
-                val inputStream = connection.inputStream
-                val reader = BufferedReader(InputStreamReader(inputStream))
-                var line: String?
-                while (reader.readLine().also { line = it } != null) {
-                    response.append(line).append("\n")
+                AppExecutorsHelper.networkIO().execute {
+                    postForm(Constants.Value_Username, Constants.Value_Password)
                 }
-                // 关闭流
-                reader.close()
             }
-            // 7. 断开连接
-            connection.disconnect()
-            showResponse(response.toString())
-        } catch (e: IOException) {
-            showFailure(e.message)
+
+            1 -> {
+                AppExecutorsHelper.networkIO().execute {
+                    postJson(Constants.Value_Username, Constants.Value_Password)
+                }
+            }
         }
+    }
+
+    private fun postForm(username: String, password: String) {
+        val params = mutableMapOf<String, String>()
+        params[Constants.Key_Username] = username
+        params[Constants.Key_Password] = password
+
+        HttpURLUtils.postForm(Constants.Url_Login, params,
+            listener = {
+                showResponse(it)
+            },
+            errorListener = {
+                showFailure(it?.message)
+            })
+    }
+
+    private fun postJson(username: String, password: String) {
+        val jsonObject = JSONObject()
+            .put(Constants.Key_Username, username)
+            .put(Constants.Key_Password, password)
+
+        HttpURLUtils.postJson(Constants.Url_Login, jsonObject,
+            listener = {
+                showResponse(it)
+            },
+            errorListener = {
+                showFailure(it?.message)
+            })
     }
 }
