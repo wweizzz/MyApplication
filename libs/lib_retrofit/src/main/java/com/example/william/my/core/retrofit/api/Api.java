@@ -42,7 +42,7 @@ public interface Api {
      * @return
      */
     @GET
-    Single<RetrofitResponse<JsonElement>> get(@Url String url, @HeaderMap Map<String, Object> header, @QueryMap Map<String, Object> parameter);
+    Single<RetrofitResponse<JsonElement>> get(@Url String url, @HeaderMap Map<String, String> header, @QueryMap Map<String, String> parameter);
 
     /**
      * POST 请求
@@ -54,7 +54,7 @@ public interface Api {
      */
     @FormUrlEncoded
     @POST
-    Single<RetrofitResponse<JsonElement>> post(@Url String url, @HeaderMap Map<String, Object> header, @FieldMap Map<String, Object> parameter);
+    Single<RetrofitResponse<JsonElement>> post(@Url String url, @HeaderMap Map<String, String> header, @FieldMap Map<String, String> parameter);
 
     /**
      * POST 请求
@@ -65,7 +65,7 @@ public interface Api {
      * @return
      */
     @POST
-    Single<RetrofitResponse<JsonElement>> post(@Url String url, @HeaderMap Map<String, Object> header, @Body RequestBody requestBody);
+    Single<RetrofitResponse<JsonElement>> post(@Url String url, @HeaderMap Map<String, String> header, @Body RequestBody requestBody);
 
     /**
      * DELETE 请求
@@ -76,7 +76,7 @@ public interface Api {
      * @return
      */
     @DELETE
-    Single<RetrofitResponse<JsonElement>> delete(@Url String url, @HeaderMap Map<String, Object> header, @QueryMap Map<String, Object> parameter);
+    Single<RetrofitResponse<JsonElement>> delete(@Url String url, @HeaderMap Map<String, String> header, @QueryMap Map<String, String> parameter);
 
     /**
      * PUT 请求
@@ -88,7 +88,7 @@ public interface Api {
      */
     @FormUrlEncoded
     @PUT
-    Single<RetrofitResponse<JsonElement>> put(@Url String url, @HeaderMap Map<String, Object> header, @FieldMap Map<String, Object> parameter);
+    Single<RetrofitResponse<JsonElement>> put(@Url String url, @HeaderMap Map<String, String> header, @FieldMap Map<String, String> parameter);
 
     /**
      * 文件上传
@@ -101,7 +101,7 @@ public interface Api {
      */
     @Multipart
     @POST
-    Single<RetrofitResponse<JsonElement>> uploadFile(@Url String url, @HeaderMap Map<String, Object> header, @Part MultipartBody.Part part);
+    Single<RetrofitResponse<JsonElement>> uploadFile(@Url String url, @HeaderMap Map<String, String> header, @Part MultipartBody.Part part);
 
     /**
      * 多文件上传
@@ -114,8 +114,7 @@ public interface Api {
      */
     @Multipart
     @POST
-    Single<RetrofitResponse<JsonElement>> uploadFiles(@Url String url, @HeaderMap Map<String, Object> header, @PartMap Map<String, RequestBody> map);
-
+    Single<RetrofitResponse<JsonElement>> uploadFiles(@Url String url, @HeaderMap Map<String, String> header, @PartMap Map<String, RequestBody> map);
 
     /**
      * 断点续传下载

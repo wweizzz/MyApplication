@@ -3,6 +3,8 @@ import com.google.samples.apps.nowinandroid.NiaBuildType
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
+//apply(file("../.signing/configs-signing.gradle"))
+
 plugins {
     alias(libs.plugins.nowinandroid.android.application)
     alias(libs.plugins.nowinandroid.android.arouter)
@@ -78,7 +80,6 @@ android {
 }
 
 dependencies {
-    implementation(libs.google.material)
     implementation(project(":basic:basic_lib"))
     implementation(project(":basic:basic_module"))
 

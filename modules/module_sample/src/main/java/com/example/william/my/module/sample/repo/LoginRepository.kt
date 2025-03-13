@@ -1,6 +1,6 @@
 package com.example.william.my.module.sample.repo
 
-import com.example.william.my.basic.basic_data.bean.Login
+import com.example.william.my.basic.basic_data.bean.LoginData
 import com.example.william.my.basic.basic_module.base.Constants
 import com.example.william.my.module.sample.data.NetworkResult
 import com.example.william.my.module.sample.utils.ThreadUtils
@@ -28,7 +28,7 @@ class LoginRepository(private val defaultDispatcher: CoroutineDispatcher) {
      * 将 协程 切换到 I/O 调度，确保主线程安全
      * Move the execution of the coroutine to the I/O dispatcher
      */
-    suspend fun login(username: String, password: String): NetworkResult<Login> {
+    suspend fun login(username: String, password: String): NetworkResult<LoginData> {
 
         return withContext(defaultDispatcher) {
             //打印线程
@@ -46,7 +46,7 @@ class LoginRepository(private val defaultDispatcher: CoroutineDispatcher) {
      * 发出网络请求，阻塞当前线程
      * Function that makes the network request, blocking the current thread
      */
-    private fun makeLoginRequest(username: String, password: String): NetworkResult<Login> {
+    private fun makeLoginRequest(username: String, password: String): NetworkResult<LoginData> {
         //打印线程
         ThreadUtils.isMainThread("CoroutinesRepository makeLoginRequest")
 
@@ -64,7 +64,7 @@ class LoginRepository(private val defaultDispatcher: CoroutineDispatcher) {
         return NetworkResult.Error(Exception("Cannot open HttpURLConnection"))
     }
 
-    private fun parseInputStream(input: InputStream): Login {
+    private fun parseInputStream(input: InputStream): LoginData {
         val msg = StringBuilder()
         val reader = BufferedReader(InputStreamReader(input))
         var line: String?
@@ -73,6 +73,6 @@ class LoginRepository(private val defaultDispatcher: CoroutineDispatcher) {
         }
         reader.close()
         val response = msg.toString()
-        return Gson().fromJson(response, Login::class.java)
+        return Gson().fromJson(response, LoginData::class.java)
     }
 }

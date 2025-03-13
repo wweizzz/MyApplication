@@ -28,12 +28,12 @@ class RetrofitActivity : BasicRecyclerActivity() {
         super.onRecyclerClick(position, string)
         when (position) {
             0 -> {
-                loginCall()
+                loginCall(Constants.Value_Username, Constants.Value_Password)
             }
         }
     }
 
-    private fun loginCall() {
+    private fun loginCall(username: String, password: String) {
         // （2）创建 Retrofit 实例
         val retrofit: Retrofit = Retrofit.Builder()
             .baseUrl(Constants.Url_Base) // baseUlr必须以 /（斜线）结束，不然会抛出一个IllegalArgumentException
@@ -43,8 +43,7 @@ class RetrofitActivity : BasicRecyclerActivity() {
         val api: NetworkApi = retrofit.create(NetworkApi::class.java)
 
         // （4）调用网络接口中的方法获取 Call 对象
-        val call: Call<ResponseBody> =
-            api.loginCall(Constants.Value_Username, Constants.Value_Password)
+        val call: Call<ResponseBody> = api.loginCall(username, password)
 
         // （5）进行网络请求
         call.enqueue(object : Callback<ResponseBody> {

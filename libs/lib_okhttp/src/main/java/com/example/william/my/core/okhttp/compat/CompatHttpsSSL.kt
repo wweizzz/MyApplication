@@ -14,7 +14,7 @@ object CompatHttpsSSL {
 
     fun ignoreSSLForOkHttp(builder: OkHttpClient.Builder) {
         builder.hostnameVerifier(ignoreHostnameVerifier)
-        builder.sslSocketFactory(ignoreSSLSocketFactory, trustManager)
+        builder.sslSocketFactory(ignoreSSLSocketFactory, ignoreTrustManager)
     }
 
     fun ignoreSSLForHttpsURLConnection() {
@@ -38,15 +38,14 @@ object CompatHttpsSSL {
     private val ignoreSSLSocketFactory: SSLSocketFactory
         get() = try {
             val sslContext = SSLContext.getInstance("TLS")
-            val trustManager = trustManager
-            sslContext.init(null, arrayOf<TrustManager>(trustManager), null)
+            sslContext.init(null, arrayOf<TrustManager>(ignoreTrustManager), null)
             sslContext.socketFactory
         } catch (e: Exception) {
             throw RuntimeException(e)
         }
 
     @get:SuppressLint("CustomX509TrustManager")
-    private val trustManager: X509TrustManager
+    private val ignoreTrustManager: X509TrustManager
         get() = object : X509TrustManager {
             @SuppressLint("TrustAllX509TrustManager")
             override fun checkClientTrusted(chain: Array<X509Certificate>, authType: String) {

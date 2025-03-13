@@ -19,9 +19,6 @@ abstract class BasicRecyclerActivity : BaseActivity(),
     private val mAdapter: RecyclerAdapter by lazy {
         RecyclerAdapter()
     }
-    private val mResponseAdapter: RecyclerAdapter by lazy {
-        RecyclerAdapter()
-    }
     private val mAdapterHelper: QuickAdapterHelper by lazy {
         QuickAdapterHelper.Builder(mAdapter).build()
     }
@@ -89,22 +86,10 @@ abstract class BasicRecyclerActivity : BaseActivity(),
         }
     }
 
-    protected fun showMessage(msg: String?) {
+    protected fun showEventMessage(msg: String?) {
         runOnUiThread {
             msg?.let {
-                if (!it.startsWith("onResponse: ")) {
-                    mResponseAdapter.submitList(arrayListOf(it))
-                } else {
-                    mResponseAdapter.submitList(arrayListOf(it.formatString()))
-                }
-            }
-        }
-    }
-
-    protected fun addMessage(msg: String?) {
-        runOnUiThread {
-            msg?.let {
-                mResponseAdapter.add(it)
+                mAdapter.add(it)
             }
         }
     }

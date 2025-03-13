@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.alibaba.android.arouter.launcher.ARouter
-import com.example.william.my.basic.basic_module.router.navigation.LoginNavigationImpl
 import com.example.william.my.basic.basic_module.router.path.RouterPath
 
 /**
@@ -79,7 +78,7 @@ class MainActivity : AppCompatActivity() {
                         R.anim.basic_anim_slide_out_right
                     )
                     .withString("param_key", "param_value")
-                    .navigation(this, LoginNavigationImpl())
+                    .navigation()
                 //.greenChannel()//使用绿色通道(跳过所有的拦截器)
                 //.navigation()
 
@@ -93,7 +92,7 @@ class MainActivity : AppCompatActivity() {
                     R.anim.basic_anim_slide_out_right
                 )
                 .withString("param_key", "param_value")
-                .navigation(this, LoginNavigationImpl())
+                .navigation()
             //.greenChannel()//使用绿色通道(跳过所有的拦截器)
             //.navigation()
 

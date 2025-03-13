@@ -151,6 +151,9 @@ object OkHttpHelper {
             CompatCache.setCache(builder)
         }
 
+        // 添加拦截器
+        CompatInterceptor.addInterceptor(builder)
+
         // 显示log
         if (OkHttpConfig.isShowBasicLog()) {
             CompatLogging.setBasicLog(builder)
@@ -160,9 +163,6 @@ object OkHttpHelper {
         if (OkHttpConfig.isShowFormatLog()) {
             CompatLogging.setFormatLog(builder, OkHttpConfig.getShowFormatLogFilters())
         }
-
-        // 添加拦截器
-        CompatInterceptor.addInterceptor(builder)
 
         return builder
     }

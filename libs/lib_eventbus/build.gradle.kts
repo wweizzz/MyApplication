@@ -8,10 +8,9 @@ android {
 
 dependencies {
     //RxEventBus
-    api(libs.rxjava3)
-    //FlowEventBus
-    //viewModelScope
+    api(libs.rxandroid)
+    //FlowEventBus viewModelScope
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
-    //ProcessLifecycleOwner
+    //FlowEventBus ProcessLifecycleOwner
     implementation(libs.androidx.lifecycle.process)
 }

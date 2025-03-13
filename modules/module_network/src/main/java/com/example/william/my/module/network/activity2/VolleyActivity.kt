@@ -13,6 +13,7 @@ import com.android.volley.toolbox.StringRequest
 import com.example.william.my.basic.basic_module.activity.BasicRecyclerActivity
 import com.example.william.my.basic.basic_module.base.Constants
 import com.example.william.my.basic.basic_module.router.path.RouterPath
+import com.example.william.my.core.volley.VolleySingleton
 import org.json.JSONObject
 
 
@@ -31,7 +32,7 @@ class VolleyActivity : BasicRecyclerActivity() {
     override fun buildList(): ArrayList<String> {
         return arrayListOf(
             "Volley postForm",
-            "Volley PostJson",
+            "Volley postJson",
         )
     }
 
@@ -72,14 +73,15 @@ class VolleyActivity : BasicRecyclerActivity() {
     }
 
     private fun postForm(username: String, password: String) {
-        val params = mapOf(
+        val params = mutableMapOf(
             Constants.Key_Username to username,
             Constants.Key_Password to password
         )
 
         // Request a string response from the provided URL.
         stringRequest =
-            object : StringRequest(Method.POST, Constants.Url_Login,
+            object : StringRequest(
+                Method.POST, Constants.Url_Login,
                 Response.Listener { response ->
                     showResponse(response.toString())
                 },
@@ -106,7 +108,8 @@ class VolleyActivity : BasicRecyclerActivity() {
 
         // Request a string response from the provided URL.
         jsonObjectRequest =
-            object : JsonObjectRequest(Method.POST, Constants.Url_Login, jsonObject,
+            object : JsonObjectRequest(
+                Method.POST, Constants.Url_Login, jsonObject,
                 Response.Listener { response ->
                     // Display the first 500 characters of the response string.
                     showResponse(response.toString())

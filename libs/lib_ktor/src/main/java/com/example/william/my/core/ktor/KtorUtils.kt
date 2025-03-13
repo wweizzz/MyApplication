@@ -28,7 +28,6 @@ import io.ktor.client.request.setBody
 import io.ktor.http.Headers
 import io.ktor.http.HttpHeaders
 import io.ktor.http.parameters
-import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
@@ -37,7 +36,6 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.serialization.json.Json
 import java.io.File
-import java.io.IOException
 import java.net.ConnectException
 import java.net.Proxy
 import java.net.UnknownHostException
@@ -115,23 +113,15 @@ object KtorUtils {
             //header("Version", BuildConfig.VERSION_NAME)
         }
 
-        install(ResponseObserver) {
-            onResponse { response ->
-                Log.e("Ktor ResponseObserver : ", "${response.status.value}")
+        engine {
+            // SSL
+            config {
+                hostnameVerifier(SslSettings.ignoreHostnameVerifier)
+                sslSocketFactory(SslSettings.ignoreSSLSocketFactory, SslSettings.ignoreTrustManager)
             }
+            // Proxy
+            proxy = Proxy.NO_PROXY
         }
-
-        //engine {
-        //    // SSL
-        //    config {
-        //        sslSocketFactory(
-        //            SslSettings.getSSLSocketFactory(),
-        //            SslSettings.getTrustManager()
-        //        )
-        //    }
-        //    // Proxy
-        //    proxy = Proxy.NO_PROXY
-        //}
     }
 
     fun close() {

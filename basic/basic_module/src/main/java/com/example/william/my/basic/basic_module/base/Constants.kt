@@ -29,7 +29,4 @@ object Constants {
     const val Key_Password = "password"
     const val Value_Username = "17778060027"
     const val Value_Password = "123456"
-
-    const val LoginString = "$Key_Username=$Value_Username&$Key_Password=$Value_Password"
-    const val LoginJsonString = "{$Key_Username:$Value_Username,$Key_Password:$Value_Password}"
 }

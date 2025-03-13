@@ -46,12 +46,12 @@ class RxEventBusActivity : BasicRecyclerActivity() {
 
     private fun observeRxBusEvent() {
         val globalDisposable = RxEventBus.observeEvent(GlobalEvent::class.java).subscribe {
-            addMessage(it.message)
+            showEventMessage(it.message)
         }
 
         val stickyDisposable = RxEventBus.observeEvent(StickyEvent::class.java).subscribe {
-            addMessage(it.message)
+            showEventMessage(it.message)
         }
-        addMessage("RxEventBus observe")
+        showEventMessage("RxEventBus observe")
     }
 }

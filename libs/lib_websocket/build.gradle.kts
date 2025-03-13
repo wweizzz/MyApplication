@@ -8,6 +8,9 @@ android {
 
 dependencies {
     api(libs.google.gson)
+    //okhttp
     api(libs.okhttp)
+    api(libs.okhttp.logging)
+    //rxandroid
     api(libs.rxandroid)
 }

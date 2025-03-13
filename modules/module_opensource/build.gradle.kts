@@ -33,7 +33,7 @@ dependencies {
     implementation(libs.permission)
     implementation(libs.loadsir)
 
-    implementation(libs.rxjava3)
+    implementation(libs.rxandroid)
 
     //extra
     implementation(libs.glide)//pictureselector

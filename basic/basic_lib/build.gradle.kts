@@ -14,6 +14,8 @@ android {
 
 dependencies {
     implementation(libs.google.material)
-    implementation(libs.rxlifecycle)
+    //Utils
     implementation(libs.utils)
+    //LifecycleProvider
+    implementation(libs.rxlifecycle)
 }

@@ -47,11 +47,11 @@ class LiveEventBusActivity : BasicRecyclerActivity() {
 
     private fun observeLiveEventBus() {
         LiveEventBus.observeEvent<GlobalEvent>(this) {
-            addMessage(it.message)
+            showEventMessage(it.message)
         }
         LiveEventBus.observeEvent<StickyEvent>(this, isSticky = true) {
-            addMessage(it.message)
+            showEventMessage(it.message)
         }
-        addMessage("LiveEventBus observe")
+        showEventMessage("LiveEventBus observe")
     }
 }

@@ -56,7 +56,7 @@ class WillPopScopeRoute extends StatelessWidget {
   Widget getBody(context) {
     return PopScope(
       canPop: false,
-      onPopInvoked: (bool didPop) async {
+      onPopInvokedWithResult: (bool didPop, _) async {
         if (didPop) {
           return;
         }

@@ -1,7 +1,7 @@
 package com.example.william.my.module.sample.repo
 
 import com.example.william.my.basic.basic_data.api.NetworkApi
-import com.example.william.my.basic.basic_data.bean.Login
+import com.example.william.my.basic.basic_data.bean.LoginData
 import com.example.william.my.core.retrofit.helper.RetrofitHelper
 import com.example.william.my.core.retrofit.response.RetrofitResponse
 import com.example.william.my.lib.utils.Utils
@@ -27,7 +27,7 @@ class FlowRepository(private val defaultDispatcher: CoroutineDispatcher) {
     /**
      * 1. 创建数据流
      */
-    private fun createFlow(username: String, password: String): Flow<RetrofitResponse<Login?>> {
+    private fun createFlow(username: String, password: String): Flow<RetrofitResponse<LoginData?>> {
         return flow {
             //打印线程
             ThreadUtils.isMainThread("FlowRepository login")
@@ -45,7 +45,7 @@ class FlowRepository(private val defaultDispatcher: CoroutineDispatcher) {
      * These operations are lazy and don't trigger the flow.
      * They just transform the current value emitted by the flow at that point in time.
      */
-    fun login(username: String, password: String): Flow<RetrofitResponse<Login?>> {
+    fun login(username: String, password: String): Flow<RetrofitResponse<LoginData?>> {
         return createFlow(username, password)
             // 在默认调度程序上执行
             // Executes on the default dispatcher

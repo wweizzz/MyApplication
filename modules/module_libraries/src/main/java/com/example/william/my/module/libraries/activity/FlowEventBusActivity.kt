@@ -47,11 +47,11 @@ class FlowEventBusActivity : BasicRecyclerActivity() {
 
     private fun observeFlowEventBus() {
         FlowEventBus.observeEvent<GlobalEvent>(this) {
-            addMessage(it.message)
+            showEventMessage(it.message)
         }
         FlowEventBus.observeEvent<StickyEvent>(this, isSticky = true) {
-            addMessage(it.message)
+            showEventMessage(it.message)
         }
-        addMessage("FlowEventBus observe ")
+        showEventMessage("FlowEventBus observe ")
     }
 }

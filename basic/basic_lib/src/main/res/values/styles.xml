@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Basics_AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Primary brand color. -->
@@ -12,6 +12,8 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <!-- 在 Android 15（API 35）中，系统默认启用了 edge-to-edge 无边框设计 -->
+        <item name="android:windowOptOutEdgeToEdgeEnforcement" tools:targetApi="35">true</item>
     </style>
 
     <style name="SplashScreen" parent="Theme.AppCompat.Light.NoActionBar">

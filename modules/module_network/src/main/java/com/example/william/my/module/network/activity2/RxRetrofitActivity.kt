@@ -19,10 +19,8 @@ class RxRetrofitActivity : BasicRecyclerActivity() {
 
     override fun buildList(): ArrayList<String> {
         return arrayListOf(
-            "RxRetrofit Post",
-            "RxRetrofit Post String",
-            "RxRetrofit Post JsonString",
-            "RxRetrofit Post JsonObject",
+            "RxRetrofit Post postForm",
+            "RxRetrofit Post postJson",
         )
     }
 
@@ -30,29 +28,24 @@ class RxRetrofitActivity : BasicRecyclerActivity() {
         super.onRecyclerClick(position, string)
         when (position) {
             0 -> {
-                post()
+                postForm(Constants.Value_Username, Constants.Value_Password)
             }
 
             1 -> {
-                postString()
-            }
-
-            2 -> {
-                postJsonString()
-            }
-
-            3 -> {
-                postJsonObject()
+                postJson(Constants.Value_Username, Constants.Value_Password)
             }
         }
     }
 
-    private fun post() {
-        RxRetrofit
-            .builder<JsonElement>()
+    private fun postForm(username: String, password: String) {
+        val params = mutableMapOf(
+            Constants.Key_Username to username,
+            Constants.Key_Password to password
+        )
+
+        RxRetrofit.builder<JsonElement>()
             .api(Constants.Url_Login)
-            .addParam(Constants.Key_Username, Constants.Value_Username)
-            .addParam(Constants.Key_Password, Constants.Value_Password)
+            .addParams(params)
             .post()
             .setProvider(this)
             .buildSingle()
@@ -64,60 +57,17 @@ class RxRetrofitActivity : BasicRecyclerActivity() {
 
                 override fun onFailure(e: ApiException) {
                     super.onFailure(e)
-                    showMessage(e.message)
+                    showFailure(e.message)
                 }
             })
     }
 
-    private fun postString() {
-        RxRetrofit
-            .builder<JsonElement>()
-            .api(Constants.Url_Login)
-            .addString(Constants.LoginString)
-            .post()
-            .setProvider(this)
-            .buildSingle()
-            .subscribe(object : RetrofitResponseCallback<JsonElement>() {
-                override fun onResponse(response: JsonElement?) {
-                    super.onResponse(response)
-                    showResponse(response?.toString())
-                }
-
-                override fun onFailure(e: ApiException) {
-                    super.onFailure(e)
-                    showMessage(e.message)
-                }
-            })
-    }
-
-    private fun postJsonString() {
-        RxRetrofit
-            .builder<JsonElement>()
-            .api(Constants.Url_Login)
-            .addJsonString(Constants.LoginJsonString)
-            .post()
-            .setProvider(this)
-            .buildSingle()
-            .subscribe(object : RetrofitResponseCallback<JsonElement>() {
-                override fun onResponse(response: JsonElement?) {
-                    super.onResponse(response)
-                    showResponse(response?.toString())
-                }
-
-                override fun onFailure(e: ApiException) {
-                    super.onFailure(e)
-                    showMessage(e.message)
-                }
-            })
-    }
-
-    private fun postJsonObject() {
+    private fun postJson(username: String, password: String) {
         val jsonObject = JSONObject()
-            .put(Constants.Key_Username, Constants.Value_Username)
-            .put(Constants.Key_Password, Constants.Value_Password)
+            .put(Constants.Key_Username, username)
+            .put(Constants.Key_Password, password)
 
-        RxRetrofit
-            .builder<JsonElement>()
+        RxRetrofit.builder<JsonElement>()
             .api(Constants.Url_Login)
             .addJsonObject(jsonObject)
             .post()
@@ -131,7 +81,7 @@ class RxRetrofitActivity : BasicRecyclerActivity() {
 
                 override fun onFailure(e: ApiException) {
                     super.onFailure(e)
-                    showMessage(e.message)
+                    showFailure(e.message)
                 }
             })
     }

@@ -54,11 +54,13 @@ class HttpURLActivity : BasicRecyclerActivity() {
     }
 
     private fun postForm(username: String, password: String) {
-        val params = mutableMapOf<String, String>()
-        params[Constants.Key_Username] = username
-        params[Constants.Key_Password] = password
+        val params = mutableMapOf(
+            Constants.Key_Username to username,
+            Constants.Key_Password to password
+        )
 
-        HttpURLUtils.postForm(Constants.Url_Login, params,
+        HttpURLUtils.postForm(
+            Constants.Url_Login, params,
             listener = {
                 showResponse(it)
             },
@@ -72,7 +74,8 @@ class HttpURLActivity : BasicRecyclerActivity() {
             .put(Constants.Key_Username, username)
             .put(Constants.Key_Password, password)
 
-        HttpURLUtils.postJson(Constants.Url_Login, jsonObject,
+        HttpURLUtils.postJson(
+            Constants.Url_Login, jsonObject,
             listener = {
                 showResponse(it)
             },

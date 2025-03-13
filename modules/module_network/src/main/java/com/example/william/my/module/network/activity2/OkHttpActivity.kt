@@ -22,8 +22,8 @@ class OkHttpActivity : BasicRecyclerActivity() {
 
     override fun buildList(): ArrayList<String> {
         return arrayListOf(
-            "Posting a FormBody",
-            "Posting a MultipartBody"
+            "OkHttp Posting a FormBody",
+            "OkHttp Posting a MultipartBody"
         )
     }
 
@@ -32,7 +32,6 @@ class OkHttpActivity : BasicRecyclerActivity() {
         when (position) {
             0 -> {
                 postingForm(
-                    Constants.Url_Login,
                     Constants.Value_Username,
                     Constants.Value_Password
                 )
@@ -41,7 +40,6 @@ class OkHttpActivity : BasicRecyclerActivity() {
 
             1 -> {
                 postingMultipart(
-                    Constants.Url_Login,
                     Constants.Value_Username,
                     Constants.Value_Password
                 )
@@ -55,14 +53,14 @@ class OkHttpActivity : BasicRecyclerActivity() {
     /**
      * FormBody
      */
-    private fun postingForm(url: String, username: String, password: String) {
+    private fun postingForm(username: String, password: String) {
         val formBody = FormBody.Builder()
             .add(Constants.Key_Username, username)
             .add(Constants.Key_Password, password)
             .build()
 
         val request = Request.Builder()
-            .url(url)
+            .url(Constants.Url_Login)
             .post(formBody)
             .build()
 
@@ -90,7 +88,7 @@ class OkHttpActivity : BasicRecyclerActivity() {
     /**
      * MultipartBody
      */
-    private fun postingMultipart(url: String, username: String, password: String) {
+    private fun postingMultipart(username: String, password: String) {
         val multipartBody = MultipartBody.Builder()
             .setType(MultipartBody.FORM)
             .addFormDataPart(Constants.Key_Username, username)
@@ -98,10 +96,9 @@ class OkHttpActivity : BasicRecyclerActivity() {
             .build()
 
         val request = Request.Builder()
-            .url(url)
-            .post(
-                multipartBody
-            ).build()
+            .url(Constants.Url_Login)
+            .post(multipartBody)
+            .build()
 
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {

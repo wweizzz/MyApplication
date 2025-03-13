@@ -23,8 +23,8 @@ class OkHttpHelperActivity : BasicRecyclerActivity() {
 
     override fun buildList(): ArrayList<String> {
         return arrayListOf(
-            "Posting FormBody",
-            "Posting MultipartBody",
+            "OkHttpHelper Posting a FormBody",
+            "OkHttpHelper Posting a MultipartBody",
         )
     }
 
@@ -33,13 +33,13 @@ class OkHttpHelperActivity : BasicRecyclerActivity() {
         when (position) {
             0 -> {
                 AppExecutorsHelper.networkIO().execute {
-                    postingForm()
+                    postingForm(Constants.Value_Username, Constants.Value_Password)
                 }
             }
 
             1 -> {
                 AppExecutorsHelper.networkIO().execute {
-                    postingMultipart()
+                    postingMultipart(Constants.Value_Username, Constants.Value_Password)
                 }
             }
         }
@@ -48,14 +48,14 @@ class OkHttpHelperActivity : BasicRecyclerActivity() {
     /**
      * FormBody
      */
-    private fun postingForm() {
+    private fun postingForm(username: String, password: String) {
         // 创建 OkHttpClient 对象
         val client: OkHttpClient = OkHttpHelper.client()
 
         // 创建 RequestBody 对象
         val requestBody: RequestBody = OkHttpHelper.requestBodyBuilder()
-            .addForm(Constants.Key_Username, Constants.Value_Username)
-            .addForm(Constants.Key_Password, Constants.Value_Password)
+            .addForm(Constants.Key_Username, username)
+            .addForm(Constants.Key_Password, password)
             .buildForm()
 
         // 创建 Request 对象
@@ -89,14 +89,14 @@ class OkHttpHelperActivity : BasicRecyclerActivity() {
     /**
      * MultipartBody
      */
-    private fun postingMultipart() {
+    private fun postingMultipart(username: String, password: String) {
         // 创建 OkHttpClient 对象
         val client: OkHttpClient = OkHttpHelper.client()
 
         // 创建 RequestBody 对象
         val requestBody: RequestBody = OkHttpHelper.requestBodyBuilder()
-            .addMultipart(Constants.Key_Username, Constants.Value_Username)
-            .addMultipart(Constants.Key_Password, Constants.Value_Password)
+            .addMultipart(Constants.Key_Username, username)
+            .addMultipart(Constants.Key_Password, password)
             .buildMultipart()
 
         // 创建 Request 对象

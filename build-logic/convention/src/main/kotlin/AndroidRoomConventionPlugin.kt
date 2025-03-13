@@ -48,7 +48,7 @@ class AndroidRoomConventionPlugin : Plugin<Project> {
             //    schemaDirectory("$projectDir/schemas")
             //}
             dependencies {
-                add("implementation", libs.findLibrary("androidx.room.runtime").get())
+                add("implementation", libs.findLibrary("androidx.room").get())
                 add("implementation", libs.findLibrary("androidx.room.ktx").get())
                 add("implementation", libs.findLibrary("androidx.room.rxjava3").get())
                 add("implementation", libs.findLibrary("androidx.room.paging").get())

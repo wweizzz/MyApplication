@@ -9,7 +9,7 @@ compileSdk = "35"
 androidDesugarJdkLibs = "2.1.4"
 kotlinxCoroutines = "1.10.1"
 
-googleGson = "2.11.0"
+googleGson = "2.12.1"
 googleGuava = "33.2.1-android"
 googleProtobuf = "4.29.2"
 googleFlexbox = "3.0.0"
@@ -73,7 +73,7 @@ greendao = "3.3.0"
 objectbox = "3.7.1"
 # ##################################################################################################
 coil = "2.7.0"
-ktor = "3.0.3"
+ktor = "3.1.0"
 
 glide = "4.15.1"
 volley = "1.2.1"
@@ -105,14 +105,13 @@ androidxTestExt = "1.2.1"
 androidxTestEspresso = "3.6.1"
 # ##################################################################################################
 # https://developer.android.google.cn/studio/releases/gradle-plugin
-gradlePluginAndroid = "8.8.2"
+gradlePluginAndroid = "8.9.0"
 gradlePluginKotlin = "2.1.0"
 gradlePluginProtobuf = "0.9.4"
 gradlePluginArouter = "1.0.2"
 gradlePluginGreenDao = "3.3.1"
 gradlePluginObjectBox = "3.7.1"
 gradlePluginKsp = "2.1.0-1.0.29"
-junitVersion = "1.2.1"
 # ##################################################################################################
 [libraries]
 #
@@ -180,7 +179,7 @@ androidx-hilt-compiler = { group = "com.google.dagger", name = "hilt-android-com
 androidx-startup = { group = "androidx.startup", name = "startup-runtime", version.ref = "androidxStartup" }
 
 # https://developer.android.com/training/data-storage/room
-androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "androidxRoom" }
+androidx-room = { group = "androidx.room", name = "room-runtime", version.ref = "androidxRoom" }
 androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "androidxRoom" }
 androidx-room-rxjava3 = { group = "androidx.room", name = "room-rxjava3", version.ref = "androidxRoom" }
 androidx-room-paging = { group = "androidx.room", name = "room-paging", version.ref = "androidxRoom" }
@@ -245,12 +244,12 @@ arouter-compiler = { group = "com.alibaba", name = "arouter-compiler", version.r
 eventbus = { group = "org.greenrobot", name = "eventbus", version.ref = "eventbus" }
 eventbus-processor = { group = "org.greenrobot", name = "eventbus-annotation-processor", version.ref = "eventbus" }
 # https://github.com/ReactiveX/RxJava
-rxjava3 = { group = "io.reactivex.rxjava3", name = "rxjava", version.ref = "rxjava" }
-# https://github.com/ReactiveX/RxAndroid
+# rxjava3 = { group = "io.reactivex.rxjava3", name = "rxjava", version.ref = "rxjava" }
+# https://github.com/ReactiveX/RxAndroid # 线程调度工具
 rxandroid = { group = "io.reactivex.rxjava3", name = "rxandroid", version.ref = "rxandroid" }
-# https://github.com/trello/RxLifecycle
+# https://github.com/trello/RxLifecycle # 生命周期管理工具
 rxlifecycle = { group = "com.trello.rxlifecycle4", name = "rxlifecycle-android-lifecycle", version.ref = "rxlifecycle" }
-# https://github.com/uber/AutoDispose
+# https://github.com/uber/AutoDispose # 生命周期管理工具
 autodispose = { group = "com.uber.autodispose2", name = "autodispose-androidx-lifecycle", version.ref = "autodispose" }
 # https://github.com/greenrobot/greenDAO
 greendao = { group = "org.greenrobot", name = "greendao", version.ref = "greendao" }
@@ -337,7 +336,6 @@ gradlePlugin-objectbox = { group = "io.objectbox", name = "objectbox-gradle-plug
 
 gradlePlugin-hilt = { group = "com.google.dagger", name = "hilt-android-gradle-plugin", version.ref = "androidxHilt" }
 gradlePlugin-room = { group = "androidx.room", name = "room-gradle-plugin", version.ref = "androidxRoom" }
-androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "gradlePluginAndroid" }

@@ -1,6 +1,8 @@
-package com.example.william.my.core.volley
+package com.example.william.my.core.volley.builder
 
 import com.android.volley.Request.Method
+import com.example.william.my.core.volley.VolleyHelper
+import org.json.JSONObject
 
 class VolleyBuilder<T> {
 
@@ -9,6 +11,8 @@ class VolleyBuilder<T> {
     private var method: Int = Method.GET
     private var header: MutableMap<String, String> = mutableMapOf()
     private var parameter: MutableMap<String, String> = mutableMapOf()
+
+    private var jsonObject: JSONObject? = null
 
     fun getUrl(): String {
         return url
@@ -26,8 +30,12 @@ class VolleyBuilder<T> {
         return header
     }
 
-    fun getParam(): MutableMap<String, String> {
+    fun getParameter(): MutableMap<String, String> {
         return parameter
+    }
+
+    fun getJsonObject(): JSONObject? {
+        return jsonObject
     }
 
     fun url(api: String): VolleyBuilder<T> {
@@ -65,8 +73,23 @@ class VolleyBuilder<T> {
         return this
     }
 
+    fun addHeader(header: MutableMap<String, String>): VolleyBuilder<T> {
+        this.header = header
+        return this
+    }
+
     fun addParam(key: String, value: String): VolleyBuilder<T> {
         parameter[key] = value
+        return this
+    }
+
+    fun addParams(params: MutableMap<String, String>): VolleyBuilder<T> {
+        this.parameter = params
+        return this
+    }
+
+    fun addJsonObject(jsonObject: JSONObject): VolleyBuilder<T> {
+        this.jsonObject = jsonObject
         return this
     }
 

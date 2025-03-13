@@ -20,8 +20,11 @@ class RetrofitBuilder<T> {
 
     private lateinit var api: String
     private var method: Method = Method.GET
-    private var header: MutableMap<String, Any> = mutableMapOf()
-    private var parameter: MutableMap<String, Any> = mutableMapOf()
+    private var header: MutableMap<String, String> = mutableMapOf()
+    private var parameter: MutableMap<String, String> = mutableMapOf()
+
+    private var jsonObject: JSONObject? = null
+    private var multipartBody: MultipartBody.Builder? = null
 
     private var lifecycle: LifecycleProvider<Lifecycle.Event>? = null
 
@@ -33,32 +36,24 @@ class RetrofitBuilder<T> {
         return method
     }
 
-    fun getHeader(): MutableMap<String, Any> {
+    fun getHeader(): MutableMap<String, String> {
         return header
     }
 
-    fun getParam(): MutableMap<String, Any> {
+    fun getParam(): MutableMap<String, String> {
         return parameter
+    }
+
+    fun getJsonObject(): JSONObject? {
+        return jsonObject
+    }
+
+    fun getMultipartBody(): MultipartBody.Builder? {
+        return multipartBody
     }
 
     fun getLifecycle(): LifecycleProvider<Lifecycle.Event>? {
         return lifecycle
-    }
-
-    fun hasBody(): Boolean {
-        return hasBody
-    }
-
-    fun isJson(): Boolean {
-        return isJson
-    }
-
-    fun getBodyString(): String? {
-        return bodyString
-    }
-
-    fun getBodyForm(): MultipartBody.Builder? {
-        return bodyFormData
     }
 
     fun api(api: String): RetrofitBuilder<T> {
@@ -86,69 +81,54 @@ class RetrofitBuilder<T> {
         return this
     }
 
-    fun addHeader(key: String, value: Any): RetrofitBuilder<T> {
+    fun addHeader(key: String, value: String): RetrofitBuilder<T> {
         header[key] = value
         return this
     }
 
-    fun addParam(key: String, value: Any): RetrofitBuilder<T> {
+    fun addHeader(header: MutableMap<String, String>): RetrofitBuilder<T> {
+        this.header = header
+        return this
+    }
+
+    fun addParam(key: String, value: String): RetrofitBuilder<T> {
         parameter[key] = value
         return this
     }
 
-    private var hasBody = false
-
-    private var isJson = true
-    private var bodyString: String? = null
-    private var bodyFormData: MultipartBody.Builder? = null
-
-    fun addString(bodyString: String?): RetrofitBuilder<T> {
-        this.hasBody = true
-        this.isJson = false
-        this.bodyString = bodyString
-        return this
-    }
-
-    fun addJsonString(bodyString: String?): RetrofitBuilder<T> {
-        this.hasBody = true
-        this.isJson = true
-        this.bodyString = bodyString
+    fun addParams(params: MutableMap<String, String>): RetrofitBuilder<T> {
+        this.parameter = params
         return this
     }
 
     fun addJsonObject(jsonObject: JSONObject): RetrofitBuilder<T> {
-        this.hasBody = true
-        this.isJson = true
-        this.bodyString = jsonObject.toString()
+        this.jsonObject = jsonObject
         return this
     }
 
-    fun addFormData(key: String, value: String): RetrofitBuilder<T> {
-        this.hasBody = true
-        if (this.bodyFormData == null) {
-            this.bodyFormData = MultipartBody.Builder().setType(MultipartBody.FORM)
+    fun addMultipart(key: String, value: String): RetrofitBuilder<T> {
+        if (this.multipartBody == null) {
+            this.multipartBody = MultipartBody.Builder().setType(MultipartBody.FORM)
         }
-        this.bodyFormData?.addFormDataPart(key, value)
+        this.multipartBody?.addFormDataPart(key, value)
         return this
     }
 
     fun addFile(key: String, file: File): RetrofitBuilder<T> {
-        this.hasBody = true
-        if (this.bodyFormData == null) {
-            this.bodyFormData = MultipartBody.Builder().setType(MultipartBody.FORM)
+        if (this.multipartBody == null) {
+            this.multipartBody = MultipartBody.Builder().setType(MultipartBody.FORM)
         }
-        this.bodyFormData?.addFormDataPart(
+        this.multipartBody?.addFormDataPart(
             key, file.name, file.asRequestBody(MediaType.MEDIA_TYPE_MULTIPART)
         )
         return this
     }
 
     fun addFile(key: String, file: File, listener: RequestProgressListener?): RetrofitBuilder<T> {
-        this.hasBody = true
-        if (this.bodyFormData == null) {
-            this.bodyFormData = MultipartBody.Builder().setType(MultipartBody.FORM)
+        if (this.multipartBody == null) {
+            this.multipartBody = MultipartBody.Builder().setType(MultipartBody.FORM)
         }
-        this.bodyFormData?.addFormDataPart(
+        this.multipartBody?.addFormDataPart(
             key,
             file.name,
             RequestProgressBody(file.asRequestBody(MediaType.MEDIA_TYPE_MULTIPART), listener)
@@ -158,6 +138,11 @@ class RetrofitBuilder<T> {
 
     fun setProvider(owner: LifecycleOwner): RetrofitBuilder<T> {
         lifecycle = AndroidLifecycle.createLifecycleProvider(owner)
+        return this
+    }
+
+    fun setProvider(lifecycle: LifecycleProvider<Lifecycle.Event>): RetrofitBuilder<T> {
+        this.lifecycle = lifecycle
         return this
     }
 

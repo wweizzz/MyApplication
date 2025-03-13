@@ -5,7 +5,8 @@ import com.alibaba.android.arouter.facade.callback.NavigationCallback
 import com.example.william.my.lib.utils.Utils
 
 /**
- * 登录拦截器
+ * 跳转页面监听
+ * Compiler An exception is encountered, [More than one interceptors use same priority [1], They are [LoginInterceptorImpl] and [LoginInterceptor].]
  */
 class LoginNavigationImpl : NavigationCallback {
 

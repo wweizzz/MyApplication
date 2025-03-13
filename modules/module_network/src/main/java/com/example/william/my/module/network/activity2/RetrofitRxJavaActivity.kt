@@ -2,10 +2,11 @@ package com.example.william.my.module.network.activity2
 
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_data.api.NetworkApi
-import com.example.william.my.basic.basic_data.bean.Login
+import com.example.william.my.basic.basic_data.bean.UserData
 import com.example.william.my.basic.basic_module.activity.BasicRecyclerActivity
 import com.example.william.my.basic.basic_module.base.Constants
 import com.example.william.my.basic.basic_module.router.path.RouterPath
+import com.example.william.my.core.okhttp.helper.OkHttpHelper
 import com.example.william.my.core.retrofit.converter.RetrofitConverterFactory
 import com.example.william.my.core.retrofit.response.RetrofitResponse
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -32,15 +33,16 @@ class RetrofitRxJavaActivity : BasicRecyclerActivity() {
         super.onRecyclerClick(position, string)
         when (position) {
             0 -> {
-                loginSingle()
+                loginSingle(Constants.Value_Username, Constants.Value_Password)
             }
         }
     }
 
-    private fun loginSingle() {
+    private fun loginSingle(username: String, password: String) {
         // （2）创建 Retrofit 实例
         val retrofit: Retrofit = Retrofit.Builder()
             .baseUrl(Constants.Url_Base)
+            .client(OkHttpHelper.client())
             .addConverterFactory(RetrofitConverterFactory.create())
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .build()
@@ -49,15 +51,14 @@ class RetrofitRxJavaActivity : BasicRecyclerActivity() {
         val api: NetworkApi = retrofit.create(NetworkApi::class.java)
 
         // （4）调用网络接口中的方法获取 Observable 对象
-        val single: Single<RetrofitResponse<Login?>> =
-            api.loginSingle(Constants.Value_Username, Constants.Value_Password)
+        val single: Single<RetrofitResponse<UserData?>> = api.loginSingle(username, password)
 
         // （5）进行网络请求
         single
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : DisposableSingleObserver<RetrofitResponse<Login?>>() {
-                override fun onSuccess(response: RetrofitResponse<Login?>) {
+            .subscribe(object : DisposableSingleObserver<RetrofitResponse<UserData?>>() {
+                override fun onSuccess(response: RetrofitResponse<UserData?>) {
                     showResponse(response.string())
                 }
 

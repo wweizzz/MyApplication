@@ -1,7 +1,7 @@
 package com.example.william.my.module.sample.repo
 
 import com.example.william.my.basic.basic_data.api.NetworkApi
-import com.example.william.my.basic.basic_data.bean.Login
+import com.example.william.my.basic.basic_data.bean.LoginData
 import com.example.william.my.core.retrofit.helper.RetrofitHelper
 import com.example.william.my.core.retrofit.response.RetrofitResponse
 import com.example.william.my.module.sample.data.NetworkResult
@@ -22,7 +22,7 @@ class CoroutinesRepository(private val defaultDispatcher: CoroutineDispatcher) {
     suspend fun login(
         username: String,
         password: String
-    ): NetworkResult<RetrofitResponse<Login?>> {
+    ): NetworkResult<RetrofitResponse<LoginData?>> {
 
         return withContext(defaultDispatcher) {
             //打印线程

@@ -21,9 +21,7 @@ import okhttp3.RequestBody.Companion.toRequestBody
 class RxRetrofit<T>(private val builder: RetrofitBuilder<T>) {
 
     private fun buildApi(): Api {
-        return RetrofitHelper
-            .retrofit()
-            .create(Api::class.java)
+        return RetrofitHelper.retrofit().create(Api::class.java)
     }
 
     fun createResponse(): Single<RetrofitResponse<T>> {
@@ -36,19 +34,16 @@ class RxRetrofit<T>(private val builder: RetrofitBuilder<T>) {
             }
 
             Method.POST -> {
-                responseJsonElement =
-                    if (!builder.hasBody()) {
-                        buildApi().post(builder.getApi(), builder.getHeader(), builder.getParam())
-                    } else {
-                        val body: RequestBody =
-                            builder.getBodyString()
-                                ?.toRequestBody(
-                                    if (builder.isJson()) MediaType.MEDIA_TYPE_JSON
-                                    else MediaType.MEDIA_TYPE_FORM
-                                )
-                                ?: builder.getBodyForm()!!.build()
-                        buildApi().post(builder.getApi(), builder.getHeader(), body)
-                    }
+                responseJsonElement = if (builder.getMultipartBody() != null) {
+                    val requestBody = builder.getMultipartBody()?.build()
+                    buildApi().post(builder.getApi(), builder.getHeader(), requestBody)
+                } else if (builder.getJsonObject() != null) {
+                    val requestBody =
+                        builder.getJsonObject().toString().toRequestBody(MediaType.MEDIA_TYPE_JSON)
+                    buildApi().post(builder.getApi(), builder.getHeader(), requestBody)
+                } else {
+                    buildApi().post(builder.getApi(), builder.getHeader(), builder.getParam())
+                }
             }
 
             Method.PUT -> {
@@ -61,13 +56,11 @@ class RxRetrofit<T>(private val builder: RetrofitBuilder<T>) {
                     buildApi().delete(builder.getApi(), builder.getHeader(), builder.getParam())
             }
         }
-        response = responseJsonElement
-            .map(RxRetrofitFunction<T>())
-            .onErrorResumeNext(HttpResultFunction())
+        response =
+            responseJsonElement.map(RxRetrofitFunction<T>()).onErrorResumeNext(HttpResultFunction())
 
         builder.getLifecycle()?.let { lifecycle ->
-            response = response
-                .compose(lifecycle.bindToLifecycle())
+            response = response.compose(lifecycle.bindToLifecycle())
         }
 
         response = response

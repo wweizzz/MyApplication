@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.example.william.my.basic.basic_data.bean.Login
+import com.example.william.my.basic.basic_data.bean.LoginData
 import com.example.william.my.core.retrofit.response.RetrofitResponse
 import com.example.william.my.module.sample.data.NetworkResult
 import com.example.william.my.module.sample.repo.CoroutinesRepository
@@ -40,7 +40,7 @@ class CoroutinesViewModel(private val repository: CoroutinesRepository) : ViewMo
 
             // 执行网络请求 并 挂起，直至请求完成
             // Make the network call and suspend execution until it finishes
-            val result: NetworkResult<RetrofitResponse<Login?>> =
+            val result: NetworkResult<RetrofitResponse<LoginData?>> =
                 try {
                     repository.login(username, password)
                 } catch (e: Exception) {
@@ -50,7 +50,7 @@ class CoroutinesViewModel(private val repository: CoroutinesRepository) : ViewMo
             // 向用户展示网络请求结果
             // Display result of the network request to the user
             when (result) {
-                is NetworkResult.Success<RetrofitResponse<Login?>> -> {
+                is NetworkResult.Success<RetrofitResponse<LoginData?>> -> {
                     _login.postValue("onResponse: " + Gson().toJson(result.data))
                 }
 

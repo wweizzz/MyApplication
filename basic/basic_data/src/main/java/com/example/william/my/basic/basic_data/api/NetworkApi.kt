@@ -1,6 +1,7 @@
 package com.example.william.my.basic.basic_data.api
 
-import com.example.william.my.basic.basic_data.bean.Login
+import com.example.william.my.basic.basic_data.bean.LoginData
+import com.example.william.my.basic.basic_data.bean.UserData
 import com.example.william.my.basic.basic_module.base.Constants
 import com.example.william.my.core.retrofit.response.RetrofitResponse
 import io.reactivex.rxjava3.core.Single
@@ -35,7 +36,7 @@ interface NetworkApi {
     fun loginSingle(
         @Query(Constants.Key_Username) username: String,
         @Query(Constants.Key_Password) password: String
-    ): Single<RetrofitResponse<Login?>>
+    ): Single<RetrofitResponse<UserData?>>
 
     /**
      * RetrofitDownloadActivity
@@ -73,5 +74,5 @@ interface NetworkApi {
     suspend fun loginSuspend(
         @Query(Constants.Key_Username) username: String,
         @Query(Constants.Key_Password) password: String
-    ): RetrofitResponse<Login?>
+    ): RetrofitResponse<LoginData?>
 }

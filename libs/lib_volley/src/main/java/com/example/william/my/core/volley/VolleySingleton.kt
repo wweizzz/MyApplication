@@ -2,13 +2,19 @@ package com.example.william.my.core.volley
 
 import android.content.Context
 import android.graphics.Bitmap
+import android.util.Log
 import android.util.LruCache
 import com.android.volley.Request
 import com.android.volley.RequestQueue
+import com.android.volley.VolleyLog
+import com.android.volley.toolbox.HurlStack
 import com.android.volley.toolbox.ImageLoader
 import com.android.volley.toolbox.Volley
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import okhttp3.logging.HttpLoggingInterceptor.Level
 
-class VolleySingleton constructor(context: Context) {
+class VolleySingleton(context: Context) {
 
     companion object {
         @Volatile
@@ -21,8 +27,13 @@ class VolleySingleton constructor(context: Context) {
             }
     }
 
+    init {
+        VolleyLog.DEBUG = true
+    }
+
     val imageLoader: ImageLoader by lazy {
-        ImageLoader(requestQueue,
+        ImageLoader(
+            requestQueue,
             object : ImageLoader.ImageCache {
                 private val cache = LruCache<String, Bitmap>(20)
                 override fun getBitmap(url: String): Bitmap? {
@@ -35,7 +46,17 @@ class VolleySingleton constructor(context: Context) {
             })
     }
 
-    val requestQueue: RequestQueue by lazy {
+    private val okHttpClient: OkHttpClient = OkHttpClient.Builder()
+        .addInterceptor(HttpLoggingInterceptor { message ->
+            Log.e("Volley", message)
+        }.setLevel(Level.BODY))
+        .build()
+
+    private val httpStack: HurlStack by lazy {
+        HurlStack()
+    }
+
+    private val requestQueue: RequestQueue by lazy {
         // applicationContext is key, it keeps you from leaking the
         // Activity or BroadcastReceiver if someone passes one in.
         Volley.newRequestQueue(context.applicationContext)

@@ -48,7 +48,6 @@ class ModuleActivity : RouterRecyclerActivity() {
         routerItems.add(RouterItem("ArchActivity", RouterPath.Arch.Main))
 
         routerItems.add(RouterItem("", ""))
-        //routerItems.add(RouterItem("HiltActivity", RouterPath.Hilt.Main))
         routerItems.add(RouterItem("ComposeActivity", RouterPath.Compose.Main))
 
         routerItems.add(RouterItem("", ""))

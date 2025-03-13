@@ -9,7 +9,6 @@ import com.example.william.my.module.libraries.event.StickyEvent
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 
-
 /**
  * 延迟发送    有序接收    Sticky    生命感知    可跨进程    线程分发
  * ❌        ✅        ✅        ❌        ❌        ✅
@@ -50,20 +49,20 @@ class EventBusActivity : BasicRecyclerActivity() {
     private fun registerEventBus() {
         if (!EventBusHelper.isRegistered(this@EventBusActivity)) {
             EventBusHelper.register(this@EventBusActivity)
-            addMessage("EventBus register")
+            showEventMessage("EventBus register")
         } else {
             EventBusHelper.unregister(this@EventBusActivity)
-            addMessage("EventBus unregister")
+            showEventMessage("EventBus unregister")
         }
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onGlobalEvent(event: GlobalEvent) {
-        addMessage(event.message)
+        showEventMessage(event.message)
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
     fun onStickyEvent(event: StickyEvent) {
-        addMessage(event.message)
+        showEventMessage(event.message)
     }
 }
