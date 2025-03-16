@@ -30,8 +30,7 @@ class KtorActivity : BasicRecyclerActivity() {
 
     override fun buildList(): ArrayList<String> {
         return arrayListOf(
-            "ktor Posting a param",
-            "ktor Posting a multipart",
+            "ktor post",
         )
     }
 
@@ -39,11 +38,7 @@ class KtorActivity : BasicRecyclerActivity() {
         super.onRecyclerClick(position, string)
         when (position) {
             0 -> {
-                ktorPostParam()
-            }
-
-            1 -> {
-                ktorPostMultipart()
+                ktorPost()
             }
         }
     }
@@ -60,23 +55,7 @@ class KtorActivity : BasicRecyclerActivity() {
         }
     }
 
-    private fun ktorPostParam() {
-        lifecycleScope.launch {
-            val response: HttpResponse = ktorClient.post(Constants.Url_Login) {
-                url(Constants.Url_Login)
-                setBody(
-                    FormDataContent(
-                        parameters {
-                            append(Constants.Key_Username, Constants.Value_Username)
-                            append(Constants.Key_Password, Constants.Value_Password)
-                        })
-                )
-            }
-            showResponse(response.bodyAsText())
-        }
-    }
-
-    private fun ktorPostMultipart() {
+    private fun ktorPost() {
         lifecycleScope.launch {
             val response: HttpResponse = ktorClient.post(Constants.Url_Login) {
                 url(Constants.Url_Login)

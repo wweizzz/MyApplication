@@ -18,16 +18,18 @@ import io.ktor.client.plugins.cookies.HttpCookies
 import io.ktor.client.plugins.logging.LogLevel
 import io.ktor.client.plugins.logging.Logger
 import io.ktor.client.plugins.logging.Logging
-import io.ktor.client.plugins.observer.ResponseObserver
 import io.ktor.client.request.forms.FormDataContent
 import io.ktor.client.request.forms.MultiPartFormDataContent
+import io.ktor.client.request.forms.append
 import io.ktor.client.request.forms.formData
 import io.ktor.client.request.get
 import io.ktor.client.request.post
 import io.ktor.client.request.setBody
+import io.ktor.http.ContentType
 import io.ktor.http.Headers
 import io.ktor.http.HttpHeaders
 import io.ktor.http.parameters
+import io.ktor.serialization.gson.gson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
@@ -45,6 +47,20 @@ object KtorUtils {
 
     val httpClient = HttpClient(OkHttp) {
 
+        // 禁用重定向
+        followRedirects = false
+
+        engine {
+
+            // SSL
+            config {
+                hostnameVerifier(SslSettings.ignoreHostnameVerifier)
+                sslSocketFactory(SslSettings.ignoreSSLSocketFactory, SslSettings.ignoreTrustManager)
+            }
+            // Proxy
+            proxy = Proxy.NO_PROXY
+        }
+
         // 1. 基础配置
         install(ContentNegotiation) {
             Json {
@@ -52,10 +68,10 @@ object KtorUtils {
                 coerceInputValues = true    // 强制类型兼容
                 encodeDefaults = true       // 序列化默认值
             }
-            //gson {
-            //    setPrettyPrinting() // 格式化输出
-            //    serializeNulls()    // 保留 null 值
-            //}
+            gson {
+                setPrettyPrinting() // 格式化输出
+                serializeNulls()    // 保留 null 值
+            }
         }
 
         // 2. 超时设置
@@ -65,7 +81,41 @@ object KtorUtils {
             socketTimeoutMillis = 15000
         }
 
-        // 3. 日志
+        // 3. 重定向机制
+        install(HttpRedirect) {
+            //maxJumps  = 10 // 最大重定向次数
+            checkHttpMethod = false // 允许 POST 重定向
+        }
+
+        // 4. 重试机制
+        install(HttpRequestRetry) {
+            maxRetries = 5
+            retryIf { request, response ->
+                // 当状态码是 5xx 服务器错误时重试
+                response.status.value in 500..599
+            }
+            retryOnServerErrors(maxRetries = 3)
+            retryOnExceptionIf { _, cause ->
+                cause is HttpRequestTimeoutException
+            }
+            delayMillis { retry ->
+                retry * 3000L
+            } // retries in 3, 6, 9, etc. seconds
+            exponentialDelay() // 指定重试之间的指数延迟，该延迟使用 Exponential backoff 算法计算。
+        }
+
+        // 5. Cookie管理
+        install(HttpCookies) {
+
+        }
+
+        // 6. 统一请求头
+        install(DefaultRequest) {
+            //header("Platform", "Android")
+            //header("Version", BuildConfig.VERSION_NAME)
+        }
+
+        // 7. 日志
         install(Logging) {
             logger = object : Logger {
                 override fun log(message: String) {
@@ -84,43 +134,6 @@ object KtorUtils {
             sanitizeHeader { header ->
                 header == HttpHeaders.Authorization
             }
-        }
-
-        // 3. 重定向机制
-        install(HttpRedirect) {
-            //maxJumps  = 10 // 最大重定向次数
-            checkHttpMethod = false // 允许 POST 重定向
-        }
-
-        // 4. 重试机制
-        install(HttpRequestRetry) {
-            retryOnServerErrors(maxRetries = 3)
-            exponentialDelay() // 指定重试之间的指数延迟，该延迟使用 Exponential backoff 算法计算。
-            retryIf { _, response ->
-                // 当状态码是 5xx 服务器错误时重试
-                response.status.value in 500..599
-            }
-        }
-
-        // 5. Cookie管理
-        install(HttpCookies) {
-
-        }
-
-        // 6. 统一请求头
-        install(DefaultRequest) {
-            //header("Platform", "Android")
-            //header("Version", BuildConfig.VERSION_NAME)
-        }
-
-        engine {
-            // SSL
-            config {
-                hostnameVerifier(SslSettings.ignoreHostnameVerifier)
-                sslSocketFactory(SslSettings.ignoreSSLSocketFactory, SslSettings.ignoreTrustManager)
-            }
-            // Proxy
-            proxy = Proxy.NO_PROXY
         }
     }
 
@@ -196,15 +209,15 @@ object KtorUtils {
         return flow {
             val response = httpClient.post(url) {
                 MultiPartFormDataContent(formData {
-                    append(key, file.readBytes(), Headers.build {
-                        append(
-                            HttpHeaders.ContentType, "image/*"
-                        )
-                        append(
-                            HttpHeaders.ContentDisposition,
-                            "form-data;name=\"${key}\";filename=\"${file.name}\""
-                        )
-                    })
+                    //append(key, file.readBytes(), Headers.build {
+                    //    append(HttpHeaders.ContentType, "image/*")
+                    //    append(HttpHeaders.ContentDisposition, "filename=\"${file.name}\"")
+                    //})
+                    append(key, file.name, ContentType.Image.Any, file.length()) {
+                        file.inputStream().let { input ->
+                            this.write(input.readBytes())
+                        }
+                    }
                 })
             }
             val result = response.body<T>()
