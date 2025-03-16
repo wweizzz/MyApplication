@@ -12,27 +12,27 @@
         <activity android:name=".activity2.VolleyActivity" />
         <activity android:name=".activity2.VolleyHelperActivity" />
 
-        <activity android:name=".activity2.OkHttpActivity" />
-        <activity android:name=".activity2.OkHttpHelperActivity" />
+        <activity android:name=".activity3.OkHttpActivity" />
+        <activity android:name=".activity3.OkHttpHelperActivity" />
 
-        <activity android:name=".activity2.RetrofitActivity" />
-        <activity android:name=".activity2.RetrofitHelperActivity" />
+        <activity android:name=".activity4.RetrofitActivity" />
+        <activity android:name=".activity4.RetrofitHelperActivity" />
 
-        <activity android:name=".activity2.RetrofitRxJavaActivity" />
-        <activity android:name=".activity2.RetrofitRxJavaHelperActivity" />
+        <activity android:name=".activity4.RetrofitRxJavaActivity" />
+        <activity android:name=".activity4.RetrofitRxJavaHelperActivity" />
 
-        <activity android:name=".activity2.RxRetrofitActivity" />
+        <activity android:name=".activity3.RxRetrofitActivity" />
 
-        <activity android:name=".activity3.OkhttpDownloadActivity" />
-        <activity android:name=".activity3.RetrofitDownloadActivity" />
-        <activity android:name=".activity3.RxDownloadActivity" />
+        <activity android:name=".activity5.OkhttpDownloadActivity" />
+        <activity android:name=".activity5.RetrofitDownloadActivity" />
+        <activity android:name=".activity5.RxDownloadActivity" />
 
-        <activity android:name=".activity4.WebSocketActivity" />
-        <activity android:name=".activity4.WebSocketUtilsActivity" />
+        <activity android:name=".activity6.WebSocketActivity" />
+        <activity android:name=".activity6.WebSocketUtilsActivity" />
 
-        <activity android:name=".activity5.NanoActivity" />
-        <activity android:name=".activity5.NettyActivity" />
-        <activity android:name=".activity5.SocketActivity" />
+        <activity android:name=".activity7.NanoActivity" />
+        <activity android:name=".activity7.NettyActivity" />
+        <activity android:name=".activity7.SocketActivity" />
 
         <service android:name=".nano.NanoService" />
         <service android:name=".netty.NettyService" />
