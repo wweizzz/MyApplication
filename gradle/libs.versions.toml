@@ -52,7 +52,7 @@ androidxLiveDataCompose = "1.7.6"
 androidxConstraintLayoutCompose = "1.0.1"
 smartRefreshcCompose = "2.1.0"
 # ##################################################################################################
-mmkv = "2.0.2"
+mmkv = "2.1.0"
 upgrade = "2.2.0"
 utils = "1.31.1"
 permission = "1.7.1"

@@ -40,4 +40,6 @@ dependencies {
 
     //implementation(libs.upgrade)
     //implementation(libs.upgrade.ui)
+    //implementation("com.github.lzjin:SideBarView:1.0.1")
+    //implementation("com.github.qdxxxx:StickyHeaderDecoration:1.0.1")
 }
