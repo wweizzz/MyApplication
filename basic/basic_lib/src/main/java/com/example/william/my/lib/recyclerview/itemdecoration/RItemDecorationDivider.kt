@@ -1,4 +1,4 @@
-package com.example.william.my.lib.recyclerview.itemdecoration
+package com.sceneconsole.artefact.lib.base.recyclerview.itemdecoration
 
 import android.content.Context
 import android.graphics.Canvas
@@ -15,7 +15,7 @@ class RItemDecorationDivider(
     context: Context,
     private val dividerHeight: Int,
     private val dividerColor: Int = 0xFFCCCC,
-) : RecyclerView.ItemDecoration() {
+) : RItemDecoration() {
 
     private val mPaint: Paint = Paint()
 
@@ -54,12 +54,5 @@ class RItemDecorationDivider(
                 mPaint
             )
         }
-    }
-
-    /**
-     * above
-     */
-    override fun onDrawOver(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
-        super.onDrawOver(c, parent, state)
     }
 }

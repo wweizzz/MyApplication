@@ -5,13 +5,11 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 
 /**
- * RecyclerView 下间距(每行)
+ * LinearLayoutManager
  */
-class RItemDecorationBottom(
+class RItemDecorationStart(
     private val space: Int,
-    private val includeBottom: Boolean = false, // 是否包含底部
 ) : RItemDecoration() {
-
     override fun getItemOffsets(
         outRect: Rect,
         view: View,
@@ -27,10 +25,8 @@ class RItemDecorationBottom(
 
         if (position == RecyclerView.NO_POSITION) return
 
-        if (includeBottom) {
-            outRect.bottom = space
-        } else if (row != itemCount / spanCount) {
-            outRect.bottom = space
+        if (position == 0) {
+            outRect.left = space
         }
     }
 }

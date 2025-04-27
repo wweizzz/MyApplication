@@ -1,17 +1,12 @@
-package com.example.william.my.lib.recyclerview.itemdecoration
+package com.sceneconsole.artefact.lib.base.recyclerview.itemdecoration
 
 import android.graphics.Rect
 import android.view.View
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 
-/**
- * RecyclerView 上间距
- */
 class RItemDecorationTop(
     private val marginTop: Int
-) : RecyclerView.ItemDecoration() {
+) : RItemDecoration() {
 
     /**
      * padding
@@ -22,31 +17,15 @@ class RItemDecorationTop(
         parent: RecyclerView,
         state: RecyclerView.State
     ) {
-        super.getItemOffsets(outRect, view, parent, state)
-
+        val itemCount = getItemCount(parent)
         val spanCount = getSpanCount(parent)
 
         val position = parent.getChildAdapterPosition(view)
+        val column = position % spanCount // 第几列
+        val row = position / spanCount  // 第几行
 
         if (position < spanCount) {
             outRect.top = marginTop
         }
-    }
-
-    private fun getSpanCount(parent: RecyclerView): Int {
-        val spanCount = when (parent.layoutManager) {
-            is StaggeredGridLayoutManager -> {
-                (parent.layoutManager as StaggeredGridLayoutManager).spanCount
-            }
-
-            is GridLayoutManager -> {
-                (parent.layoutManager as GridLayoutManager).spanCount
-            }
-
-            else -> {
-                1
-            }
-        }
-        return spanCount
     }
 }
