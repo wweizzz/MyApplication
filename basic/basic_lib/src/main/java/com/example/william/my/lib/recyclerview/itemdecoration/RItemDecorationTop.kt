@@ -1,6 +1,5 @@
 package com.example.william.my.lib.recyclerview.itemdecoration
 
-import android.graphics.Canvas
 import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
@@ -32,20 +31,6 @@ class RItemDecorationTop(
         if (position < spanCount) {
             outRect.top = marginTop
         }
-    }
-
-    /**
-     * background
-     */
-    override fun onDraw(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
-        super.onDraw(c, parent, state)
-    }
-
-    /**
-     * above
-     */
-    override fun onDrawOver(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
-        super.onDrawOver(c, parent, state)
     }
 
     private fun getSpanCount(parent: RecyclerView): Int {

@@ -1,4 +1,4 @@
-package com.example.william.my.lib.fragment
+package com.example.william.my.lib.bottomSheetDialog
 
 import android.os.Bundle
 import android.view.View
@@ -19,12 +19,12 @@ import com.scwang.smart.refresh.layout.listener.OnRefreshLoadMoreListener
  * https://github.com/CymChad/BaseRecyclerViewAdapterHelper
  * LayoutManager -> Adapter -> ItemDecoration -> OnScrollListener
  */
-abstract class BaseRecyclerFragment<T : Any> : BaseVBFragment<BaseFragmentRecyclerViewBinding>(),
+abstract class BaseRecyclerBottomSheetDialogFragment<T : Any> :
+    BaseVBBottomSheetDialogFragment<BaseFragmentRecyclerViewBinding>(),
     BaseQuickAdapter.OnItemClickListener<T>, BaseQuickAdapter.OnItemChildClickListener<T>,
     OnRefreshLoadMoreListener {
 
-    protected var mPage: Int = 0
-    protected var mPageSize: Int = 20
+    protected var mCursor = ""
 
     protected var mLayoutManager: RecyclerView.LayoutManager? = null
 
@@ -42,12 +42,17 @@ abstract class BaseRecyclerFragment<T : Any> : BaseVBFragment<BaseFragmentRecycl
 
         initRecyclerView()
         initRecyclerData(state)
+
+        mBinding.smartRefresh.setEnableOverScrollDrag(true)
+        mBinding.smartRefresh.setNestedScrollingEnabled(true)
     }
 
     private fun initRecyclerView() {
         mBinding.smartRefresh.setEnableRefresh(canRefresh())
         mBinding.smartRefresh.setEnableLoadMore(canLoadMore())
         mBinding.smartRefresh.setOnRefreshLoadMoreListener(this)
+
+        //mBinding.recyclerView.isNestedScrollingEnabled = true
 
         mLayoutManager = initRecyclerManager()
         mLayoutManager.let {
@@ -60,7 +65,7 @@ abstract class BaseRecyclerFragment<T : Any> : BaseVBFragment<BaseFragmentRecycl
             mAdapterHelper = QuickAdapterHelper.Builder(it).build()
         }
 
-        mMultiItemAdapter = initRecyclerMultiItemAdapter()
+        mMultiItemAdapter = initRecyclerMultiAdapter()
         mMultiItemAdapter?.let {
             it.setOnItemClickListener(this)
             mAdapterHelper = QuickAdapterHelper.Builder(it).build()
@@ -117,7 +122,7 @@ abstract class BaseRecyclerFragment<T : Any> : BaseVBFragment<BaseFragmentRecycl
         return null
     }
 
-    open fun initRecyclerMultiItemAdapter(): BaseMultiItemAdapter<T>? {
+    open fun initRecyclerMultiAdapter(): BaseMultiItemAdapter<T>? {
         return null
     }
 
@@ -153,20 +158,21 @@ abstract class BaseRecyclerFragment<T : Any> : BaseVBFragment<BaseFragmentRecycl
         mBinding.smartRefresh.setEnableLoadMore(false)
     }
 
-    fun onDataSuccess(list: List<T>?) {
+    fun onDataSuccess(cursor: String?, list: List<T>?) {
         val newList = list ?: emptyList()
 
-        if (mPage == 1) {
+        if (mCursor.isEmpty()) {
             mAdapter?.submitList(newList)
             mMultiItemAdapter?.submitList(newList)
         } else {
             mAdapter?.addAll(newList)
             mMultiItemAdapter?.addAll(newList)
         }
+        mCursor = cursor ?: ""
 
         setRecyclerViewStateView()
 
-        if (newList.size < mPageSize) {
+        if (newList.isEmpty()) {
             mBinding.smartRefresh.setEnableLoadMore(false)
         } else {
             mBinding.smartRefresh.setEnableLoadMore(canLoadMore())
@@ -182,13 +188,12 @@ abstract class BaseRecyclerFragment<T : Any> : BaseVBFragment<BaseFragmentRecycl
     }
 
     override fun onRefresh(refreshLayout: RefreshLayout) {
-        mPage = 0
+        mCursor = ""
         queryData()
         mBinding.smartRefresh.finishRefresh(1000)
     }
 
     override fun onLoadMore(refreshLayout: RefreshLayout) {
-        mPage++
         queryData()
         mBinding.smartRefresh.finishLoadMore(1000)
     }

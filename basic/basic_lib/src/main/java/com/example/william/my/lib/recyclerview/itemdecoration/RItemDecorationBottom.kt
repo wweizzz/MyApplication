@@ -34,20 +34,6 @@ class RItemDecorationBottom(
         }
     }
 
-    /**
-     * background
-     */
-    override fun onDraw(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
-        super.onDraw(c, parent, state)
-    }
-
-    /**
-     * above
-     */
-    override fun onDrawOver(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
-        super.onDrawOver(c, parent, state)
-    }
-
     private fun getItemCount(parent: RecyclerView): Int {
         return parent.layoutManager?.itemCount ?: 0
     }

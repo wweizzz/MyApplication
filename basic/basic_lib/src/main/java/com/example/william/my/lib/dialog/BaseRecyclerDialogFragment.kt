@@ -1,4 +1,4 @@
-package com.example.william.my.lib.fragment
+package com.example.william.my.lib.dialog
 
 import android.os.Bundle
 import android.view.View
@@ -19,7 +19,8 @@ import com.scwang.smart.refresh.layout.listener.OnRefreshLoadMoreListener
  * https://github.com/CymChad/BaseRecyclerViewAdapterHelper
  * LayoutManager -> Adapter -> ItemDecoration -> OnScrollListener
  */
-abstract class BaseRecyclerFragment<T : Any> : BaseVBFragment<BaseFragmentRecyclerViewBinding>(),
+abstract class BaseRecyclerDialogFragment<T : Any> :
+    BaseVBDialogFragment<BaseFragmentRecyclerViewBinding>(),
     BaseQuickAdapter.OnItemClickListener<T>, BaseQuickAdapter.OnItemChildClickListener<T>,
     OnRefreshLoadMoreListener {
 
@@ -49,6 +50,8 @@ abstract class BaseRecyclerFragment<T : Any> : BaseVBFragment<BaseFragmentRecycl
         mBinding.smartRefresh.setEnableLoadMore(canLoadMore())
         mBinding.smartRefresh.setOnRefreshLoadMoreListener(this)
 
+        //mBinding.recyclerView.isNestedScrollingEnabled = true
+
         mLayoutManager = initRecyclerManager()
         mLayoutManager.let {
             mBinding.recyclerView.layoutManager = it
@@ -60,7 +63,7 @@ abstract class BaseRecyclerFragment<T : Any> : BaseVBFragment<BaseFragmentRecycl
             mAdapterHelper = QuickAdapterHelper.Builder(it).build()
         }
 
-        mMultiItemAdapter = initRecyclerMultiItemAdapter()
+        mMultiItemAdapter = initRecyclerMultiAdapter()
         mMultiItemAdapter?.let {
             it.setOnItemClickListener(this)
             mAdapterHelper = QuickAdapterHelper.Builder(it).build()
@@ -117,7 +120,7 @@ abstract class BaseRecyclerFragment<T : Any> : BaseVBFragment<BaseFragmentRecycl
         return null
     }
 
-    open fun initRecyclerMultiItemAdapter(): BaseMultiItemAdapter<T>? {
+    open fun initRecyclerMultiAdapter(): BaseMultiItemAdapter<T>? {
         return null
     }
 
@@ -153,7 +156,7 @@ abstract class BaseRecyclerFragment<T : Any> : BaseVBFragment<BaseFragmentRecycl
         mBinding.smartRefresh.setEnableLoadMore(false)
     }
 
-    fun onDataSuccess(list: List<T>?) {
+    fun onDataSuccess(cursor: String?, list: List<T>?) {
         val newList = list ?: emptyList()
 
         if (mPage == 1) {
@@ -166,7 +169,7 @@ abstract class BaseRecyclerFragment<T : Any> : BaseVBFragment<BaseFragmentRecycl
 
         setRecyclerViewStateView()
 
-        if (newList.size < mPageSize) {
+        if (newList.isEmpty()) {
             mBinding.smartRefresh.setEnableLoadMore(false)
         } else {
             mBinding.smartRefresh.setEnableLoadMore(canLoadMore())
