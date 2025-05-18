@@ -16,6 +16,8 @@ dependencies {
     implementation(libs.google.material)
     //Utils
     implementation(libs.utils)
+    //ImmersionBar
+    implementation(libs.immersionbar)
     //LifecycleProvider
     implementation(libs.rxlifecycle)
 }

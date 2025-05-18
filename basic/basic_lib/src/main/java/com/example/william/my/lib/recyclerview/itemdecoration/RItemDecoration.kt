@@ -1,4 +1,4 @@
-package com.sceneconsole.artefact.lib.base.recyclerview.itemdecoration
+package com.example.william.my.lib.recyclerview.itemdecoration
 
 import android.graphics.Canvas
 import android.graphics.Rect

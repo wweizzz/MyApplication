@@ -1,8 +1,9 @@
-package com.sceneconsole.artefact.lib.base.recyclerview.itemdecoration
+package com.example.william.my.lib.recyclerview.itemdecoration
 
 import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.example.william.my.lib.recyclerview.itemdecoration.RItemDecoration
 
 class RItemDecorationTop(
     private val marginTop: Int

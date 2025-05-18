@@ -3,9 +3,11 @@ package com.example.william.my.core.imageloader
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.widget.ImageView
 import androidx.annotation.DrawableRes
 import androidx.annotation.RawRes
+import com.bumptech.glide.request.RequestOptions
 import java.io.File
 
 interface IImageLoader {
@@ -14,51 +16,67 @@ interface IImageLoader {
 
     fun resumeRequests(context: Context?)
 
-    fun clear(context: Context?, imageView: ImageView?)
-
-    fun loadImage(
-        context: Context?, imageView: ImageView?, @RawRes @DrawableRes resourceId: Int,
+    fun ImageView.clear(
+        context: Context?,
     )
 
-    fun loadImageRound(
-        context: Context?, imageView: ImageView?, @RawRes @DrawableRes resourceId: Int,
+    fun ImageView.loadImage(
+        context: Context?, @RawRes @DrawableRes resourceId: Int,
     )
 
-    fun loadImageRadius(
-        context: Context?, imageView: ImageView?, @RawRes @DrawableRes resourceId: Int,
-        radius: Int,
+    fun ImageView.loadImage(
+        context: Context?, uri: Uri,
     )
 
-    fun loadImage(
-        context: Context?, imageView: ImageView?, file: File?,
+    fun ImageView.loadImage(
+        context: Context?, file: File,
     )
 
-    fun loadImageRound(
-        context: Context?, imageView: ImageView?, file: File?,
+    fun ImageView.loadImage(
+        context: Context?,
+        url: String?,
+        options: RequestOptions? = null,
+        requestListener: (() -> Unit)? = null,
     )
 
-    fun loadImageRadius(
-        context: Context?, imageView: ImageView?, file: File?, radius: Int,
+    fun ImageView.loadImageRound(
+        context: Context?, @RawRes @DrawableRes resourceId: Int,
     )
 
-    fun loadImage(
-        context: Context?, imageView: ImageView?, url: String?,
+    fun ImageView.loadImageRound(
+        context: Context?, uri: Uri,
     )
 
-    fun loadImageRound(
-        context: Context?, imageView: ImageView?, url: String?,
+    fun ImageView.loadImageRound(
+        context: Context?, file: File,
     )
 
-    fun loadImageRadius(
-        context: Context?, imageView: ImageView?, url: String?, radius: Int,
+    fun ImageView.loadImageRound(
+        context: Context?, url: String?,
     )
 
-    fun loadGif(
-        context: Context?, imageView: ImageView?, resourceId: Int,
+    fun ImageView.loadImageRadius(
+        context: Context?, @RawRes @DrawableRes resourceId: Int, radius: Int,
     )
 
-    fun loadGif(
-        context: Context?, imageView: ImageView?, url: String?,
+    fun ImageView.loadImageRadius(
+        context: Context?, uri: Uri, radius: Int,
+    )
+
+    fun ImageView.loadImageRadius(
+        context: Context?, file: File, radius: Int,
+    )
+
+    fun ImageView.loadImageRadius(
+        context: Context?, url: String?, radius: Int,
+    )
+
+    fun ImageView.loadGif(
+        context: Context?, resourceId: Int,
+    )
+
+    fun ImageView.loadGif(
+        context: Context?, url: String?,
     )
 
     fun getImageDrawable(
@@ -68,10 +86,4 @@ interface IImageLoader {
     fun getImageBitmap(
         context: Context?, url: String?
     ): Bitmap?
-
-    fun <R> notNull(vararg args: Any?, block: () -> R) =
-        when (args.filterNotNull().size) {
-            args.size -> block()
-            else -> null
-        }
 }

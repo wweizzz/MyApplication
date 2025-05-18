@@ -4,7 +4,9 @@ import android.content.res.Resources
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.view.animation.LayoutAnimationController
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -84,6 +86,14 @@ class RecyclerViewActivity : BaseVBActivity<DemoActivityRecyclerViewBinding>(),
 
         mBinding.recycleView.addItemDecoration(
             RItemDecorationSpacing(spacing = dp2px(20f), bottom = dp2px(48f))
+        )
+
+        mBinding.recycleView.addItemDecoration(
+            DividerItemDecoration(this, DividerItemDecoration.VERTICAL).apply {
+                this.setDrawable(
+                    ContextCompat.getDrawable(this@RecyclerViewActivity, R.drawable.demo_divider)!!
+                )
+            }
         )
 
         /*

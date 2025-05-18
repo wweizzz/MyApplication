@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.android.arouter.launcher.ARouter
+import com.gyf.immersionbar.ImmersionBar
 
 open class BaseActivity : AppCompatActivity() {
 
@@ -57,8 +58,23 @@ open class BaseActivity : AppCompatActivity() {
         ARouter.getInstance().inject(this)
     }
 
-    protected fun setStatusBarColor(): Int {
-        return android.R.color.transparent
+    protected open fun initStatusBar() {
+        if (enableTransparentStatusBar()) {
+            ImmersionBar.with(this)
+                .transparentStatusBar()  //透明状态栏，不写默认透明色
+                .statusBarDarkFont(false) //状态栏字体是深色，不写默认为亮色
+                .fitsSystemWindows(fitsSystemWindows()) //解决状态栏和布局重叠问题
+                .keyboardEnable(true)
+                .init()
+        }
+    }
+
+    protected open fun enableTransparentStatusBar(): Boolean {
+        return true
+    }
+
+    protected open fun fitsSystemWindows(): Boolean {
+        return true
     }
 
     @Suppress("DEPRECATION")

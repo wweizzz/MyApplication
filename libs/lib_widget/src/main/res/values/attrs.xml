@@ -74,4 +74,14 @@
         <attr name="code_bg_normal" format="reference" />
     </declare-styleable>
 
+    <declare-styleable name="VerifyCodeView2">
+        <attr name="editWidth" format="dimension" />
+        <attr name="editNumber" format="integer" />
+        <attr name="editTextSize" format="dimension" />
+        <attr name="editTextColor" format="color" />
+        <attr name="editTextSpacing" format="dimension" />
+        <attr name="editHintTextColor" format="color" />
+        <attr name="isShowBisection" format="boolean" />
+    </declare-styleable>
+
 </resources>

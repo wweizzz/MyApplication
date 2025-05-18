@@ -23,13 +23,6 @@
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 
-    <style name="Basics_FullScreenTheme" parent="Basics_AppTheme">
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowActionBar">false</item>
-        <item name="android:windowFullscreen">true</item>
-        <item name="android:windowContentOverlay">@null</item>
-    </style>
-
     <style name="Basics_TranslucentTheme" parent="Basics_AppTheme">
         <!--不设置activity进入和退出动画样式-->
         <item name="android:windowAnimationStyle">@null</item>
@@ -37,6 +30,8 @@
         <item name="android:windowIsTranslucent">true</item>
         <!--设置状态栏的背景为半透明-->
         <item name="android:windowTranslucentStatus">true</item>
+        <!--设置导航栏的背景为半透明-->
+        <item name="android:windowTranslucentNavigation">true</item>
         <!--设置窗口的背景为透明，设置透明背景必须要设置此项-->
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
