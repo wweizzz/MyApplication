@@ -11,7 +11,7 @@ import com.daimajia.swipe.util.Attributes
 abstract class BaseQuickSwipeAdapter<T : Any, VH : RecyclerView.ViewHolder> :
     BaseQuickAdapter<T, VH>(), SwipeItemMangerInterface, SwipeAdapterInterface {
 
-    var mItemManger: SwipeItemRecyclerMangerImpl = SwipeItemRecyclerMangerImpl(this)
+    private var mItemManger: SwipeItemRecyclerMangerImpl = SwipeItemRecyclerMangerImpl(this)
 
     override fun onBindViewHolder(holder: VH, position: Int, item: T?) {
         if (holder.itemView is SwipeLayout) {
