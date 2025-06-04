@@ -20,7 +20,6 @@ import com.example.william.my.core.imageloader.glide.module.GlideApp
 import java.io.File
 import java.util.concurrent.ExecutionException
 
-
 object ImageLoader : IImageLoader {
 
     override fun pauseRequests(context: Context?) {
@@ -88,7 +87,7 @@ object ImageLoader : IImageLoader {
                         override fun onLoadFailed(
                             e: GlideException?,
                             model: Any?,
-                            target: Target<Drawable?>?,
+                            target: Target<Drawable?>,
                             isFirstResource: Boolean
                         ): Boolean {
                             requestListener?.invoke()
@@ -96,10 +95,10 @@ object ImageLoader : IImageLoader {
                         }
 
                         override fun onResourceReady(
-                            resource: Drawable?,
-                            model: Any?,
+                            resource: Drawable,
+                            model: Any,
                             target: Target<Drawable?>?,
-                            dataSource: DataSource?,
+                            dataSource: DataSource,
                             isFirstResource: Boolean
                         ): Boolean {
                             requestListener?.invoke()
@@ -114,7 +113,7 @@ object ImageLoader : IImageLoader {
                         override fun onLoadFailed(
                             e: GlideException?,
                             model: Any?,
-                            target: Target<Drawable?>?,
+                            target: Target<Drawable?>,
                             isFirstResource: Boolean
                         ): Boolean {
                             requestListener?.invoke()
@@ -122,10 +121,10 @@ object ImageLoader : IImageLoader {
                         }
 
                         override fun onResourceReady(
-                            resource: Drawable?,
-                            model: Any?,
+                            resource: Drawable,
+                            model: Any,
                             target: Target<Drawable?>?,
-                            dataSource: DataSource?,
+                            dataSource: DataSource,
                             isFirstResource: Boolean
                         ): Boolean {
                             requestListener?.invoke()

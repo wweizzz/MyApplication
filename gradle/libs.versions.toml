@@ -75,7 +75,7 @@ objectbox = "3.7.1"
 coil = "2.7.0"
 ktor = "3.1.0"
 
-glide = "4.15.1"
+glide = "4.16.0"
 volley = "1.2.1"
 okhttp = "4.12.0"
 retrofit = "2.11.0"
@@ -105,7 +105,7 @@ androidxTestExt = "1.2.1"
 androidxTestEspresso = "3.6.1"
 # ##################################################################################################
 # https://developer.android.google.cn/studio/releases/gradle-plugin
-gradlePluginAndroid = "8.10.0"
+gradlePluginAndroid = "8.10.1"
 gradlePluginKotlin = "2.1.0"
 gradlePluginProtobuf = "0.9.4"
 gradlePluginArouter = "1.0.2"
