@@ -39,8 +39,6 @@ androidxStartup = "1.2.0"
 # Hilt:2.56对应kotlin:2.1.10
 androidxHilt = "2.56"
 
-#Java 11
-#androidxRoom = "2.6.1"
 androidxRoom = "2.7.1"
 
 # https://developer.android.com/jetpack/androidx/releases/compose-kotlin?hl=zh-cn
@@ -111,6 +109,8 @@ gradlePluginArouter = "1.0.2"
 gradlePluginGreenDao = "3.3.1"
 gradlePluginObjectBox = "3.7.1"
 gradlePluginKsp = "2.1.10-1.0.31"
+
+dependencyGuard = "0.5.0"
 # ##################################################################################################
 [libraries]
 #
@@ -328,18 +328,20 @@ androidx-test-espresso = { group = "androidx.test.espresso", name = "espresso-co
 # Dependencies of the included build-logic
 gradlePlugin-android = { group = "com.android.tools.build", name = "gradle", version.ref = "gradlePluginAndroid" }
 gradlePlugin-kotlin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "gradlePluginKotlin" }
+gradlePlugin-compose = { module = "org.jetbrains.kotlin:compose-compiler-gradle-plugin", version.ref = "gradlePluginKotlin" }
 gradlePlugin-protobuf = { group = "com.google.protobuf", name = "protobuf-gradle-plugin", version.ref = "gradlePluginProtobuf" }
+
 gradlePlugin-arouter = { group = "com.alibaba", name = "arouter-register", version.ref = "gradlePluginArouter" }
 gradlePlugin-greendao = { group = "org.greenrobot", name = "greendao-gradle-plugin", version.ref = "gradlePluginGreenDao" }
 gradlePlugin-objectbox = { group = "io.objectbox", name = "objectbox-gradle-plugin", version.ref = "gradlePluginObjectBox" }
 
+gradlePlugin-ksp = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "gradlePluginKsp" }
 gradlePlugin-hilt = { group = "com.google.dagger", name = "hilt-android-gradle-plugin", version.ref = "androidxHilt" }
 gradlePlugin-room = { group = "androidx.room", name = "room-gradle-plugin", version.ref = "androidxRoom" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "gradlePluginAndroid" }
 android-library = { id = "com.android.library", version.ref = "gradlePluginAndroid" }
-
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "gradlePluginKotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "gradlePluginKotlin" }
 
@@ -350,13 +352,19 @@ google-ksp = { id = "com.google.devtools.ksp", version.ref = "gradlePluginKsp" }
 android-hilt = { id = "com.google.dagger.hilt.android", version.ref = "androidxHilt" }
 android-room = { id = "androidx.room", version.ref = "androidxRoom" }
 
+dependencyGuard = { id = "com.dropbox.dependency-guard", version.ref = "dependencyGuard" }
+
 # Plugins defined by this project
-nowinandroid-android-application = { id = "nowinandroid.android.application", version = "unspecified" }
-nowinandroid-android-library = { id = "nowinandroid.android.library", version = "unspecified" }
-nowinandroid-android-arouter = { id = "nowinandroid.android.arouter", version = "unspecified" }
-nowinandroid-android-eventbus = { id = "nowinandroid.android.eventbus", version = "unspecified" }
-nowinandroid-android-protobuf = { id = "nowinandroid.android.protobuf", version = "unspecified" }
-nowinandroid-android-room = { id = "nowinandroid.android.room", version = "unspecified" }
-nowinandroid-android-hilt = { id = "nowinandroid.android.hilt", version = "unspecified" }
-nowinandroid-android-greendao = { id = "nowinandroid.android.greendao", version = "unspecified" }
-nowinandroid-android-objectbox = { id = "nowinandroid.android.objectbox", version = "unspecified" }
+nowinandroid-android-application = { id = "nowinandroid.android.application" }
+nowinandroid-android-application-compose = { id = "nowinandroid.android.application.compose" }
+nowinandroid-android-library = { id = "nowinandroid.android.library" }
+nowinandroid-android-library-compose = { id = "nowinandroid.android.library.compose" }
+nowinandroid-android-test = { id = "nowinandroid.android.test" }
+nowinandroid-android-lint = { id = "nowinandroid.android.lint" }
+nowinandroid-android-arouter = { id = "nowinandroid.android.arouter" }
+nowinandroid-android-eventbus = { id = "nowinandroid.android.eventbus" }
+nowinandroid-android-protobuf = { id = "nowinandroid.android.protobuf" }
+nowinandroid-android-hilt = { id = "nowinandroid.android.hilt" }
+nowinandroid-android-room = { id = "nowinandroid.android.room" }
+nowinandroid-android-greendao = { id = "nowinandroid.android.greendao" }
+nowinandroid-android-objectbox = { id = "nowinandroid.android.objectbox" }

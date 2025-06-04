@@ -14,27 +14,22 @@
  *   limitations under the License.
  */
 
-import com.google.samples.apps.nowinandroid.libs
+import com.android.build.api.dsl.ApplicationExtension
+import com.google.samples.apps.nowinandroid.configureAndroidCompose
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
-import org.gradle.kotlin.dsl.configure
-import org.gradle.kotlin.dsl.dependencies
-import org.jetbrains.kotlin.gradle.plugin.KaptExtension
+import org.gradle.kotlin.dsl.getByType
 
-class AndroidARouterConventionPlugin : Plugin<Project> {
+class AndroidApplicationComposeConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
-            apply(plugin = "kotlin-kapt")
-            extensions.configure<KaptExtension> {
-                arguments {
-                    arg("AROUTER_MODULE_NAME", project.name)
-                }
-            }
-            dependencies {
-                add("implementation", libs.findLibrary("arouter").get())
-                add("kapt", libs.findLibrary("arouter.compiler").get())
-            }
+            apply(plugin = "com.android.application")
+            apply(plugin = "org.jetbrains.kotlin.plugin.compose")
+
+            val extension = extensions.getByType<ApplicationExtension>()
+            configureAndroidCompose(extension)
         }
     }
+
 }

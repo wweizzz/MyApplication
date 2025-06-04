@@ -23,22 +23,22 @@ import com.google.samples.apps.nowinandroid.configureKotlinAndroid
 import com.google.samples.apps.nowinandroid.configurePrintApksTask
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.configure
 
 class AndroidApplicationConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
-            with(pluginManager) {
-                apply("com.android.application")
-                apply("kotlin-android")
-                apply("kotlin-kapt")
-                apply("kotlin-parcelize")
-                apply("nowinandroid.android.lint")
-            }
+            apply(plugin = "com.android.application")
+            apply(plugin = "kotlin-android")
+            apply(plugin = "kotlin-kapt")
+            apply(plugin = "kotlin-parcelize")
+            apply(plugin = "nowinandroid.android.lint")
             extensions.configure<ApplicationExtension> {
-                compileSdk = 35
+                compileSdk = 36
                 defaultConfig.minSdk = 24
-                defaultConfig.targetSdk = 35
+                defaultConfig.targetSdk = 36
+                testOptions.animationsDisabled = true
                 configureKotlinAndroid(this)
                 configureFlavors(this)
             }

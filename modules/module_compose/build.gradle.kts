@@ -35,7 +35,7 @@ dependencies {
 //    debugImplementation(libs.androidx.compose.ui.tooling)
 //    debugImplementation(libs.androidx.compose.ui.test.manifest)
 
-    implementation("com.google.accompanist:accompanist-pager:0.34.0")
+//    implementation("com.google.accompanist:accompanist-pager:0.34.0")
 
     implementation(libs.smartrefresh.compose)
 }

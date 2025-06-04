@@ -17,6 +17,7 @@
 import com.google.samples.apps.nowinandroid.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
 import org.jetbrains.kotlin.gradle.plugin.KaptExtension
@@ -25,9 +26,7 @@ import java.util.Locale
 class AndroidEventBusConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
-            with(pluginManager) {
-                apply("kotlin-kapt")
-            }
+            apply(plugin = "kotlin-kapt")
             extensions.configure<KaptExtension> {
                 val eventBusClassPath = "com.example.william.my" +
                         project.path.replace(":", ".")

@@ -18,15 +18,14 @@ import com.google.protobuf.gradle.ProtobufExtension
 import com.google.samples.apps.nowinandroid.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
 
 class AndroidProtobufConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
-            with(pluginManager) {
-                apply("com.google.protobuf")
-            }
+            apply(plugin = "com.google.protobuf")
             // https://github.com/google/protobuf-gradle-plugin
             extensions.configure<ProtobufExtension> {
                 protoc {

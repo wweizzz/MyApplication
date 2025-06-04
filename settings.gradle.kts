@@ -104,7 +104,7 @@ include(":modules:module_room")
 //:basic:basic_repo
 include(":modules:module_arch")
 
-include(":modules:module_compose")
+//include(":modules:module_compose")
 
 apply {
     from("configs_flutter.gradle")

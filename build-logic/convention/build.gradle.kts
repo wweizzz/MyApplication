@@ -15,7 +15,6 @@
  */
 
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     `kotlin-dsl`
@@ -39,58 +38,82 @@ kotlin {
 dependencies {
     compileOnly(libs.gradlePlugin.android)
     compileOnly(libs.gradlePlugin.kotlin)
+    compileOnly(libs.gradlePlugin.compose)
     compileOnly(libs.gradlePlugin.protobuf)
+
     compileOnly(libs.gradlePlugin.greendao)
     compileOnly(libs.gradlePlugin.objectbox)
 
+    compileOnly(libs.gradlePlugin.ksp)
     compileOnly(libs.gradlePlugin.hilt)
     compileOnly(libs.gradlePlugin.room)
+}
+
+tasks {
+    validatePlugins {
+        enableStricterValidation = true
+        failOnWarning = true
+    }
 }
 
 gradlePlugin {
     plugins {
         register("androidApplication") {
             id = "nowinandroid.android.application"
+            //id = libs.plugins.nowinandroid.android.application.get().pluginId
             implementationClass = "AndroidApplicationConventionPlugin"
+        }
+        register("androidApplicationCompose") {
+            id = libs.plugins.nowinandroid.android.application.compose.get().pluginId
+            implementationClass = "AndroidApplicationComposeConventionPlugin"
         }
         register("androidLibrary") {
             id = "nowinandroid.android.library"
+            //id = libs.plugins.nowinandroid.android.library.get().pluginId
             implementationClass = "AndroidLibraryConventionPlugin"
         }
+        register("androidLibraryCompose") {
+            id = libs.plugins.nowinandroid.android.library.compose.get().pluginId
+            implementationClass = "AndroidLibraryComposeConventionPlugin"
+        }
+        register("androidTest") {
+            id = libs.plugins.nowinandroid.android.test.get().pluginId
+            implementationClass = "AndroidTestConventionPlugin"
+        }
         register("androidLint") {
-            id = "nowinandroid.android.lint"
+            id = libs.plugins.nowinandroid.android.lint.get().pluginId
             implementationClass = "AndroidLintConventionPlugin"
         }
         register("androidARouter") {
-            id = "nowinandroid.android.arouter"
+            id = libs.plugins.nowinandroid.android.arouter.get().pluginId
             implementationClass = "AndroidARouterConventionPlugin"
         }
         register("androidEventBus") {
-            id = "nowinandroid.android.eventbus"
+            id = libs.plugins.nowinandroid.android.eventbus.get().pluginId
             implementationClass = "AndroidEventBusConventionPlugin"
-        }
-        register("androidHilt") {
-            id = "nowinandroid.android.hilt"
-            implementationClass = "AndroidHiltConventionPlugin"
         }
 
         //
         register("androidProtobuf") {
-            id = "nowinandroid.android.protobuf"
+            id = libs.plugins.nowinandroid.android.protobuf.get().pluginId
             implementationClass = "AndroidProtobufConventionPlugin"
         }
+        register("androidHilt") {
+            id = libs.plugins.nowinandroid.android.hilt.get().pluginId
+            implementationClass = "AndroidHiltConventionPlugin"
+        }
         register("androidRoom") {
-            id = "nowinandroid.android.room"
+            id = libs.plugins.nowinandroid.android.room.get().pluginId
             implementationClass = "AndroidRoomConventionPlugin"
         }
 
         //
         register("androidGreenDao") {
-            id = "nowinandroid.android.greendao"
+            id = libs.plugins.nowinandroid.android.greendao.get().pluginId
             implementationClass = "AndroidGreenDaoConventionPlugin"
         }
         register("androidObjectBox") {
-            id = "nowinandroid.android.objectbox"
+            id = libs.plugins.nowinandroid.android.objectbox.get().pluginId
             implementationClass = "AndroidObjectBoxConventionPlugin"
         }
     }

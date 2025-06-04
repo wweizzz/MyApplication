@@ -18,6 +18,7 @@ import com.google.samples.apps.nowinandroid.libs
 import dagger.hilt.android.plugin.HiltExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
 import org.jetbrains.kotlin.gradle.plugin.KaptExtension
@@ -25,10 +26,8 @@ import org.jetbrains.kotlin.gradle.plugin.KaptExtension
 class AndroidHiltConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
-            with(pluginManager) {
-                apply("kotlin-kapt")
-                apply("com.google.dagger.hilt.android")
-            }
+            apply(plugin = "kotlin-kapt")
+            apply(plugin = "com.google.dagger.hilt.android")
             extensions.configure<KaptExtension> {
                 // Allow references to generated code
                 correctErrorTypes = true
