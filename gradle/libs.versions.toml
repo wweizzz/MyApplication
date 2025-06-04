@@ -2,10 +2,6 @@
 versionCode = "100"
 versionName = "1.0.0" # X.Y.Z; X = Major, Y = minor, Z = Patch level
 # ##################################################################################################
-minSdk = "24"
-targetSdk = "35"
-compileSdk = "35"
-# ##################################################################################################
 androidDesugarJdkLibs = "2.1.5"
 kotlinxCoroutines = "1.10.1"
 
@@ -17,7 +13,7 @@ googleMaterial = "1.12.0"
 # ##################################################################################################
 androidxCore = "1.16.0"
 androidxActivity = "1.10.1"
-androidxFragment = "1.8.6"
+androidxFragment = "1.8.7"
 androidxSplashscreen = "1.0.1"
 
 androidxAppCompat = "1.7.0"
@@ -25,11 +21,11 @@ androidxConstraintLayout = "2.2.1"
 androidxRecyclerView = "1.4.0"
 androidxViewPager2 = "1.1.0"
 
-androidxLifecycle = "2.8.7"
+androidxLifecycle = "2.9.0"
 androidxPaging = "3.3.6"
-androidxDataStore = "1.1.4"
-androidxWorkManager = "2.10.0"
-androidxNavigation = "2.8.9"
+androidxDataStore = "1.1.7"
+androidxWorkManager = "2.10.1"
+androidxNavigation = "2.9.0"
 androidxStartup = "1.2.0"
 
 # hilt对应kotlin版本
@@ -40,19 +36,22 @@ androidxStartup = "1.2.0"
 # Hilt:2.51对应kotlin:2.0.0
 # Hilt:2.52对应kotlin:2.0.20
 # Hilt:2.54对应kotlin:2.1.0
-androidxHilt = "2.54"
+# Hilt:2.56对应kotlin:2.1.10
+androidxHilt = "2.56"
 
-androidxRoom = "2.7.0"
+#Java 11
+#androidxRoom = "2.6.1"
+androidxRoom = "2.7.1"
 
 # https://developer.android.com/jetpack/androidx/releases/compose-kotlin?hl=zh-cn
 androidxComposeCompiler = "1.5.14"
 
-androidxComposeBom = "2025.04.00"
-androidxLiveDataCompose = "1.7.8"
+androidxComposeBom = "2025.05.01"
+androidxLiveDataCompose = "1.8.2"
 androidxConstraintLayoutCompose = "1.1.1"
 smartRefreshcCompose = "2.1.0"
 # ##################################################################################################
-mmkv = "2.2.1"
+mmkv = "2.2.2"
 upgrade = "2.2.0"
 utils = "1.31.1"
 permission = "1.7.1"
@@ -106,12 +105,12 @@ androidxTestEspresso = "3.6.1"
 # ##################################################################################################
 # https://developer.android.google.cn/studio/releases/gradle-plugin
 gradlePluginAndroid = "8.10.1"
-gradlePluginKotlin = "2.1.0"
+gradlePluginKotlin = "2.1.10"
 gradlePluginProtobuf = "0.9.4"
 gradlePluginArouter = "1.0.2"
 gradlePluginGreenDao = "3.3.1"
 gradlePluginObjectBox = "3.7.1"
-gradlePluginKsp = "2.1.0-1.0.29"
+gradlePluginKsp = "2.1.10-1.0.31"
 # ##################################################################################################
 [libraries]
 #
