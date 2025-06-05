@@ -24,18 +24,10 @@ plugins {
     alias(libs.plugins.kotlin.android) apply false
     alias(libs.plugins.kotlin.kapt) apply false
 
+    alias(libs.plugins.android.ksp) apply false
     alias(libs.plugins.android.hilt) apply false
     alias(libs.plugins.android.room) apply false
 
+    alias(libs.plugins.kotlin.parcelize) apply false
     alias(libs.plugins.kotlin.compose) apply false
-}
-
-// Task to print all the module paths in the project e.g. :core:data
-// Used by module graph generator script
-tasks.register("printModulePaths") {
-    subprojects {
-        if (subprojects.size == 0) {
-            println(this.path)
-        }
-    }
 }

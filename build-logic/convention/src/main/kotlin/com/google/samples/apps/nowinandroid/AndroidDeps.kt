@@ -66,7 +66,7 @@ internal fun Project.configureFeatureAndroid() {
         add("implementation", project(":modules:module_room"))
         add("implementation", project(":modules:module_arch"))
 
-        //add("implementation", project(":modules:module_compose"))
+        add("implementation", project(":modules:module_compose"))
 
         add("implementation", project(":modules:module_flutter"))
     }

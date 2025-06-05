@@ -18,6 +18,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     `kotlin-dsl`
+    //alias(libs.plugins.android.lint)
 }
 
 group = "com.google.samples.apps.nowinandroid.buildlogic"
@@ -59,8 +60,7 @@ tasks {
 gradlePlugin {
     plugins {
         register("androidApplication") {
-            id = "nowinandroid.android.application"
-            //id = libs.plugins.nowinandroid.android.application.get().pluginId
+            id = libs.plugins.nowinandroid.android.application.asProvider().get().pluginId
             implementationClass = "AndroidApplicationConventionPlugin"
         }
         register("androidApplicationCompose") {
@@ -68,21 +68,20 @@ gradlePlugin {
             implementationClass = "AndroidApplicationComposeConventionPlugin"
         }
         register("androidLibrary") {
-            id = "nowinandroid.android.library"
-            //id = libs.plugins.nowinandroid.android.library.get().pluginId
+            id = libs.plugins.nowinandroid.android.library.asProvider().get().pluginId
             implementationClass = "AndroidLibraryConventionPlugin"
         }
         register("androidLibraryCompose") {
             id = libs.plugins.nowinandroid.android.library.compose.get().pluginId
             implementationClass = "AndroidLibraryComposeConventionPlugin"
         }
-        register("androidTest") {
-            id = libs.plugins.nowinandroid.android.test.get().pluginId
-            implementationClass = "AndroidTestConventionPlugin"
-        }
         register("androidLint") {
             id = libs.plugins.nowinandroid.android.lint.get().pluginId
             implementationClass = "AndroidLintConventionPlugin"
+        }
+        register("androidTest") {
+            id = libs.plugins.nowinandroid.android.test.get().pluginId
+            implementationClass = "AndroidTestConventionPlugin"
         }
         register("androidARouter") {
             id = libs.plugins.nowinandroid.android.arouter.get().pluginId

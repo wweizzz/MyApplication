@@ -344,11 +344,13 @@ android-application = { id = "com.android.application", version.ref = "gradlePlu
 android-library = { id = "com.android.library", version.ref = "gradlePluginAndroid" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "gradlePluginKotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "gradlePluginKotlin" }
+android-lint = { id = "com.android.lint", version.ref = "gradlePluginAndroid" }
+android-test = { id = "com.android.test", version.ref = "gradlePluginAndroid" }
 
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "gradlePluginKotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "gradlePluginKotlin" }
 
-google-ksp = { id = "com.google.devtools.ksp", version.ref = "gradlePluginKsp" }
+android-ksp = { id = "com.google.devtools.ksp", version.ref = "gradlePluginKsp" }
 android-hilt = { id = "com.google.dagger.hilt.android", version.ref = "androidxHilt" }
 android-room = { id = "androidx.room", version.ref = "androidxRoom" }
 
@@ -359,8 +361,8 @@ nowinandroid-android-application = { id = "nowinandroid.android.application" }
 nowinandroid-android-application-compose = { id = "nowinandroid.android.application.compose" }
 nowinandroid-android-library = { id = "nowinandroid.android.library" }
 nowinandroid-android-library-compose = { id = "nowinandroid.android.library.compose" }
-nowinandroid-android-test = { id = "nowinandroid.android.test" }
 nowinandroid-android-lint = { id = "nowinandroid.android.lint" }
+nowinandroid-android-test = { id = "nowinandroid.android.test" }
 nowinandroid-android-arouter = { id = "nowinandroid.android.arouter" }
 nowinandroid-android-eventbus = { id = "nowinandroid.android.eventbus" }
 nowinandroid-android-protobuf = { id = "nowinandroid.android.protobuf" }
