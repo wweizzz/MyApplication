@@ -6,6 +6,7 @@ import okhttp3.Interceptor
 import okhttp3.Request
 import okhttp3.Response
 import java.io.IOException
+import androidx.core.content.edit
 
 /**
  * Cookie拦截器
@@ -65,16 +66,16 @@ class InterceptorCookie(private val mContext: Context) : Interceptor {
      */
     private fun saveCookie(url: String, domain: String, cookies: String) {
         val sp = mContext.getSharedPreferences("cookie", Context.MODE_PRIVATE)
-        val editor = sp.edit()
-        if (TextUtils.isEmpty(url)) {
-            throw NullPointerException("url is null.")
-        } else {
-            editor.putString(url, cookies)
+        sp.edit {
+            if (TextUtils.isEmpty(url)) {
+                throw NullPointerException("url is null.")
+            } else {
+                putString(url, cookies)
+            }
+            if (!TextUtils.isEmpty(domain)) {
+                putString(domain, cookies)
+            }
         }
-        if (!TextUtils.isEmpty(domain)) {
-            editor.putString(domain, cookies)
-        }
-        editor.apply()
     }
 
     private fun getCookie(url: String, domain: String): String {

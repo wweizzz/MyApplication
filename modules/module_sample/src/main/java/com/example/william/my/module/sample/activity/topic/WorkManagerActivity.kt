@@ -49,7 +49,7 @@ class WorkManagerActivity : BasicResponseActivity() {
             .setRequiresCharging(true) // 如果设置为 true，那么工作只能在设备充电时运行。
             //.setRequiresDeviceIdle(true) // 如果设置为 true，则要求用户的设备必须处于空闲状态，才能运行工作。
             .setRequiresStorageNotLow(true) // 如果设置为 true，那么当用户设备上的存储空间不足时，工作不会运行。
-            .build();
+            .build()
     }
 
     private fun initWorkRequest() {

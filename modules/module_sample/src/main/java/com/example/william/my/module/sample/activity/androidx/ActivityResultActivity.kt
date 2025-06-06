@@ -33,7 +33,7 @@ class ActivityResultActivity : BasicResponseActivity() {
     // 创建 ActivityResultLauncher
     private val startActivityForResult =
         registerForActivityResult(StartActivityForResult()) {
-            if (it.resultCode == Activity.RESULT_OK) {
+            if (it.resultCode == RESULT_OK) {
                 val result = it.data?.getStringExtra("result")
                 showResponse("result value is :${result}")
             }
@@ -84,7 +84,7 @@ class ActivityResultActivity : BasicResponseActivity() {
 
         override fun parseResult(resultCode: Int, intent: Intent?): String? {
             val data = intent?.getStringExtra("result")
-            return if (resultCode == Activity.RESULT_OK && !TextUtils.isEmpty(data)) data else "null"
+            return if (resultCode == RESULT_OK && !TextUtils.isEmpty(data)) data else "null"
         }
     }
 }

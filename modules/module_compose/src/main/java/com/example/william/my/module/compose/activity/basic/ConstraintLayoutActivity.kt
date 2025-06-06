@@ -118,7 +118,7 @@ class ConstraintLayoutActivity : ComponentActivity() {
     @Preview(showBackground = true)
     @Composable
     fun ConstraintSetExample() {
-        BoxWithConstraints() {
+        BoxWithConstraints {
             val constraintSet = if (maxWidth < maxHeight) {
                 // 竖屏
                 decoupledConstraints(false)

@@ -49,22 +49,21 @@ object RetrofitConfig {
     open class Builder {
 
         fun setBaseUrl(url: String): Builder {
-            RetrofitConfig.mBaseUrl = url
+            mBaseUrl = url
             return this
         }
 
         fun setOkHttpClient(client: OkHttpClient): Builder {
-            RetrofitConfig.mOkHttpClient = client
+            mOkHttpClient = client
             return this
         }
 
         fun setConverterFactory(factory: Converter.Factory): Builder {
-            RetrofitConfig.mConverterFactory = mConverterFactory
             return this
         }
 
         fun setCallAdapterFactory(factory: CallAdapter.Factory): Builder {
-            RetrofitConfig.mCallAdapterFactory = factory
+            mCallAdapterFactory = factory
             return this
         }
     }

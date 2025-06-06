@@ -311,8 +311,8 @@ class RxJavaActivity : BasicResponseActivity() {
          * 将多个 Observables 最近的数据项合并成一个。
          */
         fun combineLatest() {
-            val obs1 = Observable.intervalRange(1, 5, 0, 100, TimeUnit.MILLISECONDS);
-            val obs2 = Observable.intervalRange(11, 3, 50, 100, TimeUnit.MILLISECONDS);
+            val obs1 = Observable.intervalRange(1, 5, 0, 100, TimeUnit.MILLISECONDS)
+            val obs2 = Observable.intervalRange(11, 3, 50, 100, TimeUnit.MILLISECONDS)
 
             Observable.combineLatest(obs1, obs2) { t1, t2 ->
                 t1 + t2

@@ -15,7 +15,7 @@ class ArticleUseCase(private val repository: ArticleRepository<ArticleData, Arti
         this.page = page
     }
 
-    public override fun buildUseCaseObservable(): Single<RetrofitResponse<ArticleData>> {
+    override fun buildUseCaseObservable(): Single<RetrofitResponse<ArticleData>> {
         return repository.getArticleSingle(page)
     }
 }

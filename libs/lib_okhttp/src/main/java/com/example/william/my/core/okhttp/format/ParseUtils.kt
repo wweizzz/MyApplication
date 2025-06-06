@@ -43,28 +43,27 @@ object ParseUtils {
     }
 
     fun isText(mediaType: MediaType?): Boolean {
-        return mediaType?.subtype?.lowercase(Locale.getDefault())?.contains("text") ?: false
+        return mediaType?.subtype?.lowercase(Locale.getDefault())?.contains("text") == true
     }
 
     fun isPlain(mediaType: MediaType?): Boolean {
-        return mediaType?.subtype?.lowercase(Locale.getDefault())?.contains("plain") ?: false
+        return mediaType?.subtype?.lowercase(Locale.getDefault())?.contains("plain") == true
     }
 
     fun isXml(mediaType: MediaType?): Boolean {
-        return mediaType?.subtype?.lowercase(Locale.getDefault())?.contains("xml") ?: false
+        return mediaType?.subtype?.lowercase(Locale.getDefault())?.contains("xml") == true
     }
 
     fun isHtml(mediaType: MediaType?): Boolean {
-        return mediaType?.subtype?.lowercase(Locale.getDefault())?.contains("html") ?: false
+        return mediaType?.subtype?.lowercase(Locale.getDefault())?.contains("html") == true
     }
 
     fun isJson(mediaType: MediaType?): Boolean {
-        return mediaType?.subtype?.lowercase(Locale.getDefault())?.contains("json") ?: false
+        return mediaType?.subtype?.lowercase(Locale.getDefault())?.contains("json") == true
     }
 
     fun isForm(mediaType: MediaType?): Boolean {
-        return mediaType?.subtype?.lowercase(Locale.getDefault())?.contains("x-www-form-urlencoded")
-            ?: false
+        return mediaType?.subtype?.lowercase(Locale.getDefault())?.contains("x-www-form-urlencoded") == true
     }
 
     fun parseRequest(request: Request): String {
@@ -77,8 +76,8 @@ object ParseUtils {
                 contentType?.charset(StandardCharsets.UTF_8) ?: StandardCharsets.UTF_8
             buffer.readString(charset)
         } catch (e: IOException) {
-            e.printStackTrace();
-            "{\"error\": \"" + e.message + "\"}";
+            e.printStackTrace()
+            "{\"error\": \"" + e.message + "\"}"
         }
     }
 

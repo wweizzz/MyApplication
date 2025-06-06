@@ -24,7 +24,7 @@ class PagActivity : BaseVBActivity<OpenActivityPagBinding>() {
 
     private fun initPagAnim() {
         mBinding.pagImageView.let {
-            it.setPath(Constants.Url_PAG)
+            it.path = Constants.Url_PAG
             it.setRepeatCount(-1)
             it.play()
         }

@@ -98,13 +98,13 @@ public class GreendaoNoteDao extends AbstractDao<GreendaoNote, Long> {
 
     @Override
     public Long readKey(Cursor cursor, int offset) {
-        return cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0);
+        return cursor.isNull(offset) ? null : cursor.getLong(offset);
     }    
 
     @Override
     public GreendaoNote readEntity(Cursor cursor, int offset) {
         GreendaoNote entity = new GreendaoNote( //
-            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
+            cursor.isNull(offset) ? null : cursor.getLong(offset), // id
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // text
             cursor.isNull(offset + 2) ? null : new java.util.Date(cursor.getLong(offset + 2)) // date
         );
@@ -113,7 +113,7 @@ public class GreendaoNoteDao extends AbstractDao<GreendaoNote, Long> {
      
     @Override
     public void readEntity(Cursor cursor, GreendaoNote entity, int offset) {
-        entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
+        entity.setId(cursor.isNull(offset) ? null : cursor.getLong(offset));
         entity.setText(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
         entity.setDate(cursor.isNull(offset + 2) ? null : new java.util.Date(cursor.getLong(offset + 2)));
      }

@@ -165,7 +165,7 @@ object HttpURLUtils {
             encodedParams.append(URLEncoder.encode(value, paramsEncoding))
             encodedParams.append('&')
         }
-        return encodedParams.toString().toByteArray(charset(paramsEncoding));
+        return encodedParams.toString().toByteArray(charset(paramsEncoding))
     }
 
     /** Callback interface for delivering parsed responses. */

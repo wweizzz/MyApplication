@@ -75,7 +75,7 @@ object RxDownload {
                 HttpLog.debug("已添加任务：" + task.downloadUrl)
                 false
             }
-        } ?: true
+        } != false
     }
 
     /**

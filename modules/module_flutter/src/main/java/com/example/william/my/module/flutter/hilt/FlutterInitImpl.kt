@@ -28,7 +28,7 @@ class FlutterInitImpl @Inject constructor() : IAppInit {
 
         // 配置初始路由
         // Configure an initial route.
-        flutterEngine.navigationChannel.setInitialRoute("/");
+        flutterEngine.navigationChannel.setInitialRoute("/")
 
         // 开始执行Dart代码来预热FlutterEngine
         // Start executing Dart code to pre-warm the FlutterEngine.

@@ -53,7 +53,7 @@ class WebSocketOnSubscribe(
 
             override fun onClosing(webSocket: WebSocket, code: Int, reason: String) {
                 super.onClosing(webSocket, code, reason)
-                WebSocketLog.debug("onClosing:" + "code:" + code + "reason:" + reason);
+                WebSocketLog.debug("onClosing:" + "code:" + code + "reason:" + reason)
             }
 
             override fun onClosed(webSocket: WebSocket, code: Int, reason: String) {

@@ -7,6 +7,8 @@ android {
 }
 
 dependencies {
+    // SharedPreferences.edit
+    implementation(libs.androidx.core.ktx)
     api(libs.google.gson)
     api(libs.okhttp)
     api(libs.okhttp.logging)

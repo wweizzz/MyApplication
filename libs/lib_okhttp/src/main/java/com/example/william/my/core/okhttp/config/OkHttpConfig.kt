@@ -121,12 +121,12 @@ object OkHttpConfig {
         }
 
         fun setMaxIdleConnections(connections: Int): Builder {
-            OkHttpConfig.mMaxIdleConnections = connections
+            mMaxIdleConnections = connections
             return this
         }
 
         fun setKeepAliveDuration(duration: Long): Builder {
-            OkHttpConfig.mKeepAliveDuration = duration
+            mKeepAliveDuration = duration
             return this
         }
 
@@ -154,51 +154,51 @@ object OkHttpConfig {
         fun setCache(cache: Boolean, app: Application, dir: File): Builder {
             OkHttpConfig.cache = cache
             OkHttpConfig.app = app
-            OkHttpConfig.cacheDir = dir
+            cacheDir = dir
             return this
         }
 
         fun setCache(cache: Boolean, app: Application, dir: File, dirSize: Long): Builder {
             OkHttpConfig.cache = cache
             OkHttpConfig.app = app
-            OkHttpConfig.cacheDir = dir
-            OkHttpConfig.cacheDirSize = dirSize
+            cacheDir = dir
+            cacheDirSize = dirSize
             return this
         }
 
         fun setCache(cache: Boolean, app: Application, dirName: String): Builder {
             OkHttpConfig.cache = cache
             OkHttpConfig.app = app
-            OkHttpConfig.cacheDirName = dirName
+            cacheDirName = dirName
             return this
         }
 
         fun setCache(cache: Boolean, app: Application, dirName: String, dirSize: Long): Builder {
             OkHttpConfig.cache = cache
             OkHttpConfig.app = app
-            OkHttpConfig.cacheDirName = dirName
-            OkHttpConfig.cacheDirSize = dirSize
+            cacheDirName = dirName
+            cacheDirSize = dirSize
             return this
         }
 
         fun setLogTag(tag: String): Builder {
-            OkHttpConfig.mLogTag = tag
+            mLogTag = tag
             return this
         }
 
         fun showBasicLog(show: Boolean): Builder {
-            OkHttpConfig.mShowBasicLog = show
+            mShowBasicLog = show
             return this
         }
 
         fun showFormatLog(show: Boolean, filters: List<String>): Builder {
-            OkHttpConfig.mShowFormatLog = show
-            OkHttpConfig.mShowFormatLogFilters = filters
+            mShowFormatLog = show
+            mShowFormatLogFilters = filters
             return this
         }
 
         fun addInterceptor(interceptor: Interceptor): Builder {
-            OkHttpConfig.interceptors.add(interceptor)
+            interceptors.add(interceptor)
             return this
         }
     }

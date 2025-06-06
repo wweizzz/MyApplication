@@ -41,7 +41,7 @@ class CityPickerActivity : BasicResponseActivity() {
             //.setHotCities(hotCities)//指定热门城市
             .setOnPickListener(object : OnPickListener {
                 override fun onPick(position: Int, data: City) {
-                    showResponse(String.format("%s，%s", data.getName(), data.getCode()))
+                    showResponse(String.format("%s，%s", data.name, data.code))
                 }
 
                 override fun onCancel() {

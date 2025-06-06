@@ -26,7 +26,7 @@ class ActivityResultActivity2 : BasicResponseActivity() {
         val intent = Intent().apply {
             putExtra("result", "Hello，我是回传的数据！")
         }
-        setResult(Activity.RESULT_OK, intent)
+        setResult(RESULT_OK, intent)
         finish()
     }
 }

@@ -40,7 +40,7 @@ abstract class BaseVBBottomSheetDialogFragment<VB : ViewBinding?>(
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setStyle(STYLE_NORMAL, R.style.CustomBottomSheetDialogTheme);
+        setStyle(STYLE_NORMAL, R.style.CustomBottomSheetDialogTheme)
 
         ARouter.getInstance().inject(this)
     }

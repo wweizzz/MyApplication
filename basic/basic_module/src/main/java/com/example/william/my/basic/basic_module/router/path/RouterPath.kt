@@ -9,7 +9,7 @@ object RouterPath {
 
     const val Module_Main = "/module/main"
 
-    const val PERMISSION_LOGIN = 1; // 登录才能显示的页面
+    const val PERMISSION_LOGIN = 1 // 登录才能显示的页面
 
     object Service {
         private const val Service = "/Service"
