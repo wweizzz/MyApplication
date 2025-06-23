@@ -24,7 +24,6 @@ dependencies {
     implementation(libs.popwindow)
     implementation(libs.shadowlayout)
     implementation(libs.swipelayout)
-    implementation(libs.easyat)
 
     implementation(libs.pag)
     implementation(libs.lottie)

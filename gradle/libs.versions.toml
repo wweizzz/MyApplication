@@ -96,7 +96,6 @@ pictureselector = "v3.11.2"
 popwindow = "2.1.1"
 shadowlayout = "3.3.2"
 swipelayout = "1.2.0"
-easyat = "1.0.0"
 # ##################################################################################################
 junit = "4.13.2"
 androidxTestExt = "1.2.1"
@@ -321,8 +320,6 @@ popwindow = { group = "com.github.pinguo-zhouwei", name = "CustomPopwindow", ver
 shadowlayout = { group = "com.github.lihangleo2", name = "ShadowLayout", version.ref = "shadowlayout" }
 # https://github.com/daimajia/AndroidSwipeLayout
 swipelayout = { group = "com.daimajia.swipelayout", name = "library", version.ref = "swipelayout" }
-# https://github.com/iYaoy/easy_at
-easyat = { module = "com.iyao.easyat:easyat", version.ref = "easyat" }
 # ##################################################################################################
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-test-ext = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "androidxTestExt" }
