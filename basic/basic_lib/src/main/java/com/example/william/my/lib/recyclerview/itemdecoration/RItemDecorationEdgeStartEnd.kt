@@ -3,15 +3,14 @@ package com.example.william.my.lib.recyclerview.itemdecoration
 import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.example.william.my.lib.recyclerview.itemdecoration.RItemDecoration
 
-class RItemDecorationTop(
-    private val marginTop: Int
+/**
+ * LinearLayoutManager
+ */
+class RItemDecorationEdgeStartEnd(
+    private val space: Int,
+    private val includeEnd: Boolean = true, // 是否包含最后一个
 ) : RItemDecoration() {
-
-    /**
-     * padding
-     */
     override fun getItemOffsets(
         outRect: Rect,
         view: View,
@@ -25,8 +24,13 @@ class RItemDecorationTop(
         val column = position % spanCount // 第几列
         val row = position / spanCount  // 第几行
 
-        if (position < spanCount) {
-            outRect.top = marginTop
+        if (position == RecyclerView.NO_POSITION) return
+
+        if (position == 0) {
+            outRect.left = space
+        }
+        if (position == itemCount - 1) {
+            if (includeEnd) outRect.right = space
         }
     }
 }

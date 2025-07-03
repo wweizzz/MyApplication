@@ -141,11 +141,6 @@ class RetrofitBuilder<T> {
         return this
     }
 
-    fun setProvider(lifecycle: LifecycleProvider<Lifecycle.Event>): RetrofitBuilder<T> {
-        this.lifecycle = lifecycle
-        return this
-    }
-
     fun buildSingle(): Single<RetrofitResponse<T>> {
         return RxRetrofit(this).createResponse()
     }

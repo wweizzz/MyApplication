@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.text.TextUtils
 import android.widget.ImageView
+import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.engine.GlideException
@@ -14,7 +15,9 @@ import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.target.Target
+import com.bumptech.glide.request.transition.Transition
 import com.example.william.my.core.imageloader.IImageLoader
 import com.example.william.my.core.imageloader.glide.module.GlideApp
 import java.io.File
@@ -281,5 +284,70 @@ object ImageLoader : IImageLoader {
             }
         }
         return null
+    }
+
+    override fun getImageDrawable(
+        context: Context?,
+        url: String?,
+        onResourceReady: ((drawable: Drawable) -> Unit)
+    ) {
+        if (TextUtils.isEmpty(url)) {
+            return
+        }
+        context?.let {
+            try {
+                Glide.with(it)
+                    .load(url)
+                    .into(object : CustomTarget<Drawable>() {
+                        override fun onResourceReady(
+                            resource: Drawable,
+                            transition: Transition<in Drawable>?
+                        ) {
+                            onResourceReady.invoke(resource)
+                        }
+
+                        override fun onLoadCleared(placeholder: Drawable?) {
+
+                        }
+                    })
+            } catch (e: ExecutionException) {
+                e.printStackTrace()
+            } catch (e: InterruptedException) {
+                e.printStackTrace()
+            }
+        }
+    }
+
+    override fun getImageBitmap(
+        context: Context?,
+        url: String?,
+        onResourceReady: ((bitmap: Bitmap?) -> Unit)
+    ) {
+        if (TextUtils.isEmpty(url)) {
+            return
+        }
+        context?.let {
+            try {
+                Glide.with(it)
+                    .asBitmap()
+                    .load(url)
+                    .into(object : CustomTarget<Bitmap?>() {
+                        override fun onResourceReady(
+                            resource: Bitmap,
+                            transition: Transition<in Bitmap?>?
+                        ) {
+                            onResourceReady.invoke(resource)
+                        }
+
+                        override fun onLoadCleared(placeholder: Drawable?) {
+
+                        }
+                    })
+            } catch (e: ExecutionException) {
+                e.printStackTrace()
+            } catch (e: InterruptedException) {
+                e.printStackTrace()
+            }
+        }
     }
 }

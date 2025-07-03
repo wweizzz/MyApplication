@@ -79,11 +79,11 @@ interface IImageLoader {
         context: Context?, url: String?,
     )
 
-    fun getImageDrawable(
-        context: Context?, url: String?
-    ): Drawable?
+    fun getImageDrawable(context: Context?, url: String?): Drawable?
 
-    fun getImageBitmap(
-        context: Context?, url: String?
-    ): Bitmap?
+    fun getImageBitmap(context: Context?, url: String?): Bitmap?
+
+    fun getImageDrawable(context: Context?, url: String?, onResourceReady: (Drawable) -> Unit)
+
+    fun getImageBitmap(context: Context?, url: String?, onResourceReady: (Bitmap?) -> Unit)
 }

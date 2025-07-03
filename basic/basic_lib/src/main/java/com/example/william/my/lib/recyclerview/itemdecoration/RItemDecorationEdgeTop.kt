@@ -3,14 +3,14 @@ package com.example.william.my.lib.recyclerview.itemdecoration
 import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.example.william.my.lib.recyclerview.itemdecoration.RItemDecoration
 
-/**
- * LinearLayoutManager
- */
-class RItemDecorationStart(
-    private val space: Int,
+class RItemDecorationEdgeTop(
+    private val marginTop: Int
 ) : RItemDecoration() {
+
+    /**
+     * padding
+     */
     override fun getItemOffsets(
         outRect: Rect,
         view: View,
@@ -26,8 +26,8 @@ class RItemDecorationStart(
 
         if (position == RecyclerView.NO_POSITION) return
 
-        if (position == 0) {
-            outRect.left = space
+        if (position < spanCount) {
+            outRect.top = marginTop
         }
     }
 }

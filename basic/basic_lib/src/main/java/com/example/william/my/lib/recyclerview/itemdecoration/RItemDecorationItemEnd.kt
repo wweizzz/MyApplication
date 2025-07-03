@@ -3,12 +3,11 @@ package com.example.william.my.lib.recyclerview.itemdecoration
 import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.example.william.my.lib.recyclerview.itemdecoration.RItemDecoration
 
 /**
  * LinearLayoutManager
  */
-class RItemDecorationEnd(
+class RItemDecorationItemEnd(
     private val space: Int,
     private val includeEnd: Boolean = true, // 是否包含最后一个
 ) : RItemDecoration() {
@@ -30,10 +29,8 @@ class RItemDecorationEnd(
 
         if (includeEnd) {
             outRect.right = space
-        } else {
-            if (position != itemCount - 1) {
-                outRect.right = space
-            }
+        } else if (position != itemCount - 1) {
+            outRect.right = space
         }
     }
 }

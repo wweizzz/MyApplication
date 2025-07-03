@@ -4,7 +4,7 @@ import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 
-class RItemDecorationSpacing(
+class RItemDecorationItemSpacing(
     private var spacing: Int,
     private var includeEdge: Boolean = false,
     private var bottom: Int = 0,

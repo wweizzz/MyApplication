@@ -3,12 +3,11 @@ package com.example.william.my.lib.recyclerview.itemdecoration
 import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.example.william.my.lib.recyclerview.itemdecoration.RItemDecoration
 
 /**
  * RecyclerView 下间距(每行)
  */
-class RItemDecorationBottom(
+class RItemDecorationItemBottom(
     private val space: Int,
     private val includeBottom: Boolean = false, // 是否包含底部
 ) : RItemDecoration() {
