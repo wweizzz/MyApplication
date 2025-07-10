@@ -107,10 +107,10 @@ abstract class BaseDialogFragment(
         }
     }
 
-    protected fun setAttributes(params: WindowManager.LayoutParams) {
+    protected open fun setAttributes(params: WindowManager.LayoutParams) {
         params.width = WindowManager.LayoutParams.MATCH_PARENT
         params.height = WindowManager.LayoutParams.WRAP_CONTENT
         params.gravity = Gravity.CENTER
-        params.dimAmount = 0.8f
+        params.dimAmount = 0.0f
     }
 }
