@@ -38,13 +38,13 @@ dependencies:
   # https://pub.dev/packages/flutter_bloc
   flutter_bloc: ^9.1.1
   # https://pub.dev/packages/logger
-  logger: ^2.5.0
+  logger: ^2.6.1
   # https://pub.dev/packages/flutter_screenutil
   flutter_screenutil: ^5.9.3
   # https://pub.dev/packages/fluttertoast
   fluttertoast: ^8.2.12
   # https://pub.dev/packages/flutter_local_notifications
-  flutter_local_notifications: ^19.2.1
+  flutter_local_notifications: ^19.4.0
   # https://pub.dev/packages/shared_preferences
   shared_preferences: ^2.5.3
   # https://pub.dev/packages/dio

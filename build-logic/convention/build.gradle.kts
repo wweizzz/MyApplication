@@ -115,5 +115,11 @@ gradlePlugin {
             id = libs.plugins.nowinandroid.android.objectbox.get().pluginId
             implementationClass = "AndroidObjectBoxConventionPlugin"
         }
+
+        //
+        register("androidUnit") {
+            id = libs.plugins.nowinandroid.android.unity.get().pluginId
+            implementationClass = "AndroidUnityConventionPlugin"
+        }
     }
 }

@@ -9,6 +9,9 @@ plugins {
 
 android {
     namespace = "com.example.william.my.module.database"
+    buildFeatures {
+        buildConfig = true
+    }
 }
 
 dependencies {

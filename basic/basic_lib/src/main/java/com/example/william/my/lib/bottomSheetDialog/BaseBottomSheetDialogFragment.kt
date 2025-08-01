@@ -6,10 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.FrameLayout
 import androidx.fragment.app.FragmentManager
 import com.alibaba.android.arouter.launcher.ARouter
 import com.example.william.my.lib.R
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.gyf.immersionbar.ImmersionBar
 
 /**
  * onAttach -> onCreateDialog -> onCreateView -> onViewCreated -> onStart
@@ -18,6 +22,8 @@ abstract class BaseBottomSheetDialogFragment(
     val layout: Int = 0,
     private val windowAnimationsRes: Int = 0
 ) : BottomSheetDialogFragment() {
+
+    protected var behavior: BottomSheetBehavior<FrameLayout>? = null
 
     /**
      * 在Fragment中，IProvider会在Fragment的生命周期方法onCreateView中被初始化。
@@ -47,6 +53,8 @@ abstract class BaseBottomSheetDialogFragment(
         super.onViewCreated(view, savedInstanceState)
 
         initDialog()
+        initStatusBar()
+
         initView(view, savedInstanceState)
 
         initViewModel()
@@ -60,6 +68,9 @@ abstract class BaseBottomSheetDialogFragment(
             //dialog.setOnDismissListener(null)
             //dialog.setOnCancelListener(null)
 
+            behavior = (dialog as BottomSheetDialog).behavior
+            dialog.dismissWithAnimation = true
+
             dialog.window?.let { window ->
                 setAttributes(window.attributes)
                 if (windowAnimationsRes > 0) {
@@ -69,6 +80,17 @@ abstract class BaseBottomSheetDialogFragment(
                 window.decorView.setPadding(0, 0, 0, 0)
                 window.setBackgroundDrawableResource(android.R.color.transparent)
             }
+        }
+    }
+
+    protected open fun initStatusBar() {
+        if (enableTransparentStatusBar()) {
+            ImmersionBar.with(this)
+                .transparentStatusBar()  //透明状态栏，不写默认透明色
+                .statusBarDarkFont(false) //状态栏字体是深色，不写默认为亮色
+                .fitsSystemWindows(fitsSystemWindows()) //解决状态栏和布局重叠问题
+                .keyboardEnable(keyboardEnable())
+                .init()
         }
     }
 
@@ -114,5 +136,17 @@ abstract class BaseBottomSheetDialogFragment(
         params.height = WindowManager.LayoutParams.WRAP_CONTENT
         params.gravity = Gravity.BOTTOM
         params.dimAmount = 0f
+    }
+
+    protected open fun enableTransparentStatusBar(): Boolean {
+        return false
+    }
+
+    protected open fun fitsSystemWindows(): Boolean {
+        return false
+    }
+
+    protected open fun keyboardEnable(): Boolean {
+        return false
     }
 }

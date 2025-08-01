@@ -4,6 +4,9 @@ plugins {
 
 android {
     namespace = "com.example.william.my.core.widget"
+    buildFeatures {
+        renderScript = true
+    }
 }
 
 dependencies {

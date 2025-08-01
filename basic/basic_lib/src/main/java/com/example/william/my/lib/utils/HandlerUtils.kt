@@ -23,6 +23,7 @@ object HandlerUtils {
          *
          * @param handler 收到消息回调接口
          */
+        @Suppress("DEPRECATION")
         constructor(handler: OnReceiveMessageHandler) {
             weakReference = WeakReference(handler)
         }

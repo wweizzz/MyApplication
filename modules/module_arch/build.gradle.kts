@@ -7,6 +7,9 @@ plugins {
 
 android {
     namespace = "com.example.william.my.module.arch"
+    buildFeatures {
+        buildConfig = true
+    }
 }
 
 dependencies {

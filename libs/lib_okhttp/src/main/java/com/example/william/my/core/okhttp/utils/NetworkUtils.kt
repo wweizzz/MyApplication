@@ -7,11 +7,13 @@ import android.net.NetworkInfo
 @Suppress("DEPRECATION")
 object NetworkUtils {
 
+    @Suppress("DEPRECATION")
     fun isConnected(context: Context): Boolean {
         val info = getActiveNetworkInfo(context)
         return info != null && info.isConnected
     }
 
+    @Suppress("DEPRECATION")
     private fun getActiveNetworkInfo(context: Context): NetworkInfo? {
         val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         return cm.activeNetworkInfo

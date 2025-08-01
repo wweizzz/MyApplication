@@ -6,6 +6,9 @@ plugins {
 
 android {
     namespace = "com.example.william.my.module.demo"
+    buildFeatures {
+        aidl = true
+    }
     resourcePrefix("demo_")
 }
 

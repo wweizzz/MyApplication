@@ -21,7 +21,7 @@ dependencies {
     implementation(libs.photoview)
     implementation(libs.pickerview)
     implementation(libs.pictureselector)
-    implementation(libs.popwindow)
+    //implementation(libs.popwindow)
     implementation(libs.shadowlayout)
     implementation(libs.swipelayout)
 

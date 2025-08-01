@@ -42,7 +42,7 @@ object AudioPlayer {
             mAudioRecordPath =
                 context.applicationContext.externalCacheDir.toString() + File.separator +
                         "auto_" + System.currentTimeMillis() + ".m4a"
-            mRecorder = MediaRecorder()
+            mRecorder = MediaRecorder(context)
             mRecorder?.setAudioSource(MediaRecorder.AudioSource.MIC)
             // 使用mp4容器并且后缀改为.m4a，来兼容小程序的播放
             mRecorder?.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4)
