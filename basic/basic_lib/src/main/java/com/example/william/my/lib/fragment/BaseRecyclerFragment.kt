@@ -45,9 +45,17 @@ abstract class BaseRecyclerFragment<T : Any> : BaseVBFragment<BaseFragmentRecycl
     }
 
     private fun initRecyclerView() {
+        //设置是否启用越界拖动（仿苹果效果）
+        mBinding.smartRefresh.setEnableOverScrollDrag(true)
+        //设置是会否启用嵌套滚动功能（默认关闭+智能开启）
+        mBinding.smartRefresh.setNestedScrollingEnabled(false)
+
         mBinding.smartRefresh.setEnableRefresh(canRefresh())
         mBinding.smartRefresh.setEnableLoadMore(canLoadMore())
+
         mBinding.smartRefresh.setOnRefreshLoadMoreListener(this)
+
+        //mBinding.recyclerView.isNestedScrollingEnabled = true
 
         mLayoutManager = initRecyclerManager()
         mLayoutManager.let {
