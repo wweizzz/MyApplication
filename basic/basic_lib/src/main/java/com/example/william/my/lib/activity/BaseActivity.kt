@@ -2,6 +2,8 @@ package com.example.william.my.lib.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.android.arouter.launcher.ARouter
 import com.gyf.immersionbar.ImmersionBar
@@ -20,6 +22,20 @@ open class BaseActivity : AppCompatActivity() {
 
         initViewModel()
         observeViewModel()
+    }
+
+    override fun setContentView(view: View?) {
+        window.requestFeature(Window.FEATURE_CONTENT_TRANSITIONS)
+        window.requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS)
+        window.setSharedElementsUseOverlay(true)
+        super.setContentView(view)
+    }
+
+    override fun setContentView(layoutResID: Int) {
+        window.requestFeature(Window.FEATURE_CONTENT_TRANSITIONS)
+        window.requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS)
+        window.setSharedElementsUseOverlay(true)
+        super.setContentView(layoutResID)
     }
 
     open fun initView(savedInstanceState: Bundle?) {

@@ -85,14 +85,6 @@ abstract class BaseRecyclerBottomSheetDialogFragment<T : Any> :
         }
     }
 
-    fun setRecyclerViewMargin(start: Float, end: Float) {
-        mBinding.recyclerView.layoutParams.also {
-            val params = it as SmartRefreshLayout.LayoutParams
-            params.marginStart = AdaptScreenUtils.pt2Px(start)
-            params.marginEnd = AdaptScreenUtils.pt2Px(end)
-        }
-    }
-
     protected fun setRecyclerViewStateView() {
         if (emptyView() != null) {
             mAdapter?.isStateViewEnable = true
