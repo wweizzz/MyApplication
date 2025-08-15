@@ -27,14 +27,12 @@ open class BaseActivity : AppCompatActivity() {
     override fun setContentView(view: View?) {
         window.requestFeature(Window.FEATURE_CONTENT_TRANSITIONS)
         window.requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS)
-        window.setSharedElementsUseOverlay(true)
         super.setContentView(view)
     }
 
     override fun setContentView(layoutResID: Int) {
         window.requestFeature(Window.FEATURE_CONTENT_TRANSITIONS)
         window.requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS)
-        window.setSharedElementsUseOverlay(true)
         super.setContentView(layoutResID)
     }
 
