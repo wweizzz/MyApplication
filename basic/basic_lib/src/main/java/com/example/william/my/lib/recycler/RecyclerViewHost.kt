@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewbinding.ViewBinding
 import com.chad.library.adapter4.BaseMultiItemAdapter
 import com.chad.library.adapter4.BaseQuickAdapter
 import com.chad.library.adapter4.viewholder.QuickViewHolder
@@ -93,12 +92,26 @@ interface RecyclerViewHost<T : Any> {
     // ===== 点击事件委托 =====
 
     /**
-     * item子view点击事件
+     * item点击事件
      */
     fun onClick(adapter: BaseQuickAdapter<T, *>, view: View, position: Int) {}
 
     /**
-     * item点击事件
+     * item子view点击事件
      */
     fun onItemClick(adapter: BaseQuickAdapter<T, *>, view: View, position: Int) {}
+
+    /**
+     * item长按事件
+     */
+    fun onLongClick(adapter: BaseQuickAdapter<T, *>, view: View, position: Int): Boolean {
+        return false
+    }
+
+    /**
+     * item子view长按事件
+     */
+    fun onItemLongClick(adapter: BaseQuickAdapter<T, *>, view: View, position: Int): Boolean {
+        return false
+    }
 }

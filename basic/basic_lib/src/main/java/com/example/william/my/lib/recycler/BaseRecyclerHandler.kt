@@ -20,6 +20,8 @@ class BaseRecyclerHandler<T : Any>(
     private val host: RecyclerViewHost<T>
 ) : BaseQuickAdapter.OnItemClickListener<T>,
     BaseQuickAdapter.OnItemChildClickListener<T>,
+    BaseQuickAdapter.OnItemLongClickListener<T>,
+    BaseQuickAdapter.OnItemChildLongClickListener<T>,
     OnRefreshLoadMoreListener {
 
     // ===== 分页相关 =====
@@ -165,5 +167,21 @@ class BaseRecyclerHandler<T : Any>(
 
     override fun onItemClick(adapter: BaseQuickAdapter<T, *>, view: View, position: Int) {
         host.onItemClick(adapter, view, position)
+    }
+
+    override fun onLongClick(
+        adapter: BaseQuickAdapter<T, *>,
+        view: View,
+        position: Int
+    ): Boolean {
+        return host.onLongClick(adapter, view, position)
+    }
+
+    override fun onItemLongClick(
+        adapter: BaseQuickAdapter<T, *>,
+        view: View,
+        position: Int
+    ): Boolean {
+        return host.onItemLongClick(adapter, view, position)
     }
 }
