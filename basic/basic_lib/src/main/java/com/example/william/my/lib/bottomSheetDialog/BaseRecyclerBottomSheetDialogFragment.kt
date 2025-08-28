@@ -1,17 +1,17 @@
 package com.example.william.my.lib.bottomSheetDialog
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewbinding.ViewBinding
 import com.chad.library.adapter4.BaseMultiItemAdapter
 import com.chad.library.adapter4.BaseQuickAdapter
-import com.chad.library.adapter4.QuickAdapterHelper
 import com.chad.library.adapter4.viewholder.QuickViewHolder
 import com.example.william.my.lib.databinding.BaseFragmentRecyclerViewBinding
-import com.scwang.smart.refresh.layout.api.RefreshLayout
-import com.scwang.smart.refresh.layout.listener.OnRefreshLoadMoreListener
+import com.example.william.my.lib.recycler.BaseRecyclerHandler
+import com.example.william.my.lib.recycler.RecyclerViewHost
 
 /**
  * https://github.com/CymChad/BaseRecyclerViewAdapterHelper
@@ -19,18 +19,9 @@ import com.scwang.smart.refresh.layout.listener.OnRefreshLoadMoreListener
  */
 abstract class BaseRecyclerBottomSheetDialogFragment<T : Any> :
     BaseVBBottomSheetDialogFragment<BaseFragmentRecyclerViewBinding>(),
-    BaseQuickAdapter.OnItemClickListener<T>, BaseQuickAdapter.OnItemChildClickListener<T>,
-    OnRefreshLoadMoreListener {
+    RecyclerViewHost<T> {
 
-    protected var mPage: Int = 0
-    protected var mPageSize: Int = 20
-
-    protected var mLayoutManager: RecyclerView.LayoutManager? = null
-
-    protected var mAdapter: BaseQuickAdapter<T, QuickViewHolder>? = null
-    protected var mMultiItemAdapter: BaseMultiItemAdapter<T>? = null
-
-    protected lateinit var mAdapterHelper: QuickAdapterHelper
+    private lateinit var recyclerHandler: BaseRecyclerHandler<T>
 
     override fun getViewBinding(): BaseFragmentRecyclerViewBinding {
         return BaseFragmentRecyclerViewBinding.inflate(layoutInflater)
@@ -39,156 +30,69 @@ abstract class BaseRecyclerBottomSheetDialogFragment<T : Any> :
     override fun initView(view: View?, state: Bundle?) {
         super.initView(view, state)
 
-        initRecyclerView()
+        recyclerHandler = BaseRecyclerHandler(this)
+        recyclerHandler.initRecyclerView()
         initRecyclerData(state)
     }
 
-    private fun initRecyclerView() {
-        //设置是否启用越界拖动（仿苹果效果）
-        mBinding.smartRefresh.setEnableOverScrollDrag(true)
-        //设置是会否启用嵌套滚动功能（默认关闭+智能开启）
-        mBinding.smartRefresh.setNestedScrollingEnabled(false)
+    // ===== RecyclerViewHost接口实现 =====
 
-        mBinding.smartRefresh.setEnableRefresh(canRefresh())
-        mBinding.smartRefresh.setEnableLoadMore(canLoadMore())
+    override fun getHostBinding(): BaseFragmentRecyclerViewBinding = mBinding
 
-        mBinding.smartRefresh.setOnRefreshLoadMoreListener(this)
+    override fun getHostContext(): Context = requireContext()
 
-        //mBinding.recyclerView.isNestedScrollingEnabled = true
 
-        mLayoutManager = initRecyclerManager()
-        mLayoutManager.let {
-            mBinding.recyclerView.layoutManager = it
-        }
+    // ===== 委托方法 =====
 
-        mAdapter = initRecyclerAdapter()
-        mAdapter?.let {
-            it.setOnItemClickListener(this)
-            mAdapterHelper = QuickAdapterHelper.Builder(it).build()
-        }
+    /**
+     * 滚动到顶部
+     */
+    fun scrollToTop() = recyclerHandler.scrollToTop()
 
-        mMultiItemAdapter = initRecyclerMultiAdapter()
-        mMultiItemAdapter?.let {
-            it.setOnItemClickListener(this)
-            mAdapterHelper = QuickAdapterHelper.Builder(it).build()
-        }
+    /**
+     * 数据加载成功处理
+     */
+    fun onDataSuccess(list: List<T>?) = recyclerHandler.onDataSuccess(list)
 
-        mBinding.recyclerView.adapter = mAdapterHelper.adapter
+    /**
+     * 数据加载失败处理
+     */
+    fun onDataFail() = recyclerHandler.onDataFail()
 
-        itemDecorations().forEach {
-            mBinding.recyclerView.addItemDecoration(it)
-        }
+    /**
+     * 显示提示信息
+     */
+    fun showToast(message: String?) = recyclerHandler.showToast(message)
 
-        scrollListener().forEach {
-            mBinding.recyclerView.addOnScrollListener(it)
-        }
-    }
+    /**
+     * 设置RecyclerView状态视图
+     */
+    fun setRecyclerViewStateView() = recyclerHandler.setRecyclerViewStateView()
 
-    protected fun setRecyclerViewStateView() {
-        if (emptyView() != null) {
-            mAdapter?.isStateViewEnable = true
-            mMultiItemAdapter?.isStateViewEnable = true
-            mAdapter?.stateView = emptyView()
-            mMultiItemAdapter?.stateView = emptyView()
-        }
+    // ===== 属性访问器 =====
 
-        if (emptyResId() != 0) {
-            mAdapter?.isStateViewEnable = true
-            mMultiItemAdapter?.isStateViewEnable = true
-            mAdapter?.setStateViewLayout(requireContext(), emptyResId())
-            mMultiItemAdapter?.setStateViewLayout(requireContext(), emptyResId())
-        }
-    }
+    /**
+     * 获取当前页码
+     */
+    val mPage: Int get() = recyclerHandler.mPage
 
-    open fun canRefresh(): Boolean {
-        return true
-    }
+    /**
+     * 获取页面大小
+     */
+    val mPageSize: Int get() = recyclerHandler.mPageSize
 
-    open fun canLoadMore(): Boolean {
-        return true
-    }
+    /**
+     * 获取LayoutManager
+     */
+    val mLayoutManager: RecyclerView.LayoutManager? get() = recyclerHandler.mLayoutManager
 
-    open fun initRecyclerManager(): RecyclerView.LayoutManager {
-        return LinearLayoutManager(activity)
-    }
+    /**
+     * 获取Adapter
+     */
+    val mAdapter: BaseQuickAdapter<T, QuickViewHolder>? get() = recyclerHandler.mAdapter
 
-    open fun initRecyclerAdapter(): BaseQuickAdapter<T, QuickViewHolder>? {
-        return null
-    }
-
-    open fun initRecyclerMultiAdapter(): BaseMultiItemAdapter<T>? {
-        return null
-    }
-
-    open fun scrollListener(): List<RecyclerView.OnScrollListener> {
-        return arrayListOf()
-    }
-
-    open fun itemDecorations(): List<RecyclerView.ItemDecoration> {
-        return arrayListOf()
-    }
-
-    open fun emptyView(): View? {
-        return null
-    }
-
-    open fun emptyResId(): Int {
-        return 0
-    }
-
-    open fun initRecyclerData(savedInstanceState: Bundle?) {}
-
-    open fun queryData() {}
-
-    fun scrollToTop() {
-        mBinding.recyclerView.scrollToPosition(0)
-    }
-
-    fun showToast(message: String?) {
-        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
-    }
-
-    fun onDataFail() {
-        mBinding.smartRefresh.setEnableLoadMore(false)
-    }
-
-    fun onDataSuccess(cursor: String?, list: List<T>?) {
-        val newList = list ?: emptyList()
-
-        if (mPage == 1) {
-            mAdapter?.submitList(newList)
-            mMultiItemAdapter?.submitList(newList)
-        } else {
-            mAdapter?.addAll(newList)
-            mMultiItemAdapter?.addAll(newList)
-        }
-
-        setRecyclerViewStateView()
-
-        if (newList.size < mPageSize) {
-            mBinding.smartRefresh.setEnableLoadMore(false)
-        } else {
-            mBinding.smartRefresh.setEnableLoadMore(canLoadMore())
-        }
-    }
-
-    override fun onClick(adapter: BaseQuickAdapter<T, *>, view: View, position: Int) {
-
-    }
-
-    override fun onItemClick(adapter: BaseQuickAdapter<T, *>, view: View, position: Int) {
-
-    }
-
-    override fun onRefresh(refreshLayout: RefreshLayout) {
-        mPage = 0
-        queryData()
-        mBinding.smartRefresh.finishRefresh(1000)
-    }
-
-    override fun onLoadMore(refreshLayout: RefreshLayout) {
-        mPage++
-        queryData()
-        mBinding.smartRefresh.finishLoadMore(1000)
-    }
+    /**
+     * 获取多类型Adapter
+     */
+    val mMultiItemAdapter: BaseMultiItemAdapter<T>? get() = recyclerHandler.mMultiItemAdapter
 }

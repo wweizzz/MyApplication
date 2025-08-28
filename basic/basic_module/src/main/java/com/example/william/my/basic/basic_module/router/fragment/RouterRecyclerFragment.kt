@@ -21,12 +21,18 @@ class RouterRecyclerFragment : BaseRecyclerFragment<RouterItem>() {
         return RouterRecyclerAdapter(arrayListOf())
     }
 
+    override fun canRefresh(): Boolean {
+        return false
+    }
+
+    override fun canLoadMore(): Boolean {
+        return false
+    }
+
     override fun initView(view: View?, state: Bundle?) {
         super.initView(view, state)
 
         onDataSuccess(arguments?.getParcelableArrayList("router"))
-        mBinding.smartRefresh.setEnableRefresh(false)
-        mBinding.smartRefresh.setEnableLoadMore(false)
     }
 
     override fun onClick(adapter: BaseQuickAdapter<RouterItem, *>, view: View, position: Int) {
