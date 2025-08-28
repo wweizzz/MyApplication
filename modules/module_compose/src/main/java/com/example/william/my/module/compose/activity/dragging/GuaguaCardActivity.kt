@@ -53,29 +53,30 @@ class GuaguaCardActivity : ComponentActivity() {
 fun ScrapeLayerPage() {
     var linePath by remember { mutableStateOf(Offset.Zero) }
     val path by remember { mutableStateOf(Path()) }
-    Column(modifier = Modifier
-        .fillMaxWidth()
-        .pointerInput("dragging") {
-            awaitEachGesture {
-                while (true) {
-                    val event = awaitPointerEvent()
-                    when (event.type) {
-                        //按住时，更新起始点
-                        Press -> {
-                            path.moveTo(
-                                event.changes.first().position.x,
-                                event.changes.first().position.y
-                            )
-                        }
-                        //移动时，更新起始点 移动时，记录路径path
-                        Move -> {
-                            linePath = event.changes.first().position
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .pointerInput("dragging") {
+                awaitEachGesture {
+                    while (true) {
+                        val event = awaitPointerEvent()
+                        when (event.type) {
+                            //按住时，更新起始点
+                            Press -> {
+                                path.moveTo(
+                                    event.changes.first().position.x,
+                                    event.changes.first().position.y
+                                )
+                            }
+                            //移动时，更新起始点 移动时，记录路径path
+                            Move -> {
+                                linePath = event.changes.first().position
+                            }
                         }
                     }
                 }
             }
-        }
-        .scrapeLayer(path, linePath)
+            .scrapeLayer(path, linePath)
     ) {
         Image(
             modifier = Modifier.fillMaxSize(),

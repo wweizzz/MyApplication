@@ -28,7 +28,8 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.consumeAsFlow
 import kotlinx.coroutines.launch
 
-class ArticleStateFlowViewModel(private val repository: ArticleRepository<ArticleData, ArticleDetailData>) : ViewModel() {
+class ArticleStateFlowViewModel(private val repository: ArticleRepository<ArticleData, ArticleDetailData>) :
+    ViewModel() {
 
     val intent = Channel<ArticleIntent>(Channel.UNLIMITED)
 

@@ -1,7 +1,6 @@
 package com.example.william.my.lib.tab
 
 import androidx.viewpager2.widget.ViewPager2
-import com.example.william.my.lib.tab.RecyclerTabAdapter
 
 object RecyclerTabLayoutUtils {
 

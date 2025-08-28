@@ -1,15 +1,10 @@
 package com.example.william.my.lib.dialog
 
 import android.os.Bundle
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
-import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.FragmentManager
 import androidx.viewbinding.ViewBinding
-import com.alibaba.android.arouter.launcher.ARouter
 
 abstract class BaseVBDialogFragment<VB : ViewBinding?>(
     windowAnimationsRes: Int = 0

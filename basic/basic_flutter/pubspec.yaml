@@ -44,13 +44,13 @@ dependencies:
   # https://pub.dev/packages/fluttertoast
   fluttertoast: ^8.2.12
   # https://pub.dev/packages/flutter_local_notifications
-  flutter_local_notifications: ^19.4.0
+  flutter_local_notifications: ^19.4.1
   # https://pub.dev/packages/shared_preferences
   shared_preferences: ^2.5.3
   # https://pub.dev/packages/dio
-  dio: ^5.8.0
+  dio: ^5.9.0
   # https://pub.dev/packages/http
-  http: ^1.4.0
+  http: ^1.5.0
   # https://pub.dev/packages/english_words
   english_words: ^4.0.0
 

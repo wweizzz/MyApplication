@@ -27,7 +27,8 @@ class AppInitImpl @Inject constructor() : IAppInit {
     }
 
     private fun initCrash(app: Application) {
-        CrashUtils.init(app, FileSDCardUtil.getCacheDirPath(app.applicationContext),
+        CrashUtils.init(
+            app, FileSDCardUtil.getCacheDirPath(app.applicationContext),
             object : CrashUtils.OnCrashListener {
                 override fun onCrash(crashInfo: CrashUtils.CrashInfo) {
                     Utils.e("CrashUtils", crashInfo.throwable.message.toString())

@@ -33,7 +33,7 @@ class AndroidHiltConventionPlugin : Plugin<Project> {
                 correctErrorTypes = true
             }
             // https://github.com/alibaba/ARouter/issues/1051
-            extensions.configure<HiltExtension>{
+            extensions.configure<HiltExtension> {
                 enableAggregatingTask = false
             }
             dependencies {

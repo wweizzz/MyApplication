@@ -1,7 +1,6 @@
 package com.example.william.my.module.sample.activity.androidx
 
 import android.Manifest
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.text.TextUtils

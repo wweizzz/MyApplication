@@ -23,11 +23,14 @@
 
 当前约定插件列表包括：
 
-- [`nowinandroid.android.application`](convention/src/main/kotlin/AndroidApplicationConventionPlugin.kt)
+- [
+  `nowinandroid.android.application`](convention/src/main/kotlin/AndroidApplicationConventionPlugin.kt)
   ,
   [`nowinandroid.android.library`](convention/src/main/kotlin/AndroidLibraryConventionPlugin.kt),
   配置常见的 Android 和 Kotlin 选项。
-- [`nowinandroid.android.application.compose`](convention/src/main/kotlin/AndroidApplicationComposeConventionPlugin.kt)
+- [
+  `nowinandroid.android.application.compose`](convention/src/main/kotlin/AndroidApplicationComposeConventionPlugin.kt)
   ,
-  [`nowinandroid.android.library.compose`](convention/src/main/kotlin/AndroidLibraryComposeConventionPlugin.kt):
+  [
+  `nowinandroid.android.library.compose`](convention/src/main/kotlin/AndroidLibraryComposeConventionPlugin.kt):
   配置 Jetpack Compose 选项。

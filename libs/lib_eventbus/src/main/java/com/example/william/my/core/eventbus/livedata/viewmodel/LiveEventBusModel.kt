@@ -8,7 +8,6 @@ import androidx.lifecycle.lifecycleScope
 import com.example.william.my.core.eventbus.livedata.livedata.BusMutableLiveData
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import kotlin.collections.set
 
 class LiveEventBusModel : ViewModel() {
 

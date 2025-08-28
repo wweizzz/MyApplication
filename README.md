@@ -51,6 +51,7 @@
 * 使用 UseCase 封装可复用的单一业务逻辑
 
 ### MVI
+
 * 定义状态 State
 * 定义事件 Event
 * 处理事件+更新状态（ViewModel）

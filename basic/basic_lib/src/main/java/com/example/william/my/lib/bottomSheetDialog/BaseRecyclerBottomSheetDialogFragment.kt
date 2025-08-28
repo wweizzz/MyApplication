@@ -5,13 +5,11 @@ import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.blankj.utilcode.util.AdaptScreenUtils
 import com.chad.library.adapter4.BaseMultiItemAdapter
 import com.chad.library.adapter4.BaseQuickAdapter
 import com.chad.library.adapter4.QuickAdapterHelper
 import com.chad.library.adapter4.viewholder.QuickViewHolder
 import com.example.william.my.lib.databinding.BaseFragmentRecyclerViewBinding
-import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import com.scwang.smart.refresh.layout.api.RefreshLayout
 import com.scwang.smart.refresh.layout.listener.OnRefreshLoadMoreListener
 
@@ -24,7 +22,8 @@ abstract class BaseRecyclerBottomSheetDialogFragment<T : Any> :
     BaseQuickAdapter.OnItemClickListener<T>, BaseQuickAdapter.OnItemChildClickListener<T>,
     OnRefreshLoadMoreListener {
 
-    protected var mCursor = ""
+    protected var mPage: Int = 0
+    protected var mPageSize: Int = 20
 
     protected var mLayoutManager: RecyclerView.LayoutManager? = null
 
@@ -156,18 +155,17 @@ abstract class BaseRecyclerBottomSheetDialogFragment<T : Any> :
     fun onDataSuccess(cursor: String?, list: List<T>?) {
         val newList = list ?: emptyList()
 
-        if (mCursor.isEmpty()) {
+        if (mPage == 1) {
             mAdapter?.submitList(newList)
             mMultiItemAdapter?.submitList(newList)
         } else {
             mAdapter?.addAll(newList)
             mMultiItemAdapter?.addAll(newList)
         }
-        mCursor = cursor ?: ""
 
         setRecyclerViewStateView()
 
-        if (newList.isEmpty()) {
+        if (newList.size < mPageSize) {
             mBinding.smartRefresh.setEnableLoadMore(false)
         } else {
             mBinding.smartRefresh.setEnableLoadMore(canLoadMore())
@@ -183,12 +181,13 @@ abstract class BaseRecyclerBottomSheetDialogFragment<T : Any> :
     }
 
     override fun onRefresh(refreshLayout: RefreshLayout) {
-        mCursor = ""
+        mPage = 0
         queryData()
         mBinding.smartRefresh.finishRefresh(1000)
     }
 
     override fun onLoadMore(refreshLayout: RefreshLayout) {
+        mPage++
         queryData()
         mBinding.smartRefresh.finishLoadMore(1000)
     }

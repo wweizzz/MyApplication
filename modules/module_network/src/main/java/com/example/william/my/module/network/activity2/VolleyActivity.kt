@@ -13,7 +13,6 @@ import com.android.volley.toolbox.StringRequest
 import com.example.william.my.basic.basic_module.activity.BasicRecyclerActivity
 import com.example.william.my.basic.basic_module.base.Constants
 import com.example.william.my.basic.basic_module.router.path.RouterPath
-import com.example.william.my.core.volley.VolleySingleton
 import org.json.JSONObject
 
 

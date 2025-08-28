@@ -6,7 +6,6 @@ import com.example.william.my.core.okhttp.format.ParseUtils.isParseAble
 import okhttp3.Interceptor
 import okhttp3.Response
 import java.io.IOException
-import java.util.*
 import java.util.concurrent.TimeUnit
 
 class InterceptorLogging(filters: List<String>) : Interceptor {

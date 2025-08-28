@@ -68,7 +68,8 @@ class SmartRefreshViewModel : ViewModel() {
             }.onSuccess {
                 _smartRefreshState.value = it
             }.onFailure {
-                _smartRefreshState.value = _smartRefreshState.value?.copy(isLoadMore = !isRefresh, flag = false)
+                _smartRefreshState.value =
+                    _smartRefreshState.value?.copy(isLoadMore = !isRefresh, flag = false)
             }
             flag = !flag
         }

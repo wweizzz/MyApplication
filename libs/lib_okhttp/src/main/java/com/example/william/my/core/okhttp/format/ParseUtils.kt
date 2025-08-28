@@ -63,7 +63,8 @@ object ParseUtils {
     }
 
     fun isForm(mediaType: MediaType?): Boolean {
-        return mediaType?.subtype?.lowercase(Locale.getDefault())?.contains("x-www-form-urlencoded") == true
+        return mediaType?.subtype?.lowercase(Locale.getDefault())
+            ?.contains("x-www-form-urlencoded") == true
     }
 
     fun parseRequest(request: Request): String {

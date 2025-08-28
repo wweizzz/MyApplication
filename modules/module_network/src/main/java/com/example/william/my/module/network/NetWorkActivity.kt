@@ -70,7 +70,7 @@ class NetWorkActivity : RouterRecyclerActivity() {
         routerItems.add(
             RouterItem("RetrofitRxJavaHelperActivity", RouterPath.Network.RetrofitRxJavaHelper)
         )
-        
+
         routerItems.add(
             RouterItem("", "")
         )

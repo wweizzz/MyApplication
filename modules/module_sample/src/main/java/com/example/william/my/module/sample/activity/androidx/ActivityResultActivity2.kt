@@ -1,6 +1,5 @@
 package com.example.william.my.module.sample.activity.androidx
 
-import android.app.Activity
 import android.content.Intent
 import android.view.View
 import com.example.william.my.basic.basic_module.activity.BasicResponseActivity

@@ -4,16 +4,11 @@ import com.android.build.gradle.BaseExtension
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Internal
 import org.gradle.api.tasks.TaskAction
-import org.gradle.internal.os.OperatingSystem
 import org.gradle.process.ExecOperations
-import org.gradle.process.ExecSpec
 import java.io.File
 import java.io.FileInputStream
 import java.util.Properties
 import javax.inject.Inject
-import kotlin.collections.forEach
-import kotlin.io.copyTo
-import kotlin.jvm.java
 
 abstract class BuildIl2CppTask : DefaultTask() {
 

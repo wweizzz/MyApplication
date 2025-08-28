@@ -5,13 +5,11 @@ import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.blankj.utilcode.util.AdaptScreenUtils
 import com.chad.library.adapter4.BaseMultiItemAdapter
 import com.chad.library.adapter4.BaseQuickAdapter
 import com.chad.library.adapter4.QuickAdapterHelper
 import com.chad.library.adapter4.viewholder.QuickViewHolder
 import com.example.william.my.lib.databinding.BaseFragmentRecyclerViewBinding
-import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import com.scwang.smart.refresh.layout.api.RefreshLayout
 import com.scwang.smart.refresh.layout.listener.OnRefreshLoadMoreListener
 
@@ -167,7 +165,7 @@ abstract class BaseRecyclerDialogFragment<T : Any> :
 
         setRecyclerViewStateView()
 
-        if (newList.isEmpty()) {
+        if (newList.size < mPageSize) {
             mBinding.smartRefresh.setEnableLoadMore(false)
         } else {
             mBinding.smartRefresh.setEnableLoadMore(canLoadMore())

@@ -85,7 +85,8 @@ class ConstraintLayoutActivity : ComponentActivity() {
             // Guide
             val guideline = createGuidelineFromTop(fraction = 0.5f)
 
-            Text(text = "我距离屏幕上方约二分之一处~",
+            Text(
+                text = "我距离屏幕上方约二分之一处~",
                 modifier = Modifier.constrainAs(text2) {
                     top.linkTo(guideline)
                 }
@@ -94,24 +95,27 @@ class ConstraintLayoutActivity : ComponentActivity() {
             // Chain
             createHorizontalChain(box1, box2, box3, chainStyle = ChainStyle.SpreadInside)
 
-            Box(modifier = Modifier
-                .size(50.dp)
-                .background(Color.Red)
-                .constrainAs(box1) {
-                    top.linkTo(text1.bottom)
-                })
-            Box(modifier = Modifier
-                .size(50.dp)
-                .background(Color.Green)
-                .constrainAs(box2) {
-                    top.linkTo(text1.bottom)
-                })
-            Box(modifier = Modifier
-                .size(50.dp)
-                .background(Color.Blue)
-                .constrainAs(box3) {
-                    top.linkTo(text1.bottom)
-                })
+            Box(
+                modifier = Modifier
+                    .size(50.dp)
+                    .background(Color.Red)
+                    .constrainAs(box1) {
+                        top.linkTo(text1.bottom)
+                    })
+            Box(
+                modifier = Modifier
+                    .size(50.dp)
+                    .background(Color.Green)
+                    .constrainAs(box2) {
+                        top.linkTo(text1.bottom)
+                    })
+            Box(
+                modifier = Modifier
+                    .size(50.dp)
+                    .background(Color.Blue)
+                    .constrainAs(box3) {
+                        top.linkTo(text1.bottom)
+                    })
         }
     }
 

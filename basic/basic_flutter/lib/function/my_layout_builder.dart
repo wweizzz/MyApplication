@@ -39,10 +39,11 @@ class LayoutBuilderRoute extends StatelessWidget {
   List<Widget> buildChildren() {
     return generateWordPairs()
         .take(12)
-        .map((word) => Padding(
-              padding: const EdgeInsets.all(10),
-              child: Text(word.asPascalCase),
-            ))
+        .map((word) =>
+        Padding(
+          padding: const EdgeInsets.all(10),
+          child: Text(word.asPascalCase),
+        ))
         .toList();
   }
 }

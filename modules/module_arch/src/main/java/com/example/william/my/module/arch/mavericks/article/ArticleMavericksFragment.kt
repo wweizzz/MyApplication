@@ -21,7 +21,8 @@ class ArticleMavericksFragment : BaseRecyclerFragment<ArticleDetailData>(), Mave
     }
 
     override fun observeViewModel() {
-        viewModel.onAsync(ArticleMavericksState::articleResponse, deliveryMode = uniqueOnly("error"),
+        viewModel.onAsync(
+            ArticleMavericksState::articleResponse, deliveryMode = uniqueOnly("error"),
             onFail = {
                 onDataFail()
             },

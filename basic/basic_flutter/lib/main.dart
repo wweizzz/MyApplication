@@ -42,7 +42,9 @@ class MyApp extends StatelessWidget {
           title: const Text("Flutter Demo"),
         ),
         body: ListView.builder(
-          itemCount: Routes.getRouteList().length,
+          itemCount: Routes
+              .getRouteList()
+              .length,
           itemBuilder: (context, index) {
             return ListTile(
               title: Text(Routes.getRouteList()[index].routeName),

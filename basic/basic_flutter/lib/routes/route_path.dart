@@ -197,14 +197,16 @@ class Routes {
   static List<RouteItem> getRouteList() {
     return [
       //
-      RouteItem(routeName: counter, routePath: counter, routeDescribe: "计时器"),
+      RouteItem(
+          routeName: counter, routePath: counter, routeDescribe: "计时器"),
       //
       RouteItem(
           routeName: "—— Layout 布局 ——"
               "\n会有一个children属性",
           routePath: ""),
       RouteItem(routeName: row, routePath: row, routeDescribe: "水平线性布局"),
-      RouteItem(routeName: column, routePath: column, routeDescribe: "垂直线性布局"),
+      RouteItem(
+          routeName: column, routePath: column, routeDescribe: "垂直线性布局"),
       RouteItem(
           routeName: flex,
           routePath: flex,
@@ -228,9 +230,11 @@ class Routes {
           routePath: ""),
       RouteItem(
           routeName: container, routePath: container, routeDescribe: "容器"),
-      RouteItem(routeName: padding, routePath: padding, routeDescribe: "填充容器"),
+      RouteItem(
+          routeName: padding, routePath: padding, routeDescribe: "填充容器"),
       RouteItem(routeName: align, routePath: align, routeDescribe: "对齐容器"),
-      RouteItem(routeName: center, routePath: center, routeDescribe: "居中容器"),
+      RouteItem(
+          routeName: center, routePath: center, routeDescribe: "居中容器"),
       RouteItem(
           routeName: constrainedBox,
           routePath: constrainedBox,

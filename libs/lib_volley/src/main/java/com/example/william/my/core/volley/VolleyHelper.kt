@@ -1,7 +1,6 @@
 package com.example.william.my.core.volley
 
 import android.content.Context
-import android.util.Log
 import com.example.william.my.core.volley.builder.VolleyBuilder
 import com.example.william.my.core.volley.listener.VolleyListener
 import com.example.william.my.core.volley.request.FromRequest

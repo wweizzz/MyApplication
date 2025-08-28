@@ -2,7 +2,6 @@ package com.example.william.my.module.compose.utils
 
 import android.content.res.Configuration
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 
 /**

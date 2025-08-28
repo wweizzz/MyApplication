@@ -11,14 +11,18 @@ class ArticleMavericksViewModel(initialState: ArticleMavericksState) :
 
     private val api = RetrofitHelper.buildApi(ArticleApi::class.java)
 
-    private val repository: ArticleMavericksRepository = ArticleMavericksRepository(viewModelScope, api)
+    private val repository: ArticleMavericksRepository =
+        ArticleMavericksRepository(viewModelScope, api)
 
     fun loadArticle(page: Int) {
         withState {
             if (it.articleResponse is Loading) return@withState
             suspend {
                 api.getArticleSuspend(page)
-            }.execute(Dispatchers.IO, retainValue = ArticleMavericksState::articleResponse) { state ->
+            }.execute(
+                Dispatchers.IO,
+                retainValue = ArticleMavericksState::articleResponse
+            ) { state ->
                 copy(
                     articleResponse = state,
                 )

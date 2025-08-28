@@ -7,7 +7,7 @@ kotlinxCoroutines = "1.10.2"
 
 googleGson = "2.13.1"
 googleGuava = "33.4.8-android"
-googleProtobuf = "4.31.1"
+googleProtobuf = "4.32.0"
 googleFlexbox = "3.0.0"
 googleMaterial = "1.12.0"
 # ##################################################################################################
@@ -36,9 +36,10 @@ androidxStartup = "1.2.0"
 # Hilt:2.51对应kotlin:2.0.0
 # Hilt:2.52对应kotlin:2.0.20
 # Hilt:2.54对应kotlin:2.1.0
-# Hilt:2.56对应kotlin:2.10.1
-# Hilt:2.56.2对应kotlin:2.10.2
-androidxHilt = "2.56.2"
+# Hilt:2.56对应kotlin:2.1.10
+# Hilt:2.56.2对应kotlin:2.2.10
+# Hilt:2.57.1对应kotlin:2.2.10
+androidxHilt = "2.57.1"
 
 androidxRoom = "2.7.2"
 
@@ -50,7 +51,7 @@ androidxLiveDataCompose = "1.8.2"
 androidxConstraintLayoutCompose = "1.1.1"
 smartRefreshcCompose = "2.1.0"
 # ##################################################################################################
-mmkv = "2.2.2"
+mmkv = "2.2.3"
 upgrade = "2.2.0"
 utils = "1.31.1"
 permission = "1.8.1"
@@ -68,10 +69,10 @@ rxandroid = "3.0.2"
 rxlifecycle = "4.0.2"
 autodispose = "2.2.1"
 greendao = "3.3.0"
-objectbox = "4.3.0"
+objectbox = "4.3.1"
 # ##################################################################################################
 coil = "2.7.0"
-ktor = "3.2.2"
+ktor = "3.2.3"
 
 glide = "4.16.0"
 volley = "1.2.1"
@@ -103,12 +104,12 @@ androidxTestExt = "1.2.1"
 androidxTestEspresso = "3.6.1"
 # ##################################################################################################
 # https://developer.android.google.cn/studio/releases/gradle-plugin
-gradlePluginAndroid = "8.12.0"
-gradlePluginKotlin = "2.2.0"
+gradlePluginAndroid = "8.12.1"
+gradlePluginKotlin = "2.2.10"
 gradlePluginProtobuf = "0.9.5"
 gradlePluginArouter = "1.0.2"
 gradlePluginGreenDao = "3.3.1"
-gradlePluginObjectBox = "4.3.0"
+gradlePluginObjectBox = "4.3.1"
 gradlePluginKsp = "2.1.10-1.0.31"
 
 dependencyGuard = "0.5.0"
