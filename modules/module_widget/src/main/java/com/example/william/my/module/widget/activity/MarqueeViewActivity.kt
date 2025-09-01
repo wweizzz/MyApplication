@@ -1,5 +1,6 @@
 package com.example.william.my.module.widget.activity
 
+import android.os.Bundle
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
@@ -21,8 +22,8 @@ class MarqueeViewActivity : BaseVBActivity<DemoActivityMarqueeViewBinding>() {
     private val mData = arrayListOf("第一条数据", "第二条数据", "第三条数据", "第四条数据")
     private val marqueeViews = mutableListOf<View>()
 
-    override fun initView() {
-        super.initView()
+    override fun initView(savedInstanceState: Bundle?) {
+        super.initView(savedInstanceState)
 
         initMarqueeView()
     }

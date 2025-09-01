@@ -1,6 +1,7 @@
 package com.example.william.my.module.sample.activity.androidx
 
 import android.content.Intent
+import android.os.Bundle
 import android.view.View
 import com.example.william.my.basic.basic_module.activity.BasicResponseActivity
 
@@ -9,8 +10,8 @@ import com.example.william.my.basic.basic_module.activity.BasicResponseActivity
  */
 class ActivityResultActivity2 : BasicResponseActivity() {
 
-    override fun initView() {
-        super.initView()
+    override fun initView(savedInstanceState: Bundle?) {
+        super.initView(savedInstanceState)
 
         showResponse(intent?.getStringExtra("input"))
     }

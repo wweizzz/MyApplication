@@ -1,5 +1,6 @@
 package com.example.william.my.module.widget.activity2
 
+import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.router.path.RouterPath
@@ -14,8 +15,8 @@ class RecyclerViewNestedActivity : BaseVBActivity<DemoActivityRecyclerNestedBind
         return DemoActivityRecyclerNestedBinding.inflate(layoutInflater)
     }
 
-    override fun initView() {
-        super.initView()
+    override fun initView(savedInstanceState: Bundle?) {
+        super.initView(savedInstanceState)
 
         initRecycleView()
     }

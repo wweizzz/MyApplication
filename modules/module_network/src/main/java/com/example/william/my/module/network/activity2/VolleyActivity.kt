@@ -1,5 +1,6 @@
 package com.example.william.my.module.network.activity2
 
+import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.android.volley.Cache
 import com.android.volley.Network
@@ -35,8 +36,8 @@ class VolleyActivity : BasicRecyclerActivity() {
         )
     }
 
-    override fun initView() {
-        super.initView()
+    override fun initView(savedInstanceState: Bundle?) {
+        super.initView(savedInstanceState)
 
         initRequest()
     }

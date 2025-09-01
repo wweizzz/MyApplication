@@ -2,6 +2,7 @@ package com.example.william.my.module.demo.activity2
 
 import android.app.ActivityOptions
 import android.content.Intent
+import android.os.Bundle
 import android.view.View
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.util.Pair
@@ -25,8 +26,8 @@ class TransitionFirstActivity : BaseVBActivity<DemoActivityTransitionFirstBindin
 
     private var mIntent: Intent? = null
 
-    override fun initView() {
-        super.initView()
+    override fun initView(savedInstanceState: Bundle?) {
+        super.initView(savedInstanceState)
 
         initIntent()
 

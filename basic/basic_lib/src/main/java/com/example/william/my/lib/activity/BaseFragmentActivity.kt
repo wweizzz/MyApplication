@@ -11,8 +11,8 @@ abstract class BaseFragmentActivity : BaseActivity() {
         setContentView(R.layout.base_activity_fragment)
     }
 
-    override fun initView() {
-        super.initView()
+    override fun initView(savedInstanceState: Bundle?) {
+        super.initView(savedInstanceState)
 
         initFragment()
     }

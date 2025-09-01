@@ -44,8 +44,8 @@ class MessengerActivity : BasicResponseActivity() {
         }
     }
 
-    override fun initView() {
-        super.initView()
+    override fun initView(savedInstanceState: Bundle?) {
+        super.initView(savedInstanceState)
 
         initMessenger()
     }

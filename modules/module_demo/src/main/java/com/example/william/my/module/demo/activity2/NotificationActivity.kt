@@ -4,6 +4,7 @@ import android.app.NotificationChannel
 import android.app.NotificationChannelGroup
 import android.app.NotificationManager
 import android.os.Build
+import android.os.Bundle
 import android.view.View
 import androidx.core.app.NotificationCompat
 import com.alibaba.android.arouter.facade.annotation.Route
@@ -16,8 +17,8 @@ class NotificationActivity : BasicResponseActivity() {
 
     private var mNotificationManager: NotificationManager? = null
 
-    override fun initView() {
-        super.initView()
+    override fun initView(savedInstanceState: Bundle?) {
+        super.initView(savedInstanceState)
 
         initNotification()
     }

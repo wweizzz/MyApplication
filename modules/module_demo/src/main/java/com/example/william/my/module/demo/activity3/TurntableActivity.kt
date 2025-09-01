@@ -1,5 +1,6 @@
 package com.example.william.my.module.demo.activity3
 
+import android.os.Bundle
 import android.view.animation.Animation
 import android.view.animation.RotateAnimation
 import androidx.core.content.ContextCompat
@@ -17,8 +18,8 @@ class TurntableActivity : BasicImageActivity() {
 
     private var startDegree = 0 //初始角度
 
-    override fun initView() {
-        super.initView()
+    override fun initView(savedInstanceState: Bundle?) {
+        super.initView(savedInstanceState)
 
         initTurntable()
     }

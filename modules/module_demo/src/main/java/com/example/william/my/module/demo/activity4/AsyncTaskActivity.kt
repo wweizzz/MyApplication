@@ -1,6 +1,7 @@
 package com.example.william.my.module.demo.activity4
 
 import android.os.AsyncTask
+import android.os.Bundle
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.activity.BasicResponseActivity
@@ -15,8 +16,8 @@ class AsyncTaskActivity : BasicResponseActivity() {
 
     private var mAsyncTask: MyAsyncTask? = null
 
-    override fun initView() {
-        super.initView()
+    override fun initView(savedInstanceState: Bundle?) {
+        super.initView(savedInstanceState)
 
         initAsyncTask()
     }

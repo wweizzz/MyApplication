@@ -1,6 +1,7 @@
 package com.example.william.my.module.opensource.activity
 
 import android.graphics.Color
+import android.os.Bundle
 import android.view.Gravity
 import android.view.View
 import android.widget.FrameLayout.LayoutParams
@@ -38,8 +39,8 @@ class PickerViewActivity : BasicResponseActivity() {
     private val options2Items: MutableList<List<String>> = arrayListOf() //所有城市数组
     private val options3Items: MutableList<List<List<String>>> = arrayListOf() //所有地区数组
 
-    override fun initView() {
-        super.initView()
+    override fun initView(savedInstanceState: Bundle?) {
+        super.initView(savedInstanceState)
 
         initPickView()
     }

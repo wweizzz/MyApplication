@@ -1,6 +1,7 @@
 package com.example.william.my.module.demo.activity
 
 import android.graphics.Color
+import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import androidx.core.content.ContextCompat
@@ -37,8 +38,8 @@ class FragmentTabHostActivity : BaseVBActivity<DemoActivityFragmentTabHostBindin
         PrimaryDarkFragment::class.java
     )
 
-    override fun initView() {
-        super.initView()
+    override fun initView(savedInstanceState: Bundle?) {
+        super.initView(savedInstanceState)
 
         initTabHost()
     }

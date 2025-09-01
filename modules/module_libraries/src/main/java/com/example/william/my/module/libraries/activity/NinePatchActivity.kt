@@ -1,5 +1,6 @@
 package com.example.william.my.module.libraries.activity
 
+import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.base.Constants
 import com.example.william.my.basic.basic_module.router.path.RouterPath
@@ -22,8 +23,8 @@ class NinePatchActivity : BaseVBActivity<LibsActivityNinepatchBinding>() {
         return LibsActivityNinepatchBinding.inflate(layoutInflater)
     }
 
-    override fun initView() {
-        super.initView()
+    override fun initView(savedInstanceState: Bundle?) {
+        super.initView(savedInstanceState)
 
         show()
     }

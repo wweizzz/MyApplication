@@ -1,5 +1,6 @@
 package com.example.william.my.module.opensource.activity2
 
+import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.base.Constants
 import com.example.william.my.basic.basic_module.router.path.RouterPath
@@ -16,8 +17,8 @@ class PagActivity : BaseVBActivity<OpenActivityPagBinding>() {
         return OpenActivityPagBinding.inflate(layoutInflater)
     }
 
-    override fun initView() {
-        super.initView()
+    override fun initView(savedInstanceState: Bundle?) {
+        super.initView(savedInstanceState)
 
         initPagAnim()
     }

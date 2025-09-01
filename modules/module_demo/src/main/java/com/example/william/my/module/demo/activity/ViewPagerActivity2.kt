@@ -1,5 +1,6 @@
 package com.example.william.my.module.demo.activity
 
+import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.alibaba.android.arouter.facade.annotation.Route
@@ -47,8 +48,8 @@ class ViewPagerActivity2 : BaseVBActivity<DemoActivityViewPager2Binding>() {
             .navigation() as Fragment
     )
 
-    override fun initView() {
-        super.initView()
+    override fun initView(savedInstanceState: Bundle?) {
+        super.initView(savedInstanceState)
 
         initViewPager2()
     }

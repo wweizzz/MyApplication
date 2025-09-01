@@ -2,6 +2,7 @@ package com.example.william.my.module.demo.activity
 
 import android.annotation.SuppressLint
 import android.net.http.SslError
+import android.os.Bundle
 import android.webkit.JavascriptInterface
 import android.webkit.SslErrorHandler
 import android.webkit.WebChromeClient
@@ -20,8 +21,8 @@ class WebViewActivity : BaseVBActivity<DemoActivityWebviewBinding>() {
         return DemoActivityWebviewBinding.inflate(layoutInflater)
     }
 
-    override fun initView() {
-        super.initView()
+    override fun initView(savedInstanceState: Bundle?) {
+        super.initView(savedInstanceState)
 
         initWebView()
     }

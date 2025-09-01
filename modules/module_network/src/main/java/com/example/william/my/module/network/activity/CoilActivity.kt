@@ -1,5 +1,6 @@
 package com.example.william.my.module.network.activity
 
+import android.os.Bundle
 import coil.load
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.activity.BasicImageActivity
@@ -13,8 +14,8 @@ import com.example.william.my.basic.basic_module.router.path.RouterPath
 @Route(path = RouterPath.Network.Coil)
 class CoilActivity : BasicImageActivity() {
 
-    override fun initView() {
-        super.initView()
+    override fun initView(savedInstanceState: Bundle?) {
+        super.initView(savedInstanceState)
 
         load()
     }

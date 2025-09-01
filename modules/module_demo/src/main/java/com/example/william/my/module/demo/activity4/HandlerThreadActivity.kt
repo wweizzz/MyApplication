@@ -1,5 +1,6 @@
 package com.example.william.my.module.demo.activity4
 
+import android.os.Bundle
 import android.os.Handler
 import android.os.HandlerThread
 import android.os.Message
@@ -14,8 +15,8 @@ class HandlerThreadActivity : BasicResponseActivity() {
     private var mHandler: Handler? = null
     private var mHandlerThread: HandlerThread? = null
 
-    override fun initView() {
-        super.initView()
+    override fun initView(savedInstanceState: Bundle?) {
+        super.initView(savedInstanceState)
 
         initHandlerThread()
     }

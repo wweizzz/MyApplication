@@ -104,7 +104,7 @@ androidxTestExt = "1.2.1"
 androidxTestEspresso = "3.6.1"
 # ##################################################################################################
 # https://developer.android.google.cn/studio/releases/gradle-plugin
-gradlePluginAndroid = "8.12.1"
+gradlePluginAndroid = "8.12.2"
 gradlePluginKotlin = "2.2.10"
 gradlePluginProtobuf = "0.9.5"
 gradlePluginArouter = "1.0.2"

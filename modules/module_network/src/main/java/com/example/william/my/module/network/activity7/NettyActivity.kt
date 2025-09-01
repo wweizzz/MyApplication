@@ -1,5 +1,6 @@
 package com.example.william.my.module.network.activity7
 
+import android.os.Bundle
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.activity.BasicResponseActivity
@@ -16,8 +17,8 @@ import java.util.concurrent.Executors
 @Route(path = RouterPath.Network.Netty)
 class NettyActivity : BasicResponseActivity() {
 
-    override fun initView() {
-        super.initView()
+    override fun initView(savedInstanceState: Bundle?) {
+        super.initView(savedInstanceState)
 
         connect()
     }

@@ -1,5 +1,6 @@
 package com.example.william.my.module.widget.activity
 
+import android.os.Bundle
 import android.widget.SeekBar
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.R
@@ -17,8 +18,8 @@ class BlurViewActivity : BaseVBActivity<DemoActivityBlurViewBinding>() {
         return DemoActivityBlurViewBinding.inflate(layoutInflater)
     }
 
-    override fun initView() {
-        super.initView()
+    override fun initView(savedInstanceState: Bundle?) {
+        super.initView(savedInstanceState)
 
         initBlurView()
     }

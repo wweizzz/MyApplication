@@ -1,5 +1,6 @@
 package com.example.william.my.module.room.activity
 
+import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -57,8 +58,8 @@ class PagingActivity : BaseVBActivity<SampleActivityPagingBinding>() {
         return SampleActivityPagingBinding.inflate(layoutInflater)
     }
 
-    override fun initView() {
-        super.initView()
+    override fun initView(savedInstanceState: Bundle?) {
+        super.initView(savedInstanceState)
 
         initPaging()
     }

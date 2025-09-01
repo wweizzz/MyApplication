@@ -1,5 +1,6 @@
 package com.example.william.my.module.opensource.activity
 
+import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
 import com.alibaba.android.arouter.facade.annotation.Route
@@ -29,8 +30,8 @@ class FlycoTabLayoutActivity : BaseVBActivity<OpenActivityFlycoTabLayoutBinding>
         PrimaryDarkFragment(),
     )
 
-    override fun initView() {
-        super.initView()
+    override fun initView(savedInstanceState: Bundle?) {
+        super.initView(savedInstanceState)
 
         intTitles()
         initTabLayout()

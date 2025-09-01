@@ -1,6 +1,7 @@
 package com.example.william.my.module.opensource.activity
 
 import android.content.Context
+import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import com.alibaba.android.arouter.facade.annotation.Route
@@ -27,8 +28,8 @@ class PictureSelectorActivity : BaseVBActivity<OpenActivityPictureSelectorBindin
         return OpenActivityPictureSelectorBinding.inflate(layoutInflater)
     }
 
-    override fun initView() {
-        super.initView()
+    override fun initView(savedInstanceState: Bundle?) {
+        super.initView(savedInstanceState)
 
         val manager = GridLayoutManager(this, 4)
         mBinding.recyclerView.layoutManager = manager

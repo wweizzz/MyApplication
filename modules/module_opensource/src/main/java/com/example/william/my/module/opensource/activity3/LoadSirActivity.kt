@@ -1,5 +1,6 @@
 package com.example.william.my.module.opensource.activity3
 
+import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.activity.BasicResponseActivity
 import com.example.william.my.basic.basic_module.router.path.RouterPath
@@ -14,8 +15,8 @@ class LoadSirActivity : BasicResponseActivity() {
 
     private lateinit var loadService: LoadService<Any>
 
-    override fun initView() {
-        super.initView()
+    override fun initView(savedInstanceState: Bundle?) {
+        super.initView(savedInstanceState)
 
         initLoadService()
         sendToLoadService()

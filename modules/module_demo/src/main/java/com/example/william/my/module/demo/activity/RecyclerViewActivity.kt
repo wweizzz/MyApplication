@@ -1,6 +1,7 @@
 package com.example.william.my.module.demo.activity
 
 import android.content.res.Resources
+import android.os.Bundle
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.view.animation.LayoutAnimationController
@@ -30,8 +31,8 @@ class RecyclerViewActivity : BaseVBActivity<DemoActivityRecyclerViewBinding>(),
         return DemoActivityRecyclerViewBinding.inflate(layoutInflater)
     }
 
-    override fun initView() {
-        super.initView()
+    override fun initView(savedInstanceState: Bundle?) {
+        super.initView(savedInstanceState)
 
         initRecyclerView()
     }

@@ -1,5 +1,6 @@
 package com.example.william.my.module.sample.activity.topic
 
+import android.os.Bundle
 import android.view.View
 import androidx.work.BackoffPolicy
 import androidx.work.Constraints
@@ -35,8 +36,8 @@ class WorkManagerActivity : BasicResponseActivity() {
 
     private lateinit var periodicWorkRequest: PeriodicWorkRequest
 
-    override fun initView() {
-        super.initView()
+    override fun initView(savedInstanceState: Bundle?) {
+        super.initView(savedInstanceState)
 
         initConstraints()
         initWorkRequest()

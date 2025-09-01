@@ -36,8 +36,8 @@ abstract class BasicRecyclerActivity : BaseActivity(),
         super.onCreate(savedInstanceState)
     }
 
-    override fun initView() {
-        super.initView()
+    override fun initView(savedInstanceState: Bundle?) {
+        super.initView(savedInstanceState)
 
         initRecycler()
     }

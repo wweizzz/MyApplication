@@ -1,5 +1,6 @@
 package com.example.william.my.module.widget.activity2
 
+import android.os.Bundle
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.core.content.ContextCompat
@@ -38,8 +39,8 @@ class FragmentViewPagerActivity : BaseVBActivity<DemoActivityFragmentViewPagerBi
         PrimaryDarkFragment(),
     )
 
-    override fun initView() {
-        super.initView()
+    override fun initView(savedInstanceState: Bundle?) {
+        super.initView(savedInstanceState)
 
         initFragment()
         initFragmentTab()

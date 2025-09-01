@@ -1,5 +1,6 @@
 package com.example.william.my.module.room.activity
 
+import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.lifecycleScope
 import com.alibaba.android.arouter.facade.annotation.Route
@@ -23,8 +24,8 @@ class RoomActivity : BasicResponseActivity() {
         OAuthDataBase.getInstance(this).getOAuthDao()
     }
 
-    override fun initView() {
-        super.initView()
+    override fun initView(savedInstanceState: Bundle?) {
+        super.initView(savedInstanceState)
 
         showOAuth()
     }

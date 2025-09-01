@@ -11,10 +11,13 @@ abstract class BaseVBActivity<VB : ViewBinding?> : BaseActivity() {
     protected abstract fun getViewBinding(): VB
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
+
+    override fun initViewBinding() {
+        super.initViewBinding()
         _binding = getViewBinding()
         setContentView(mBinding.root)
-
-        super.onCreate(savedInstanceState)
     }
 
     override fun onDestroy() {

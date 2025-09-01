@@ -1,5 +1,6 @@
 package com.example.william.my.module.sample.activity.topic
 
+import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.lifecycleScope
 import com.alibaba.android.arouter.facade.annotation.Route
@@ -25,8 +26,8 @@ class DataStoreActivity : BasicResponseActivity() {
 
     private val protoDataStore = ExampleProtoDataStore(this)
 
-    override fun initView() {
-        super.initView()
+    override fun initView(savedInstanceState: Bundle?) {
+        super.initView(savedInstanceState)
 
         initCounter()
     }
