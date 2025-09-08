@@ -118,6 +118,8 @@ object RouterPath {
         const val PermissionX = "${Opensource}/PermissionX"
 
         const val RxJava = "${Opensource}/RxJava"
+
+        const val Imagen = "${Opensource}/Imagen"
     }
 
     object Database {

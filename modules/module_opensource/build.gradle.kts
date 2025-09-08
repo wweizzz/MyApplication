@@ -38,6 +38,13 @@ dependencies {
     //extra
     implementation(libs.glide)//pictureselector
 
+    // Import the BoM for the Firebase platform
+    implementation(platform(libs.google.firebase.bom))
+
+    // Add the dependency for the Firebase AI Logic library. When using the BoM,
+    // you don't specify versions in Firebase library dependencies
+    implementation(libs.google.firebase.ai)
+
     //implementation(libs.upgrade)
     //implementation(libs.upgrade.ui)
     //implementation("com.github.lzjin:SideBarView:1.0.1")

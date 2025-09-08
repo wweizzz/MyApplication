@@ -34,6 +34,9 @@ class OpensourceActivity : RouterRecyclerActivity() {
 
         routerItems.add(RouterItem(" ", ""))
         routerItems.add(RouterItem("RxJava", RouterPath.Opensource.RxJava))
+
+        routerItems.add(RouterItem(" ", ""))
+        routerItems.add(RouterItem("Imagen", RouterPath.Opensource.Imagen))
         return routerItems
     }
 }

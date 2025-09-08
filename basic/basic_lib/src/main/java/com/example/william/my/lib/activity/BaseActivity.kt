@@ -19,6 +19,7 @@ open class BaseActivity : AppCompatActivity() {
         //setTheme(R.style.Basics_WindowAnimTheme_Slide)
 
         initARouter()
+        initEventBus()
         initStatusBar()
 
         initViewBinding()
@@ -65,11 +66,15 @@ open class BaseActivity : AppCompatActivity() {
         ARouter.getInstance().inject(this)
     }
 
+    private fun initEventBus() {
+
+    }
+
     protected open fun initStatusBar() {
         if (enableTransparentStatusBar()) {
             ImmersionBar.with(this)
                 .transparentStatusBar()  //透明状态栏，不写默认透明色
-                .statusBarDarkFont(false) //状态栏字体是深色，不写默认为亮色
+                .statusBarDarkFont(statusBarDarkFont()) //状态栏字体是深色，不写默认为亮色
                 .fitsSystemWindows(fitsSystemWindows()) //解决状态栏和布局重叠问题
                 .keyboardEnable(true)
                 .init()
@@ -78,6 +83,10 @@ open class BaseActivity : AppCompatActivity() {
 
     protected open fun enableTransparentStatusBar(): Boolean {
         return true
+    }
+
+    protected open fun statusBarDarkFont(): Boolean {
+        return false
     }
 
     protected open fun fitsSystemWindows(): Boolean {

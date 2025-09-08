@@ -8,6 +8,7 @@ kotlinxCoroutines = "1.10.2"
 googleGson = "2.13.1"
 googleGuava = "33.4.8-android"
 googleProtobuf = "4.32.0"
+googleFirebase = "34.2.0"
 googleFlexbox = "3.0.0"
 googleMaterial = "1.12.0"
 # ##################################################################################################
@@ -104,7 +105,7 @@ androidxTestExt = "1.2.1"
 androidxTestEspresso = "3.6.1"
 # ##################################################################################################
 # https://developer.android.google.cn/studio/releases/gradle-plugin
-gradlePluginAndroid = "8.12.2"
+gradlePluginAndroid = "8.13.0"
 gradlePluginKotlin = "2.2.10"
 gradlePluginProtobuf = "0.9.5"
 gradlePluginArouter = "1.0.2"
@@ -127,9 +128,12 @@ google-guava = { group = "com.google.guava", name = "guava", version.ref = "goog
 # https://github.com/protocolbuffers/protobuf
 google-protoc = { group = "com.google.protobuf", name = "protoc", version.ref = "googleProtobuf" }
 google-protobuf-javalite = { group = "com.google.protobuf", name = "protobuf-javalite", version.ref = "googleProtobuf" }
+# https://github.com/firebase/snippets-android
+google-firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "googleFirebase" }
+google-firebase-ai = { group = "com.google.firebase", name = "firebase-ai" }
 # https://github.com/google/flexbox-layout
 google-flexBox = { group = "com.google.android.flexbox", name = "flexbox", version.ref = "googleFlexbox" }
-#
+# https://github.com/material-components/material-components-android
 google-material = { group = "com.google.android.material", name = "material", version.ref = "googleMaterial" }
 # ##################################################################################################
 # https://developer.android.google.cn/jetpack/androidx/releases/core
@@ -217,8 +221,8 @@ smartrefresh-compose = { group = "io.github.loren-moon", name = "composesmartref
 # https://github.com/Tencent/MMKV
 mmkv = { group = "com.tencent", name = "mmkv", version.ref = "mmkv" }
 # https://github.com/BuglyDevTeam/BuglyBetaUploader
-upgrade = { module = "com.tencent.shiply:upgrade", version.ref = "upgrade" }
-upgrade-ui = { module = "com.tencent.shiply:upgrade-ui", version.ref = "upgrade" }
+upgrade = { group = "com.tencent.shiply", name = "upgrade", version.ref = "mmkv" }
+upgrade-ui = { group = "com.tencent.shiply", name = "upgrade-ui", version.ref = "mmkv" }
 # https://github.com/Blankj/AndroidUtilCode
 utils = { group = "com.blankj", name = "utilcodex", version.ref = "utils" }
 # https://github.com/guolindev/PermissionX
@@ -330,7 +334,7 @@ androidx-test-espresso = { group = "androidx.test.espresso", name = "espresso-co
 # Dependencies of the included build-logic
 gradlePlugin-android = { group = "com.android.tools.build", name = "gradle", version.ref = "gradlePluginAndroid" }
 gradlePlugin-kotlin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "gradlePluginKotlin" }
-gradlePlugin-compose = { module = "org.jetbrains.kotlin:compose-compiler-gradle-plugin", version.ref = "gradlePluginKotlin" }
+gradlePlugin-compose = { group = "org.jetbrains.kotlin", name = "compose-compiler-gradle-plugin", version.ref = "gradlePluginKotlin" }
 gradlePlugin-protobuf = { group = "com.google.protobuf", name = "protobuf-gradle-plugin", version.ref = "gradlePluginProtobuf" }
 
 gradlePlugin-arouter = { group = "com.alibaba", name = "arouter-register", version.ref = "gradlePluginArouter" }

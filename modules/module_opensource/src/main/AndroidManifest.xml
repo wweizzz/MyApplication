@@ -24,6 +24,8 @@
         <activity android:name=".activity3.PermissionXActivity" />
 
         <activity android:name=".activity4.RxJavaActivity" />
+
+        <activity android:name=".activity5.ImagenActivity" />
     </application>
 
 </manifest>

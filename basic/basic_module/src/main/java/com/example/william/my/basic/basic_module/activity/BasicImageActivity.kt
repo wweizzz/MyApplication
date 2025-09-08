@@ -4,17 +4,17 @@ import android.os.Bundle
 import android.view.View
 import com.example.william.my.basic.basic_module.R
 import com.example.william.my.basic.basic_module.databinding.BasicsLayoutImageBinding
+import com.example.william.my.basic.basic_module.databinding.BasicsLayoutRecyclerBinding
 import com.example.william.my.lib.activity.BaseActivity
 
 abstract class BasicImageActivity : BaseActivity(), View.OnClickListener {
 
     protected lateinit var mBinding: BasicsLayoutImageBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun initViewBinding() {
+        super.initViewBinding()
         mBinding = BasicsLayoutImageBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
-
-        super.onCreate(savedInstanceState)
     }
 
     override fun initView(savedInstanceState: Bundle?) {

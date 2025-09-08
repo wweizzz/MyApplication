@@ -9,6 +9,7 @@ import com.chad.library.adapter4.BaseQuickAdapter
 import com.chad.library.adapter4.QuickAdapterHelper
 import com.chad.library.adapter4.viewholder.QuickViewHolder
 import com.example.william.my.basic.basic_module.R
+import com.example.william.my.basic.basic_module.databinding.BasicsLayoutImageBinding
 import com.example.william.my.basic.basic_module.databinding.BasicsLayoutRecyclerBinding
 import com.example.william.my.basic.basic_module.dialog.BasicDialogFragment
 import com.example.william.my.lib.activity.BaseActivity
@@ -29,11 +30,10 @@ abstract class BasicRecyclerActivity : BaseActivity(),
 
     protected lateinit var mBinding: BasicsLayoutRecyclerBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun initViewBinding() {
+        super.initViewBinding()
         mBinding = BasicsLayoutRecyclerBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
-
-        super.onCreate(savedInstanceState)
     }
 
     override fun initView(savedInstanceState: Bundle?) {

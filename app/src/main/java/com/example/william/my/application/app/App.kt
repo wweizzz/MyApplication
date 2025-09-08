@@ -30,7 +30,7 @@ class App : BaseApp() {
         registerAppInit(LibrariesApp::class.java) // FlowEventBus
         registerAppInit(DatabaseApp::class.java) // Greendao, ObjectBox
 
-        registerAppInit(OpenApp::class.java) // Shiply
+        registerAppInit(OpenApp::class.java) //
         registerAppInit(ArchApp::class.java) // Mavericks
 
         registerAppInit(FlutterApp::class.java) // FlutterEngine

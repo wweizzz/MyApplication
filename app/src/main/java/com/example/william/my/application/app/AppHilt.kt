@@ -53,7 +53,7 @@ class AppHilt : Application() {
         librariesInit.init(this) // FlowEventBus
         databaseInit.init(this) // Greendao, ObjectBox
 
-        openInit.init(this) // Shiply
+        openInit.init(this) //
         archInit.init(this) // Mavericks
 
         flutterInit.init(this) // FlutterEngine

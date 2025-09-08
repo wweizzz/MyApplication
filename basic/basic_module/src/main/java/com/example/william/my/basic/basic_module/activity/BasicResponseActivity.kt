@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.Gravity
 import android.view.View
 import com.example.william.my.basic.basic_module.R
+import com.example.william.my.basic.basic_module.databinding.BasicsLayoutImageBinding
 import com.example.william.my.basic.basic_module.databinding.BasicsLayoutResponseBinding
 import com.example.william.my.lib.activity.BaseActivity
 
@@ -11,13 +12,11 @@ abstract class BasicResponseActivity : BaseActivity(), View.OnClickListener {
 
     protected lateinit var mBinding: BasicsLayoutResponseBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun initViewBinding() {
+        super.initViewBinding()
         mBinding = BasicsLayoutResponseBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
-
-        super.onCreate(savedInstanceState)
     }
-
 
     override fun initView(savedInstanceState: Bundle?) {
         super.initView(savedInstanceState)
