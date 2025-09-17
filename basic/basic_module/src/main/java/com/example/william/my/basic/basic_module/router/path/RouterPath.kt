@@ -50,6 +50,8 @@ object RouterPath {
         const val TransitionFirst = "${Demo}/TransitionFirst"
         const val TransitionSecond = "${Demo}/TransitionSecond"
         const val Typeface = "${Demo}/Typeface"
+        const val RenderEffect = "${Demo}/RenderEffect"
+        const val RenderScript = "${Demo}/RenderScript"
 
         const val Crop = "${Demo}/Crop"
         const val FloatWindow = "${Demo}/FloatWindow"
@@ -98,6 +100,7 @@ object RouterPath {
 
         const val Main = "${Opensource}/Main"
         const val Banner = "${Opensource}/Banner"
+        const val BlurView = "${Opensource}/BlurView"
         const val CityPicker = "${Opensource}/CityPicker"
         const val CountdownView = "${Opensource}/CountdownView"
         const val EasyFloat = "${Opensource}/EasyFloat"

@@ -32,6 +32,8 @@
         <activity android:name=".activity2.TransitionSecondActivity" />
         <activity android:name=".activity3.TurntableActivity" />
         <activity android:name=".activity2.TypefaceActivity" />
+        <activity android:name=".activity2.RenderEffectActivity" />
+        <activity android:name=".activity2.RenderScriptActivity" />
 
         <service android:name=".service.MyAIDLService" />
         <service android:name=".service.MyForegroundService" />

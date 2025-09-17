@@ -14,6 +14,7 @@ dependencies {
     implementation(project(":basic:basic_module"))
 
     implementation(libs.banner)
+    implementation(libs.blurview)
     implementation(libs.citypicker)
     implementation(libs.countdownview)
     implementation(libs.easyfloat)

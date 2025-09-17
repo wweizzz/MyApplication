@@ -27,6 +27,8 @@ class DemoActivity : RouterRecyclerActivity() {
         routerItems.add(RouterItem("Permission", RouterPath.Demo.Permission))
         routerItems.add(RouterItem("Transition", RouterPath.Demo.TransitionFirst))
         routerItems.add(RouterItem("Typeface", RouterPath.Demo.Typeface))
+        routerItems.add(RouterItem("RenderEffect", RouterPath.Demo.RenderEffect))
+        routerItems.add(RouterItem("RenderScript", RouterPath.Demo.RenderScript))
 
         routerItems.add(RouterItem(" ", ""))
         routerItems.add(RouterItem("Crop", RouterPath.Demo.Crop))

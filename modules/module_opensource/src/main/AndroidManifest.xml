@@ -4,6 +4,7 @@
     <application>
         <activity android:name=".OpensourceActivity" />
         <activity android:name=".activity.BannerActivity" />
+        <activity android:name=".activity.BlurViewActivity" />
         <activity android:name=".activity.CityPickerActivity" />
         <activity android:name=".activity.CountdownActivity" />
         <activity android:name=".activity.EasyFloatActivity" />

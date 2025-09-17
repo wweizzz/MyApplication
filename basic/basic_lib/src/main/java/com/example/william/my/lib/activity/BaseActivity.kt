@@ -86,7 +86,7 @@ open class BaseActivity : AppCompatActivity() {
     }
 
     protected open fun statusBarDarkFont(): Boolean {
-        return false
+        return true
     }
 
     protected open fun fitsSystemWindows(): Boolean {

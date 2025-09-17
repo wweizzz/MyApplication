@@ -11,6 +11,7 @@ class OpensourceActivity : RouterRecyclerActivity() {
     override fun buildRouter(): ArrayList<RouterItem> {
         val routerItems: ArrayList<RouterItem> = arrayListOf()
         routerItems.add(RouterItem("Banner", RouterPath.Opensource.Banner))
+        routerItems.add(RouterItem("BlurView", RouterPath.Opensource.BlurView))
         routerItems.add(RouterItem("CityPicker", RouterPath.Opensource.CityPicker))
         routerItems.add(RouterItem("CountdownView", RouterPath.Opensource.CountdownView))
         routerItems.add(RouterItem("EasyFloat", RouterPath.Opensource.EasyFloat))
