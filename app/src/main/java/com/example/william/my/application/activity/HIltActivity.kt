@@ -1,9 +1,9 @@
 package com.example.william.my.application.activity
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.william.my.application.R
+import com.example.william.my.basic.basic_module.utils.Utils
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -51,7 +51,7 @@ class HiltActivity : AppCompatActivity() {
 class Driver @Inject constructor() {
 
     fun println() {
-        Log.e("Hilt", "@Inject")
+        Utils.logcat("Hilt", "@Inject")
     }
 }
 
@@ -65,7 +65,7 @@ interface Engine {
 class EngineImpl @Inject constructor() : Engine {
 
     override fun println() {
-        Log.e("TAG", "@Binds")
+        Utils.logcat("Hilt", "@Binds")
     }
 }
 
@@ -89,7 +89,7 @@ abstract class EngineModule {
  */
 class ProvidesData {
     fun println() {
-        Log.e("TAG", "@Provides")
+        Utils.logcat("Hilt", "@Provides")
     }
 }
 
@@ -143,11 +143,11 @@ object MultipleModule {
 }
 
 class ExampleServiceImpl @Inject constructor(
-    @Auth private val auth: String, // Auth
-    @Other private val other: String // Other
+    @param:Auth private val auth: String, // Auth
+    @param:Other private val other: String // Other
 ) {
 
     fun println() {
-        Log.e("TAG", "@Qualifier: $auth,$other")
+        Utils.logcat("Hilt", "@Qualifier: $auth,$other")
     }
 }

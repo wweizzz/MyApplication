@@ -5,12 +5,12 @@ import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
+import com.example.william.my.basic.basic_module.utils.Utils
 import com.example.william.my.basic.basic_repo.api.ArticleApi
 import com.example.william.my.basic.basic_repo.bean.ArticleData
 import com.example.william.my.basic.basic_repo.bean.ArticleDetailData
 import com.example.william.my.basic.basic_repo.data.source.ArticleRepository
 import com.example.william.my.basic.basic_repo.database.ArticleDatabase
-import com.example.william.my.lib.utils.Utils
 import com.example.william.my.module.room.paging.remotekey.RemoteKeyDatabase
 import com.example.william.my.module.room.paging.remotekey.data.RemoteKeyData
 import retrofit2.HttpException
@@ -59,7 +59,7 @@ class ArticleRemoteMediator(
             // first page.
             val loadKey = when (loadType) {
                 LoadType.REFRESH -> {
-                    Utils.d("RemoteMediator", "LoadType REFRESH")
+                    Utils.logcat("RemoteMediator", "LoadType REFRESH")
 
                     null
                 }
@@ -70,7 +70,7 @@ class ArticleRemoteMediator(
                 // return, reporting end of pagination.
                 LoadType.PREPEND -> {
 
-                    Utils.d("RemoteMediator", "LoadType PREPEND")
+                    Utils.logcat("RemoteMediator", "LoadType PREPEND")
 
                     return MediatorResult.Success(
                         endOfPaginationReached = true
@@ -79,7 +79,7 @@ class ArticleRemoteMediator(
 
                 LoadType.APPEND -> {
 
-                    Utils.d("RemoteMediator", "LoadType APPEND")
+                    Utils.logcat("RemoteMediator", "LoadType APPEND")
 
 //                    // 获取下一个 RemoteKey 的最后一个 Article 对象 id。
 //                    // Get the last Article object id for the next RemoteKey.

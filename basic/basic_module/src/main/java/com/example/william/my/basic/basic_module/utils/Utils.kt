@@ -1,11 +1,11 @@
-package com.example.william.my.lib.utils
+package com.example.william.my.basic.basic_module.utils
 
 import android.util.Log
 import java.util.Locale
 
 object Utils {
 
-    private var TAG = "TAG"
+    private val TAG = this.javaClass.simpleName
 
     init {
         //TAG = Throwable().stackTrace[1].fileName
@@ -18,22 +18,7 @@ object Utils {
     //规定每段显示的长度
     private const val MAX_LENGTH = 4000
 
-    fun d(tag: String?, msg: String) {
-        var temp: String
-        var index = 0
-        while (index < msg.length) {
-            // java的字符不允许指定超过总的长度end
-            temp = if (msg.length <= index + MAX_LENGTH) {
-                msg.substring(index)
-            } else {
-                msg.substring(index, index + MAX_LENGTH)
-            }
-            index += MAX_LENGTH
-            Log.d(tag, temp.trim { it <= ' ' })
-        }
-    }
-
-    fun e(tag: String, msg: String) {
+    fun logcat(tag: String, msg: String) {
         var temp: String
         var index = 0
         while (index < msg.length) {
@@ -49,7 +34,7 @@ object Utils {
     }
 
     private fun buildMessage(format: String, vararg args: Any): String {
-        val msg = String.format(Locale.US, format, *args)
+        val msg = String.Companion.format(Locale.US, format, *args)
         val trace = Throwable().fillInStackTrace().stackTrace
         var caller = "<unknown>"
         // Walk up the stack looking for the first caller outside of VolleyLog.
@@ -64,14 +49,20 @@ object Utils {
                 break
             }
         }
-        return String.format(Locale.US, "[%d] %s: %s", Thread.currentThread().id, caller, msg)
+        return String.Companion.format(
+            Locale.US,
+            "[%d] %s: %s",
+            Thread.currentThread().id,
+            caller,
+            msg
+        )
     }
 
     ///////////////////////////////////////////////////////////////////////////
     // Toast
     ///////////////////////////////////////////////////////////////////////////
 
-    fun show(msg: String?) {
+    fun toast(msg: String?) {
 
     }
 }

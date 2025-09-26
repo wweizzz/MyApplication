@@ -1,7 +1,5 @@
 package com.example.william.my.core.retrofit.converter;
 
-import android.util.Log;
-
 import com.example.william.my.core.retrofit.response.RetrofitResponse;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -21,6 +19,8 @@ import retrofit2.Converter;
  */
 @SuppressWarnings("ALL")
 final class RetrofitResponseBodyConverter<T> implements Converter<ResponseBody, T> {
+
+    private final String TAG = getClass().getSimpleName();
 
     private final Gson gson;
     private final TypeAdapter<T> adapter;
@@ -43,7 +43,6 @@ final class RetrofitResponseBodyConverter<T> implements Converter<ResponseBody, 
                 //如果符合RetrofitResponse格式则直接返回当前数据
                 return adapter.fromJson(result);
             } else {
-                Log.e("RetrofitConverterFactory", "response has not " + code);
                 // 将当前数据包装成如果符合RetrofitResponse返回
                 return adapter.fromJson(gson.toJson(RetrofitResponse.success(jsonObject)));
             }

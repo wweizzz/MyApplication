@@ -3,10 +3,14 @@ package com.example.william.my.lib.utils
 import android.content.Context
 import android.media.MediaPlayer
 import android.media.MediaRecorder
+import android.os.Build
 import android.os.Handler
 import android.os.Looper
 import android.text.TextUtils
 import android.util.Log
+import android.widget.Toast
+import androidx.annotation.RequiresApi
+import com.example.william.my.lib.app.BaseApp
 import java.io.File
 
 /**
@@ -36,6 +40,7 @@ object AudioPlayer {
 
     //Record
 
+    @RequiresApi(Build.VERSION_CODES.S)
     fun startRecord(context: Context, callback: Callback) {
         mRecordCallback = callback
         try {
@@ -57,7 +62,7 @@ object AudioPlayer {
                 stopRecord(true)
             }, (DEFAULT_AUDIO_RECORD_MAX_TIME * 1000).toLong())
         } catch (e: Exception) {
-            logcat("startRecord failed")
+            println("startRecord failed")
             stopRecord(false)
         }
     }
@@ -97,7 +102,7 @@ object AudioPlayer {
             }
             mPlayer?.prepareAsync()
         } catch (e: Exception) {
-            logcat("startPlay failed")
+            println("startPlay failed")
             show("语音文件已损坏或不存在")
             stopPlay(false)
         }
@@ -139,7 +144,7 @@ object AudioPlayer {
                 duration + MAGIC_NUMBER
             }
         } catch (e: Exception) {
-            Log.e(TAG, "getDuration failed", e)
+            println("getDuration failed")
         }
         if (duration < 0) {
             duration = 0
@@ -156,10 +161,10 @@ object AudioPlayer {
     }
 
     private fun show(msg: String) {
-        Utils.show(msg)
+        Toast.makeText(BaseApp.app, msg, Toast.LENGTH_SHORT).show()
     }
 
-    private fun logcat(msg: String) {
-        Utils.e(TAG, msg)
+    private fun println(msg: String) {
+        Log.e(TAG, msg)
     }
 }

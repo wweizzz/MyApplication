@@ -15,7 +15,7 @@ class FullyGridLayoutManager(
     spanCount: Int = 1,
 ) : GridLayoutManager(context, spanCount) {
 
-    private val tag = this.javaClass.simpleName
+    private val TAG = this.javaClass.simpleName
 
     private val mMeasuredDimension = IntArray(2)
     private val mRecyclerViewState = RecyclerView.State()
@@ -29,7 +29,7 @@ class FullyGridLayoutManager(
         var height = 0
         val count = itemCount
         val span = spanCount
-        Log.e("TAG", " count $count span $span")
+        println("count $count span $span")
         for (position in 0 until count) {
             measureScrapChild(
                 recycler,
@@ -99,22 +99,24 @@ class FullyGridLayoutManager(
                 val childWidthSpec = ViewGroup.getChildMeasureSpec(
                     widthSpec, paddingLeft + paddingRight, params.width
                 )
-                Log.e(
-                    "TAG",
-                    " widthSpec " + widthSpec + " params.width " + params.width + " childWidthSpec " + childWidthSpec
-                )
+                println("widthSpec $widthSpec params.width ${params.width} childWidthSpec $childWidthSpec")
                 val childHeightSpec = ViewGroup.getChildMeasureSpec(
                     heightSpec, paddingTop + paddingBottom, params.height
                 )
+                println("heightSpec $heightSpec params.height ${params.height} childHeightSpec $childHeightSpec")
                 view.measure(childWidthSpec, childHeightSpec)
                 measuredDimension[0] = view.measuredWidth + params.leftMargin + params.rightMargin
                 measuredDimension[1] = view.measuredHeight + params.bottomMargin + params.topMargin
-                Log.e(tag, "measuredDimension[0] : " + measuredDimension[0].toString())
-                Log.e(tag, "measuredDimension[1] : " + measuredDimension[1].toString())
+                println("measuredDimension[0] : " + measuredDimension[0].toString())
+                println("measuredDimension[1] : " + measuredDimension[1].toString())
                 recycler.recycleView(view)
             } catch (e: Exception) {
                 e.printStackTrace()
             }
         }
+    }
+
+    private fun println(msg: String) {
+        Log.e(TAG, msg)
     }
 }

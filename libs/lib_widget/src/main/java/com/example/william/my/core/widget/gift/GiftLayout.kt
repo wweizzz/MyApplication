@@ -1,11 +1,11 @@
-package com.example.william.my.module.demo.gift
+package com.example.william.my.core.widget.gift
 
 import android.animation.Animator
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import android.widget.RelativeLayout
 import com.blankj.utilcode.util.AdaptScreenUtils
-import com.blankj.utilcode.util.LogUtils
 import org.libpag.PAGScaleMode
 import org.libpag.PAGView
 import org.libpag.PAGView.PAGViewListener
@@ -14,16 +14,19 @@ import java.util.concurrent.LinkedBlockingQueue
 class GiftLayout @JvmOverloads constructor(
     context: Context?, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : RelativeLayout(context, attrs, defStyleAttr), PAGViewListener, Animator.AnimatorListener {
+    private val TAG = this.javaClass.simpleName
+
     private var isPlaying = false
 
-    private val mPagView = PAGView(context, attrs, defStyleAttr)
+    private val mPagView: PAGView
     private val mSmallAnimView: SmallAnimView
-    //private val mGiftMsgBodyQueue = LinkedBlockingQueue<CustomMsg<RoomGiftMsg>>()
 
     // temp
     private val mGiftMsgBodyQueue = LinkedBlockingQueue<String>()
+    //private val mGiftMsgBodyQueue = LinkedBlockingQueue<CustomMsg<RoomGiftMsg>>()
 
     init {
+        this.mPagView = PAGView(context, attrs, defStyleAttr)
         mPagView.visibility = GONE
         mPagView.setRepeatCount(1)
         mPagView.setScaleMode(PAGScaleMode.Zoom)
@@ -40,16 +43,14 @@ class GiftLayout @JvmOverloads constructor(
     }
 
     //fun handlerGiftMsg(giftMsg: CustomMsg<RoomGiftMsg>) {
-    //    LogUtils.e("handlerGiftMsg 收到消息")
+    //    println("handlerGiftMsg 收到消息")
     //    mGiftMsgBodyQueue.offer(giftMsg)
     //    notifyGiftMsg()
     //}
 
     private fun notifyGiftMsg() {
-        LogUtils.e(
-            "notifyGiftMsg 通知播放动画",
-            "isPlaying : " + isPlaying + " mGiftMsgBodyQueue.size : " + mGiftMsgBodyQueue.size
-        )
+        println("notifyGiftMsg 通知播放动画")
+
         if (!isPlaying && !mGiftMsgBodyQueue.isEmpty()) {
             val nextMessage = mGiftMsgBodyQueue.poll()
             //if (nextMessage is CustomMsg<RoomGiftMsg>) {
@@ -67,25 +68,25 @@ class GiftLayout @JvmOverloads constructor(
     }
 
     //private fun startPagAnim(data: CustomMsg<RoomGiftMsg>) {
-    //    LogUtils.e("startPagAnim 大动画")
+    //    println("startPagAnim 大动画")
     //    mPagView.setPath(data.data.getAnimationId().getFilePathByAnimId())
     //    mPagView.play()
     //}
 
     //private fun startSmallAnim(data: CustomMsg<RoomGiftMsg>) {
-    //    LogUtils.e("startPagAnim 小动画")
+    //    println("startPagAnim 小动画")
     //    mSmallAnimView.setImageUrl(data.data.giftInfo.imageUrl)
     //    mSmallAnimView.play()
     //}
 
     override fun onAnimationStart(pagView: PAGView) {
-        LogUtils.e("onAnimationStart")
+        println("onAnimationStart")
         mPagView.visibility = VISIBLE
         isPlaying = true
     }
 
     override fun onAnimationEnd(pagView: PAGView) {
-        LogUtils.e("onAnimationEnd")
+        println("onAnimationEnd")
         mPagView.visibility = GONE
         isPlaying = false
         notifyGiftMsg()
@@ -101,13 +102,13 @@ class GiftLayout @JvmOverloads constructor(
     }
 
     override fun onAnimationStart(animation: Animator) {
-        LogUtils.e("onAnimationStart")
+        println("onAnimationStart")
         mSmallAnimView.visibility = VISIBLE
         isPlaying = true
     }
 
     override fun onAnimationEnd(animation: Animator) {
-        LogUtils.e("onAnimationEnd")
+        println("onAnimationEnd")
         mSmallAnimView.visibility = GONE
         isPlaying = false
         notifyGiftMsg()
@@ -117,5 +118,9 @@ class GiftLayout @JvmOverloads constructor(
     }
 
     override fun onAnimationRepeat(animation: Animator) {
+    }
+
+    private fun println(msg: String) {
+        Log.e(TAG, msg)
     }
 }

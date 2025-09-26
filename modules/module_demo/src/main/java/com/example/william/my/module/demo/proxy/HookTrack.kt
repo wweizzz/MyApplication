@@ -1,7 +1,6 @@
 package com.example.william.my.module.demo.proxy
 
 import android.app.Application
-import com.example.william.my.lib.utils.Utils
 
 object HookTrack {
 
@@ -11,7 +10,7 @@ object HookTrack {
 
     fun init(application: Application?) {
         if (application == null) {
-            Utils.e(TAG, "Please init with the param \"Application\"/")
+            ViewUtils.println(TAG, "Please init with the param \"Application\"/")
             throw RuntimeException()
         }
         if (!activityLifeCycleRegister) {

@@ -16,9 +16,15 @@ dependencies {
     implementation(project(":basic:basic_lib"))
     implementation(project(":basic:basic_module"))
 
-    implementation(libs.pag)
     implementation(libs.google.flexBox)
     implementation(libs.google.material)
 
-    implementation(libs.utils)
+    val camerax_version = "1.3.0"
+    implementation("androidx.camera:camera-core:$camerax_version")
+    implementation("androidx.camera:camera-camera2:$camerax_version")
+    implementation("androidx.camera:camera-lifecycle:$camerax_version")
+    implementation("androidx.camera:camera-view:$camerax_version")
+    
+    implementation(libs.gpuimage)
+    implementation(project(":libs:lib_yuvengine"))
 }

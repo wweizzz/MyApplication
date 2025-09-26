@@ -3,13 +3,15 @@ package com.example.william.my.core.okhttp.utils
 import android.util.Log
 import com.example.william.my.core.okhttp.config.OkHttpConfig
 
-object HttpLog {
+object HttpLogger {
+
+    private val TAG: String = OkHttpConfig.getLogTag()
 
     fun debug(msg: String) {
-        Log.d(OkHttpConfig.getLogTag(), msg)
+        Log.d(TAG, msg)
     }
 
     fun error(msg: String) {
-        Log.e(OkHttpConfig.getLogTag(), msg)
+        Log.e(TAG, msg)
     }
 }

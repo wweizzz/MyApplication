@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.Gravity
 import android.view.View
 import com.example.william.my.basic.basic_module.R
-import com.example.william.my.basic.basic_module.databinding.BasicsLayoutImageBinding
 import com.example.william.my.basic.basic_module.databinding.BasicsLayoutResponseBinding
 import com.example.william.my.lib.activity.BaseActivity
 

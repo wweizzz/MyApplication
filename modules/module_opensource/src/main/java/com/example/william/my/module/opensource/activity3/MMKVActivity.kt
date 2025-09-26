@@ -4,7 +4,7 @@ import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.activity.BasicResponseActivity
 import com.example.william.my.basic.basic_module.router.path.RouterPath
-import com.example.william.my.lib.utils.Utils
+import com.example.william.my.basic.basic_module.utils.Utils
 import com.tencent.mmkv.MMKV
 
 /**
@@ -22,7 +22,7 @@ class MMKVActivity : BasicResponseActivity() {
     private fun initMMKV() {
         // 配置 MMKV 根目录
         val rootDir: String = MMKV.initialize(this)
-        Utils.d(tag, "mmkv root: $rootDir")
+        Utils.logcat(TAG, "mmkv root: $rootDir")
 
         // MMKV 全局实例
         val kv: MMKV = MMKV.defaultMMKV()

@@ -1,8 +1,8 @@
 package com.example.william.my.module.demo.proxy
 
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
+import com.example.william.my.basic.basic_module.utils.Utils
 
 object ViewUtils {
 
@@ -48,7 +48,7 @@ object ViewUtils {
     }
 
     @JvmStatic
-    fun logcat(tag: String, msg: String) {
-        Log.d(tag, msg)
+    fun println(tag: String, msg: String) {
+        Utils.logcat(tag, msg)
     }
 }

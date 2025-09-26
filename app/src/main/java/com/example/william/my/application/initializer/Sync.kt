@@ -1,9 +1,9 @@
 package com.example.william.my.application.initializer
 
 import android.content.Context
-import android.util.Log
 import androidx.startup.AppInitializer
 import androidx.startup.Initializer
+import com.example.william.my.basic.basic_module.utils.Utils
 
 object Sync {
     // This method is a workaround to manually initialize the sync process instead of relying on
@@ -20,7 +20,10 @@ object Sync {
  */
 class SyncInitializer : Initializer<Sync> {
 
+    private val TAG = this.javaClass.simpleName
+
     override fun create(context: Context): Sync {
+        Utils.logcat(TAG, "SyncInitializer init")
         return Sync
     }
 
@@ -31,10 +34,10 @@ class SyncInitializer : Initializer<Sync> {
 
 class StartupInitializer : Initializer<String> {
 
-    private val tag = "StartupInitializer"
+    private val TAG = this.javaClass.simpleName
 
     override fun create(context: Context): String {
-        Log.e(tag, "StartupInitializer init")
+        Utils.logcat(TAG, "StartupInitializer init")
         return "Startup Init"
     }
 

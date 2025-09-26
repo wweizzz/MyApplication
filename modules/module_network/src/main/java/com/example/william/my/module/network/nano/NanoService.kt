@@ -4,7 +4,7 @@ import android.app.Service
 import android.content.Context
 import android.content.Intent
 import android.os.IBinder
-import com.example.william.my.lib.utils.Utils
+import com.example.william.my.basic.basic_module.utils.Utils
 import java.io.IOException
 
 class NanoService : Service() {
@@ -20,9 +20,9 @@ class NanoService : Service() {
         try {
             nanoServer = NanoServer(application)
             nanoServer?.start(3000)
-            Utils.d(TAG, "Start HttpService Success...")
+            println("Start HttpService Success...")
         } catch (e: IOException) {
-            Utils.e(TAG, "Start HttpService Failed...")
+            println("Start HttpService Failed...")
             e.printStackTrace()
         }
     }
@@ -31,15 +31,19 @@ class NanoService : Service() {
         super.onDestroy()
         try {
             nanoServer?.stop()
-            Utils.d(TAG, "Stop HttpService Success...")
+            println("Stop HttpService Success...")
         } catch (e: Exception) {
-            Utils.e(TAG, "Stop HttpService Failed...")
+            println("Stop HttpService Failed...")
             e.printStackTrace()
         }
     }
 
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
         return START_STICKY
+    }
+
+    private fun println(msg: String) {
+        Utils.logcat(TAG, msg)
     }
 
     companion object {

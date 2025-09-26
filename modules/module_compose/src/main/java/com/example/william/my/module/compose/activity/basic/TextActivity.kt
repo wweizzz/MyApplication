@@ -21,6 +21,8 @@ import com.example.william.my.basic.basic_module.router.path.RouterPath
 @Route(path = RouterPath.Compose.Text)
 class TextActivity : ComponentActivity() {
 
+    private val TAG = this.javaClass.simpleName
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -35,7 +37,7 @@ class TextActivity : ComponentActivity() {
             modifier = Modifier
                 .padding(6.dp)
                 .clickable {
-                    Log.e("TAG", "clickable")
+                    Log.e(TAG, "clickable")
                 },
             color = Color.Black,
             fontSize = 16.sp,

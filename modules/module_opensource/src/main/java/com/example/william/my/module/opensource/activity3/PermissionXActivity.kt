@@ -5,7 +5,7 @@ import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.activity.BasicResponseActivity
 import com.example.william.my.basic.basic_module.router.path.RouterPath
-import com.example.william.my.lib.utils.Utils
+import com.example.william.my.basic.basic_module.utils.Utils
 import com.permissionx.guolindev.PermissionX
 
 @Route(path = RouterPath.Opensource.PermissionX)
@@ -42,9 +42,9 @@ class PermissionXActivity : BasicResponseActivity() {
             }
             .request { allGranted, grantedList, deniedList ->
                 if (allGranted) {
-                    Utils.show("All permissions are granted: $grantedList")
+                    Utils.toast("All permissions are granted: $grantedList")
                 } else {
-                    Utils.show("These permissions are denied: $deniedList")
+                    Utils.toast("These permissions are denied: $deniedList")
                 }
             }
     }

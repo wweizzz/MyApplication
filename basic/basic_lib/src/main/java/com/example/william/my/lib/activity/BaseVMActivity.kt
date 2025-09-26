@@ -46,7 +46,7 @@ abstract class BaseVMActivity<VB : ViewBinding?, VM : BaseViewModel> : BaseVBAct
     }
 
     fun onError(throwable: Throwable) {
-        Log.e(tag, throwable.message.toString())
+        Log.e(TAG, throwable.message.toString())
     }
 
     override fun onDestroy() {

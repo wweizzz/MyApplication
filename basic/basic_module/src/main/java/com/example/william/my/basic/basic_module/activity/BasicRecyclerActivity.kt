@@ -9,7 +9,6 @@ import com.chad.library.adapter4.BaseQuickAdapter
 import com.chad.library.adapter4.QuickAdapterHelper
 import com.chad.library.adapter4.viewholder.QuickViewHolder
 import com.example.william.my.basic.basic_module.R
-import com.example.william.my.basic.basic_module.databinding.BasicsLayoutImageBinding
 import com.example.william.my.basic.basic_module.databinding.BasicsLayoutRecyclerBinding
 import com.example.william.my.basic.basic_module.dialog.BasicDialogFragment
 import com.example.william.my.lib.activity.BaseActivity

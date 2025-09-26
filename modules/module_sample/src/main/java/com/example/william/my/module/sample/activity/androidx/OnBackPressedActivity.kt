@@ -6,9 +6,9 @@ import androidx.fragment.app.Fragment
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.databinding.BasicsLayoutResponseBinding
 import com.example.william.my.basic.basic_module.router.path.RouterPath
+import com.example.william.my.basic.basic_module.utils.Utils
 import com.example.william.my.lib.activity.BaseFragmentActivity
 import com.example.william.my.lib.fragment.BaseVBFragment
-import com.example.william.my.lib.utils.Utils
 
 /**
  * onBackPressedDispatcher
@@ -32,7 +32,7 @@ class OnBackPressedActivity : BaseFragmentActivity() {
             requireActivity().onBackPressedDispatcher.addCallback(object :
                 OnBackPressedCallback(true) {
                 override fun handleOnBackPressed() {
-                    Utils.show("handleOnBackPressed")
+                    Utils.toast("handleOnBackPressed")
                     requireActivity().finish()
                 }
             })

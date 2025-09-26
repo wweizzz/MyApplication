@@ -1,4 +1,4 @@
-package com.example.william.my.module.demo.gift
+package com.example.william.my.core.widget.gift
 
 import android.animation.Animator
 import android.animation.AnimatorSet
@@ -8,7 +8,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.RelativeLayout
 import com.blankj.utilcode.util.ScreenUtils
-import com.example.william.my.module.demo.databinding.DemoItemSmallAnimBinding
+import com.example.william.my.core.widget.databinding.AnimItemBinding
 
 class SmallAnimView @JvmOverloads constructor(
     context: Context?,
@@ -18,7 +18,7 @@ class SmallAnimView @JvmOverloads constructor(
 
     private var mListener: Animator.AnimatorListener? = null
     private val mBinding =
-        DemoItemSmallAnimBinding.inflate(LayoutInflater.from(context), this, true)
+        AnimItemBinding.inflate(LayoutInflater.from(context), this, true)
 
     init {
         layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)

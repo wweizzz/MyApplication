@@ -1,6 +1,5 @@
 package com.example.william.my.core.retrofit.utils
 
-import android.util.Log
 import java.io.BufferedOutputStream
 import java.io.File
 import java.io.FileOutputStream
@@ -22,7 +21,6 @@ object FileIOUtils {
         listener: OnProgressUpdateListener?
     ): Boolean {
         if (inputStream == null || !createOrExistsFile(file)) {
-            Log.e("FileIOUtils", "create file <$file> failed.")
             return false
         }
         var os: OutputStream? = null

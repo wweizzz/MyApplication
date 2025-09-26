@@ -4,7 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import com.example.william.my.basic.basic_module.activity.BasicResponseActivity
-import com.example.william.my.lib.utils.Utils
+import com.example.william.my.basic.basic_module.utils.Utils
 import com.google.gson.Gson
 
 /**
@@ -37,7 +37,7 @@ class MyInlineActivity : BasicResponseActivity() {
             data.value = "let"
             "let"
         }
-        Utils.d(tag, "let $let")
+        println("let $let")
 
         /**
          * run 函数
@@ -47,7 +47,7 @@ class MyInlineActivity : BasicResponseActivity() {
             mData.value = "run"
             "run"
         }
-        Utils.d(tag, "run $run")
+        println("run $run")
 
         /**
          * also 函数
@@ -56,7 +56,7 @@ class MyInlineActivity : BasicResponseActivity() {
         val alsoData: MyData = mData.also { data ->
             data.value = "also"
         }
-        Utils.d(tag, alsoData.string())
+        println(alsoData.string())
 
         /**
          * apply 函数
@@ -65,7 +65,7 @@ class MyInlineActivity : BasicResponseActivity() {
         val applyData: MyData = mData.apply {
             value = "apply"
         }
-        Utils.d(tag, applyData.string())
+        println(applyData.string())
     }
 
     //==============================================================================================
@@ -107,16 +107,20 @@ class MyInlineActivity : BasicResponseActivity() {
         val alsoData: MyData = mData.mAlso { data ->
             data.value = "also"
         }
-        Utils.d(tag, alsoData.string())
+        println(alsoData.string())
 
         val applyData: MyData = mData.mApply {
             value = "apply"
         }
-        Utils.d(tag, applyData.string())
+        println(applyData.string())
 
         val standardData: MyData = mData.mStandard {
             mData.string()
         }
-        Utils.d(tag, standardData.string())
+        println(standardData.string())
+    }
+
+    private fun println(msg: String) {
+        Utils.logcat(TAG, msg)
     }
 }

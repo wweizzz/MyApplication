@@ -22,7 +22,7 @@ import android.os.Handler
 import android.os.Looper
 import android.os.Message
 import android.os.Messenger
-import com.example.william.my.lib.utils.Utils
+import com.example.william.my.basic.basic_module.utils.Utils
 import com.example.william.my.module.demo.activity4.JobSchedulerActivity
 
 class MyJobSchedulerService : JobService() {
@@ -46,7 +46,7 @@ class MyJobSchedulerService : JobService() {
 
         }, duration)
 
-        Utils.show("on start job: " + params.jobId)
+        Utils.toast("on start job: " + params.jobId)
 
         // Return true as there's more work to be done with this job.
         return true
@@ -55,7 +55,7 @@ class MyJobSchedulerService : JobService() {
     override fun onStopJob(params: JobParameters): Boolean {
         sendMessage(JobSchedulerActivity.MSG_COLOR_STOP, params.jobId)
 
-        Utils.show("on stop job: " + params.jobId)
+        Utils.toast("on stop job: " + params.jobId)
 
         // Return false to drop the job.
         return false

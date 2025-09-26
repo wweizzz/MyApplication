@@ -2,9 +2,11 @@ package com.example.william.my.core.websocket
 
 import android.util.Log
 
-object WebSocketLog {
+object WebSocketLogger {
+
+    private val TAG = this.javaClass.simpleName
 
     fun debug(msg: String) {
-        Log.d("WebSocket", msg)
+        Log.d(TAG, msg)
     }
 }

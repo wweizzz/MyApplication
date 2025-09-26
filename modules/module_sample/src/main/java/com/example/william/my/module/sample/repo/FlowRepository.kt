@@ -2,9 +2,9 @@ package com.example.william.my.module.sample.repo
 
 import com.example.william.my.basic.basic_data.api.NetworkApi
 import com.example.william.my.basic.basic_data.bean.LoginData
+import com.example.william.my.basic.basic_module.utils.Utils
 import com.example.william.my.core.retrofit.helper.RetrofitHelper
 import com.example.william.my.core.retrofit.response.RetrofitResponse
-import com.example.william.my.lib.utils.Utils
 import com.example.william.my.module.sample.utils.ThreadUtils
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
@@ -63,7 +63,7 @@ class FlowRepository(private val defaultDispatcher: CoroutineDispatcher) {
             // 下游的 flow 不受影响
             // the downstream flow ↓ is not affected
             .catch { exception -> // Executes in the consumer's context
-                Utils.e(TAG, "exception : " + exception.message.toString())
+                Utils.logcat(TAG, "exception : " + exception.message.toString())
             }
     }
 

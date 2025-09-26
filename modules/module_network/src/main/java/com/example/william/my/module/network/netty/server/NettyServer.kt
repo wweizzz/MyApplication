@@ -1,6 +1,6 @@
 package com.example.william.my.module.network.netty.server
 
-import com.example.william.my.lib.utils.Utils
+import com.example.william.my.basic.basic_module.utils.Utils
 import io.netty.bootstrap.ServerBootstrap
 import io.netty.channel.Channel
 import io.netty.channel.ChannelOption
@@ -39,7 +39,7 @@ class NettyServer {
             channel?.closeFuture()?.sync()
         } catch (e: Exception) {
             e.printStackTrace()
-            Utils.e(TAG, "Netty Exception:$e")
+            Utils.logcat(TAG, "Netty Exception:$e")
         } finally {
             workerGroup.shutdownGracefully()
             bossGroup.shutdownGracefully()

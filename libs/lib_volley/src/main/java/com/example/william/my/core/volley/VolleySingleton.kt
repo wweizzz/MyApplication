@@ -16,6 +16,8 @@ import okhttp3.logging.HttpLoggingInterceptor.Level
 
 class VolleySingleton(context: Context) {
 
+    private val TAG = this.javaClass.simpleName
+
     companion object {
         @Volatile
         private var INSTANCE: VolleySingleton? = null
@@ -48,7 +50,7 @@ class VolleySingleton(context: Context) {
 
     private val okHttpClient: OkHttpClient = OkHttpClient.Builder()
         .addInterceptor(HttpLoggingInterceptor { message ->
-            Log.e("Volley", message)
+            Log.e(TAG, message)
         }.setLevel(Level.BODY))
         .build()
 

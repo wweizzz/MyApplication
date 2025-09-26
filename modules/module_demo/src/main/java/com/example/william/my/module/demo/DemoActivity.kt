@@ -31,6 +31,7 @@ class DemoActivity : RouterRecyclerActivity() {
         routerItems.add(RouterItem("RenderScript", RouterPath.Demo.RenderScript))
 
         routerItems.add(RouterItem(" ", ""))
+        routerItems.add(RouterItem("Camera", RouterPath.Demo.Camera))
         routerItems.add(RouterItem("Crop", RouterPath.Demo.Crop))
         routerItems.add(RouterItem("FloatWindow", RouterPath.Demo.FloatWindow))
         routerItems.add(RouterItem("Hook", RouterPath.Demo.Hook))

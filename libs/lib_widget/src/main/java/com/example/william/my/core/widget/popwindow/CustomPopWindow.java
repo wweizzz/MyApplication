@@ -15,12 +15,12 @@ import android.view.WindowManager;
 import android.widget.PopupWindow;
 
 /**
+ * <a href="https://github.com/pinguo-zhouwei/CustomPopwindow">CustomPopWindow</a>
  * 自定义PopWindow类，封装了PopWindow的一些常用属性，用Builder模式支持链式调用
  * Created by zhouwei on 16/11/28.
  * <p>
  * private Context mContext; ——> private Activity mActivity;
  */
-
 public class CustomPopWindow implements PopupWindow.OnDismissListener {
     private static final String TAG = "CustomPopWindow";
     private static final float DEFAULT_ALPHA = 0.7f;
@@ -197,13 +197,12 @@ public class CustomPopWindow implements PopupWindow.OnDismissListener {
                     final int x = (int) event.getX();
                     final int y = (int) event.getY();
 
-                    if ((event.getAction() == MotionEvent.ACTION_DOWN)
-                            && ((x < 0) || (x >= mWidth) || (y < 0) || (y >= mHeight))) {
-                        Log.e(TAG, "out side ");
-                        Log.e(TAG, "width:" + mPopupWindow.getWidth() + "height:" + mPopupWindow.getHeight() + " x:" + x + " y  :" + y);
+                    if ((event.getAction() == MotionEvent.ACTION_DOWN) && ((x < 0) || (x >= mWidth) || (y < 0) || (y >= mHeight))) {
+                        println("out side ");
+                        println("width:" + mPopupWindow.getWidth() + "height:" + mPopupWindow.getHeight() + " x:" + x + " y  :" + y);
                         return true;
                     } else if (event.getAction() == MotionEvent.ACTION_OUTSIDE) {
-                        Log.e(TAG, "out side ...");
+                        println("out side ...");
                         return true;
                     }
                     return false;
@@ -361,5 +360,9 @@ public class CustomPopWindow implements PopupWindow.OnDismissListener {
             mCustomPopWindow.build();
             return mCustomPopWindow;
         }
+    }
+
+    private void println(String msg) {
+        Log.e(TAG, msg);
     }
 }

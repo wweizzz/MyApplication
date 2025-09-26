@@ -87,6 +87,7 @@ websocket = "1.6.0"
 pag = "4.4.35"
 lottie = "6.6.7"
 svgaPlayer = "2.6.1"
+gpuimage = "2.1.0"
 # ##################################################################################################
 banner = "2.2.3"
 blurview = "1.2.1"
@@ -115,6 +116,7 @@ gradlePluginObjectBox = "4.3.1"
 gradlePluginKsp = "2.1.10-1.0.31"
 
 dependencyGuard = "0.5.0"
+junitVersion = "1.1.5"
 # ##################################################################################################
 [libraries]
 #
@@ -304,6 +306,8 @@ pag = { group = "com.tencent.tav", name = "libpag", version.ref = "pag" }
 lottie = { group = "com.airbnb.android", name = "lottie", version.ref = "lottie" }
 # https://github.com/svga/SVGAPlayer-Android
 svgaPlayer = { group = "com.github.yyued", name = "SVGAPlayer-Android", version.ref = "svgaPlayer" }
+# https://github.com/cats-oss/android-gpuimage
+gpuimage = { module = "jp.co.cyberagent.android:gpuimage", version.ref = "gpuimage" }
 # ##################################################################################################
 # https://github.com/youth5201314/banner
 banner = { group = "io.github.youth5201314", name = "banner", version.ref = "banner" }
@@ -347,6 +351,7 @@ gradlePlugin-objectbox = { group = "io.objectbox", name = "objectbox-gradle-plug
 gradlePlugin-ksp = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "gradlePluginKsp" }
 gradlePlugin-hilt = { group = "com.google.dagger", name = "hilt-android-gradle-plugin", version.ref = "androidxHilt" }
 gradlePlugin-room = { group = "androidx.room", name = "room-gradle-plugin", version.ref = "androidxRoom" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "gradlePluginAndroid" }

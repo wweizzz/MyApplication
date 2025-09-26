@@ -27,7 +27,7 @@ open class BaseFragment(layout: Int = 0) : NewLazyFragment(layout) {
      */
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
-        showState("onHiddenChanged : hidden : $hidden")
+        println("onHiddenChanged : hidden : $hidden")
     }
 
     /**
@@ -40,7 +40,7 @@ open class BaseFragment(layout: Int = 0) : NewLazyFragment(layout) {
     @Deprecated("Deprecated in Java")
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {
         super.setUserVisibleHint(isVisibleToUser)
-        showState("setUserVisibleHint : isVisibleToUser : $isVisibleToUser")
+        println("setUserVisibleHint : isVisibleToUser : $isVisibleToUser")
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -85,12 +85,12 @@ open class BaseFragment(layout: Int = 0) : NewLazyFragment(layout) {
      * 懒加载，只执行一次
      */
     override fun lazyInit() {
-        showState("lazyInit")
+        println("lazyInit")
     }
 
     override fun onResume() {
         super.onResume()
-        showState("onResume")
+        println("onResume")
     }
 
     override fun onStart() {
@@ -103,7 +103,7 @@ open class BaseFragment(layout: Int = 0) : NewLazyFragment(layout) {
         EventBusHelper.unregister(this)
     }
 
-    private fun showState(state: String) {
-        if (isDebug) Log.e("BaseFragment", state)
+    private fun println(msg: String) {
+        if (isDebug) Log.e(tag, msg)
     }
 }

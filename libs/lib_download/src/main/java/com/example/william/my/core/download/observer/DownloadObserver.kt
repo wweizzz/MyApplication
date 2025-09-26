@@ -6,7 +6,7 @@ import com.example.william.my.core.download.callback.DownloadCallback
 import com.example.william.my.core.download.state.DownloadState
 import com.example.william.my.core.download.task.DownloadTask
 import com.example.william.my.core.okhttp.listener.ResponseProgressListener
-import com.example.william.my.core.okhttp.utils.HttpLog
+import com.example.william.my.core.okhttp.utils.HttpLogger
 import com.example.william.my.core.retrofit.exception.ApiException
 import io.reactivex.rxjava3.observers.DisposableSingleObserver
 import java.lang.ref.SoftReference
@@ -36,7 +36,7 @@ class DownloadObserver(downloadTask: DownloadTask, private val mHandler: Handler
          * 等待状态
          */
         mDownloadTask.state = DownloadState.WAITING.value
-        HttpLog.debug("等待下载：" + mDownloadTask.downloadUrl)
+        HttpLogger.debug("等待下载：" + mDownloadTask.downloadUrl)
         mDownloadCallback.get()?.onProgress(mDownloadTask)
     }
 
@@ -45,7 +45,7 @@ class DownloadObserver(downloadTask: DownloadTask, private val mHandler: Handler
          * 完成状态
          */
         mDownloadTask.state = DownloadState.FINISH.value
-        HttpLog.debug("下载完成：" + downloadTask.downloadUrl)
+        HttpLogger.debug("下载完成：" + downloadTask.downloadUrl)
         mDownloadCallback.get()?.onProgress(mDownloadTask)
 
         /*
@@ -60,7 +60,7 @@ class DownloadObserver(downloadTask: DownloadTask, private val mHandler: Handler
          * 错误状态
          */
         mDownloadTask.state = DownloadState.ERROR.value
-        HttpLog.debug("下载错误：" + mDownloadTask.downloadUrl)
+        HttpLogger.debug("下载错误：" + mDownloadTask.downloadUrl)
 
         if (e is ApiException) {
             mDownloadCallback.get()?.onFailure(e)

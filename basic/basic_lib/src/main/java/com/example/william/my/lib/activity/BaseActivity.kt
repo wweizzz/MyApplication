@@ -9,7 +9,7 @@ import com.gyf.immersionbar.ImmersionBar
 
 open class BaseActivity : AppCompatActivity() {
 
-    val tag: String = this.javaClass.simpleName
+    protected val TAG = this.javaClass.simpleName
 
     override fun onCreate(savedInstanceState: Bundle?) {
         // 在 super.onCreate 之前请求窗口特性

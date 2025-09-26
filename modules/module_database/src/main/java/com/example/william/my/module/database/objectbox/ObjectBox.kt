@@ -2,6 +2,7 @@ package com.example.william.my.module.database.objectbox
 
 import android.content.Context
 import android.util.Log
+import com.example.william.my.basic.basic_module.utils.Utils
 import com.example.william.my.module.database.BuildConfig
 import io.objectbox.BoxStore
 import io.objectbox.android.Admin
@@ -10,7 +11,7 @@ import io.objectbox.exception.FileCorruptException
 
 object ObjectBox {
 
-    private val TAG: String = this.javaClass.simpleName
+    private val TAG = this.javaClass.simpleName
 
     lateinit var boxStore: BoxStore
         private set
@@ -33,10 +34,12 @@ object ObjectBox {
         }
 
         if (BuildConfig.DEBUG) {
-            Log.d(
-                TAG, String.format(
+            Utils.logcat(
+                TAG,
+                String.format(
                     "Using ObjectBox %s (%s)",
-                    BoxStore.getVersion(), BoxStore.getVersionNative()
+                    BoxStore.getVersion(),
+                    BoxStore.getVersionNative()
                 )
             )
             // Enable ObjectBox Admin on debug builds.

@@ -7,7 +7,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.router.activity.RouterRecyclerActivity
 import com.example.william.my.basic.basic_module.router.item.RouterItem
 import com.example.william.my.basic.basic_module.router.path.RouterPath
-import com.example.william.my.lib.utils.Utils
+import com.example.william.my.basic.basic_module.utils.Utils
 
 /**
  * Plugins:
@@ -58,8 +58,12 @@ class ModuleActivity : RouterRecyclerActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Looper.myQueue().addIdleHandler {
-            Utils.d(tag, "addIdleHandler: queueIdle " + Thread.currentThread().name)
+            println("addIdleHandler: queueIdle " + Thread.currentThread().name)
             false
         }
+    }
+
+    fun println(msg: String) {
+        Utils.logcat(TAG, msg)
     }
 }

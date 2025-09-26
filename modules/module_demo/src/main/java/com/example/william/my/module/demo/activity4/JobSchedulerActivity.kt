@@ -13,7 +13,7 @@ import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.activity.BasicResponseActivity
 import com.example.william.my.basic.basic_module.router.path.RouterPath
-import com.example.william.my.lib.utils.Utils
+import com.example.william.my.basic.basic_module.utils.Utils
 import com.example.william.my.module.demo.service.MyJobSchedulerService
 import java.lang.ref.WeakReference
 
@@ -134,7 +134,7 @@ class JobSchedulerActivity : BasicResponseActivity() {
     private fun cancelAllJobs() {
         val jobScheduler = getSystemService(JOB_SCHEDULER_SERVICE) as JobScheduler
         jobScheduler.cancelAll()
-        Utils.show("All jobs cancelled")
+        Utils.toast("All jobs cancelled")
     }
 
     /**
@@ -146,9 +146,9 @@ class JobSchedulerActivity : BasicResponseActivity() {
         if (jobs.size > 0) {
             val jobId = jobs[0].id
             jobScheduler.cancel(jobId)
-            Utils.show("取消 : ")
+            Utils.toast("取消 : ")
         } else {
-            Utils.show("No jobs to cancel")
+            Utils.toast("No jobs to cancel")
         }
     }
 

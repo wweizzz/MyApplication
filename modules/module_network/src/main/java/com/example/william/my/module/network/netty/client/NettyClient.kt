@@ -1,6 +1,6 @@
 package com.example.william.my.module.network.netty.client
 
-import com.example.william.my.lib.utils.Utils
+import com.example.william.my.basic.basic_module.utils.Utils
 import io.netty.bootstrap.Bootstrap
 import io.netty.channel.Channel
 import io.netty.channel.ChannelOption
@@ -55,17 +55,21 @@ object NettyClient {
                 safeChannel.writeAndFlush(msg + "\n")
                 return true
             } else if (!safeChannel.isActive) {
-                Utils.e(TAG, "聊天通道未连接")
+                println("聊天通道未连接")
             } else if (!safeChannel.isWritable) {
-                Utils.e(TAG, "聊天通道连接，但不可写")
+                println("聊天通道连接，但不可写")
             }
         } ?: {
-            Utils.e(TAG, "聊天通道为空")
+            println("聊天通道为空")
         }
         return false
     }
 
     fun getAddress(): String {
         return channel?.remoteAddress()?.toString() ?: ""
+    }
+
+    private fun println(msg: String) {
+        Utils.logcat(TAG, msg)
     }
 }

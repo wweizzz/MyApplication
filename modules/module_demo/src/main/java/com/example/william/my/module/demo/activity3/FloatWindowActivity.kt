@@ -18,7 +18,7 @@ import android.view.animation.LinearInterpolator
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.activity.BasicResponseActivity
 import com.example.william.my.basic.basic_module.router.path.RouterPath
-import com.example.william.my.lib.utils.Utils
+import com.example.william.my.basic.basic_module.utils.Utils
 import com.example.william.my.module.demo.R
 import kotlin.math.abs
 
@@ -146,7 +146,7 @@ class FloatWindowActivity : BasicResponseActivity() {
             })
 
             float.setOnClickListener {
-                Utils.show("您点击了悬浮窗")
+                Utils.toast("您点击了悬浮窗")
             }
         }
     }

@@ -32,7 +32,7 @@ class WebSocketOnSubscribe(
                 if (!emitter.isDisposed) {
                     emitter.onNext(WebSocketInfo(webSocket, null, true))
                 }
-                WebSocketLog.debug("onOpen：$url")
+                WebSocketLogger.debug("onOpen：$url")
             }
 
             override fun onMessage(webSocket: WebSocket, text: String) {
@@ -40,7 +40,7 @@ class WebSocketOnSubscribe(
                 if (!emitter.isDisposed) {
                     emitter.onNext(WebSocketInfo(webSocket, text))
                 }
-                WebSocketLog.debug("onMessageString：$text")
+                WebSocketLogger.debug("onMessageString：$text")
             }
 
             override fun onMessage(webSocket: WebSocket, bytes: ByteString) {
@@ -48,18 +48,18 @@ class WebSocketOnSubscribe(
                 if (!emitter.isDisposed) {
                     emitter.onNext(WebSocketInfo(webSocket, bytes))
                 }
-                WebSocketLog.debug("onMessageByteString：$bytes")
+                WebSocketLogger.debug("onMessageByteString：$bytes")
             }
 
             override fun onClosing(webSocket: WebSocket, code: Int, reason: String) {
                 super.onClosing(webSocket, code, reason)
-                WebSocketLog.debug("onClosing:" + "code:" + code + "reason:" + reason)
+                WebSocketLogger.debug("onClosing:" + "code:" + code + "reason:" + reason)
             }
 
             override fun onClosed(webSocket: WebSocket, code: Int, reason: String) {
                 super.onClosed(webSocket, code, reason)
                 emitter.onNext(WebSocketInfo(false, onClosed = true))
-                WebSocketLog.debug("onClosed:" + "code:" + code + "reason:" + reason)
+                WebSocketLogger.debug("onClosed:" + "code:" + code + "reason:" + reason)
             }
 
             override fun onFailure(webSocket: WebSocket, t: Throwable, response: Response?) {
@@ -67,10 +67,10 @@ class WebSocketOnSubscribe(
                 if (!emitter.isDisposed) {
                     emitter.onError(t)
                 }
-                WebSocketLog.debug("Throwable:$t")
+                WebSocketLogger.debug("Throwable:$t")
                 if (response != null) {
-                    WebSocketLog.debug("onFailure：" + response.code)
-                    WebSocketLog.debug("onFailure：" + Gson().toJson(response.body))
+                    WebSocketLogger.debug("onFailure：" + response.code)
+                    WebSocketLogger.debug("onFailure：" + Gson().toJson(response.body))
                 }
             }
         })

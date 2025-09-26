@@ -1,7 +1,7 @@
 package com.example.william.my.core.okhttp.compat
 
 import com.example.william.my.core.okhttp.interceptor.InterceptorLogging
-import com.example.william.my.core.okhttp.utils.HttpLog
+import com.example.william.my.core.okhttp.utils.HttpLogger
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 
@@ -17,7 +17,7 @@ object CompatLogging {
          */
         builder.addInterceptor(
             HttpLoggingInterceptor { message ->
-                HttpLog.debug(message)
+                HttpLogger.debug(message)
             }.setLevel(HttpLoggingInterceptor.Level.BASIC)
         )
     }

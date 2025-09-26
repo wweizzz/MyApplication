@@ -1,9 +1,7 @@
-package com.example.william.my.module.opensource.activity
+package com.example.william.my.module.opensource.activity5
 
 import android.os.Bundle
 import android.util.TypedValue
-import android.view.MotionEvent
-import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.example.william.my.lib.activity.BaseVBActivity

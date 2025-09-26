@@ -18,7 +18,7 @@ import androidx.work.WorkRequest
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.activity.BasicResponseActivity
 import com.example.william.my.basic.basic_module.router.path.RouterPath
-import com.example.william.my.lib.utils.Utils
+import com.example.william.my.basic.basic_module.utils.Utils
 import com.example.william.my.module.sample.work.ExpeditedWorker
 import com.example.william.my.module.sample.work.UploadWorker
 import java.util.concurrent.TimeUnit
@@ -109,7 +109,7 @@ class WorkManagerActivity : BasicResponseActivity() {
             .observe(this) { value ->
                 if (value != null && value.state == WorkInfo.State.SUCCEEDED) {
                     val progress = value.progress
-                    Utils.e(tag, progress.toString())
+                    Utils.logcat(TAG, progress.toString())
                 }
             }
     }

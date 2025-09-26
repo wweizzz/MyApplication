@@ -8,7 +8,6 @@ import android.renderscript.Element;
 import android.renderscript.RenderScript;
 import android.renderscript.ScriptIntrinsicBlur;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
@@ -22,7 +21,7 @@ import androidx.annotation.AttrRes;
  */
 public class BlurView extends FrameLayout {
 
-    private static final String TAG = BlurView.class.getSimpleName();
+    private final String TAG = getClass().getSimpleName();
 
     private final Context mContext;
 
@@ -54,8 +53,6 @@ public class BlurView extends FrameLayout {
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), resId);
         if (bitmap != null) {
             mBlurImageView.setImageBitmap(blur(mContext, bitmap));
-        } else {
-            Log.e(TAG, "bitmap is null !!");
         }
         mUnclearImageView.setImageResource(resId);
     }

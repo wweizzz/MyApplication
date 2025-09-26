@@ -95,7 +95,7 @@ class VolleyActivity : BasicRecyclerActivity() {
             }
 
         // Set the tag on the request.
-        stringRequest?.tag = tag
+        stringRequest?.tag = TAG
 
         // Add the request to the RequestQueue.
         requestQueue?.add(stringRequest)
@@ -122,7 +122,7 @@ class VolleyActivity : BasicRecyclerActivity() {
             }
 
         // Set the tag on the request.
-        jsonObjectRequest?.tag = tag
+        jsonObjectRequest?.tag = TAG
 
         // Add the request to the RequestQueue.
         requestQueue?.add(jsonObjectRequest)
@@ -130,6 +130,6 @@ class VolleyActivity : BasicRecyclerActivity() {
 
     override fun onStop() {
         super.onStop()
-        requestQueue?.cancelAll(tag)
+        requestQueue?.cancelAll(TAG)
     }
 }

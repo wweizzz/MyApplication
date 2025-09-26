@@ -4,7 +4,7 @@ import android.app.Service
 import android.content.Context
 import android.content.Intent
 import android.os.IBinder
-import com.example.william.my.lib.utils.Utils
+import com.example.william.my.basic.basic_module.utils.Utils
 
 class SocketService : Service() {
 
@@ -20,9 +20,9 @@ class SocketService : Service() {
             socketServer = SocketServer(SocketServer.DEFAULT_SERVER_PORT)
             socketServer?.isReuseAddr = true
             socketServer?.start()
-            Utils.d(TAG, "Start ServerSocket Success...")
+            println("Start ServerSocket Success...")
         } catch (e: Exception) {
-            Utils.e(TAG, "Start ServerSocket Failed...")
+            println("Start ServerSocket Failed...")
             e.printStackTrace()
         }
     }
@@ -31,15 +31,19 @@ class SocketService : Service() {
         super.onDestroy()
         try {
             socketServer?.stop()
-            Utils.d(TAG, "Stop ServerSocket Success...")
+            println("Stop ServerSocket Success...")
         } catch (e: Exception) {
-            Utils.e(TAG, "Stop ServerSocket Failed...")
+            println("Stop ServerSocket Failed...")
             e.printStackTrace()
         }
     }
 
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
         return START_STICKY
+    }
+
+    private fun println(msg: String) {
+        Utils.logcat(TAG, msg)
     }
 
     companion object {

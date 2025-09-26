@@ -4,7 +4,7 @@ import android.app.Service
 import android.content.Intent
 import android.os.Binder
 import android.os.IBinder
-import com.example.william.my.lib.utils.Utils
+import com.example.william.my.basic.basic_module.utils.Utils
 import com.example.william.my.module.demo.IMyAidlInterface
 
 class MyAIDLService : Service() {
@@ -29,13 +29,13 @@ class MyAIDLService : Service() {
 
     class XBinder : Binder() {
         fun showToast(s: String?) {
-            Utils.show(s)
+            Utils.toast(s)
         }
     }
 
     class AIDLBinder : IMyAidlInterface.Stub() {
         override fun showToast(message: String?) {
-            Utils.show(message)
+            Utils.toast(message)
         }
     }
 }

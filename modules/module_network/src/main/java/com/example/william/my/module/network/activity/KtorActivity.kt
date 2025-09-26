@@ -1,11 +1,11 @@
 package com.example.william.my.module.network.activity
 
-import android.util.Log
 import androidx.lifecycle.lifecycleScope
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.activity.BasicRecyclerActivity
 import com.example.william.my.basic.basic_module.base.Constants
 import com.example.william.my.basic.basic_module.router.path.RouterPath
+import com.example.william.my.basic.basic_module.utils.Utils
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.okhttp.OkHttp
 import io.ktor.client.plugins.logging.LogLevel
@@ -45,7 +45,7 @@ class KtorActivity : BasicRecyclerActivity() {
         install(Logging) {
             logger = object : Logger {
                 override fun log(message: String) {
-                    Log.e("Ktor Logging : ", message)
+                    Utils.logcat(TAG, message)
                 }
             }
 

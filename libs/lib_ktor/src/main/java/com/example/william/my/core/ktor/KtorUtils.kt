@@ -44,6 +44,8 @@ import javax.net.ssl.SSLHandshakeException
 
 object KtorUtils {
 
+    private val TAG = this.javaClass.simpleName
+
     val httpClient = HttpClient(OkHttp) {
 
         // 禁用重定向
@@ -118,7 +120,7 @@ object KtorUtils {
         install(Logging) {
             logger = object : Logger {
                 override fun log(message: String) {
-                    Log.e("Ktor Logging : ", message)
+                    Log.e(TAG, message)
                 }
             }
 

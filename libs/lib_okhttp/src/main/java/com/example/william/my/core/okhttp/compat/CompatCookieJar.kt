@@ -15,7 +15,7 @@ object CompatCookieJar {
     //    OkHttpConfig.app?.let { app ->
     //        builder.addInterceptor(InterceptorCookie(app))
     //    } ?: {
-    //        HttpLog.error("context == null. cookie 缓存未启用.")
+    //        HttpLogger.error("context == null. cookie 缓存未启用.")
     //    }
     //}
 

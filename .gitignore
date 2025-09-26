@@ -153,7 +153,6 @@ obj/
 .idea/assetWizardSettings.xml
 .idea/gradle.xml
 .idea/jarRepositories.xml
-.idea/navEditor.xml
 
 # OS-specific files
 .DS_Store?
@@ -194,5 +193,8 @@ fabric.properties
 ### AndroidStudio Patch ###
 
 !/gradle/wrapper/gradle-wrapper.jar
+
+# JNI files
+.cxx/
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,windows,androidstudio

@@ -53,6 +53,7 @@ object RouterPath {
         const val RenderEffect = "${Demo}/RenderEffect"
         const val RenderScript = "${Demo}/RenderScript"
 
+        const val Camera = "${Demo}/Camera"
         const val Crop = "${Demo}/Crop"
         const val FloatWindow = "${Demo}/FloatWindow"
         const val Hook = "${Demo}/Hook"
@@ -100,7 +101,7 @@ object RouterPath {
 
         const val Main = "${Opensource}/Main"
         const val Banner = "${Opensource}/Banner"
-        const val BlurView = "${Opensource}/BlurView"
+
         const val CityPicker = "${Opensource}/CityPicker"
         const val CountdownView = "${Opensource}/CountdownView"
         const val EasyFloat = "${Opensource}/EasyFloat"
@@ -123,6 +124,7 @@ object RouterPath {
         const val RxJava = "${Opensource}/RxJava"
 
         const val Imagen = "${Opensource}/Imagen"
+        const val BlurView = "${Opensource}/BlurView"
     }
 
     object Database {

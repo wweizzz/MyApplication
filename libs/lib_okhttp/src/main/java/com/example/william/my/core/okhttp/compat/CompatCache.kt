@@ -4,7 +4,7 @@ import android.app.Application
 import android.os.Environment
 import com.example.william.my.core.okhttp.config.OkHttpConfig
 import com.example.william.my.core.okhttp.interceptor.InterceptorCache
-import com.example.william.my.core.okhttp.utils.HttpLog
+import com.example.william.my.core.okhttp.utils.HttpLogger
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import java.io.File
@@ -20,7 +20,7 @@ object CompatCache {
             builder.cache(Cache(cacheFile, OkHttpConfig.getCacheDirSize()))
             builder.addNetworkInterceptor(InterceptorCache(app))
         } ?: {
-            HttpLog.error("context == null. 缓存未启用.")
+            HttpLogger.error("context == null. 缓存未启用.")
         }
     }
 

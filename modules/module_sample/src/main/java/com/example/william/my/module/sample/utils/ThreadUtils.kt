@@ -1,7 +1,7 @@
 package com.example.william.my.module.sample.utils
 
 import android.os.Looper
-import com.example.william.my.lib.utils.Utils
+import com.example.william.my.basic.basic_module.utils.Utils
 
 object ThreadUtils {
 
@@ -9,6 +9,6 @@ object ThreadUtils {
 
     fun isMainThread(name: String) {
         val isMainThread = Looper.myLooper() == Looper.getMainLooper()
-        Utils.e(TAG, "$name isMainThread : $isMainThread")
+        Utils.logcat(TAG, "$name isMainThread : $isMainThread")
     }
 }

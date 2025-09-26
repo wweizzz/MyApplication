@@ -6,7 +6,7 @@ import android.content.Context
 import android.content.pm.ProviderInfo
 import android.database.Cursor
 import android.net.Uri
-import com.example.william.my.lib.utils.Utils
+import android.util.Log
 
 /**
  * ContentProvider 初始化的顺序：
@@ -16,15 +16,17 @@ import com.example.william.my.lib.utils.Utils
  */
 class InitProvider : ContentProvider() {
 
-    private val tag = "InitProvider"
+    private val TAG = this.javaClass.simpleName
 
     override fun attachInfo(context: Context, info: ProviderInfo) {
+        println("InitProvider attachInfo before")
         super.attachInfo(context, info)
+        println("InitProvider attachInfo after")
     }
 
     override fun onCreate(): Boolean {
         // 这里可以初始化你需要的代码
-        Utils.d(tag, "InitProvider init")
+        println("InitProvider onCreate init")
         return true
     }
 
@@ -57,5 +59,9 @@ class InitProvider : ContentProvider() {
         selectionArgs: Array<String>?
     ): Int {
         return 0
+    }
+
+    private fun println(msg: String) {
+        Log.e(TAG, msg)
     }
 }

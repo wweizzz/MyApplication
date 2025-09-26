@@ -10,9 +10,9 @@ import autodispose2.AutoDispose
 import autodispose2.androidx.lifecycle.AndroidLifecycleScopeProvider
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.router.path.RouterPath
+import com.example.william.my.basic.basic_module.utils.Utils
 import com.example.william.my.basic.basic_repo.data.ServiceLocator
 import com.example.william.my.lib.activity.BaseVBActivity
-import com.example.william.my.lib.utils.Utils
 import com.example.william.my.module.room.databinding.SampleActivityPagingBinding
 import com.example.william.my.module.room.paging.adapter.PagingAdapter
 import com.example.william.my.module.room.paging.adapter.PagingStateAdapter
@@ -73,9 +73,17 @@ class PagingActivity : BaseVBActivity<SampleActivityPagingBinding>() {
         //获取加载状态
         mAdapter.addLoadStateListener {
             when (it.refresh) {
-                is LoadState.NotLoading -> Utils.d("Paging", "is NotLoading")
-                is LoadState.Loading -> Utils.d("Paging", "is Loading")
-                is LoadState.Error -> Utils.d("Paging", "is Error")
+                is LoadState.NotLoading -> {
+                    Utils.logcat("Paging", "is NotLoading")
+                }
+
+                is LoadState.Loading -> {
+                    Utils.logcat("Paging", "is Loading")
+                }
+
+                is LoadState.Error -> {
+                    Utils.logcat("Paging", "is Error")
+                }
             }
         }
 

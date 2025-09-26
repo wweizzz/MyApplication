@@ -3,7 +3,7 @@ package com.example.william.my.lib.utils
 import android.content.Context
 import android.net.Uri
 import android.os.Environment
-import android.util.Log
+import com.example.william.my.lib.app.BaseApp
 import java.io.BufferedOutputStream
 import java.io.BufferedWriter
 import java.io.File
@@ -23,6 +23,8 @@ import java.io.OutputStream
  * 两个目录分别对应 设置->应用->应用详情里面的”清除数据“与”清除缓存“选项
  */
 object FileSDCardUtil {
+
+    private val TAG = this.javaClass.simpleName
 
     fun isSDCardEnableByEnvironment(): Boolean {
         return Environment.MEDIA_MOUNTED == Environment.getExternalStorageState()
@@ -112,10 +114,6 @@ object FileSDCardUtil {
 
     fun writeFileFromString(file: File?, content: String?, append: Boolean): Boolean {
         if (file == null || content == null) return false
-        if (!createOrExistsFile(file)) {
-            Log.e("FileIOUtils", "create file <$file> failed.")
-            return false
-        }
         var bw: BufferedWriter? = null
         return try {
             bw = BufferedWriter(FileWriter(file, append))
@@ -133,22 +131,26 @@ object FileSDCardUtil {
         }
     }
 
-    fun writeFileFromIS(file: File?, inputStream: InputStream) {
+    fun writeFileFromIS(file: File?, inputStream: InputStream): Boolean {
         var os: OutputStream? = null
-        try {
+        return try {
             os = BufferedOutputStream(FileOutputStream(file), 1024 * 4)
             val data = ByteArray(1024 * 4)
             var len: Int
             while (inputStream.read(data).also { len = it } != -1) {
                 os.write(data, 0, len)
             }
+            true
         } catch (e: IOException) {
             e.printStackTrace()
+            false
         } finally {
             try {
                 inputStream.close()
+
             } catch (e: IOException) {
                 e.printStackTrace()
+
             }
             try {
                 os?.close()
@@ -158,17 +160,19 @@ object FileSDCardUtil {
         }
     }
 
-    fun writeFileFromIS(context: Context, uri: Uri?, inputStream: InputStream) {
+    fun writeFileFromIS(uri: Uri?, inputStream: InputStream): Boolean {
         var os: OutputStream? = null
-        try {
-            os = context.contentResolver.openOutputStream(uri!!)
+        return try {
+            os = BaseApp.app.contentResolver.openOutputStream(uri!!)
             val data = ByteArray(1024 * 4)
             var len: Int
             while (inputStream.read(data).also { len = it } != -1) {
                 os?.write(data, 0, len)
             }
+            true
         } catch (e: IOException) {
             e.printStackTrace()
+            false
         } finally {
             try {
                 inputStream.close()

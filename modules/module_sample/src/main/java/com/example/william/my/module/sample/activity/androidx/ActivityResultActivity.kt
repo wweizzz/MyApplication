@@ -11,7 +11,7 @@ import androidx.activity.result.contract.ActivityResultContracts.StartActivityFo
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.activity.BasicResponseActivity
 import com.example.william.my.basic.basic_module.router.path.RouterPath
-import com.example.william.my.lib.utils.Utils
+import com.example.william.my.basic.basic_module.utils.Utils
 
 /**
  * ActivityResultContracts
@@ -54,9 +54,9 @@ class ActivityResultActivity : BasicResponseActivity() {
     private var requestPermission =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) {
             if (it) {// 同意
-                Utils.show("您同意了权限申请")
+                Utils.toast("您同意了权限申请")
             } else {// 拒绝
-                Utils.show("您拒绝了权限申请")
+                Utils.toast("您拒绝了权限申请")
             }
         }
 
@@ -64,9 +64,9 @@ class ActivityResultActivity : BasicResponseActivity() {
     private var requestMultiplePermissions =
         registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) {
             if (it[Manifest.permission.CAMERA]!!) {// 同意
-                Utils.show("您同意了权限申请")
+                Utils.toast("您同意了权限申请")
             } else {// 拒绝
-                Utils.show("您拒绝了权限申请")
+                Utils.toast("您拒绝了权限申请")
             }
         }
 

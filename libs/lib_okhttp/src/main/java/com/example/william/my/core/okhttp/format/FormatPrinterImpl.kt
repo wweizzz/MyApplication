@@ -15,7 +15,7 @@ import okhttp3.Response
  */
 object FormatPrinterImpl : FormatPrinter {
 
-    private const val TAG = "HttpLog"
+    private const val TAG = "HttpLogger"
 
     private const val LINE_CHAR_COUNT = 180
 
@@ -74,11 +74,11 @@ object FormatPrinterImpl : FormatPrinter {
     override fun printJsonRequest(request: Request, bodyString: String) {
         if (shouldPrint(getUrl(request))) {
             val tag = "$TAG-Request"
-            Log.d(tag, REQUEST_UP_LINE)
+            println(tag, REQUEST_UP_LINE)
             logLines(tag, getUrl(request), false)
             logLines(tag, getHeaders(request), true)
             logLines(tag, getRequestBody(bodyString), true)
-            Log.d(tag, END_LINE)
+            println(tag, END_LINE)
         }
     }
 
@@ -89,11 +89,11 @@ object FormatPrinterImpl : FormatPrinter {
      */
     override fun printFileRequest(request: Request) {
         val tag = "$TAG-Request"
-        Log.d(tag, REQUEST_UP_LINE)
+        println(tag, REQUEST_UP_LINE)
         logLines(tag, getUrl(request), false)
         logLines(tag, getHeaders(request), true)
         logLines(tag, OMITTED_REQUEST, true)
-        Log.d(tag, END_LINE)
+        println(tag, END_LINE)
     }
 
     /**
@@ -107,11 +107,11 @@ object FormatPrinterImpl : FormatPrinter {
     ) {
         if (shouldPrint(getUrl(response))) {
             val tag = "$TAG-Response"
-            Log.d(tag, RESPONSE_UP_LINE)
+            println(tag, RESPONSE_UP_LINE)
             logLines(tag, getUrl(response), false)
             logLines(tag, getHeaders(response, tookMs), true)
             logLines(tag, getResponseBody(mediaType, bodyString), true)
-            Log.d(tag, END_LINE)
+            println(tag, END_LINE)
         }
     }
 
@@ -120,11 +120,11 @@ object FormatPrinterImpl : FormatPrinter {
      */
     override fun printFileResponse(tookMs: Long, response: Response) {
         val tag = "$TAG-Response"
-        Log.d(tag, RESPONSE_UP_LINE)
+        println(tag, RESPONSE_UP_LINE)
         logLines(tag, getUrl(response), false)
         logLines(tag, getHeaders(response, tookMs), true)
         logLines(tag, OMITTED_RESPONSE, true)
-        Log.d(tag, END_LINE)
+        println(tag, END_LINE)
     }
 
     private fun shouldPrint(url: Array<String>): Boolean {
@@ -151,7 +151,7 @@ object FormatPrinterImpl : FormatPrinter {
                 val start = i * maxLongSize
                 var end = (i + 1) * maxLongSize
                 end = end.coerceAtMost(line.length)
-                Log.d(resolveTag(tag), DEFAULT_LINE + line.substring(start, end))
+                println(resolveTag(tag), DEFAULT_LINE + line.substring(start, end))
             }
         }
     }
@@ -277,5 +277,9 @@ object FormatPrinterImpl : FormatPrinter {
             }
         }
         return builder.toString()
+    }
+
+    fun println(tag: String, message: String) {
+        Log.d(tag, message)
     }
 }

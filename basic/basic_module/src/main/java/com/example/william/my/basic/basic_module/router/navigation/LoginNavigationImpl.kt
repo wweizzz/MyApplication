@@ -2,7 +2,7 @@ package com.example.william.my.basic.basic_module.router.navigation
 
 import com.alibaba.android.arouter.facade.Postcard
 import com.alibaba.android.arouter.facade.callback.NavigationCallback
-import com.example.william.my.lib.utils.Utils
+import com.example.william.my.basic.basic_module.utils.Utils
 
 /**
  * 跳转页面监听
@@ -13,18 +13,22 @@ class LoginNavigationImpl : NavigationCallback {
     private val TAG = "LoginNavigation"
 
     override fun onFound(postcard: Postcard) {
-        Utils.d(TAG, "找到了:" + postcard.path)
+        println("找到了:" + postcard.path)
     }
 
     override fun onLost(postcard: Postcard) {
-        Utils.d(TAG, "找不到了:" + postcard.path)
+        println("找不到了:" + postcard.path)
     }
 
     override fun onArrival(postcard: Postcard) {
-        Utils.d(TAG, "跳转完了:" + postcard.path)
+        println("跳转完了:" + postcard.path)
     }
 
     override fun onInterrupt(postcard: Postcard) {
-        Utils.d(TAG, "被拦截了:" + postcard.path)
+        println("被拦截了:" + postcard.path)
+    }
+
+    private fun println(msg: String) {
+        Utils.logcat(TAG, msg)
     }
 }

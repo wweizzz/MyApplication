@@ -2,11 +2,11 @@ package com.example.william.my.application.hilt
 
 import android.app.Application
 import com.example.william.my.basic.basic_lib.MyLibEventBusIndex
+import com.example.william.my.basic.basic_module.utils.Utils
 import com.example.william.my.lib.eventbus.EventBusHelper
 import com.example.william.my.lib.hilt.interfaces.IAppInit
 import com.example.william.my.lib.utils.CrashUtils
 import com.example.william.my.lib.utils.FileSDCardUtil
-import com.example.william.my.lib.utils.Utils
 import com.example.william.my.modules.module_libraries.MyLibrariesEventBusIndex
 import javax.inject.Inject
 
@@ -31,7 +31,7 @@ class AppInitImpl @Inject constructor() : IAppInit {
             app, FileSDCardUtil.getCacheDirPath(app.applicationContext),
             object : CrashUtils.OnCrashListener {
                 override fun onCrash(crashInfo: CrashUtils.CrashInfo) {
-                    Utils.e("CrashUtils", crashInfo.throwable.message.toString())
+                    Utils.logcat("CrashUtils", crashInfo.throwable.message.toString())
                 }
             })
     }

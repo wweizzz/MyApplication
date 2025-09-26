@@ -4,10 +4,12 @@ import android.content.Context
 import androidx.work.Data
 import androidx.work.Worker
 import androidx.work.WorkerParameters
-import com.example.william.my.lib.utils.Utils
+import com.example.william.my.basic.basic_module.utils.Utils
 
 class UploadWorker(appContext: Context, workerParams: WorkerParameters) :
     Worker(appContext, workerParams) {
+
+    private val TAG = this.javaClass.simpleName
 
     override fun doWork(): Result {
         // Get the input
@@ -30,6 +32,6 @@ class UploadWorker(appContext: Context, workerParams: WorkerParameters) :
     }
 
     private fun uploadImages(s: String) {
-        Utils.e("Worker", "uploadImages: $s")
+        Utils.logcat(TAG, "uploadImages: $s")
     }
 }

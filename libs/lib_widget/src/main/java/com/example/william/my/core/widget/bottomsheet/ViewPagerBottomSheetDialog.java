@@ -181,7 +181,7 @@ public class ViewPagerBottomSheetDialog extends AppCompatDialog {
             //container =
             //        (FrameLayout) View.inflate(getContext(), R.layout.design_bottom_sheet_dialog, null);
             container =
-                    (FrameLayout) View.inflate(getContext(), R.layout.bottom_sheet_dialog, null);
+                    (FrameLayout) View.inflate(getContext(), R.layout.dialog_bottom_sheet, null);
 
             FrameLayout bottomSheet = container.findViewById(R.id.design_bottom_sheet);
             behavior = ViewPagerBottomSheetBehavior.from(bottomSheet);

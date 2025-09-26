@@ -7,7 +7,7 @@ import com.example.william.my.basic.basic_module.R
 import com.example.william.my.basic.basic_module.activity.BasicResponseActivity
 import com.example.william.my.basic.basic_module.databinding.BasicsLayoutResponseBinding
 import com.example.william.my.basic.basic_module.router.path.RouterPath
-import com.example.william.my.lib.utils.Utils
+import com.example.william.my.basic.basic_module.utils.Utils
 
 /**
  * https://github.com/pinguo-zhouwei/CustomPopwindow
@@ -49,7 +49,7 @@ class PopWindowActivity : BasicResponseActivity() {
             )
         )
         binding.basicsResponse.setOnClickListener {
-            Utils.show("您点击了按钮")
+            Utils.toast("您点击了按钮")
         }
     }
 }

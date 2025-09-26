@@ -6,7 +6,7 @@ import android.content.Intent
 import android.os.IBinder
 import androidx.core.app.NotificationCompat
 import com.example.william.my.basic.basic_module.R
-import com.example.william.my.lib.utils.Utils
+import com.example.william.my.basic.basic_module.utils.Utils
 
 /**
  * 前台服务
@@ -43,7 +43,7 @@ class MyForegroundService : Service() {
      * 每次通过startService()方法启动Service时都会被调用
      */
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
-        Utils.show("前台服务已启动")
+        Utils.toast("前台服务已启动")
         return super.onStartCommand(intent, flags, startId)
     }
 

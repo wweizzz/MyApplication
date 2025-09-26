@@ -15,25 +15,27 @@
         <activity android:name=".activity.ViewPagerActivity2" />
         <activity android:name=".activity.WebViewActivity" />
 
+        <activity android:name=".activity2.AnimatorActivity" />
+        <activity android:name=".activity2.NotificationActivity" />
+        <activity android:name=".activity2.PermissionActivity" />
+        <activity android:name=".activity2.RenderEffectActivity" />
+        <activity android:name=".activity2.RenderScriptActivity" />
+        <activity android:name=".activity2.TransitionFirstActivity" />
+        <activity android:name=".activity2.TransitionSecondActivity" />
+        <activity android:name=".activity2.TypefaceActivity" />
+
+        <activity android:name=".activity3.CropActivity" />
+        <activity android:name=".activity3.FloatWindowActivity" />
+        <activity android:name=".activity3.HookActivity" />
+        <activity android:name=".activity3.CameraActivity" />
+        <activity android:name=".activity3.TurntableActivity" />
+
         <activity android:name=".activity4.AsyncTaskActivity" />
         <activity android:name=".activity4.BroadcastActivity" />
         <activity android:name=".activity4.HandlerThreadActivity" />
         <activity android:name=".activity4.JobSchedulerActivity" />
         <activity android:name=".activity4.MessengerActivity" />
-        <activity android:name=".activity2.NotificationActivity" />
-        <activity android:name=".activity2.PermissionActivity" />
         <activity android:name=".activity4.ServiceActivity" />
-
-        <activity android:name=".activity2.AnimatorActivity" />
-        <activity android:name=".activity3.CropActivity" />
-        <activity android:name=".activity3.FloatWindowActivity" />
-        <activity android:name=".activity3.HookActivity" />
-        <activity android:name=".activity2.TransitionFirstActivity" />
-        <activity android:name=".activity2.TransitionSecondActivity" />
-        <activity android:name=".activity3.TurntableActivity" />
-        <activity android:name=".activity2.TypefaceActivity" />
-        <activity android:name=".activity2.RenderEffectActivity" />
-        <activity android:name=".activity2.RenderScriptActivity" />
 
         <service android:name=".service.MyAIDLService" />
         <service android:name=".service.MyForegroundService" />

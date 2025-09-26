@@ -9,7 +9,7 @@ import com.example.william.my.core.download.task.DownloadTask
 import com.example.william.my.core.download.utils.FileUtils
 import com.example.william.my.core.okhttp.helper.OkHttpHelper
 import com.example.william.my.core.okhttp.interceptor.InterceptorProgress
-import com.example.william.my.core.okhttp.utils.HttpLog
+import com.example.william.my.core.okhttp.utils.HttpLogger
 import com.example.william.my.core.retrofit.api.Api
 import com.example.william.my.core.retrofit.helper.RetrofitHelper
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -72,7 +72,7 @@ object RxDownload {
             if (task.state == DownloadState.STOP.value || task.state == DownloadState.ERROR.value) {
                 true
             } else {
-                HttpLog.debug("已添加任务：" + task.downloadUrl)
+                HttpLogger.debug("已添加任务：" + task.downloadUrl)
                 false
             }
         } != false
@@ -84,7 +84,7 @@ object RxDownload {
     private fun checkFile(downloadTask: DownloadTask): Boolean {
         if (!FileUtils.isFileExists(downloadTask) && downloadTask.currentSize > 0) {
             downloadTask.currentSize = 0
-            HttpLog.debug("已存在文件：" + downloadTask.downloadUrl)
+            HttpLogger.debug("已存在文件：" + downloadTask.downloadUrl)
             return false
         }
         return true
@@ -93,7 +93,7 @@ object RxDownload {
     fun stop(downloadTask: DownloadTask?) {
         if (downloadTask == null) return
 
-        HttpLog.debug("暂停任务：" + downloadTask.downloadUrl)
+        HttpLogger.debug("暂停任务：" + downloadTask.downloadUrl)
 
         /**
          * 移除队列
@@ -114,7 +114,7 @@ object RxDownload {
     fun remove(downloadTask: DownloadTask?, removeFile: Boolean = false) {
         if (downloadTask == null) return
 
-        HttpLog.debug("移除任务：" + downloadTask.downloadUrl)
+        HttpLogger.debug("移除任务：" + downloadTask.downloadUrl)
 
         /**
          * 暂停任务

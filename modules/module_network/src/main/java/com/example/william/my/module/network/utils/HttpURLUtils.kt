@@ -1,6 +1,6 @@
 package com.example.william.my.module.network.utils
 
-import com.example.william.my.lib.utils.Utils
+import com.example.william.my.basic.basic_module.utils.Utils
 import org.json.JSONObject
 import java.io.BufferedReader
 import java.io.InputStreamReader
@@ -37,8 +37,8 @@ object HttpURLUtils {
             connection.readTimeout = 3000
 
             // 打印请求头
-            Utils.e("HTTP_REQUEST", "Request Method: " + connection.requestMethod)
-            Utils.e("HTTP_REQUEST", "Request Headers: " + connection.requestProperties.toString())
+            logcat("HTTP_REQUEST", "Request Method: " + connection.requestMethod)
+            logcat("HTTP_REQUEST", "Request Headers: " + connection.requestProperties.toString())
 
             // 设置使用标准编码格式编码参数：名-值对
             connection.setRequestProperty("Content-Type", CONTENT_TYPE_FORM)
@@ -55,12 +55,12 @@ object HttpURLUtils {
             outputStream.close()
 
             val headers = connection.headerFields
-            Utils.e("HTTP_RESPONSE", "Response Headers: $headers")
+            logcat("HTTP_RESPONSE", "Response Headers: $headers")
 
 
             // 5. 得到响应状态码的返回值 responseCode
             val code = connection.responseCode
-            Utils.e("HTTP_RESPONSE", "Response Code: $code")
+            logcat("HTTP_RESPONSE", "Response Code: $code")
 
             // 6. 如果返回值正常，数据在网络中是以流的形式得到服务端返回的数据
             val response = StringBuilder()
@@ -73,7 +73,7 @@ object HttpURLUtils {
                 }
                 // 关闭流
                 reader.close()
-                Utils.e("HTTP_RESPONSE", "Response Body: $response")
+                logcat("HTTP_RESPONSE", "Response Body: $response")
             }
             // 7. 断开连接
             connection.disconnect()
@@ -106,8 +106,8 @@ object HttpURLUtils {
             connection.readTimeout = 3000
 
             // 打印请求头
-            Utils.e("HTTP_REQUEST", "Request Method: " + connection.requestMethod)
-            Utils.e("HTTP_REQUEST", "Request Headers: " + connection.requestProperties.toString())
+            logcat("HTTP_REQUEST", "Request Method: " + connection.requestMethod)
+            logcat("HTTP_REQUEST", "Request Headers: " + connection.requestProperties.toString())
 
             // 设置使用标准编码格式编码参数：名-值对
             connection.setRequestProperty("Content-Type", CONTENT_TYPE_JSON)
@@ -124,12 +124,12 @@ object HttpURLUtils {
             outputStream.close()
 
             val headers = connection.headerFields
-            Utils.e("HTTP_RESPONSE", "Response Headers: $headers")
+            logcat("HTTP_RESPONSE", "Response Headers: $headers")
 
 
             // 5. 得到响应状态码的返回值 responseCode
             val code = connection.responseCode
-            Utils.e("HTTP_RESPONSE", "Response Code: $code")
+            logcat("HTTP_RESPONSE", "Response Code: $code")
 
             // 6. 如果返回值正常，数据在网络中是以流的形式得到服务端返回的数据
             val response = StringBuilder()
@@ -142,7 +142,7 @@ object HttpURLUtils {
                 }
                 // 关闭流
                 reader.close()
-                Utils.e("HTTP_RESPONSE", "Response Body: $response")
+                logcat("HTTP_RESPONSE", "Response Body: $response")
             }
             // 7. 断开连接
             connection.disconnect()
@@ -183,5 +183,9 @@ object HttpURLUtils {
          * user-readable message.
          */
         fun onErrorResponse(error: Exception?)
+    }
+
+    fun logcat(tag: String, message: String) {
+        Utils.logcat(tag, message)
     }
 }

@@ -22,6 +22,8 @@ import java.util.Locale
 @SuppressLint("MissingPermission")
 object LocationManagerUtils {
 
+    private val TAG = this.javaClass.simpleName
+
     private var minTimeMs: Long = 1000L
     private var minDistanceM: Float = 1f
 
@@ -115,7 +117,7 @@ object LocationManagerUtils {
 
     fun getLocalCity(context: Context, location: Location?): String? {
         if (location == null) {
-            logcat("getLocalCity: 获取城市信息为空")
+            println("getLocalCity: 获取城市信息为空")
             return ""
         }
         val result = getAddress(context, location)
@@ -130,7 +132,7 @@ object LocationManagerUtils {
 
     fun getAddressStr(context: Context, location: Location?): String? {
         if (location == null) {
-            logcat("getAddressStr: 获取详细地址信息为空")
+            println("getAddressStr: 获取详细地址信息为空")
             return ""
         }
         val result = getAddress(context, location)
@@ -145,7 +147,7 @@ object LocationManagerUtils {
 
     fun getLocation(): Location? {
         if (mLocation == null) {
-            logcat("getLocation: 获取当前位置信息为空")
+            println("getLocation: 获取当前位置信息为空")
             return null
         }
         return mLocation
@@ -172,29 +174,40 @@ object LocationManagerUtils {
         // 定位启动
         override fun onStarted() {
             super.onStarted()
-            logcat("定位启动")
+            println("定位启动")
         }
 
         // 定位结束
         override fun onStopped() {
             super.onStopped()
-            logcat("定位结束")
+            println("定位结束")
         }
 
         // 第一次定位
         override fun onFirstFix(ttffMillis: Int) {
             super.onFirstFix(ttffMillis)
-            logcat("第一次定位")
+            println("第一次定位")
         }
 
     }
 
     private val listener = GpsStatus.Listener { event ->
         when (event) {
-            GpsStatus.GPS_EVENT_FIRST_FIX -> logcat("第一次定位")
-            GpsStatus.GPS_EVENT_SATELLITE_STATUS -> {}
-            GpsStatus.GPS_EVENT_STARTED -> logcat("定位启动")
-            GpsStatus.GPS_EVENT_STOPPED -> logcat("定位结束")
+            GpsStatus.GPS_EVENT_FIRST_FIX -> {
+                println("第一次定位")
+            }
+
+            GpsStatus.GPS_EVENT_SATELLITE_STATUS -> {
+
+            }
+
+            GpsStatus.GPS_EVENT_STARTED -> {
+                println("定位启动")
+            }
+
+            GpsStatus.GPS_EVENT_STOPPED -> {
+                println("定位结束")
+            }
         }
     }
 
@@ -210,9 +223,17 @@ object LocationManagerUtils {
         @Deprecated("Deprecated in Java")
         override fun onStatusChanged(provider: String, status: Int, extras: Bundle) {
             when (status) {
-                LocationProvider.AVAILABLE -> logcat("当前GPS状态为可见状态")
-                LocationProvider.OUT_OF_SERVICE -> logcat("当前GPS状态为服务区外状态")
-                LocationProvider.TEMPORARILY_UNAVAILABLE -> logcat("当前GPS状态为暂停服务状态")
+                LocationProvider.AVAILABLE -> {
+                    println("当前GPS状态为可见状态")
+                }
+
+                LocationProvider.OUT_OF_SERVICE -> {
+                    println("当前GPS状态为服务区外状态")
+                }
+
+                LocationProvider.TEMPORARILY_UNAVAILABLE -> {
+                    println("当前GPS状态为暂停服务状态")
+                }
             }
         }
 
@@ -233,7 +254,7 @@ object LocationManagerUtils {
         fun locationSuccess(location: Location?)
     }
 
-    private fun logcat(msg: String) {
-        Log.d("TAG", msg)
+    private fun println(msg: String) {
+        Log.e(TAG, msg)
     }
 }

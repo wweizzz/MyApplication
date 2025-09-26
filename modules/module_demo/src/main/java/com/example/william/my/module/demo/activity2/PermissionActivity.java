@@ -11,7 +11,7 @@ import androidx.core.content.ContextCompat;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.example.william.my.basic.basic_module.activity.BasicResponseActivity;
 import com.example.william.my.basic.basic_module.router.path.RouterPath;
-import com.example.william.my.lib.utils.Utils;
+import com.example.william.my.basic.basic_module.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -84,7 +84,7 @@ public class PermissionActivity extends BasicResponseActivity {
         for (int grantResult : grantResults) {
             if (grantResult != PackageManager.PERMISSION_GRANTED) {
                 // 同意权限申请
-                Utils.INSTANCE.show("同意权限申请");
+                Utils.INSTANCE.toast("同意权限申请");
             }
         }
     }

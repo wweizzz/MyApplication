@@ -85,6 +85,7 @@ include(":libs:lib_widget")
 
 include(":libs:lib_eventbus")
 include(":libs:lib_ninepatch")
+include(":libs:lib_yuvengine")
 
 include(":modules:module_demo")
 include(":modules:module_widget")

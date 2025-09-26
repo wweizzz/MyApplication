@@ -2,7 +2,7 @@ package com.example.william.my.core.okhttp.interceptor
 
 import com.example.william.my.core.okhttp.body.ResponseProgressBody
 import com.example.william.my.core.okhttp.listener.ResponseProgressListener
-import com.example.william.my.core.okhttp.utils.HttpLog
+import com.example.william.my.core.okhttp.utils.HttpLogger
 import okhttp3.Interceptor
 import okhttp3.Request
 import okhttp3.Response
@@ -13,7 +13,7 @@ import okhttp3.Response
 class InterceptorProgress(
     private val listener: ResponseProgressListener = object : ResponseProgressListener {
         override fun onProgress(url: String, currentSize: Long, totalSize: Long) {
-            HttpLog.debug("url : " + url + " , progress : " + (+currentSize * 100 / totalSize))
+            HttpLogger.debug("url : " + url + " , progress : " + (+currentSize * 100 / totalSize))
         }
     }
 ) : Interceptor {

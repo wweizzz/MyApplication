@@ -36,7 +36,7 @@ public class HookProxyFrameLayout extends FrameLayout {
                 //ACTION_DOWN do some thing
                 View touchViewDown = findEventSrcView(ev, this);
                 if (touchViewDown != null) {
-                    ViewUtils.logcat(TAG, "Activity:" + resumedActivity.getClass().getName()
+                    ViewUtils.println(TAG, "Activity:" + resumedActivity.getClass().getName()
                             + "- ACTION_DOWN:" + ViewUtils.getAbsolutePath(touchViewDown));
                 }
             }
@@ -47,7 +47,7 @@ public class HookProxyFrameLayout extends FrameLayout {
                 //ACTION_UP do some thing
                 View touchViewUp = findEventSrcView(ev, this);
                 if (touchViewUp != null) {
-                    ViewUtils.logcat(TAG, "Activity:" + resumedActivity.getClass().getName()
+                    ViewUtils.println(TAG, "Activity:" + resumedActivity.getClass().getName()
                             + "- ACTION_UP:" + ViewUtils.getAbsolutePath(touchViewUp));
                 }
             }

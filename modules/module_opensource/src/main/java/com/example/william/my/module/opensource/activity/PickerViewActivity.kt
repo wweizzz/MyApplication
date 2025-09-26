@@ -13,7 +13,7 @@ import com.bigkoo.pickerview.view.OptionsPickerView
 import com.example.william.my.basic.basic_module.activity.BasicResponseActivity
 import com.example.william.my.basic.basic_module.router.path.RouterPath
 import com.example.william.my.basic.basic_module.router.service.ResourceUtilsService
-import com.example.william.my.lib.utils.Utils
+import com.example.william.my.basic.basic_module.utils.Utils
 import com.example.william.my.module.opensource.R
 import com.example.william.my.module.opensource.data.ProvinceData
 import com.google.gson.Gson
@@ -65,7 +65,7 @@ class PickerViewActivity : BasicResponseActivity() {
             if (isLoaded) {
                 showOptionsPickerView()
             } else {
-                Utils.show("Please waiting until the data is parsed")
+                Utils.toast("Please waiting until the data is parsed")
             }
         }
         isSwitch = !isSwitch

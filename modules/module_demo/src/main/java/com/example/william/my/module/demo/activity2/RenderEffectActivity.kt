@@ -16,11 +16,11 @@ import androidx.annotation.RequiresApi
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.drawable.toBitmap
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.example.william.my.basic.basic_module.R
 import com.example.william.my.basic.basic_module.activity.BasicImageActivity
 import com.example.william.my.basic.basic_module.router.path.RouterPath
 import kotlin.math.max
 import kotlin.math.min
-import com.example.william.my.basic.basic_module.R
 
 /**
  * https://developer.android.com/guide/topics/renderscript

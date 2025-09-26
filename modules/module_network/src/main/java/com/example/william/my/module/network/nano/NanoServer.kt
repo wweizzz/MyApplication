@@ -2,7 +2,7 @@ package com.example.william.my.module.network.nano
 
 import android.app.Application
 import android.content.res.AssetManager
-import com.example.william.my.lib.utils.Utils
+import com.example.william.my.basic.basic_module.utils.Utils
 import fi.iki.elonen.NanoHTTPD
 import java.io.BufferedReader
 import java.io.IOException
@@ -96,10 +96,10 @@ class NanoServer(val context: Application) : NanoHTTPD(DEFAULT_SERVER_PORT) {
                         }
                         val head = session.headers
                         for ((key, value) in head) {
-                            Utils.d(TAG, "$key $value")
+                            println("$key $value")
                         }
                         for ((key, value) in params) {
-                            Utils.d(TAG, "$key $value")
+                            println("$key $value")
                         }
                         newFixedLengthResponse(
                             Response.Status.OK,
@@ -172,6 +172,10 @@ class NanoServer(val context: Application) : NanoHTTPD(DEFAULT_SERVER_PORT) {
     private fun responseParamsNotFound(): Response {
         val status = Response.Status.BAD_REQUEST
         return newFixedLengthResponse(status, MIME_HTML, "请求参数错误")
+    }
+
+    private fun println(msg: String) {
+        Utils.logcat(TAG, msg)
     }
 
     companion object {
