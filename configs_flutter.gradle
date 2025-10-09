@@ -1,7 +1,9 @@
+def flutterModulePath = 'basic/basic_flutter'
+File flutterModuleDir = new File(settingsDir, flutterModulePath)
+
+if (!flutterModuleDir.exists()) {
+    throw new GradleException("Flutter module not found at: ${flutterModuleDir.absolutePath}")
+}
+
 setBinding(new Binding([gradle: this]))
-evaluate(new File(
-        settingsDir,
-        'basic/basic_flutter/.android/include_flutter.groovy'
-))
-include ':basic:basic_flutter'
-project(':basic:basic_flutter').projectDir = new File('../flutter_module')
+evaluate(new File(flutterModuleDir, '.android/include_flutter.groovy'))
