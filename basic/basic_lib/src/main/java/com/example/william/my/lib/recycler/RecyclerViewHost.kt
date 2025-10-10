@@ -98,24 +98,24 @@ interface RecyclerViewHost<T : Any> :
     /**
      * item点击事件
      */
-    fun onClick(adapter: BaseQuickAdapter<T, *>, view: View, position: Int) {}
+    override fun onClick(adapter: BaseQuickAdapter<T, *>, view: View, position: Int) {}
 
     /**
      * item子view点击事件
      */
-    fun onItemClick(adapter: BaseQuickAdapter<T, *>, view: View, position: Int) {}
+    override fun onItemClick(adapter: BaseQuickAdapter<T, *>, view: View, position: Int) {}
 
     /**
      * item长按事件
      */
-    fun onLongClick(adapter: BaseQuickAdapter<T, *>, view: View, position: Int): Boolean {
+    override fun onLongClick(adapter: BaseQuickAdapter<T, *>, view: View, position: Int): Boolean {
         return false
     }
 
     /**
      * item子view长按事件
      */
-    fun onItemLongClick(adapter: BaseQuickAdapter<T, *>, view: View, position: Int): Boolean {
+    override fun onItemLongClick(adapter: BaseQuickAdapter<T, *>, view: View, position: Int): Boolean {
         return false
     }
 }
