@@ -14,7 +14,11 @@ import com.example.william.my.lib.databinding.BaseFragmentRecyclerViewBinding
  * RecyclerView宿主接口
  * 为BaseRecyclerHandler提供必要的访问接口和配置方法
  */
-interface RecyclerViewHost<T : Any> {
+interface RecyclerViewHost<T : Any> :
+    BaseQuickAdapter.OnItemClickListener<T>,
+    BaseQuickAdapter.OnItemLongClickListener<T>,
+    BaseQuickAdapter.OnItemChildClickListener<T>,
+    BaseQuickAdapter.OnItemChildLongClickListener<T> {
 
     /**
      * 获取ViewBinding实例

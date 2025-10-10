@@ -2,6 +2,7 @@ package com.example.william.my.lib.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.android.arouter.launcher.ARouter
@@ -12,9 +13,6 @@ open class BaseActivity : AppCompatActivity() {
     protected val TAG = this.javaClass.simpleName
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        // 在 super.onCreate 之前请求窗口特性
-        window.requestFeature(Window.FEATURE_CONTENT_TRANSITIONS)
-        window.requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS)
         super.onCreate(savedInstanceState)
         //setTheme(R.style.Basics_WindowAnimTheme_Slide)
 
@@ -27,6 +25,18 @@ open class BaseActivity : AppCompatActivity() {
 
         initViewModel()
         observeViewModel()
+    }
+
+    override fun setContentView(view: View?) {
+        window.requestFeature(Window.FEATURE_CONTENT_TRANSITIONS)
+        window.requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS)
+        super.setContentView(view)
+    }
+
+    override fun setContentView(layoutResID: Int) {
+        window.requestFeature(Window.FEATURE_CONTENT_TRANSITIONS)
+        window.requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS)
+        super.setContentView(layoutResID)
     }
 
     open fun initViewBinding() {

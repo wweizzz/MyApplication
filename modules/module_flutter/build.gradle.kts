@@ -9,7 +9,6 @@ android {
     namespace = "com.example.william.my.module.flutter"
     compileOptions {
         //coreLibraryDesugaringEnabled true
-        //isCoreLibraryDesugaringEnabled = true
     }
     resourcePrefix("flutter_")
 }
