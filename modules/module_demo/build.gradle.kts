@@ -26,5 +26,4 @@ dependencies {
     implementation("androidx.camera:camera-view:$camerax_version")
     
     implementation(libs.gpuimage)
-    implementation(project(":libs:lib_yuvengine"))
 }
