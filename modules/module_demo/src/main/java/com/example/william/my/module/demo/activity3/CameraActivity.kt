@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.william.my.basic.basic_module.router.path.RouterPath
-import com.example.william.my.core.yuvengine.YuvEngineWrap
 import com.example.william.my.lib.activity.BaseVBActivity
 import com.example.william.my.module.demo.databinding.DemoActivityCameraBinding
 import com.example.william.my.module.demo.utils.CameraUtils
@@ -18,8 +17,6 @@ class CameraActivity : BaseVBActivity<DemoActivityCameraBinding>(), View.OnClick
 
     override fun initView(savedInstanceState: Bundle?) {
         super.initView(savedInstanceState)
-
-        YuvEngineWrap.newInstance().startYuvEngine()
 
         CameraUtils.setupCamera(this, mBinding.previewView)
 

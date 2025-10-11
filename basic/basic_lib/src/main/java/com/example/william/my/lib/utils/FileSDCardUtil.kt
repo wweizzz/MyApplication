@@ -76,6 +76,14 @@ object FileSDCardUtil {
         }
     }
 
+    fun getPicDir(): File {
+        return Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM)
+    }
+
+    fun getPicDirPath(): String {
+        return Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).path
+    }
+
     fun isSpace(s: String?): Boolean {
         if (s == null) return true
         var i = 0
@@ -93,97 +101,18 @@ object FileSDCardUtil {
         return if (isSpace(filePath)) null else File(filePath)
     }
 
-    fun createOrExistsDir(file: File?): Boolean {
-        return file != null && if (file.exists()) file.isDirectory else file.mkdirs()
-    }
+    //fun createOrExistsDir(file: File?): Boolean {
+    //    return file != null && if (file.exists()) file.isDirectory else file.mkdirs()
+    //}
 
-    fun createOrExistsFile(file: File?): Boolean {
-        if (file == null) return false
-        if (file.exists()) return file.isFile
-        return if (!createOrExistsDir(file.parentFile)) false else try {
-            file.createNewFile()
-        } catch (e: IOException) {
-            e.printStackTrace()
-            false
-        }
-    }
-
-    fun writeFileFromString(filePath: String, content: String?, append: Boolean): Boolean {
-        return writeFileFromString(getFileByPath(filePath), content, append)
-    }
-
-    fun writeFileFromString(file: File?, content: String?, append: Boolean): Boolean {
-        if (file == null || content == null) return false
-        var bw: BufferedWriter? = null
-        return try {
-            bw = BufferedWriter(FileWriter(file, append))
-            bw.write(content)
-            true
-        } catch (e: IOException) {
-            e.printStackTrace()
-            false
-        } finally {
-            try {
-                bw?.close()
-            } catch (e: IOException) {
-                e.printStackTrace()
-            }
-        }
-    }
-
-    fun writeFileFromIS(file: File?, inputStream: InputStream): Boolean {
-        var os: OutputStream? = null
-        return try {
-            os = BufferedOutputStream(FileOutputStream(file), 1024 * 4)
-            val data = ByteArray(1024 * 4)
-            var len: Int
-            while (inputStream.read(data).also { len = it } != -1) {
-                os.write(data, 0, len)
-            }
-            true
-        } catch (e: IOException) {
-            e.printStackTrace()
-            false
-        } finally {
-            try {
-                inputStream.close()
-
-            } catch (e: IOException) {
-                e.printStackTrace()
-
-            }
-            try {
-                os?.close()
-            } catch (e: IOException) {
-                e.printStackTrace()
-            }
-        }
-    }
-
-    fun writeFileFromIS(uri: Uri?, inputStream: InputStream): Boolean {
-        var os: OutputStream? = null
-        return try {
-            os = BaseApp.app.contentResolver.openOutputStream(uri!!)
-            val data = ByteArray(1024 * 4)
-            var len: Int
-            while (inputStream.read(data).also { len = it } != -1) {
-                os?.write(data, 0, len)
-            }
-            true
-        } catch (e: IOException) {
-            e.printStackTrace()
-            false
-        } finally {
-            try {
-                inputStream.close()
-            } catch (e: IOException) {
-                e.printStackTrace()
-            }
-            try {
-                os?.close()
-            } catch (e: IOException) {
-                e.printStackTrace()
-            }
-        }
-    }
+    //fun createOrExistsFile(file: File?): Boolean {
+    //    if (file == null) return false
+    //    if (file.exists()) return file.isFile
+    //    return if (!createOrExistsDir(file.parentFile)) false else try {
+    //        file.createNewFile()
+    //    } catch (e: IOException) {
+    //        e.printStackTrace()
+    //        false
+    //    }
+    //}
 }

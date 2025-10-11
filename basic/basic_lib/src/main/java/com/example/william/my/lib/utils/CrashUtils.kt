@@ -73,7 +73,7 @@ object CrashUtils {
             val time = SimpleDateFormat("yyyy_MM_dd-HH_mm_ss", Locale.CHINA).format(Date())
             val crashInfo = CrashInfo(time, e)
             val crashFile = "$dirPath$time.txt"
-            FileSDCardUtil.writeFileFromString(crashFile, crashInfo.toString(), true)
+            FileWriteUtils.writeFileFromString(crashFile, crashInfo.toString(), true)
             onCrashListener?.onCrash(crashInfo)
             DEFAULT_UNCAUGHT_EXCEPTION_HANDLER?.uncaughtException(t, e)
         }

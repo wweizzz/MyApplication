@@ -3,6 +3,7 @@ package com.example.william.my.lib.utils
 import android.os.Handler
 import android.os.Looper
 import java.util.concurrent.Executor
+import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import java.util.concurrent.ScheduledExecutorService
 
@@ -18,19 +19,19 @@ import java.util.concurrent.ScheduledExecutorService
 object AppExecutorsHelper {
 
     /**
+     * UI线程
+     */
+    private val mMain: Executor = MainThreadExecutor()
+
+    /**
      * 磁盘IO线程
      */
-    private val mDiskIO: Executor = Executors.newSingleThreadExecutor()
+    private val mDiskIO: ExecutorService = Executors.newSingleThreadExecutor()
 
     /**
      * 网络IO线程
      */
-    private val mNetworkIO: Executor = Executors.newFixedThreadPool(3)
-
-    /**
-     * UI线程
-     */
-    private val mMainThread: Executor = MainThreadExecutor()
+    private val mNetworkIO: ExecutorService = Executors.newFixedThreadPool(3)
 
     /**
      * 定时任务线程池
@@ -39,16 +40,16 @@ object AppExecutorsHelper {
         Runtime.getRuntime().availableProcessors() * 3 + 2
     )
 
-    fun diskIO(): Executor {
+    fun main(): Executor {
+        return mMain
+    }
+
+    fun diskIO(): ExecutorService {
         return mDiskIO
     }
 
-    fun networkIO(): Executor {
+    fun networkIO(): ExecutorService {
         return mNetworkIO
-    }
-
-    fun mainThread(): Executor {
-        return mMainThread
     }
 
     /**

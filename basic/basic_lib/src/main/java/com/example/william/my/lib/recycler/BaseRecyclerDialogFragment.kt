@@ -1,4 +1,4 @@
-package com.example.william.my.lib.dialog
+package com.example.william.my.lib.recycler
 
 import android.content.Context
 import android.os.Bundle
@@ -6,10 +6,12 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.chad.library.adapter4.BaseMultiItemAdapter
 import com.chad.library.adapter4.BaseQuickAdapter
+import com.chad.library.adapter4.QuickAdapterHelper
 import com.chad.library.adapter4.viewholder.QuickViewHolder
 import com.example.william.my.lib.databinding.BaseFragmentRecyclerViewBinding
-import com.example.william.my.lib.recycler.BaseRecyclerHandler
-import com.example.william.my.lib.recycler.RecyclerViewHost
+import com.example.william.my.lib.dialog.BaseVBDialogFragment
+import com.example.william.my.lib.recycler.handler.BaseRecyclerHandler
+import com.example.william.my.lib.recycler.host.RecyclerViewHost
 
 /**
  * https://github.com/CymChad/BaseRecyclerViewAdapterHelper
@@ -39,32 +41,44 @@ abstract class BaseRecyclerDialogFragment<T : Any> :
 
     override fun getHostContext(): Context = requireContext()
 
-    // ===== 委托方法 =====
+    // ===== 配置方法 =====
 
     /**
-     * 滚动到顶部
+     * 初始化RecyclerView状态视图
      */
-    fun scrollToTop() = recyclerHandler.scrollToTop()
+    override fun initRecyclerViewStateView() {
+        recyclerHandler.initRecyclerViewStateView()
+    }
+
+    // ===== 委托方法 =====
 
     /**
      * 数据加载成功处理
      */
-    fun onDataSuccess(list: List<T>?) = recyclerHandler.onDataSuccess(list)
+    override fun onDataSuccess(list: List<T>?) {
+        recyclerHandler.onDataSuccess(list)
+    }
 
     /**
      * 数据加载失败处理
      */
-    fun onDataFail() = recyclerHandler.onDataFail()
+    override fun onDataFail() {
+        recyclerHandler.onDataFail()
+    }
+
+    /**
+     * 滚动到顶部
+     */
+    override fun scrollToTop() {
+        recyclerHandler.scrollToTop()
+    }
 
     /**
      * 显示提示信息
      */
-    fun showToast(message: String?) = recyclerHandler.showToast(message)
-
-    /**
-     * 设置RecyclerView状态视图
-     */
-    fun setRecyclerViewStateView() = recyclerHandler.setRecyclerViewStateView()
+    override fun showToast(message: String?) {
+        recyclerHandler.showToast(message)
+    }
 
     // ===== 属性访问器 =====
 
@@ -92,4 +106,9 @@ abstract class BaseRecyclerDialogFragment<T : Any> :
      * 获取多类型Adapter
      */
     val mMultiItemAdapter: BaseMultiItemAdapter<T>? get() = recyclerHandler.mMultiItemAdapter
+
+    /**
+     * 获取QuickAdapterHelper
+     */
+    val mAdapterHelper: QuickAdapterHelper? get() = recyclerHandler.mAdapterHelper
 }

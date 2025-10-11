@@ -1,4 +1,4 @@
-package com.example.william.my.lib.recycler
+package com.example.william.my.lib.recycler.handler
 
 import android.view.View
 import android.widget.Toast
@@ -7,6 +7,7 @@ import com.chad.library.adapter4.BaseMultiItemAdapter
 import com.chad.library.adapter4.BaseQuickAdapter
 import com.chad.library.adapter4.QuickAdapterHelper
 import com.chad.library.adapter4.viewholder.QuickViewHolder
+import com.example.william.my.lib.recycler.host.RecyclerViewHost
 import com.scwang.smart.refresh.layout.api.RefreshLayout
 import com.scwang.smart.refresh.layout.listener.OnRefreshLoadMoreListener
 
@@ -69,12 +70,12 @@ class BaseRecyclerHandler<T : Any>(
         binding.recyclerView.adapter = mAdapterHelper.adapter
 
         // 添加装饰器
-        host.itemDecorations().forEach {
+        host.initItemDecoration().forEach {
             binding.recyclerView.addItemDecoration(it)
         }
 
         // 添加滚动监听器
-        host.scrollListener().forEach {
+        host.initOnScrollListener().forEach {
             binding.recyclerView.addOnScrollListener(it)
         }
     }
@@ -82,7 +83,7 @@ class BaseRecyclerHandler<T : Any>(
     /**
      * 设置RecyclerView状态视图
      */
-    fun setRecyclerViewStateView() {
+    fun initRecyclerViewStateView() {
         if (host.emptyView() != null) {
             mAdapter?.isStateViewEnable = true
             mMultiItemAdapter?.isStateViewEnable = true
@@ -100,13 +101,6 @@ class BaseRecyclerHandler<T : Any>(
     }
 
     /**
-     * 滚动到顶部
-     */
-    fun scrollToTop() {
-        host.getHostBinding().recyclerView.scrollToPosition(0)
-    }
-
-    /**
      * 数据加载成功处理（支持两种重载方式）
      */
     fun onDataSuccess(list: List<T>?) {
@@ -121,7 +115,7 @@ class BaseRecyclerHandler<T : Any>(
             mMultiItemAdapter?.addAll(newList)
         }
 
-        setRecyclerViewStateView()
+        initRecyclerViewStateView()
 
         if (newList.size < mPageSize) {
             binding.smartRefresh.setEnableLoadMore(false)
@@ -135,6 +129,13 @@ class BaseRecyclerHandler<T : Any>(
      */
     fun onDataFail() {
         host.getHostBinding().smartRefresh.setEnableLoadMore(false)
+    }
+
+    /**
+     * 滚动到顶部
+     */
+    fun scrollToTop() {
+        host.getHostBinding().recyclerView.scrollToPosition(0)
     }
 
     /**

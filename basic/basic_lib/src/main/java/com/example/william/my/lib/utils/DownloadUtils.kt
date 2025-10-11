@@ -19,7 +19,7 @@ object DownloadUtils {
                 context.contentResolver.insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, values)
             try {
                 val inputStream: InputStream = FileInputStream(filePath)
-                FileSDCardUtil.writeFileFromIS(uri, inputStream)
+                FileWriteUtils.writeFileFromIS(uri, inputStream)
             } catch (e: FileNotFoundException) {
                 e.printStackTrace()
             }

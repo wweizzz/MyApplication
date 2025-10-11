@@ -1,4 +1,4 @@
-package com.example.william.my.lib.recycler
+package com.example.william.my.lib.recycler.host
 
 import android.content.Context
 import android.os.Bundle
@@ -9,6 +9,8 @@ import com.chad.library.adapter4.BaseMultiItemAdapter
 import com.chad.library.adapter4.BaseQuickAdapter
 import com.chad.library.adapter4.viewholder.QuickViewHolder
 import com.example.william.my.lib.databinding.BaseFragmentRecyclerViewBinding
+import com.scwang.smart.refresh.layout.api.RefreshLayout
+import com.scwang.smart.refresh.layout.listener.OnRefreshLoadMoreListener
 
 /**
  * RecyclerView宿主接口
@@ -18,7 +20,8 @@ interface RecyclerViewHost<T : Any> :
     BaseQuickAdapter.OnItemClickListener<T>,
     BaseQuickAdapter.OnItemLongClickListener<T>,
     BaseQuickAdapter.OnItemChildClickListener<T>,
-    BaseQuickAdapter.OnItemChildLongClickListener<T> {
+    BaseQuickAdapter.OnItemChildLongClickListener<T>,
+    OnRefreshLoadMoreListener {
 
     /**
      * 获取ViewBinding实例
@@ -59,17 +62,20 @@ interface RecyclerViewHost<T : Any> :
      */
     fun initRecyclerMultiAdapter(): BaseMultiItemAdapter<T>? = null
 
-    // ===== 扩展方法 =====
-
     /**
      * 滚动监听器列表
      */
-    fun scrollListener(): List<RecyclerView.OnScrollListener> = arrayListOf()
+    fun initOnScrollListener(): List<RecyclerView.OnScrollListener> = arrayListOf()
 
     /**
      * 装饰器列表
      */
-    fun itemDecorations(): List<RecyclerView.ItemDecoration> = arrayListOf()
+    fun initItemDecoration(): List<RecyclerView.ItemDecoration> = arrayListOf()
+
+    /**
+     * 初始化RecyclerView状态视图
+     */
+    fun initRecyclerViewStateView() {}
 
     /**
      * 空视图
@@ -93,6 +99,28 @@ interface RecyclerViewHost<T : Any> :
      */
     fun queryData() {}
 
+    /**
+     * 数据加载成功处理
+     */
+    fun onDataSuccess(list: List<T>?) {}
+
+    /**
+     * 数据加载失败处理
+     */
+    fun onDataFail() {}
+
+    // ===== 扩展方法 =====
+
+    /**
+     * 滚动到顶部
+     */
+    fun scrollToTop()
+
+    /**
+     * 显示提示信息
+     */
+    fun showToast(message: String?) {}
+
     // ===== 点击事件委托 =====
 
     /**
@@ -115,7 +143,19 @@ interface RecyclerViewHost<T : Any> :
     /**
      * item子view长按事件
      */
-    override fun onItemLongClick(adapter: BaseQuickAdapter<T, *>, view: View, position: Int): Boolean {
+    override fun onItemLongClick(
+        adapter: BaseQuickAdapter<T, *>,
+        view: View,
+        position: Int
+    ): Boolean {
         return false
+    }
+
+    override fun onRefresh(refreshLayout: RefreshLayout) {
+
+    }
+
+    override fun onLoadMore(refreshLayout: RefreshLayout) {
+
     }
 }
