@@ -75,13 +75,17 @@ abstract class BaseDialogFragment(
 
     protected open fun initStatusBar() {
         if (enableTransparentStatusBar()) {
-            ImmersionBar.with(this)
-                .transparentStatusBar()  //透明状态栏，不写默认透明色
-                .statusBarDarkFont(false) //状态栏字体是深色，不写默认为亮色
-                .fitsSystemWindows(fitsSystemWindows()) //解决状态栏和布局重叠问题
-                .keyboardEnable(keyboardEnable())
-                .init()
+            transparentStatusBar()
         }
+    }
+
+    protected open fun transparentStatusBar() {
+        ImmersionBar.with(this)
+            .transparentStatusBar()  //透明状态栏，不写默认透明色
+            .fitsSystemWindows(fitsSystemWindows()) //解决状态栏和布局重叠问题
+            .statusBarDarkFont(statusBarDarkFont()) //状态栏字体是深色，不写默认为亮色
+            .keyboardEnable(keyboardEnable()) // 解决软键盘与底部输入框冲突问题，默认为false
+            .init()
     }
 
     /**
@@ -133,6 +137,10 @@ abstract class BaseDialogFragment(
     }
 
     protected open fun fitsSystemWindows(): Boolean {
+        return false
+    }
+
+    protected open fun statusBarDarkFont(): Boolean {
         return false
     }
 

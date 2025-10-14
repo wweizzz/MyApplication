@@ -72,7 +72,7 @@ abstract class BaseBottomSheetDialogFragment(
             dialog.dismissWithAnimation = true
 
             dialog.window?.let { window ->
-                setAttributes(window.attributes)
+                setWindowAttributes(window.attributes)
                 if (windowAnimationsRes > 0) {
                     window.setWindowAnimations(windowAnimationsRes)
                 }
@@ -85,13 +85,17 @@ abstract class BaseBottomSheetDialogFragment(
 
     protected open fun initStatusBar() {
         if (enableTransparentStatusBar()) {
-            ImmersionBar.with(this)
-                .transparentStatusBar()  //透明状态栏，不写默认透明色
-                .statusBarDarkFont(false) //状态栏字体是深色，不写默认为亮色
-                .fitsSystemWindows(fitsSystemWindows()) //解决状态栏和布局重叠问题
-                .keyboardEnable(keyboardEnable())
-                .init()
+            transparentStatusBar()
         }
+    }
+
+    protected open fun transparentStatusBar() {
+        ImmersionBar.with(this)
+            .transparentStatusBar()  //透明状态栏，不写默认透明色
+            .fitsSystemWindows(fitsSystemWindows()) //解决状态栏和布局重叠问题
+            .statusBarDarkFont(statusBarDarkFont()) //状态栏字体是深色，不写默认为亮色
+            .keyboardEnable(keyboardEnable()) // 解决软键盘与底部输入框冲突问题，默认为false
+            .init()
     }
 
     /**
@@ -131,7 +135,7 @@ abstract class BaseBottomSheetDialogFragment(
         }
     }
 
-    protected fun setAttributes(params: WindowManager.LayoutParams) {
+    protected fun setWindowAttributes(params: WindowManager.LayoutParams) {
         params.width = WindowManager.LayoutParams.MATCH_PARENT
         params.height = WindowManager.LayoutParams.WRAP_CONTENT
         params.gravity = Gravity.BOTTOM
@@ -143,6 +147,10 @@ abstract class BaseBottomSheetDialogFragment(
     }
 
     protected open fun fitsSystemWindows(): Boolean {
+        return false
+    }
+
+    protected open fun statusBarDarkFont(): Boolean {
         return false
     }
 
