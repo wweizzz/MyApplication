@@ -31,8 +31,14 @@ class CameraActivity : BaseVBActivity<DemoActivityCameraBinding>(), View.OnClick
                 }
             }
 
-            mBinding.btnRecord -> {
+            mBinding.btnRecordStart -> {
+                CameraUtils.startRecording(this) {
 
+                }
+            }
+
+            mBinding.btnRecordStart -> {
+                CameraUtils.stopRecording()
             }
         }
     }

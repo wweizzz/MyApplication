@@ -3,13 +3,7 @@ package com.example.william.my.module.demo.utils
 import android.content.ContentValues
 import android.content.Context
 import android.graphics.Bitmap
-import android.media.MediaCodec
-import android.media.MediaCodecInfo
-import android.media.MediaFormat
-import android.media.MediaMuxer
 import android.os.Environment
-import android.os.Handler
-import android.os.Looper
 import android.provider.MediaStore
 import android.util.Size
 import androidx.camera.core.AspectRatio
@@ -27,6 +21,7 @@ import androidx.camera.view.PreviewView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 import com.example.william.my.basic.basic_module.utils.Utils
+import com.example.william.my.lib.utils.AppExecutorsHelper
 import jp.co.cyberagent.android.gpuimage.GPUImage
 import java.io.File
 import java.io.IOException
@@ -45,14 +40,13 @@ object CameraUtils {
 
     // 状态标志
     private var isRecording = false
-    private var muxerStarted = false
 
-    private val handler = Handler(Looper.getMainLooper())
+    private val main = AppExecutorsHelper.main()
+    private val diskIO = AppExecutorsHelper.diskIO()
 
     // 录像相关对象
     private var recordingFile: File? = null
-    private var previewBitmap: Bitmap? = null
-    private var onRecordingStopped: ((file: File, preview: Bitmap?) -> Unit)? = null
+    private var onRecordingStopped: ((file: File) -> Unit)? = null
 
     // 图像捕获
     private var imageCaptureUseCase: ImageCapture? = null
@@ -165,57 +159,54 @@ object CameraUtils {
         )
     }
 
-    fun startRecording(activity: FragmentActivity) {
+    fun startRecording(activity: FragmentActivity, processComplete: (file: File) -> Unit) {
+        val imageAnalysis = imageAnalysisUseCase ?: return
+
         if (isRecording) {
-            println("Recording is already in progress")
+            println("录像已在进行中")
+            return
+        }
+        isRecording = true
+
+        recordingFile = createVideoFile(activity)
+        if (recordingFile == null) {
+            println("文件创建失败")
             return
         }
 
-        val imageAnalysis = imageAnalysisUseCase ?: return
+        onRecordingStopped = processComplete
 
         imageAnalysis.setAnalyzer(
-            Executors.newSingleThreadExecutor(),
-            object : ImageAnalysis.Analyzer {
-                override fun analyze(image: ImageProxy) {
-
-                }
-            })
-
-        try {
-            // 1. 配置 MediaFormat
-            val mediaFormat = MediaFormat.createVideoFormat(
-                MediaFormat.MIMETYPE_VIDEO_AVC,
-                targetWidth,
-                targetHeight
-            )
-            mediaFormat.setInteger(
-                MediaFormat.KEY_COLOR_FORMAT,
-                MediaCodecInfo.CodecCapabilities.COLOR_FormatSurface
-            )
-            mediaFormat.setInteger(MediaFormat.KEY_BIT_RATE, BIT_RATE)
-            mediaFormat.setInteger(MediaFormat.KEY_FRAME_RATE, FRAME_RATE)
-            mediaFormat.setInteger(MediaFormat.KEY_I_FRAME_INTERVAL, IFRAME_INTERVAL)
-
-            // 2. 创建编码器
-            mediaCodec = MediaCodec.createEncoderByType(MediaFormat.MIMETYPE_VIDEO_AVC)
-            mediaCodec?.configure(mediaFormat, null, null, MediaCodec.CONFIGURE_FLAG_ENCODE)
-            mediaCodec?.start()
-
-            // 3. 创建混合器
-            mediaMuxer =
-                MediaMuxer(videoFile!!.absolutePath, MediaMuxer.OutputFormat.MUXER_OUTPUT_MPEG_4)
-
-        } catch (e: IOException) {
-            println("Error encoding video", e)
-        } finally {
-            // 6. 释放资源
-            mediaCodec?.stop()
-            mediaCodec?.release()
-
-            if (muxerStarted) {
-                mediaMuxer?.stop()
-                mediaMuxer?.release()
+            Executors.newSingleThreadExecutor()
+        ) { image ->
+            if (isRecording) {
+                processWithGPUImage(image)
             }
+            image.close()
+        }
+    }
+
+    fun stopRecording() {
+        if (!isRecording) {
+            println("当前没有在录像")
+            return
+        }
+
+        isRecording = false
+
+        // 停止图像分析
+        imageAnalysisUseCase?.clearAnalyzer()
+
+        // 停止编码器
+        diskIO.execute {
+            VideoEncoder.stop()
+
+            // 通知回调
+            onRecordingStopped?.invoke(recordingFile!!)
+
+            // 重置状态
+            recordingFile = null
+            onRecordingStopped = null
         }
     }
 
@@ -224,13 +215,14 @@ object CameraUtils {
         imageProxy: ImageProxy,
         processComplete: (bitmap: Bitmap) -> Unit
     ) {
+        // 将ImageProxy转换为Bitmap数据
         val bitmap = imageProxy.toBitmap()
 
         // 创建GPUImage实例
         val gpuImage = GPUImage(context)
         gpuImage.setImage(bitmap)
 
-        handler.post {
+        main.execute {
             // 获取处理后的Bitmap
             val processedBitmap = gpuImage.bitmapWithFilterApplied
 
@@ -239,128 +231,24 @@ object CameraUtils {
     }
 
     private fun processWithGPUImage(
-        context: Context,
-        imageProxy: ImageProxy,
+        imageProxy: ImageProxy
     ) {
-        val bitmap = imageProxy.toBitmap()
+        // 将ImageProxy转换为YUV数据
+        //val yuvData = imageProxyToYuv420(imageProxy)
 
-        // 创建GPUImage实例
-        val gpuImage = GPUImage(context)
-        gpuImage.setImage(bitmap)
+        // 计算时间戳
+        //val presentationTimeUs = frameCount * 1_000_000L / frameRate
+        //frameCount++
 
-        handler.post {
-
-            // 获取处理后的Bitmap
-            val processedBitmap = gpuImage.bitmapWithFilterApplied
-
-            // 编码视频帧
-            //encodeFrame(processedBitmap)
-        }
-    }
-
-    private const val BIT_RATE = 3_000_000 // 比特率
-    private const val FRAME_RATE = 30 // 帧率
-    private const val IFRAME_INTERVAL = 1 // 关键帧间隔
-
-    private var videoFile: File? = null
-    private var mediaCodec: MediaCodec? = null
-    private var mediaMuxer: MediaMuxer? = null
-
-    private fun start(context: Context) {
-        videoFile = createVideoFile(context)
-        if (videoFile == null) return
-
-        try {
-            // 1. 配置 MediaFormat
-            val mediaFormat = MediaFormat.createVideoFormat(
-                MediaFormat.MIMETYPE_VIDEO_AVC,
-                targetWidth,
-                targetHeight
-            )
-            mediaFormat.setInteger(
-                MediaFormat.KEY_COLOR_FORMAT,
-                MediaCodecInfo.CodecCapabilities.COLOR_FormatSurface
-            )
-            mediaFormat.setInteger(MediaFormat.KEY_BIT_RATE, BIT_RATE)
-            mediaFormat.setInteger(MediaFormat.KEY_FRAME_RATE, FRAME_RATE)
-            mediaFormat.setInteger(MediaFormat.KEY_I_FRAME_INTERVAL, IFRAME_INTERVAL)
-
-            // 2. 创建编码器
-            mediaCodec = MediaCodec.createEncoderByType(MediaFormat.MIMETYPE_VIDEO_AVC)
-            mediaCodec?.configure(mediaFormat, null, null, MediaCodec.CONFIGURE_FLAG_ENCODE)
-            mediaCodec?.start()
-
-            // 3. 创建混合器
-            mediaMuxer =
-                MediaMuxer(
-                    videoFile!!.absolutePath,
-                    MediaMuxer.OutputFormat.MUXER_OUTPUT_MPEG_4
-                )
-
-//            // 4. 编码循环
-//            val frameDuration = (1000000 / FRAME_RATE).toLong() // 微秒
-//            var presentationTimeUs: Long = 0
-//
-//            for (bitmap in bitmaps) {
-//                // 等待输入缓冲区可用
-//                val inputBufferId = mediaCodec.dequeueInputBuffer(TIMEOUT_US.toLong())
-//                if (inputBufferId >= 0) {
-//
-//                    // 将 Bitmap 转换为 YUV 格式
-//                    val inputBuffer = mediaCodec.getInputBuffer(inputBufferId)
-//                    convertBitmapToYUV(bitmap, inputBuffer!!, width, height)
-//
-//                    // 提交到编码器
-//                    mediaCodec.queueInputBuffer(
-//                        inputBufferId,
-//                        0,
-//                        width * height * 3 / 2,  // YUV420 数据大小
-//                        presentationTimeUs,
-//                        0
-//                    )
-//                    presentationTimeUs += frameDuration
-//
-//                }
-//
-//                // 处理输出
-//                val bufferInfo = MediaCodec.BufferInfo()
-//                val outputBufferId =
-//                    mediaCodec.dequeueOutputBuffer(bufferInfo, TIMEOUT_US.toLong())
-//                if (outputBufferId >= 0) {
-//                    // 首次获取格式信息时会返回特殊值
-//                    if ((bufferInfo.flags and MediaCodec.BUFFER_FLAG_CODEC_CONFIG) != 0) {
-//                        bufferInfo.size = 0
-//                    }
-//
-//                    if (bufferInfo.size > 0) {
-//                        if (!muxerStarted) {
-//                            val outputFormat = mediaCodec.getOutputFormat()
-//                            trackIndex = mediaMuxer.addTrack(outputFormat)
-//                            mediaMuxer.start()
-//                            muxerStarted = true
-//                        }
-//
-//                        val outputBuffer = mediaCodec.getOutputBuffer(outputBufferId)
-//                        mediaMuxer.writeSampleData(trackIndex, outputBuffer!!, bufferInfo)
-//                    }
-//                    mediaCodec.releaseOutputBuffer(outputBufferId, false)
-//                }
-//            }
-//
-//            // 5. 结束编码
-//            signalEndOfStream(mediaCodec, mediaMuxer, muxerStarted, trackIndex)
-        } catch (e: IOException) {
-            println("Error encoding video", e)
-        } finally {
-            // 6. 释放资源
-            mediaCodec?.stop()
-            mediaCodec?.release()
-
-            if (muxerStarted) {
-                mediaMuxer?.stop()
-                mediaMuxer?.release()
-            }
-        }
+        // 提交到编码器
+        //diskIO.execute {
+        //    VideoEncoder.encodeFrame(
+        //        recordingFile!!.absolutePath,
+        //        yuvData, presentationTimeUs,
+        //        400,
+        //        300
+        //    )
+        //}
     }
 
     private fun createVideoFile(context: Context): File? {
@@ -378,6 +266,10 @@ object CameraUtils {
         }
     }
 
+    /**
+     * 存储新捕获图像的选项。
+     * Options to store the newly captured image.
+     */
     private fun getOutputFileOptions(context: Context): ImageCapture.OutputFileOptions {
         // 创建临时文件选项
         return ImageCapture.OutputFileOptions

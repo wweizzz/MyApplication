@@ -25,6 +25,10 @@ interface IImageLoader {
     )
 
     fun ImageView.loadImage(
+        context: Context?, bitmap: Bitmap?,
+    )
+
+    fun ImageView.loadImage(
         context: Context?, uri: Uri,
     )
 
@@ -44,6 +48,10 @@ interface IImageLoader {
     )
 
     fun ImageView.loadImageRound(
+        context: Context?, bitmap: Bitmap?
+    )
+
+    fun ImageView.loadImageRound(
         context: Context?, uri: Uri,
     )
 
@@ -57,6 +65,10 @@ interface IImageLoader {
 
     fun ImageView.loadImageRadius(
         context: Context?, @RawRes @DrawableRes resourceId: Int, radius: Int,
+    )
+
+    fun ImageView.loadImageRadius(
+        context: Context?, bitmap: Bitmap?, radius: Int,
     )
 
     fun ImageView.loadImageRadius(

@@ -59,6 +59,22 @@ object ImageLoader : IImageLoader {
         }
     }
 
+    override fun ImageView.loadImage(
+        context: Context?,
+        bitmap: Bitmap?
+    ) {
+        context?.let {
+            GlideApp.with(it)
+                .load(bitmap)
+                .apply(
+                    RequestOptions()
+                        .diskCacheStrategy(DiskCacheStrategy.NONE) //禁用缓存功能
+                    //.skipMemoryCache(true) //禁用内存缓存)
+                )
+                .into(this)
+        }
+    }
+
     override fun ImageView.loadImage(context: Context?, uri: Uri) {
         context?.let {
             GlideApp.with(it)
@@ -155,6 +171,18 @@ object ImageLoader : IImageLoader {
         }
     }
 
+    override fun ImageView.loadImageRound(
+        context: Context?,
+        bitmap: Bitmap?
+    ) {
+        context?.let {
+            GlideApp.with(it)
+                .load(bitmap)
+                .transform(CircleCrop())
+                .into(this)
+        }
+    }
+
     override fun ImageView.loadImageRound(context: Context?, file: File) {
         context?.let {
             GlideApp.with(it)
@@ -195,6 +223,19 @@ object ImageLoader : IImageLoader {
                         .diskCacheStrategy(DiskCacheStrategy.NONE) //禁用缓存功能
                     //.skipMemoryCache(true) //禁用内存缓存)
                 )
+                .transform(CenterCrop(), RoundedCorners(radius))
+                .into(this)
+        }
+    }
+
+    override fun ImageView.loadImageRadius(
+        context: Context?,
+        bitmap: Bitmap?,
+        radius: Int
+    ) {
+        context?.let {
+            GlideApp.with(it)
+                .load(bitmap)
                 .transform(CenterCrop(), RoundedCorners(radius))
                 .into(this)
         }

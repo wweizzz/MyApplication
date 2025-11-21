@@ -1,6 +1,5 @@
 package com.example.william.my.module.demo.utils
 
-import android.R
 import android.content.Context
 import android.graphics.Bitmap
 import android.media.MediaCodec
@@ -26,6 +25,8 @@ import androidx.camera.core.resolutionselector.ResolutionStrategy
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import com.example.william.my.module.demo.databinding.ActivityCameraBinding
+import com.example.william.my.module.demo.utils.BitmapToYuvConverter.convertToNv12
+import com.example.william.my.module.demo.utils.BitmapToYuvConverter.convertToNv21
 import jp.co.cyberagent.android.gpuimage.GPUImage
 import jp.co.cyberagent.android.gpuimage.util.Rotation
 import java.io.File
@@ -65,10 +66,10 @@ class CameraActivity : AppCompatActivity() {
         binding.btnRecord.setOnClickListener {
             if (!isRecording) {
                 startRecording()
-                binding.btnRecord.setImageResource(R.drawable.ic_media_pause)
+                binding.btnRecord.setImageResource(android.R.drawable.ic_media_play)
             } else {
                 stopRecording()
-                binding.btnRecord.setImageResource(R.drawable.ic_media_play)
+                binding.btnRecord.setImageResource(android.R.drawable.ic_media_play)
             }
         }
 
@@ -197,7 +198,7 @@ class CameraActivity : AppCompatActivity() {
 
         try {
             // 将Bitmap转换为YUV420格式
-            val yuvData = YuvUtils.convertBitmapToYUV420(bitmap, targetWidth, targetHeight)
+            val yuvData = bitmap.convertToNv21()
 
             val inputBufferId = mediaCodec!!.dequeueInputBuffer(10_000)
             if (inputBufferId < 0) {
@@ -325,9 +326,7 @@ class CameraActivity : AppCompatActivity() {
 
                 isMuxerStarted = false
 
-                GalleryUtils.saveVideoToGallery(this, videoFile, "Hitta") { isSuccess, message ->
-                    //ToastUtils.showShort(message)
-                }
+                //GalleryUtils.saveFileToGallery(videoFile, "Hitta")
             } catch (e: Exception) {
                 Log.e(TAG, "停止录制失败: ${e.message}", e)
                 Toast.makeText(

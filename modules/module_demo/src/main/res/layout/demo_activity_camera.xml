@@ -32,16 +32,25 @@
         android:layout_height="@dimen/basics_dimen_48"
         android:src="@drawable/ic_launcher"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btn_record"
+        app:layout_constraintEnd_toStartOf="@+id/btn_record_start"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/btn_record"
+        android:id="@+id/btn_record_start"
         android:layout_width="@dimen/basics_dimen_48"
         android:layout_height="@dimen/basics_dimen_48"
-        android:src="@drawable/ic_launcher"
+        android:src="@android:drawable/ic_media_play"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_record_stop"
+        app:layout_constraintStart_toEndOf="@+id/btn_capture" />
+
+    <ImageView
+        android:id="@+id/btn_record_stop"
+        android:layout_width="@dimen/basics_dimen_48"
+        android:layout_height="@dimen/basics_dimen_48"
+        android:src="@android:drawable/ic_media_play"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btn_capture" />
+        app:layout_constraintStart_toEndOf="@+id/btn_record_start" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
